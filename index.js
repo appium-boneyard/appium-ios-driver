@@ -1,4 +1,4 @@
-import {default as sample} from './lib/sample';
+import {IosDriver} from './lib/driver';
 
-export {sample};
+export {IosDriver};
 

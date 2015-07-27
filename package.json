@@ -23,6 +23,7 @@
     "lib": "lib"
   },
   "dependencies": {
+    "appium-base-driver": "^0.2.0",
     "babel-runtime": "=5.5.5",
     "bluebird": "^2.9.32",
     "source-map-support": "^0.3.1"
