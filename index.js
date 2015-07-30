@@ -1,4 +1,4 @@
-import {IosDriver} from './lib/driver';
+import { IosDriver } from './lib/driver';
 
-export {IosDriver};
+export { IosDriver };
 
