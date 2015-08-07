@@ -14,7 +14,7 @@ chai.use(chaiAsPromised);
 describe('driver', () => {
   it('should work', async () => {
     let caps = {
-      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.app.zip'),
+      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       deviceName: 'iPhone 5'
     };
