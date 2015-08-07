@@ -26,6 +26,7 @@
     "appium-base-driver": "^0.2.0",
     "appium-logger": "^1.1.7",
     "appium-support": "beta",
+    "appium-xcode": "^2.1.0-beta",
     "babel-runtime": "=5.6.16",
     "bluebird": "^2.9.32",
     "bplist-creator": "0.0.6",
