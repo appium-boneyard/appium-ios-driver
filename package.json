@@ -24,9 +24,11 @@
   },
   "dependencies": {
     "appium-base-driver": "^0.2.0",
+    "appium-instruments": "^3.0.0-beta2",
     "appium-logger": "^1.1.7",
     "appium-support": "beta",
     "appium-xcode": "^2.1.0-beta",
+    "asyncbox": "^2.1.0",
     "babel-runtime": "=5.6.16",
     "bluebird": "^2.9.32",
     "bplist-creator": "0.0.6",

@@ -16,7 +16,7 @@ describe('driver', () => {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.app.zip'),
       platformName: 'iOS',
-      deviceName: 'iPhone'
+      deviceName: 'iPhone 5'
     };
     let driver = new IosDriver();
     await driver.createSession(caps);
