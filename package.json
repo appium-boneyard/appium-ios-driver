@@ -28,6 +28,7 @@
     "appium-ios-simulator": "0.0.4",
     "appium-logger": "^1.1.7",
     "appium-support": "^2.0.0-beta14",
+    "appium-uiauto": "^2.0.0-beta",
     "appium-xcode": "^2.1.0-beta",
     "asyncbox": "^2.1.0",
     "babel-runtime": "=5.6.16",
