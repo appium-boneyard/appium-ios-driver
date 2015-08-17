@@ -12,12 +12,12 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('driver', function () {
-  this.timeout(60000);
+  this.timeout(120000);
   it('should work', async () => {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
-      deviceName: 'iPhone 6'
+      deviceName: 'iPhone 5'
     };
     let driver = new IosDriver();
     await driver.createSession(caps);
