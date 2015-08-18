@@ -23,7 +23,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "appium-base-driver": "^0.2.0",
+    "appium-base-driver": "^0.3.1",
     "appium-instruments": "^3.0.0-beta2",
     "appium-ios-log": "^0.0.2",
     "appium-ios-simulator": "^0.0.7",
@@ -32,7 +32,7 @@
     "appium-uiauto": "^2.0.0-beta",
     "appium-xcode": "^2.1.0-beta",
     "asyncbox": "^2.2.0",
-    "babel-runtime": "=5.6.16",
+    "babel-runtime": "=5.8.20",
     "bluebird": "^2.9.32",
     "bplist-creator": "0.0.6",
     "bplist-parser": "^0.1.0",
@@ -44,7 +44,7 @@
     "source-map-support": "^0.3.1",
     "teen_process": "^1.3.0",
     "which": "^1.1.1",
-    "xcode": "^0.7.0"
+    "xcode": "^0.8.0"
   },
   "scripts": {
     "prepublish": "./node_modules/.bin/gulp prepublish",
