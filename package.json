@@ -23,10 +23,10 @@
     "lib": "lib"
   },
   "dependencies": {
-    "appium-base-driver": "^0.3.1",
+    "appium-base-driver": "latest",
     "appium-instruments": "beta",
     "appium-ios-log": "latest",
-    "appium-ios-simulator": "^0.0.7",
+    "appium-ios-simulator": "latest",
     "appium-logger": "^1.1.7",
     "appium-support": "beta",
     "appium-uiauto": "beta",
