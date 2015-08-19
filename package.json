@@ -1,6 +1,6 @@
 {
   "name": "appium-ios-driver",
-  "description": "Description goes here.",
+  "description": "Appium driver for iOS",
   "keywords": [
     "appium"
   ],
