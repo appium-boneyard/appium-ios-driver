@@ -38,6 +38,7 @@
     "bplist-parser": "^0.1.0",
     "date-utils": "^1.2.17",
     "lodash": "^3.10.0",
+    "mobile-json-wire-protocol": "latest",
     "node-simctl": "^2.1.0",
     "path": "^0.11.0",
     "plist": "^1.1.0",
