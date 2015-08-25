@@ -28,6 +28,7 @@
     "appium-ios-log": "latest",
     "appium-ios-simulator": "latest",
     "appium-logger": "^1.1.7",
+    "appium-remote-debugger": "latest",
     "appium-support": "beta",
     "appium-uiauto": "beta",
     "appium-xcode": "beta",
