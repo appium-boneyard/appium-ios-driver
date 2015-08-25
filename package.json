@@ -37,6 +37,7 @@
     "bplist-creator": "0.0.6",
     "bplist-parser": "^0.1.0",
     "date-utils": "^1.2.17",
+    "js2xmlparser2": "^0.2.0",
     "lodash": "^3.10.0",
     "mobile-json-wire-protocol": "latest",
     "node-simctl": "^2.1.0",
