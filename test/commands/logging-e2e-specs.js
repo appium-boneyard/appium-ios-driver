@@ -5,7 +5,6 @@ import { rootDir } from '../../lib/utils';
 import { SUPPORTED_LOG_TYPES } from '../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import 'mochawait';
 import path from 'path';
 import _ from 'lodash';
 

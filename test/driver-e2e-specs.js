@@ -4,7 +4,6 @@ import { IosDriver } from '../lib/driver';
 import { rootDir } from '../lib/utils';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import 'mochawait';
 import path from 'path';
 import B from 'bluebird';
 
