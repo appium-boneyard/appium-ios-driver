@@ -39,6 +39,7 @@
     "js2xmlparser2": "^0.2.0",
     "lodash": "^3.10.0",
     "mobile-json-wire-protocol": "latest",
+    "node-idevice": "^0.1.5",
     "path": "^0.11.0",
     "plist": "^1.1.0",
     "source-map-support": "^0.3.1",
