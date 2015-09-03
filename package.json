@@ -57,7 +57,9 @@
     "appium-gulp-plugins": "^1.2.12",
     "chai": "^3.0.0",
     "chai-as-promised": "^5.1.0",
+    "colors": "^1.1.2",
     "gulp": "^3.8.11",
+    "sample-apps": "^2.0.1",
     "sinon": "^1.15.4",
     "yargs": "^3.10.0"
   }
