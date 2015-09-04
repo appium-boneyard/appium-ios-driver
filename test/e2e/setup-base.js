@@ -3,7 +3,7 @@ import env from './helpers/env';
 import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';
 import _ from 'lodash';
-import '../helpers/setup_testlibs';
+import './helpers/setup_testlibs';
 
 function setup (context, desired, opts, envOverrides) {
   context.timeout(env.MOCHA_INIT_TIMEOUT);
