@@ -12,7 +12,7 @@ describe('uicatalog - load zipped app with relative path @skip-ios6', function (
 
   it('should load a zipped app via path', async () => {
     path.isAbsolute(appZipPath).should.not.be.ok;
-    let el = driver.findElement('class name', 'UIATableView');
+    let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;
   });
 });

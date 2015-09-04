@@ -11,7 +11,7 @@ describe('uicatalog - load app with relative path @skip-ios6', function () {
 
   it('should load with relative path', async () => {
     path.isAbsolute(appPath).should.not.be.ok;
-    let el = driver.findElement('class name', 'UIATableView');
+    let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;
   });
 });

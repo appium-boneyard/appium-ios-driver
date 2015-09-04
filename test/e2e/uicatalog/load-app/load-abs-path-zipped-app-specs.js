@@ -11,7 +11,7 @@ describe('uicatalog - load zipped app @skip-ios6', function () {
 
   it('should load a zipped app via path', async () => {
     path.isAbsolute(appZipPath).should.be.ok;
-    let el = driver.findElement('class name', 'UIATableView');
+    let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;
   });
 });

@@ -11,7 +11,7 @@ describe('uicatalog - load app with absolute path @skip-ios6', function () {
 
   it('should load with absolute path', async () => {
     path.isAbsolute(appPath).should.be.ok;
-    let el = driver.findElement('class name', 'UIATableView');
+    let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;
   });
 });

@@ -11,7 +11,7 @@ describe('uicatalog - load zipped app via url @skip-real-device @skip-ios6', fun
   let driver = session.driver;
 
   it('should load a zipped app via url', async () => {
-    let el = driver.findElement('class name', 'UIATableView');
+    let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;
   });
 });
