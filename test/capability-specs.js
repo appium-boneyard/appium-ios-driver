@@ -4,7 +4,7 @@ import chai from 'chai';
 
 const should = chai.Should();
 
-describe.only('Desired Capabilities', () => {
+describe('Desired Capabilities', () => {
   let driver;
   before(() => {
     driver = new IosDriver();

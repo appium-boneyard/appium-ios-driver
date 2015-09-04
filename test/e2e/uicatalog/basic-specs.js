@@ -5,7 +5,7 @@ import desired from './desired';
 describe('uicatalog - basic @skip-ios6', () => {
   let textTag = env.IOS7 ? '@label' : '@value';
 
-  describe.only('api', function () {
+  describe('api', function () {
     let session = setup(this, desired);
     let driver = session.driver;
 

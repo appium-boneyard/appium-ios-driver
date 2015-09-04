@@ -12,7 +12,7 @@ import _ from 'lodash';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe.only('commands - logging', function () {
+describe('commands - logging', function () {
   this.timeout(120000);
   let driver;
 
