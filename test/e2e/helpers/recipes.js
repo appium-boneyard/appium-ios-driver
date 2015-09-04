@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import B from 'bluebird';
+
 async function elOrNull(driver, using, value) {
   let els = await driver.findElements(using, value);
   return els[0];
@@ -24,4 +27,14 @@ function throwMatchableError (err) {
   throw new Error(`jsonwpCode: ${err.jsonwpCode} ${err.message}`);
 }
 
-export { clickBack, clickButton, elOrNull, throwMatchableError };
+async function filterDisplayed(driver, els) {
+  let displayedEls = await B.all(_.map(els, function (el) { return driver.elementDisplayed(el); }));
+  return _.filter(els, function (el, i) { return displayedEls[i]; });
+}
+
+function filterVisibleUiaSelector(selector) {
+  return selector.replace(/;$/, '.withPredicate("isVisible == 1");');
+}
+
+export { clickBack, clickButton, elOrNull, throwMatchableError, filterDisplayed,
+         filterVisibleUiaSelector };
