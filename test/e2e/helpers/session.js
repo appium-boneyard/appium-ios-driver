@@ -1,6 +1,6 @@
 "use strict";
 import env from './env';
-import Q from "q";
+import B from "bluebird";
 import _ from "lodash";
 import { IosDriver } from '../../..';
 
@@ -33,7 +33,7 @@ class Session {
         if (remainingAttempts === 0) {
           throw err;
         } else {
-          await Q.delay(10000);
+          await B.delay(10000);
           remainingAttempts --;
           await init(remainingAttempts);
         }

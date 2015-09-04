@@ -3,7 +3,7 @@
 import env from '../helpers/env';
 import setup from '../setup-base';
 import desired from './desired';
-import Q from 'q';
+import B from 'bluebird';
 
 describe('uicatalog - alerts @skip-ios6', function () {
 
@@ -21,7 +21,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Simple')]");
     await driver.click(el2);
-    await Q.delay(2000);
+    await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');
     await driver.postDismissAlert();
   });
@@ -31,7 +31,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Okay')]");
     await driver.click(el2);
-    await Q.delay(2000);
+    await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');
     await driver.postAcceptAlert();
   });
@@ -41,7 +41,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Other')]");
     await driver.click(el2);
-    await Q.delay(2000);
+    await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');
     await driver.postDismissAlert();
   });

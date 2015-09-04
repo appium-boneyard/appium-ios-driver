@@ -1,6 +1,6 @@
 import setup from "../setup-base";
 import desired from './desired';
-import Q from 'q';
+import B from 'bluebird';
 
 describe('uicatalog - clear @skip-ios6', function () {
 
@@ -27,7 +27,7 @@ describe('uicatalog - clear @skip-ios6', function () {
       await driver.click(el2);
       await driver.findElement('accessibility id', 'Go');
       await driver.hideKeyboard();
-      await Q.delay(1000);
+      await B.delay(1000);
       (await driver.findElements('accessibility id', 'Go')).should.have.length(0);
     });
 
@@ -39,7 +39,7 @@ describe('uicatalog - clear @skip-ios6', function () {
       await driver.click(el2);
       await driver.findElements('accessibility id', 'Go');
       await driver.hideKeyboard('tapOutside');
-      await Q.delay(1000);
+      await B.delay(1000);
       (await driver.findElements('accessibility id', 'Go')).should.have.length(0);
     });
 
@@ -51,7 +51,7 @@ describe('uicatalog - clear @skip-ios6', function () {
       await driver.click(el2);
       await driver.findElements('accessibility id', 'Go');
       await driver.hideKeyboard('tapOut');
-      await Q.delay(1000);
+      await B.delay(1000);
       (await driver.findElements('accessibility id', 'Go')).should.have.length(0);
     });
   });
