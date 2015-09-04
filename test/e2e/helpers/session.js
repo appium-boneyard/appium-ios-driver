@@ -30,11 +30,11 @@ class Session {
         await this.driver.createSession(caps);
       } catch (err) {
         if (env.VERBOSE) console.log("Init failed with error -->", err);
+        remainingAttempts --;
         if (remainingAttempts === 0) {
           throw err;
         } else {
           await B.delay(10000);
-          remainingAttempts --;
           await init(remainingAttempts);
         }
       }
