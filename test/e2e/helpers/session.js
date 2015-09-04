@@ -61,22 +61,6 @@ class Session {
 
 export { Session };
 
-  //wd.addPromiseChainMethod('clickButton', function (name) {
-    //let buttonEl;
-    //return this.elementByXPathOrNull("//UIAButton[@name = '" + name + "']")
-    //.then(function (el) {
-      //if (el) {
-        //buttonEl = el;
-        //return el.isDisplayed();
-      //} else return false;
-    //})
-    //.then(function (isDisplayed) {
-      //if (isDisplayed) {
-        //return buttonEl.click();
-      //}
-    //});
-  //});
-
   //wd.addPromiseChainMethod('printSource', function () {
     //return this.source().then(function (s) { console.log(s); });
   //});
