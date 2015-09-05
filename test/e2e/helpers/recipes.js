@@ -36,5 +36,20 @@ function filterVisibleUiaSelector(selector) {
   return selector.replace(/;$/, '.withPredicate("isVisible == 1");');
 }
 
+async function okIfAlert(driver) {
+  let text;
+  try {
+    text = await driver.getAlertText();
+  } catch(err) {
+    // if NoAlertOpenError (27) continue
+    if(err.jsonwpCode !== 27) {
+      throw err;
+    }
+  }
+  if (text) {
+    await driver.postAcceptAlert();
+  }
+}
+
 export { clickBack, clickButton, elOrNull, throwMatchableError, filterDisplayed,
-         filterVisibleUiaSelector };
+         filterVisibleUiaSelector, okIfAlert };

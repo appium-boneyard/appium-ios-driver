@@ -34,6 +34,7 @@ class Session {
         if (remainingAttempts === 0) {
           throw err;
         } else {
+          await this.driver.deleteSession();
           await B.delay(10000);
           await init(remainingAttempts);
         }
