@@ -3,18 +3,26 @@ import env from './env';
 import B from "bluebird";
 import _ from "lodash";
 import { IosDriver } from '../../..';
-
-//let trimToLength = function (str, length) {
-  //return (str && str.length > length) ?
-    //str.substring(0, length) + '...' : str;
-//};
+import { ALL_COMMANDS } from 'mobile-json-wire-protocol';
 
 class Session {
   constructor (desired={}, opts={}) {
     this.desired = desired;
     this.opts = opts;
     this.initialized = false;
-    this.driver = new IosDriver();
+    this.rawDriver = new IosDriver();
+
+    // wrapping the driver so that the call goes
+    // through executeCommand
+    this.driver = {};
+    for (let c of ALL_COMMANDS) {
+      this.driver[c] = (...args) => {
+        return this.rawDriver.executeCommand(c,...args);
+      };
+    }
+    for(let c of ['createSession', 'deleteSession']) {
+      this.driver[c] = this.rawDriver[c].bind(this.rawDriver);
+    }
   }
 
   async setUp () {
