@@ -14,9 +14,9 @@ describe('testapp - timeout', function () {
     let driver = session.driver;
 
     it('when set to 0 should disable itself', async () => {
-      await driver.executeCommand('timeouts', 'command', 0);
+      await driver.timeouts('command', 0);
       await B.delay(3000);
-      let el = driver.executeCommand('findElement', 'class name', 'UIAButton');
+      let el = driver.findElement('class name', 'UIAButton');
       el.should.exist;
     });
   });

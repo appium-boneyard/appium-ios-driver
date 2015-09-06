@@ -14,10 +14,10 @@ describe('testapp - timeout', function () {
     let driver = session.driver;
 
     it('should die with short command timeout even after mobile reset', async () => {
-      await driver.executeCommand('timeouts', 'command', 3000);
-      await driver.executeCommand('reset');
+      await driver.timeouts('command', 3000);
+      await driver.reset();
       await B.delay(6500);
-      await B.resolve(driver.executeCommand('findElement', 'name', 'dont exist dogg'))
+      await B.resolve(driver.findElement('name', 'dont exist dogg'))
         .catch(throwMatchableError)
         .should.be.rejectedWith(/jsonwpCode: (13|6)/);
     });
