@@ -1,11 +1,10 @@
 import setup from "../setup-base";
 import { Session } from '../helpers/session';
 import desired from './desired';
-import env from '../helpers/env';
 import B from 'bluebird';
 import _ from 'lodash';
 import { throwMatchableError } from '../helpers/recipes';
-import path from 'path';
+
 
 describe('testapp - location - 1 @skip-ci', function () {
   let session = setup(this, desired);

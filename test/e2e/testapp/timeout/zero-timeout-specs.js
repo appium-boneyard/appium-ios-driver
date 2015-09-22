@@ -1,7 +1,6 @@
 import setup from "../../setup-base";
 import desired from '../desired';
 import B from 'bluebird';
-import { throwMatchableError } from '../../helpers/recipes';
 import env from '../../helpers/env';
 
 describe('testapp - timeout', function () {
@@ -20,5 +19,4 @@ describe('testapp - timeout', function () {
       el.should.exist;
     });
   });
-
 });
