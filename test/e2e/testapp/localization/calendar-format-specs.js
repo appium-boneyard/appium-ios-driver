@@ -2,7 +2,7 @@ import setup from "../../setup-base";
 import desired from '../desired';
 import _ from 'lodash';
 import env from '../../helpers/env';
-import { rimraf } from  'appium-support';
+import { fs } from  'appium-support';
 import path from 'path';
 
 // TODO: make sure localization is not supposed to work with real device
@@ -13,7 +13,7 @@ describe('localization - calendarFormat @skip-ios8 @skip-real-device', function 
   after(async () => {
     if (process.env.HOME) {
       // cleaning up dir cause we've messed up with the config
-      await rimraf(path.resolve(process.env.HOME, 'Library/Application Support/iPhone Simulator'));
+      await fs.rimraf(path.resolve(process.env.HOME, 'Library/Application Support/iPhone Simulator'));
     }
   });
 

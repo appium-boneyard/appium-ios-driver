@@ -17,9 +17,9 @@ class Session {
     // through executeCommand
     this.driver = {};
     for (let c of ALL_COMMANDS) {
-      this.driver[c] = (...args) => {
-        return this.rawDriver.executeCommand(c,...args);
-      };
+      this.driver[c] = function (...args) {
+        return this.rawDriver.executeCommand(c, ...args);
+      }.bind(this);
     }
     for(let c of ['createSession', 'deleteSession']) {
       this.driver[c] = this.rawDriver[c].bind(this.rawDriver);
