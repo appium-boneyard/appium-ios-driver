@@ -16,19 +16,14 @@ describe('commands - logging', function () {
   this.timeout(120000);
   let driver;
 
-  beforeEach(() => {
+  before(() => {
     driver = new IosDriver();
   });
 
-  afterEach(() => {
-    // deleting a non-existent session does not have any effect
-    driver.deleteSession();
-  });
-
   describe('getLogTypes', () => {
-    it('should get the list of available logs', () => {
+    it('should get the list of available logs', async () => {
       driver.getLogTypes.should.be.a.Function;
-      driver.getLogTypes().should.eql(_.keys(SUPPORTED_LOG_TYPES));
+      (await driver.getLogTypes()).should.eql(_.keys(SUPPORTED_LOG_TYPES));
     });
   });
 
@@ -36,23 +31,34 @@ describe('commands - logging', function () {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
-      deviceName: 'iPhone 5',
+      deviceName: 'iPhone 6',
       showIOSLog: true
     };
 
-    it('should throw an error when an invalid type is given', () => {
-      (() => {driver.getLog('something-random');}).should.throw;
+    describe('errors', () => {
+      it('should throw an error when an invalid type is given', async () => {
+        (async () => await driver.getLog('something-random')).should.throw;
+      });
+      it('should throw an error when driver is not started', async () => {
+        (async () => await driver.getLog('syslog')).should.throw;
+      });
     });
-    it('should throw an error when driver is not started', () => {
-      (() => {driver.getLog('syslog');}).should.throw;
-    });
-    it('should get system logs', async () => {
-      await driver.createSession(caps);
-      driver.getLog('syslog').should.be.an.Array;
-    });
-    it('should get crash logs', async () => {
-      await driver.createSession(caps);
-      driver.getLog('crashlog').should.be.an.Array;
+    describe('success', () => {
+      before(async () => {
+        // these tests don't need to be isolated, so use one session
+        await driver.createSession(caps);
+      });
+      after(async () => {
+        await driver.deleteSession();
+      });
+      it('should get system logs', async () => {
+        // await driver.createSession(caps);
+        (await driver.getLog('syslog')).should.be.an.Array;
+      });
+      it('should get crash logs', async () => {
+        // await driver.createSession(caps);
+        (await driver.getLog('crashlog')).should.be.an.Array;
+      });
     });
   });
 });
