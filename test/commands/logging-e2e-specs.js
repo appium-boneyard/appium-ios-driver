@@ -1,13 +1,11 @@
 // transpile:mocha
 
-import { IosDriver } from '../../..';
-import { rootDir } from '../../lib/utils';
+import { IosDriver } from '../..';
 import { SUPPORTED_LOG_TYPES } from '../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
 import _ from 'lodash';
-
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -29,7 +27,7 @@ describe('commands - logging', function () {
 
   describe('getLog', () => {
     let caps = {
-      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
+      app: path.resolve('test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       deviceName: 'iPhone 6',
       showIOSLog: true
@@ -43,6 +41,7 @@ describe('commands - logging', function () {
         (async () => await driver.getLog('syslog')).should.throw;
       });
     });
+    
     describe('success', () => {
       before(async () => {
         // these tests don't need to be isolated, so use one session
@@ -62,4 +61,3 @@ describe('commands - logging', function () {
     });
   });
 });
-

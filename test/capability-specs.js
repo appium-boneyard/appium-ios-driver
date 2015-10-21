@@ -1,4 +1,4 @@
-import { IosDriver } from '../..';
+import { IosDriver } from '../';
 import chai from 'chai';
 
 
