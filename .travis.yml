@@ -14,4 +14,4 @@ before_script:
 script:
   - npm test
 after_success:
-  - gulp coveralls
+  - /Users/travis/build/appium/appium-ios-driver/node_modules/appium-gulp-plugins/node_modules/.bin/babel-node /Users/travis/build/appium/appium-ios-driver/node_modules/appium-gulp-plugins/node_modules/.bin/isparta cover --dir coverage /Users/travis/build/appium/appium-ios-driver/node_modules/appium-gulp-plugins/node_modules/.bin/_mocha -- --require /Users/travis/build/appium/appium-ios-driver/node_modules/appium-gulp-plugins/lib/../babelhook --reporter dot ./test/capability-specs.js ./test/commands/logging-e2e-specs.js ./test/driver-specs.js
