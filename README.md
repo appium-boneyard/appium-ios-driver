@@ -2,11 +2,10 @@
 
 Appium iOS Driver
 ===================
-
 Appium iOS Driver is a test automation tool for iOS devices. Appium iOS Driver automates native, hybrid and mobile web apps, tested on simulators and real devices. Appium iOS Driver is part of the [Appium](https://github.com/appium/appium) mobile test automation tool.
 
 ## iOS Support
-Appium iOS Driver supports iOS versions 8.1+
+Appium iOS Driver supports iOS versions 8+
 
 ## Installation
 ```
