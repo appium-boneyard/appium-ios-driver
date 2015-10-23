@@ -1,7 +1,7 @@
 // transpile:mocha
 
-import { IosDriver } from '../lib/driver';
-import { rootDir } from '../lib/utils';
+import { IosDriver } from '../../lib/driver';
+import { rootDir } from '../../lib/utils';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
@@ -27,11 +27,5 @@ describe('driver', function () {
     await B.delay(2000);
     await driver.deleteSession();
   });
-
-  after(function() {
-    // TODO: something is hanging, need to figure out what.
-    process.exit(0);
-  });
-
 });
 
