@@ -11,6 +11,7 @@ boilerplate({
   },
   coverage: {
     files: ['./test/**/*-specs.js', '!./test/e2e/**'],
+    verbose: true
    },
   e2eTest: {
     files: '${testDir}/e2e/**/*-specs.js',
