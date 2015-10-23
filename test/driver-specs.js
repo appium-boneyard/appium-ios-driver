@@ -1,6 +1,6 @@
 // transpile:mocha
 
-import {IosDriver} from '../lib/driver';
+import { IosDriver } from '../';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 

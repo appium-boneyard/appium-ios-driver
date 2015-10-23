@@ -1,3 +1,17 @@
-language: node_js
-node_js:
-  - "0.12"
+sudo: required
+language:
+  - objective-c
+before_install:
+  # TavisCI's OSX environment gives us node 0.10.32
+  # Use NVM to update it to 0.12
+  - rm -rf ~/.nvm
+  - git clone https://github.com/creationix/nvm.git ~/.nvm
+  - source ~/.nvm/nvm.sh
+  - nvm install 0.12
+before_script:
+  - npm install
+  - npm install -g gulp
+script:
+  - npm test
+after_success:
+  - gulp coveralls
