@@ -7,8 +7,7 @@ describe('testapp - context methods', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  // TODO: skipping this is superslow
-  it.skip('getting list multiple times should not crash appium', async () => {
+  it('getting list multiple times should not crash appium', async () => {
     for(let i=0; i<8; i++) {
       let contexts = await driver.getContexts();
       contexts.should.have.length(1);
