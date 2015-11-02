@@ -23,5 +23,5 @@ before_script:
   - npm install -g mocha
 script:
   - gulp transpile
-  - mocha build/test/$TEST
+  - mocha build/test/$TEST -g @skip-ci -i
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi
