@@ -2,6 +2,7 @@ import setup from "../setup-base";
 import desired from './desired';
 import { clickButton } from '../helpers/recipes';
 
+
 describe('uicatalog - controls @skip-ios6', function () {
   let session = setup(this, desired);
   let driver = session.driver;
@@ -14,7 +15,7 @@ describe('uicatalog - controls @skip-ios6', function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Picker View')]");
     await driver.click(el1);
 
-    for(let color of ['Red', 'Green', 'Blue']){
+    for (let color of ['Red', 'Green', 'Blue']){
       let wheel = await driver.findElement('xpath', `//UIAPickerWheel[@name = '${color} color component value']`);
       let value;
       if (color === 'Red') {
@@ -31,9 +32,10 @@ describe('uicatalog - controls @skip-ios6', function () {
     values.should.have.length(52);
   });
 
-  it('should be able to get and set a slider value', async () => {
-    let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Sliders')]");
-    await driver.click(el1);
+  it('should be able to get and set a slider value @skip-ci', async () => {
+    await driver.execute("mobile: scroll", {direction: 'down'});
+    let el = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Sliders')]");
+    await driver.click(el);
 
     let slider = await driver.findElement('class name', "UIASlider");
     let value = await driver.getAttribute("value", slider);

@@ -11,8 +11,8 @@ describe('testapp - size', function () {
       let el = await driver.findElement('class name', 'UIAButton');
       let size = await driver.getSize(el);
       size.width.should.exist;
-      size.width.should.be.above(112);
-      size.height.should.be.above(36);
+      size.width.should.be.above(60);
+      size.height.should.be.above(20);
     });
 
     it('should return the window size', async () => {

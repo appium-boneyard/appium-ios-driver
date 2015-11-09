@@ -41,7 +41,7 @@ describe('commands - logging', function () {
         (async () => await driver.getLog('syslog')).should.throw;
       });
     });
-    
+
     describe('success', () => {
       before(async () => {
         // these tests don't need to be isolated, so use one session
@@ -51,11 +51,9 @@ describe('commands - logging', function () {
         await driver.deleteSession();
       });
       it('should get system logs', async () => {
-        // await driver.createSession(caps);
         (await driver.getLog('syslog')).should.be.an.Array;
       });
       it('should get crash logs', async () => {
-        // await driver.createSession(caps);
         (await driver.getLog('crashlog')).should.be.an.Array;
       });
     });
