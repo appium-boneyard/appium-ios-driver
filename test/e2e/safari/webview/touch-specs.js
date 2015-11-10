@@ -4,12 +4,10 @@ import { loadWebView } from '../helpers/webview';
 import { TouchAction, MultiAction } from 'wd';
 
 describe("safari - webview - touch actions @skip-ios6", function () {
+  const driver = setup(this, Object.assign({ 'noReset': true }, desired));
+  beforeEach(async () => await loadWebView(desired, driver));
 
-module.exports = function (desired) {
-  const driver = await setup(this, _.defaults({ 'noReset': true }, desired));
-  beforeEach((done) => loadWebView(desired, driver).nodeify(done););
-
-  it('should not be able to do native touch actions', (done) => {
+  it('should not be able to do native touch actions', async () => {
     let el = await driver.elementById('comments');
     let action = new TouchAction(driver);
     action.tap({
@@ -19,7 +17,7 @@ module.exports = function (desired) {
     (await action.perform()).should.be.rejectedWith("status: 13");
   });
 
-  it('should not be able to do native multi touch actions', (done) => {
+  it('should not be able to do native multi touch actions', async () => {
     let el = await driver.elementById('comments');
     let action = new TouchAction(driver);
     action.tap({

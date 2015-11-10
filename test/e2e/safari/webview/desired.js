@@ -1,4 +1,4 @@
-default export {
+export default {
   nativeWebTap: true,
   browserName: 'safari'
-}
+};
