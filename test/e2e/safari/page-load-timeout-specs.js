@@ -7,10 +7,10 @@ describe('safari - page load timeout @skip-ios6', () => {
   }
 
   describe('small timeout, slow page load', () => {
-    const driver = await setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' });
 
-    it('should go to the requested page', () => {
-      await driver.setPageLoadTimeout(5000)
+    it('should go to the requested page', async () => {
+      await driver.setPageLoadTimeout(5000);
       await driver.get(env.GUINEA_TEST_END_POINT + '?delay=30000')
 
       // the page should not have time to load
@@ -20,15 +20,15 @@ describe('safari - page load timeout @skip-ios6', () => {
 
   describe('no timeout, very slow page', () => {
     let startMs = Date.now();
-    const driver = await setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' });
 
-    it('should go to the requested page', () => {
-      await driver.setCommandTimeout(120000)
-      await driver.setPageLoadTimeout(-1)
-      await driver.get(env.GUINEA_TEST_END_POINT + '?delay=70000')
+    it('should go to the requested page', async () => {
+      await driver.setCommandTimeout(120000);
+      await driver.setPageLoadTimeout(-1);
+      await driver.get(env.GUINEA_TEST_END_POINT + '?delay=70000');
 
       // the page should load after 70000
-      (await driver.source()).should.include('I am some page content')
+      (await driver.source()).should.include('I am some page content');
       (Date.now() - startMs).should.be.above(70000);
     });
   });

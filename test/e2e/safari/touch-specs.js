@@ -1,16 +1,17 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
+import desired from './webview/desired';
 
 const testEndpoint = env.TEST_END_POINT;
 
 describe('touch', () => {
-  const driver = await setup(this, {
+  const driver = setup(this, {
     browserName: "safari"
   }, {
     'no-reset': true
   });
 
-  it('should flick element', () => {
+  it('should flick element', async () => {
     await driver.get(testEndpoint(desired) + 'touch.html');
     await driver.elementById('flickElem');
 

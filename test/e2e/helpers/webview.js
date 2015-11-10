@@ -1,27 +1,27 @@
-import env form './env';
+import env from './env';
 import uuidGenerator from 'node-uuid';
 
-const CHROMES = ['chrome', 'chromium', 'chromebeta', 'browser']
+const CHROMES = ['chrome', 'chromium', 'chromebeta', 'browser'];
 const BROWSERS = CHROMES.concat(['safari']);
 
-async function spinTitle (expTitle, browser, _timeout=90, _curTitle) {
+async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined) {
   if (timeout <= 0) {
     throw new Error(`Title never became '${expTitle}'. Last known title was '${_curTitle}'`);
   }
 
   let pageTitle = await browser.title();
   if (pageTitle.indexOf(expTitle) < 0) {
-    await browser.sleep(500)
+    await browser.sleep(500);
     return await spinTitle(expTitle, browser, timeout - 1, pageTitle);
   }
-};
+}
 
 async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
   let app = typeof desired === 'object' ? desired.app || desired.browserName : desired;
   let uuid = uuidGenerator.v1();
 
   if (typeof urlToLoad === 'undefined') {
-    urlToLoad = `${guineaEndpoint(app)}?${uuid}`;
+    urlToLoad = guineaEndpoint(app) + `?${uuid}`;
   }
   if (typeof titleToSpin === 'undefined') {
     titleToSpin = uuid;
@@ -42,12 +42,12 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
   }
 
   return await spinTitle(titleToSpin, browser);
-};
+}
 
 async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
   let begunAt = Date.now();
   let endAt = begunAt + waitMs;
-  let spin = async function () {
+  let spin = async () => {
     try {
       await spinFn();
     } catch (err) {
@@ -55,11 +55,11 @@ async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
         throw new Error(`spinWait condition unfulfilled. Promise rejected with error: ${err}`);
       }
 
-      return setTimeout(() => spin(spinFn), intMs);
-    });
+      return setTimeout(async () => await spin(spinFn), intMs);
+    }
   };
   await spin(spinFn);
-};
+}
 
 function isChrome (desired) {
   if (typeof desired === 'string') {
@@ -68,7 +68,7 @@ function isChrome (desired) {
 
   return CHROMES.indexOf(desired.app) > -1 ||
          CHROMES.indexOf(desired.browserName) > -1;
-};
+}
 
 function skip(reason, done) {
   console.warn('skipping: ' + reason);
@@ -79,19 +79,19 @@ let testEndpoint = function (desired) {
   return isChrome(desired) ? env.CHROME_TEST_END_POINT : env.TEST_END_POINT;
 };
 
-let guineaEndpoint = function (desired) {
+function guineaEndpoint (desired) {
   return isChrome(desired) ? env.CHROME_GUINEA_TEST_END_POINT :
                              env.GUINEA_TEST_END_POINT;
-};
+}
 
 // TODO: investigate why we need that
-let ignoreEncodingBug = function(value) {
+let ignoreEncodingBug = function(value, desired) {
   if (isChrome(desired)) {
     console.warn('Going round android bug: whitespace in cookies.');
     return encodeURI(value);
   }
 
   return value;
-}
+};
 
-export { spinTitle, loadWebView, ,isChrome, ,skip, testEndpoint, ignoreEncodingBug };
+export { spinTitle, loadWebView, isChrome, skip, testEndpoint, ignoreEncodingBug, spinWait };

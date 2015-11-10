@@ -2,24 +2,24 @@ import setup from "../setup-base";
 
 describe('safari - screenshots @skip-ios6', () => {
   describe('default' ,() => {
-    const driver = await setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' });
 
-    it('should get an app screenshot', () => {
+    it('should get an app screenshot', async () => {
       (await driver.takeScreenshot()).should.exist;
     });
 
     // TODO: fails in ci env, investigate
-    it('should get an app screenshot in landscape mode @skip-ci', () => {
+    it('should get an app screenshot in landscape mode @skip-ci', async () => {
       let screenshot1 = (await driver.takeScreenshot());
       screenshot1.should.exist;
 
       try {
         await driver.setOrientation("LANDSCAPE");
-      } catch() {
+      } catch (e) {
         // A useless error does often exist here, let's ignore it
       }
 
-      let screenshot2 = await driver.takeScreenshot()
+      let screenshot2 = await driver.takeScreenshot();
       screenshot2.should.exist;
       screenshot2.should.not.eql(screenshot1);
 
@@ -29,12 +29,12 @@ describe('safari - screenshots @skip-ios6', () => {
   });
 
   describe('setting screenshotWaitTimeout' ,() => {
-    const driver = await setup(this, {
+    const driver = setup(this, {
       browserName: 'safari',
       screenshotWaitTimeout: 5
     });
 
-    it('should get an app screenshot', () => {
+    it('should get an app screenshot', async () => {
       (await driver.takeScreenshot()).should.exist;
     });
   });
