@@ -1,7 +1,7 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
 
-describe(`safari - context (${env.DEVICE}) @skip-ios6`, () => {
+describe(`safari - context - (${env.DEVICE}) @skip-ios6`, () => {
   let driver;
 
   setup(this, {

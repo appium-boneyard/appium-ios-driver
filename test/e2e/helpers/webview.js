@@ -44,6 +44,23 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
   return await spinTitle(titleToSpin, browser);
 };
 
+async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
+  let begunAt = Date.now();
+  let endAt = begunAt + waitMs;
+  let spin = async function () {
+    try {
+      await spinFn();
+    } catch (err) {
+      if (Date.now() > endAt) {
+        throw new Error(`spinWait condition unfulfilled. Promise rejected with error: ${err}`);
+      }
+
+      return setTimeout(() => spin(spinFn), intMs);
+    });
+  };
+  await spin(spinFn);
+};
+
 function isChrome (desired) {
   if (typeof desired === 'string') {
     desired = { browserName: desired };
@@ -67,4 +84,14 @@ let guineaEndpoint = function (desired) {
                              env.GUINEA_TEST_END_POINT;
 };
 
-export { spinTitle, loadWebView, ,isChrome, ,skip, testEndpoint };
+// TODO: investigate why we need that
+let ignoreEncodingBug = function(value) {
+  if (isChrome(desired)) {
+    console.warn('Going round android bug: whitespace in cookies.');
+    return encodeURI(value);
+  }
+
+  return value;
+}
+
+export { spinTitle, loadWebView, ,isChrome, ,skip, testEndpoint, ignoreEncodingBug };
