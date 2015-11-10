@@ -2,11 +2,7 @@ import setup from "../setup-base";
 
 describe('safari - screenshots @skip-ios6', () => {
   describe('default' ,() => {
-    let driver;
-
-    setup(this, {
-      browserName: 'safari'
-    }).then((d) => driver = d;);
+    const driver = await setup(this, { browserName: 'safari' });
 
     it('should get an app screenshot', () => {
       (await driver.takeScreenshot()).should.exist;
@@ -33,12 +29,10 @@ describe('safari - screenshots @skip-ios6', () => {
   });
 
   describe('setting screenshotWaitTimeout' ,() => {
-    let driver;
-
-    setup(this, {
+    const driver = await setup(this, {
       browserName: 'safari',
       screenshotWaitTimeout: 5
-    }).then((d) => driver = d;);
+    });
 
     it('should get an app screenshot', () => {
       (await driver.takeScreenshot()).should.exist;
