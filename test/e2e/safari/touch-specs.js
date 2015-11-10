@@ -4,13 +4,11 @@ import env from '../helpers/env';
 const testEndpoint = env.TEST_END_POINT;
 
 describe('touch', () => {
-  let driver;
-
-  setup(this, {
+  const driver = await setup(this, {
     browserName: "safari"
   }, {
     'no-reset': true
-  }).then((d) => driver = d;);
+  });
 
   it('should flick element', () => {
     await driver.get(testEndpoint(desired) + 'touch.html');

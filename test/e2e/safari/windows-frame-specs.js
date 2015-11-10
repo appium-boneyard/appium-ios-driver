@@ -3,13 +3,11 @@ import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview"
 
 describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', () => {
-  var driver;
-
-  setup(this, {
+  const driver = await setup(this, {
     browserName: 'safari',
     nativeWebTap: true,
     safariAllowPopups: true
-  }).then((d) => driver = d;);
+  });
 
   describe('within webview', () => {
     beforeEach(() => await loadWebView("safari", driver););
@@ -50,12 +48,10 @@ describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', () => {
 });
 
 describe('safari - windows and frames (' + env.DEVICE + ') @skip-ios6 - without safariAllowPopups', () => {
-  var driver;
-
-  setup(this, {
+  const driver = await setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
-  }).then((d) => driver = d;);
+  });
 
   beforeEach(() => await loadWebView("safari", driver););
 
