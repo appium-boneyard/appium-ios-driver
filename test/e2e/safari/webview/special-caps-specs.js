@@ -4,7 +4,7 @@ import env from '../../helpers/env';
 import { loadWebView } from '../helpers/webview';
 import { ChaiAsserter } from '../helpers/asserter';
 
-describe('safari - webview - special capabilities @skip-ios6', () => {
+describe('safari - webview - special capabilities @skip-ios6', function() {
   let specialCaps = Object.assign({}, desired);
   specialCaps.safariIgnoreFraudWarning = true;
 
@@ -25,11 +25,11 @@ describe('safari - webview - special capabilities @skip-ios6', () => {
 });
 
 // skipped on real devices, see https://github.com/appium/appium/issues/5166
-describe('performance logs @skip-real-device', async () => {
+describe('performance logs @skip-real-device', function() {
   let specialCaps = Object.assign({}, desired);
   specialCaps.loggingPrefs = {performance: 'ALL'};
 
-  const driver = await setup(this, specialCaps, {'no-reset': true});
+  const driver = setup(this, specialCaps, {'no-reset': true});
   beforeEach(async () => await loadWebView(specialCaps, driver));
 
   it('should fetch performance logs', async () => {

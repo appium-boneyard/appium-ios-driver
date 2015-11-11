@@ -1,12 +1,12 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
 
-describe('safari - page load timeout @skip-ios6', () => {
+describe('safari - page load timeout @skip-ios6', function() {
   if (!env.IOS81) {
     return;
   }
 
-  describe('small timeout, slow page load', () => {
+  describe('small timeout, slow page load', function() {
     const driver = setup(this, { browserName: 'safari' });
 
     it('should go to the requested page', async () => {
@@ -18,7 +18,7 @@ describe('safari - page load timeout @skip-ios6', () => {
     });
   });
 
-  describe('no timeout, very slow page', () => {
+  describe('no timeout, very slow page', function() {
     let startMs = Date.now();
     const driver = setup(this, { browserName: 'safari' });
 

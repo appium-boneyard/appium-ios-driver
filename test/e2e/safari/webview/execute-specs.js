@@ -7,7 +7,7 @@ const GET_RIGHT_INNERHTML = `return document.body.innerHTML.indexOf('I am some p
 const GET_WRONG_INNERHTML = `return document.body.innerHTML.indexOf('I am not some page content') > 0`;
 const GET_ELEM_BY_TAGNAME = `return document.getElementsByTagName('a');`;
 
-describe('safari - webview - execute @skip-ios6', () => {
+describe('safari - webview - execute @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true});
   beforeEach(async () => await loadWebView(desired, driver));
 
