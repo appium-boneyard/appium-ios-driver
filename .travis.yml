@@ -4,6 +4,7 @@ env:
   - DEVICE=ios84 TEST=commands FINAL_GULP=coveralls
   - DEVICE=ios84 TEST=e2e/testapp
   - DEVICE=ios84 TEST=e2e/uicatalog
+  - DEVICE=ios84 TEST=e2e/safari
 language:
   - objective-c
 osx_image: xcode6.4
