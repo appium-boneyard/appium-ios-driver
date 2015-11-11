@@ -2,10 +2,10 @@ import desired from './desired';
 import setup from '../setup-base';
 import { loadWebView, testEndpoint, ignoreEncodingBug } from '../helpers/webview';
 
-describe('safari - webview - cookies @skip-ios6', () => {
+describe('safari - webview - cookies @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true});
 
-  describe('within iframe webview', () => {
+  describe('within iframe webview', function() {
     it('should be able to get cookies for a page with none', async () => {
       await loadWebView(desired, driver, testEndpoint(desired) + 'iframes.html', 'Iframe guinea pig');
       await driver.deleteAllCookies();
@@ -14,7 +14,7 @@ describe('safari - webview - cookies @skip-ios6', () => {
     });
   });
 
-  describe('within webview', () => {
+  describe('within webview', function() {
     beforeEach(async () => await loadWebView(desired, driver));
 
     it('should be able to get cookies for a page', async () => {

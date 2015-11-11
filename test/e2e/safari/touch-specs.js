@@ -4,7 +4,7 @@ import desired from './webview/desired';
 
 const testEndpoint = env.TEST_END_POINT;
 
-describe('touch', () => {
+describe('touch', function() {
   const driver = setup(this, {
     browserName: "safari"
   }, {

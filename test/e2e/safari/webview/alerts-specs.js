@@ -2,7 +2,7 @@ import desired from './desired';
 import setup from '../setup-base';
 import { loadWebView } from '../helpers/webview';
 
-describe('safari - webview - alerts @skip-ios6 @skip-real-device', () => {
+describe('safari - webview - alerts @skip-ios6 @skip-real-device', function() {
   const driver = setup(this, desired, {'no-reset': true});
   beforeEach(async () => await loadWebView(desired, driver));
 

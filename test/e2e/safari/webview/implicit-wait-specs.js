@@ -1,7 +1,7 @@
 import setup from '../setup-base';
 import desired from './desired';
 
-describe('safari - webview implicit wait @skip-ios6', () => {
+describe('safari - webview implicit wait @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true});
 
   it('should set the implicit wait for finding web elements', async () => {
