@@ -9,7 +9,7 @@ describe('touch', function() {
     browserName: "safari"
   }, {
     'no-reset': true
-  });
+  }).driver;
 
   it('should flick element', async () => {
     await driver.get(testEndpoint(desired) + 'touch.html');

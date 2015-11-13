@@ -4,7 +4,7 @@ import { loadWebView } from '../helpers/webview';
 import { TouchAction, MultiAction } from 'wd';
 
 describe("safari - webview - touch actions @skip-ios6", function () {
-  const driver = setup(this, Object.assign({ 'noReset': true }, desired));
+  const driver = setup(this, Object.assign({ 'noReset': true }, desired)).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should not be able to do native touch actions', async () => {

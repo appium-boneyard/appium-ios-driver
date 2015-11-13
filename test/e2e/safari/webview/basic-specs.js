@@ -3,7 +3,7 @@ import setup from '../setup-base';
 import { loadWebView, isChrome, spinTitle, spinWait, skip } from '../helpers/webview';
 
 describe('safari - webview - basics @skip-ios6', function() {
-  const driver = setup(this, desired, {'no-reset': true});
+  const driver = setup(this, desired, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should find a web element in the web view', async () => {

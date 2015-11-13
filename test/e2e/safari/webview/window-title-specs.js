@@ -3,7 +3,7 @@ import setup from '../../setup-base';
 import { loadWebView, isChrome } from '../helpers/webview';
 
 describe("safari - webview - window title @skip-ios6", function () {
-  const driver = setup(this, desired, {'no-reset': true});
+  const driver = setup(this, desired, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should return a valid title on web view', async () => {

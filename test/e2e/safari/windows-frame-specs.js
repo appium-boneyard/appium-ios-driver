@@ -7,7 +7,7 @@ describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', function()
     browserName: 'safari',
     nativeWebTap: true,
     safariAllowPopups: true
-  });
+  }).driver;
 
   describe('within webview', function() {
     beforeEach(() => loadWebView("safari", driver));
@@ -51,7 +51,7 @@ describe('safari - windows and frames (' + env.DEVICE + ') @skip-ios6 - without 
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
-  });
+  }).driver;
 
   beforeEach(async () => await loadWebView("safari", driver));
 
