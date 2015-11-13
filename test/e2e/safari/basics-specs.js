@@ -4,7 +4,7 @@ import env from '../helpers/env';
 describe('safari - basics @skip-ios6 @skip-real-device', function() {
   if (!(env.IOS8 || env.IOS9) && env.IOS80) {
     return describe('default init', function() {
-      const driver = setup(this, { browserName: 'safari' });
+      const driver = setup(this, { browserName: 'safari' }).driver;
 
       it('it should use safari default init page', async () => {
         (await driver.source()).should.include('Apple');
@@ -13,7 +13,7 @@ describe('safari - basics @skip-ios6 @skip-real-device', function() {
   }
 
   describe('default init', function() {
-    const driver = setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' }).driver;
 
     it('it should use appium default init page', async () => {
       (await driver.source()).should.include('Let\'s browse!');
@@ -24,7 +24,7 @@ describe('safari - basics @skip-ios6 @skip-real-device', function() {
     const driver = setup(this, {
       browserName: 'safari',
       safariInitialUrl: env.GUINEA_TEST_END_POINT
-    });
+    }).driver;
 
     it('should go to the requested page', async () => {
       (await driver.source()).should.include('I am some page content');

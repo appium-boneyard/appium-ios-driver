@@ -3,7 +3,7 @@ import setup from '../setup-base';
 import { loadWebView, testEndpoint, ignoreEncodingBug } from '../helpers/webview';
 
 describe('safari - webview - cookies @skip-ios6', function() {
-  const driver = setup(this, desired, {'no-reset': true});
+  const driver = setup(this, desired, {'no-reset': true}).driver;
 
   describe('within iframe webview', function() {
     it('should be able to get cookies for a page with none', async () => {

@@ -7,7 +7,7 @@ describe('safari - page load timeout @skip-ios6', function() {
   }
 
   describe('small timeout, slow page load', function() {
-    const driver = setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' }).driver;
 
     it('should go to the requested page', async () => {
       await driver.setPageLoadTimeout(5000);
@@ -20,7 +20,7 @@ describe('safari - page load timeout @skip-ios6', function() {
 
   describe('no timeout, very slow page', function() {
     let startMs = Date.now();
-    const driver = setup(this, { browserName: 'safari' });
+    const driver = setup(this, { browserName: 'safari' }).driver;
 
     it('should go to the requested page', async () => {
       await driver.setCommandTimeout(120000);

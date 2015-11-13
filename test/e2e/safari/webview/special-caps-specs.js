@@ -8,7 +8,7 @@ describe('safari - webview - special capabilities @skip-ios6', function() {
   let specialCaps = Object.assign({}, desired);
   specialCaps.safariIgnoreFraudWarning = true;
 
-  const driver = setup(this, specialCaps, {'no-reset': true});
+  const driver = setup(this, specialCaps, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(specialCaps, driver));
 
   // iOS8 currently does not disable the phishing warning for foo:bar@ type
@@ -29,7 +29,7 @@ describe('performance logs @skip-real-device', function() {
   let specialCaps = Object.assign({}, desired);
   specialCaps.loggingPrefs = {performance: 'ALL'};
 
-  const driver = setup(this, specialCaps, {'no-reset': true});
+  const driver = setup(this, specialCaps, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(specialCaps, driver));
 
   it('should fetch performance logs', async () => {

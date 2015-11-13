@@ -5,7 +5,7 @@ describe(`safari - context - (${env.DEVICE}) @skip-ios6`, function() {
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true
-  });
+  }).driver;
 
   it('getting current context should work initially', async () => {
     await driver.sleep(500)
