@@ -1,6 +1,6 @@
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView } from '../helpers/webview';
+import { loadWebView } from '../../helpers/webview';
 import { TouchAction, MultiAction } from 'wd';
 
 describe("safari - webview - touch actions @skip-ios6", function () {
@@ -8,24 +8,11 @@ describe("safari - webview - touch actions @skip-ios6", function () {
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should not be able to do native touch actions', async () => {
-    let el = await driver.elementById('comments');
-    let action = new TouchAction(driver);
-    action.tap({
-      el: el,
-      count: 10
-    });
-    (await action.perform()).should.be.rejectedWith("status: 13");
-  });
-
-  it('should not be able to do native multi touch actions', async () => {
-    let el = await driver.elementById('comments');
-    let action = new TouchAction(driver);
-    action.tap({
-      el: el,
-      count: 10
-    });
-    let ma = new MultiAction(driver);
-    ma.add(action, action);
-    (await ma.perform()).should.be.rejectedWith("status: 13");
+    let el = await driver.findElement('id', 'comments');
+    let gestures = [
+      {action: 'press', options: {element: el}},
+      {action: 'release'}
+    ];
+    expect(async () => await driver.performTouch(gestures)).to.throw;
   });
 });

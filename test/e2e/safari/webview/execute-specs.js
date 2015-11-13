@@ -1,6 +1,6 @@
 import desired from './desired';
-import setup from '../setup-base';
-import { loadWebView } from '../helpers/webview';
+import setup from '../../setup-base';
+import { loadWebView } from '../../helpers/webview';
 
 const SCROLL_INTO_VIEW = `return arguments[0].scrollIntoView(true);`;
 const GET_RIGHT_INNERHTML = `return document.body.innerHTML.indexOf('I am some page content') > 0`;

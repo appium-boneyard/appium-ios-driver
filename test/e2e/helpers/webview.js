@@ -1,4 +1,5 @@
 import env from './env';
+import B from 'bluebird';
 import uuidGenerator from 'node-uuid';
 
 const CHROMES = ['chrome', 'chromium', 'chromebeta', 'browser'];
@@ -11,7 +12,7 @@ async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined
 
   let pageTitle = await browser.title();
   if (pageTitle.indexOf(expTitle) < 0) {
-    await browser.sleep(500);
+    await B.delay(500);
     return await spinTitle(expTitle, browser, timeout - 1, pageTitle);
   }
 }
@@ -27,8 +28,8 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
     titleToSpin = uuid;
   }
   if (BROWSERS.indexOf(app) > -1) {
-    await browser.get(urlToLoad);
-    await browser.sleep(3000);
+    await browser.setUrl(urlToLoad);
+    await B.delay(3000);
     return await spinTitle(titleToSpin, browser);
   }
 
@@ -38,7 +39,7 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
 
   let url = await browser.url();
   if (url !== urlToLoad) {
-    await browser.get(urlToLoad);
+    await browser.setUrl(urlToLoad);
   }
 
   return await spinTitle(titleToSpin, browser);

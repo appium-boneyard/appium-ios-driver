@@ -1,5 +1,6 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
+import B from 'bluebird';
 
 describe(`safari - context - (${env.DEVICE}) @skip-ios6`, function() {
   const driver = setup(this, {
@@ -8,7 +9,7 @@ describe(`safari - context - (${env.DEVICE}) @skip-ios6`, function() {
   }).driver;
 
   it('getting current context should work initially', async () => {
-    await driver.sleep(500)
-    (await driver.currentContext()).should.be.fulfilled;
+    await B.delay(500);
+    (await driver.getCurrentContext()).should.be.ok;
   });
 });
