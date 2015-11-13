@@ -11,7 +11,7 @@ class Session {
     this.desired = desired;
     this.opts = opts;
     this.initialized = false;
-    this.rawDriver = new IosDriver();
+    this.rawDriver = new IosDriver(opts);
 
     // wrapping the driver so that the call goes
     // through executeCommand
