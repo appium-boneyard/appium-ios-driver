@@ -4,16 +4,20 @@ import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';
 import server from 'appium-express';
 import _ from 'lodash';
+import { getTemplate } from 'appium-express/build/lib/static';
 import './helpers/setup_testlibs';
 
 const NOOP = () => {};
-const DEFAULT_OPTS = { port: env.APPIUM_PORT };
 
-function setup (context, desired, opts = DEFAULT_OPTS, envOverrides) {
+function setup (context, desired, opts = {}, envOverrides) {
   context.timeout(env.MOCHA_INIT_TIMEOUT);
   let newEnv = _.clone(env);
   if (envOverrides) {
     _.extend(newEnv, envOverrides);
+  }
+
+  if (!opts.port) {
+    opts.port = env.APPIUM_PORT;
   }
 
   let session = new Session(desired, opts);
@@ -24,7 +28,7 @@ function setup (context, desired, opts = DEFAULT_OPTS, envOverrides) {
      * start server
      */
     if (!context.server) {
-      context.server = await server(NOOP, env.APPIUM_PORT, 'localhost');
+      context.server = await server(setupRoutes, env.APPIUM_PORT, 'localhost');
     }
 
     await session.setUp(getTitle(context));
@@ -40,6 +44,17 @@ function setup (context, desired, opts = DEFAULT_OPTS, envOverrides) {
   });
 
   return session;
+}
+
+function setupRoutes(app) {
+  app.get('/test/touch.html', (req, res) => {
+    res.header['content-type'] = 'text/html';
+    res.send(getTemplate('touch.html')());
+  });
+  app.get('/test/frameset.html', (req, res) => {
+    res.header['content-type'] = 'text/html';
+    res.send(getTemplate('frameset.html')());
+  });
 }
 
 export default setup;
