@@ -1,6 +1,6 @@
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView, isChrome } from '../helpers/webview';
+import { loadWebView, isChrome } from '../../helpers/webview';
 
 describe("safari - webview - window title @skip-ios6", function () {
   const driver = setup(this, desired, {'no-reset': true}).driver;
@@ -13,6 +13,7 @@ describe("safari - webview - window title @skip-ios6", function () {
       return;
     }
 
-    (await driver.context('NATIVE_APP').title()).should.be.rejectedWith(/status: 13/);
+    await driver.setContext('NATIVE_APP');
+    expect(async () => await driver.title()).to.throw;
   });
 });

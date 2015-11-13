@@ -1,6 +1,6 @@
 import desired from './desired';
-import setup from '../setup-base';
-import { loadWebView, testEndpoint, ignoreEncodingBug } from '../helpers/webview';
+import setup from '../../setup-base';
+import { loadWebView, testEndpoint, ignoreEncodingBug } from '../../helpers/webview';
 
 describe('safari - webview - cookies @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
@@ -8,9 +8,9 @@ describe('safari - webview - cookies @skip-ios6', function() {
   describe('within iframe webview', function() {
     it('should be able to get cookies for a page with none', async () => {
       await loadWebView(desired, driver, testEndpoint(desired) + 'iframes.html', 'Iframe guinea pig');
-      await driver.deleteAllCookies();
-      await driver.get(testEndpoint(desired));
-      (await driver.allCookies()).should.have.length(0);
+      await driver.deleteCookies();
+      await driver.setUrl(testEndpoint(desired));
+      (await driver.getCookies()).should.have.length(0);
     });
   });
 
@@ -18,7 +18,7 @@ describe('safari - webview - cookies @skip-ios6', function() {
     beforeEach(async () => await loadWebView(desired, driver));
 
     it('should be able to get cookies for a page', async () => {
-      let cookies = await driver.allCookies();
+      let cookies = await driver.getCookies();
       cookies.length.should.equal(2);
       cookies[0].name.should.equal('guineacookie1');
       cookies[0].value.should.equal(ignoreEncodingBug('i am a cookie value', desired));
@@ -33,12 +33,12 @@ describe('safari - webview - cookies @skip-ios6', function() {
       };
 
       await driver.deleteCookie(newCookie.name);
-      let cookies = await driver.allCookies();
+      let cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
 
       await driver.setCookie(newCookie);
-      cookies = await driver.allCookies();
+      cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.include(newCookie.name);
       cookies.map((c) => c.value).should.include(newCookie.value);
       // should not clobber old cookies
@@ -54,12 +54,12 @@ describe('safari - webview - cookies @skip-ios6', function() {
       newCookie.expiry = parseInt(Date.now() / 1000, 10) - 1000; // set cookie in past
 
       await driver.deleteCookie(newCookie.name);
-      let cookies = await driver.allCookies();
+      let cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
 
       await driver.setCookie(newCookie);
-      cookies = await driver.allCookies();
+      cookies = await driver.getCookies();
       // should not include cookie we just added because of expiry
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
@@ -75,17 +75,17 @@ describe('safari - webview - cookies @skip-ios6', function() {
       };
 
       await driver.deleteCookie(newCookie.name);
-      let cookies = await driver.allCookies();
+      let cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
 
       await driver.setCookie(newCookie);
-      cookies = await driver.allCookies();
+      cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.include(newCookie.name);
       cookies.map((c) => c.value).should.include(newCookie.value);
 
       await driver.deleteCookie('newcookie');
-      cookies = await driver.allCookies();
+      cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
     });
@@ -97,17 +97,17 @@ describe('safari - webview - cookies @skip-ios6', function() {
       };
 
       await driver.deleteCookie(newCookie.name);
-      let cookies = await driver.allCookies();
+      let cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.not.include(newCookie.name);
       cookies.map((c) => c.value).should.not.include(newCookie.value);
 
       await driver.setCookie(newCookie);
-      cookies = await driver.allCookies();
+      cookies = await driver.getCookies();
       cookies.map((c) => c.name).should.include(newCookie.name);
       cookies.map((c) => c.value).should.include(newCookie.value);
 
-      await driver.deleteAllCookies();
-      cookies = await driver.allCookies();
+      await driver.deleteCookies();
+      cookies = await driver.getCookies();
       cookies.length.should.equal(0);
     });
   });

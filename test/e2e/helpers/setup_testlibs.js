@@ -5,3 +5,4 @@ import 'colors';
 chai.use(chaiAsPromised);
 chai.should();
 
+global.expect = chai.expect;
