@@ -2,7 +2,7 @@
 import env from './helpers/env';
 import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';
-import server from 'appium-express';
+import { startServer } from '../../lib/server';
 import _ from 'lodash';
 import { getTemplate } from 'appium-express/build/lib/static';
 import './helpers/setup_testlibs';
@@ -28,7 +28,7 @@ function setup (context, desired, opts = {}, envOverrides) {
      * start server
      */
     if (!context.server) {
-      context.server = await server(setupRoutes, env.APPIUM_PORT, 'localhost');
+      context.server = await startServer(env.APPIUM_PORT, 'localhost');
     }
 
     await session.setUp(getTitle(context));
