@@ -6,8 +6,8 @@ describe('uicatalog - lock device @skip-ios6', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  let allowance = (env.IOS7 || env.IOS8 || env.IOS9) ? 9 : 2;
-  it("should lock the device for 4 seconds (+/- " + allowance + "  secs)", async () => {
+  let allowance = (env.IOS7 || env.IOS8 || env.IOS9) ? 10 : 2;
+  it(`should lock the device for 4 seconds (+/- ${allowance} secs)`, async () => {
     let before = new Date().getTime() / 1000;
     await driver.lock(4);
     let now = (new Date().getTime() / 1000);

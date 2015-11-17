@@ -5,6 +5,10 @@ describe('uicatalog - touch @skip-ios6', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
+  before(async () => {
+    await driver.execute("mobile: scroll", {direction: 'down'});
+  });
+
   afterEach(async () => {
     try {
       await driver.back();

@@ -16,12 +16,12 @@ before_install:
   - nvm install 0.12
   # Instruments fix:
   # https://github.com/travis-ci/travis-ci/issues/4218
-  - ./instruments-auth.sh
+  - ./bin/instruments-auth.sh
 before_script:
   - npm install
   - npm install -g gulp
   - npm install -g mocha
-script:
   - gulp transpile
+script:
   - mocha build/test/$TEST -g @skip-ci -i
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi

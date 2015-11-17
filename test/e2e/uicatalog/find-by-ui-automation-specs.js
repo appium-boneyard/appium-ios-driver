@@ -25,7 +25,7 @@ describe('uicatalog - find by ios-ui-automation @skip-ios6', function () {
     displayedEls.should.have.length(2);
   });
 
-  it('should use raw selector code if selector doesn\'t start with a dot', async () => {
+  it('should use raw selector code if selector does not start with a dot', async () => {
     let els = await driver.findElements(byUIA, '$.mainWindow().elements()');
     let displayedEls = await filterDisplayed(driver, els);
     displayedEls.should.have.length(2);
@@ -66,13 +66,13 @@ describe('uicatalog - find by ios-ui-automation @skip-ios6', function () {
     it('should process a simple query', async () => {
       let el = await driver.findElement(byUIA, '.elements()[1]');
       let els = await driver.findElementsFromElement(byUIA, filterVisibleUiaSelector('.elements();'), el);
-      els.should.have.length(env.IOS9 ? 10 : 12);
+      els.should.have.length.at.least(10);
     });
 
     it('should find element by name', async () => {
       let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
       let el1 = await driver.findElement(byUIA, '.elements()[1]');
-      let el2 = await driver.findElementFromElement(byUIA, '.elements()["Buttons' + axIdExt + '"]', el1);
+      let el2 = await driver.findElementFromElement(byUIA, `.elements()["Buttons${axIdExt}"]`, el1);
       el2.should.exist;
     });
 
