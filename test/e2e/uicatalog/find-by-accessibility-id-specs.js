@@ -15,7 +15,7 @@ describe('uicatalog - find by accessibility id @skip-ios6', function () {
     let axIdExt = env.IOS8 || env.IOS9 ? '' : ', AAPLActionSheetViewController';
     let el = await driver.findElement('accessibility id', "UICatalog");
     await driver.click(el);
-    let el2 = await driver.findElement('accessibility id', "Action Sheets" + axIdExt);
+    let el2 = await driver.findElement('accessibility id', `Action Sheets${axIdExt}`);
     el2.should.exist;
   });
 });

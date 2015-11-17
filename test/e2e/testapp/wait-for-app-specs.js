@@ -5,7 +5,7 @@ import _ from 'lodash';
 describe('testapp - wait-for-apps', function () {
 
   let test = function (desc, script, checkAfter) {
-    script = 'env.currentTest = "' + desc + '"; ' + script;
+    script = `env.currentTest = "${desc}"; ${script}`;
     describe(desc, function () {
       let session = setup(this, _.defaults({waitForAppScript: script}, desired));
       let driver = session.driver;

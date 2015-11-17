@@ -10,7 +10,7 @@ describe('uicatalog - move @skip-ios6', function () {
 
     it('should be able to click on arbitrary x-y elements', async () => {
       let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
-      let el1 = await driver.findElement('accessibility id', "Buttons" + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Buttons${axIdExt}`);
       await driver.moveTo(el1, 10, 10);
       await driver.clickCurrent();
       let el2 = await driver.findElement('xpath', "//UIAElement['SYSTEM (CONTACT ADD)']");
