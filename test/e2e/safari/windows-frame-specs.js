@@ -1,3 +1,4 @@
+/* globals expect */
 import setup from "../setup-base";
 import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
@@ -20,7 +21,7 @@ describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', function()
     // unfortunately, iOS8 doesn't respond to the close() method on window
     // the way iOS7 does
     it("should be able to open and close windows @skip-ios8", async () => {
-      let el = await driver.findElement('id', 'blanklink')
+      let el = await driver.findElement('id', 'blanklink');
       await driver.click(el);
       await spinTitle("I am another page title", driver);
 
@@ -44,7 +45,7 @@ describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', function()
 
     // broken on real devices, see https://github.com/appium/appium/issues/5167
     it("should be able to open js popup windows with safariAllowPopups set to true @skip-real-device", async () => {
-      let link = await driver.findElement('link text', 'i am a new window link')
+      let link = await driver.findElement('link text', 'i am a new window link');
       await driver.click(link);
       await spinTitle("I am another page title", driver, 30);
     });

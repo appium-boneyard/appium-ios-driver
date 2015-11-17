@@ -1,3 +1,4 @@
+/* globals expect */
 import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
