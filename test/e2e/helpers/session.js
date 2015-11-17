@@ -30,7 +30,7 @@ class Session {
     let caps = _.clone(this.desired);
     _.defaults(caps, env.CAPS);
 
-    log.debug("caps -->", this.caps);
+    log.debug("caps -->", caps);
     log.debug("opts -->", this.opts);
 
     let init = async (remainingAttempts) => {
