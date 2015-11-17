@@ -2,9 +2,11 @@
 import env from './helpers/env';
 import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';
-import { startServer } from '../../lib/server';
+import { default as baseServer } from 'appium-express';
+import { routeConfiguringFunction } from 'mobile-json-wire-protocol';
 import _ from 'lodash';
 import { getTemplate } from 'appium-express/build/lib/static';
+import log from '../../lib/logger';
 import './helpers/setup_testlibs';
 
 const NOOP = () => {};
@@ -23,20 +25,16 @@ function setup (context, desired, opts = {}, envOverrides) {
   let session = new Session(desired, opts);
   let allPassed = true;
 
-  before(async () => {
-    /**
-     * start server
-     */
-    if (!context.server) {
-      context.server = await startServer(env.APPIUM_PORT, 'localhost');
-    }
+  let router = routeConfiguringFunction(session.rawDriver);
+  let server = baseServer(router, env.APPIUM_PORT, 'localhost');
+  log.info(`IosDriver server listening on http://localhost:${env.APPIUM_PORT}`);
 
+  before(async () => {
     await session.setUp(getTitle(context));
   });
 
   after(async () => {
     await session.tearDown(allPassed);
-    await new Promise((resolve) => context.server.close(resolve));
   });
 
   afterEach(function () {
@@ -44,17 +42,6 @@ function setup (context, desired, opts = {}, envOverrides) {
   });
 
   return session;
-}
-
-function setupRoutes(app) {
-  app.get('/test/touch.html', (req, res) => {
-    res.header['content-type'] = 'text/html';
-    res.send(getTemplate('touch.html')());
-  });
-  app.get('/test/frameset.html', (req, res) => {
-    res.header['content-type'] = 'text/html';
-    res.send(getTemplate('frameset.html')());
-  });
 }
 
 export default setup;
