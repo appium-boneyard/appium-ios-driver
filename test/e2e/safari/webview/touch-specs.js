@@ -1,7 +1,7 @@
+/* globals expect */
 import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
-import { TouchAction, MultiAction } from 'wd';
 
 describe("safari - webview - touch actions @skip-ios6", function () {
   const driver = setup(this, Object.assign({ 'noReset': true }, desired)).driver;

@@ -5,13 +5,10 @@ import { getTitle } from './helpers/title';
 import { default as baseServer } from 'appium-express';
 import { routeConfiguringFunction } from 'mobile-json-wire-protocol';
 import _ from 'lodash';
-import { getTemplate } from 'appium-express/build/lib/static';
 import log from '../../lib/logger';
 import './helpers/setup_testlibs';
 
-const NOOP = () => {};
-
-function setup (context, desired, opts = {}, envOverrides) {
+function setup (context, desired, opts = {}, envOverrides = false) {
   context.timeout(env.MOCHA_INIT_TIMEOUT);
   let newEnv = _.clone(env);
   if (envOverrides) {
@@ -26,7 +23,7 @@ function setup (context, desired, opts = {}, envOverrides) {
   let allPassed = true;
 
   let router = routeConfiguringFunction(session.rawDriver);
-  let server = baseServer(router, env.APPIUM_PORT, 'localhost');
+  baseServer(router, env.APPIUM_PORT, 'localhost');
   log.info(`IosDriver server listening on http://localhost:${env.APPIUM_PORT}`);
 
   before(async () => {

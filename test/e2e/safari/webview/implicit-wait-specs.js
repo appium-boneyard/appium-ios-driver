@@ -14,7 +14,7 @@ describe('safari - webview implicit wait @skip-ios6', function() {
      * we have to use try catch to actually halt the process here
      */
     try {
-      await driver.findElement('tag name', 'notgonnabethere')
+      await driver.findElement('tag name', 'notgonnabethere');
     } catch (e) {
       hasThrown = true;
     } finally {

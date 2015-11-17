@@ -1,6 +1,5 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
-import desired from './webview/desired';
 import B from 'bluebird';
 
 const testEndpoint = env.TEST_END_POINT;
