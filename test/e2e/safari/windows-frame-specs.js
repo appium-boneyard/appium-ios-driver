@@ -52,10 +52,7 @@ describe('safari - windows and frames (`${env.DEVICE}`) @skip-ios6"', function()
   });
 });
 
-/**
- * fails due to "undefined is not iterable!"
- */
-describe.skip('safari - windows and frames (' + env.DEVICE + ') @skip-ios6 - without safariAllowPopups', function() {
+describe('safari - windows and frames (' + env.DEVICE + ') @skip-ios6 - without safariAllowPopups', function() {
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
@@ -65,7 +62,6 @@ describe.skip('safari - windows and frames (' + env.DEVICE + ') @skip-ios6 - wit
 
   it("should not be able to open js popup windows with safariAllowPopups set to false", async () => {
     await driver.execute("window.open('/test/guinea-pig2.html', null)");
-    expect(await spinTitle("I am another page title", driver, 15))
-      .to.throw("Title never became 'I am another");
+    expect(async () => await spinTitle("I am another page title", driver, 5)).to.throw;
   });
 });

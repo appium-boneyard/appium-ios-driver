@@ -58,18 +58,12 @@ describe('safari - webview - frames @skip-ios6', function() {
     (await driver.findElement('id', 'only_on_page_2')).should.exist;
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should execute javascript in frame', async () => {
+  it('should execute javascript in frame', async () => {
     await driver.setFrame('first');
     (await driver.execute(GET_ELEM_SYNC)).should.be.equal('Sub frame 1');
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should execute async javascript in frame', async () => {
+  it('should execute async javascript in frame', async () => {
     await driver.setFrame('first');
     (await driver.executeAsync(GET_ELEM_ASYNC)).should.be.equal('Sub frame 1');
   });
