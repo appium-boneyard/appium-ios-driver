@@ -20,7 +20,7 @@ describe('safari - webview - basics @skip-ios6', function() {
 
   it('should find element from another element', async () => {
     let el = await driver.findElement('class name', 'border');
-    (driver.findElementFromElement('xpath', '>', './form', el)).should.eventually.exist;
+    (await driver.findElementFromElement('xpath', './form', el)).should.exist;
   });
 
   it('should be able to click links', async () => {
@@ -29,13 +29,10 @@ describe('safari - webview - basics @skip-ios6', function() {
     await spinTitle('I am another page title', driver);
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should retrieve an element attribute', async () => {
-    let el = driver.findElement('id', 'i_am_an_id');
+  it('should retrieve an element attribute', async () => {
+    let el = await driver.findElement('id', 'i_am_an_id');
     (await driver.getAttribute('id', el)).should.be.equal('i_am_an_id');
-    (await driver.getAttribute('blar', el)).should.throw;
+    expect(await driver.getAttribute('blar', el)).to.be.null;
   });
 
   it('should retrieve implicit attributes', async () => {
@@ -50,7 +47,7 @@ describe('safari - webview - basics @skip-ios6', function() {
     (await driver.getText(el)).should.be.equal('I am a div');
   });
 
-  it('should check if two elements are equals', async () => {
+  it.skip('should check if two elements are equals', async () => {
     let el1 = await driver.findElement('id', 'i_am_an_id');
     let el2 = await driver.findElement('css selector', '#i_am_an_id');
     el1.should.be.equal(el2);
@@ -98,12 +95,9 @@ describe('safari - webview - basics @skip-ios6', function() {
     (await driver.elementSelected(el)).should.be.ok;
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should be able to retrieve css properties', async () => {
+  it('should be able to retrieve css properties', async () => {
     let el = await driver.findElement('id', 'fbemail');
-    (await driver.getCssProperty('background-color', el)).should.be.equal('rgba(255, 255, 255, 1)');
+    (await driver.getCssProperty('background-color', el.ELEMENT)).should.be.equal('rgba(255, 255, 255, 1)');
   });
 
   it('should retrieve an element size', async () => {
@@ -143,13 +137,11 @@ describe('safari - webview - basics @skip-ios6', function() {
     await spinTitle('I am another page title', driver);
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should submit a form', async () => {
+  it('should submit a form', async () => {
     let el = await driver.findElement('id', 'comments');
+    let form = await driver.findElement('id', 'jumpContact');
     await driver.setValue('This is a comment', el);
-    await driver.submit();
+    await driver.submit(form.ELEMENT);
     await spinWait(async () => {
       let el = await driver.findElement('id', 'your_comments');
       (await driver.getText(el)).should.be.equal('Your comments: This is a comment');
@@ -171,10 +163,7 @@ describe('safari - webview - basics @skip-ios6', function() {
     (await driver.elementEnabled(el)).should.be.ok;
   });
 
-  /**
-   * atoms error
-   */
-  it.skip('should return false when the element is not enabled', async () => {
+  it('should return false when the element is not enabled', async () => {
     let el = await driver.findElement('id', 'fbemail');
     await driver.execute(`$('#fbemail').attr('disabled', 'disabled');`);
     (await driver.elementEnabled(el)).should.not.be.ok;
