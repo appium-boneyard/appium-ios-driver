@@ -65,9 +65,11 @@
     "chai-as-promised": "^5.1.0",
     "colors": "^1.1.2",
     "gulp": "^3.8.11",
+    "node-uuid": "^1.4.3",
     "sample-apps": "^2.0.2",
     "sinon": "^1.15.4",
     "unorm": "^1.3.3",
+    "wd": "^0.4.0",
     "yargs": "^3.29.0"
   }
 }
