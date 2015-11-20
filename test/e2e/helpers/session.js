@@ -21,7 +21,7 @@ class Session {
         return this.rawDriver.executeCommand(c, ...args);
       }.bind(this);
     }
-    for(let c of ['createSession', 'deleteSession']) {
+    for (let c of ['createSession', 'deleteSession']) {
       this.driver[c] = this.rawDriver[c].bind(this.rawDriver);
     }
   }
@@ -34,11 +34,11 @@ class Session {
     log.debug("opts -->", this.opts);
 
     let init = async (remainingAttempts) => {
-      log.debug("remainingAttempts -->", remainingAttempts);
+      log.debug(`remainingAttempts --> ${remainingAttempts}`);
       try {
         await this.driver.createSession(caps);
       } catch (err) {
-        log.debug("Init failed with error -->", err);
+        log.debug(`Init failed with error --> ${err}`);
         remainingAttempts --;
         if (remainingAttempts === 0) {
           throw err;

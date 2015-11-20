@@ -94,7 +94,7 @@ describe('uicatalog - find - basics @skip-ios6', function () {
     });
     let axIdExt = (env.IOS8 || env.IOS9) ? '' : ', AAPLActionSheetViewController';
     it('should find only one textfield', async () => {
-      let el1 = await driver.findElement('accessibility id', "Action Sheets" + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Action Sheets${axIdExt}`);
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Okay / Cancel');
       let els = await driver.findElementsFromElement('class name', 'UIAStaticText', el2);
@@ -110,14 +110,14 @@ describe('uicatalog - find - basics @skip-ios6', function () {
 
     let axIdExt = (env.IOS8 || env.IOS9) ? '' : ', AAPLActionSheetViewController';
     it('should find one element', async () => {
-      let el1 = await driver.findElement('accessibility id', "Action Sheets" + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Action Sheets${axIdExt}`);
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Okay / Cancel');
       (await driver.getAttribute('name', el2)).should.equal('Okay / Cancel');
     });
 
     it('should find several elements', async () => {
-      let el1 = await driver.findElement('accessibility id', "Action Sheets" + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Action Sheets${axIdExt}`);
       await driver.click(el1);
       let el2 = await driver.findElements('accessibility id', 'Okay / Cancel');
       el2.should.have.length(2);
@@ -139,7 +139,7 @@ describe('uicatalog - find - basics @skip-ios6', function () {
     let axIdExt = (env.IOS8 || env.IOS9) ? '' : ', AAPLTextFieldViewController';
 
     it('should find only one element per text field', async () => {
-      let el1 = await driver.findElement('accessibility id', 'Text Fields' + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Text Fields${axIdExt}`);
       await driver.click(el1);
       B.delay(2000);
       let els = await driver.findElements('class name', 'UIATextField');
@@ -147,7 +147,7 @@ describe('uicatalog - find - basics @skip-ios6', function () {
     });
 
     it('should find only one element per secure text field', async () => {
-      let el1 = await driver.findElement('accessibility id', 'Text Fields' + axIdExt);
+      let el1 = await driver.findElement('accessibility id', `Text Fields${axIdExt}`);
       await driver.click(el1);
       B.delay(2000);
       let els = await driver.findElements('class name', 'UIASecureTextField');

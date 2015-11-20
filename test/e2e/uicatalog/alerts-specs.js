@@ -19,7 +19,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
   it('should detect Simple', async () => {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
-    let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Simple')]");
+    let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Simple')]`);
     await driver.click(el2);
     await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');
@@ -29,7 +29,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
   it('should detect Okay', async () => {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
-    let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Okay')]");
+    let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Okay')]`);
     await driver.click(el2);
     await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');
@@ -39,7 +39,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
   it('should detect Other', async () => {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
-    let el2 = await driver.findElement('xpath', "//UIAStaticText[contains(" + alertTag + ",'Other')]");
+    let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Other')]`);
     await driver.click(el2);
     await B.delay(2000);
     (await driver.getAlertText()).should.include('A Short Title Is Best');

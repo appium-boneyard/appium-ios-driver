@@ -1,4 +1,4 @@
-"use strict";
+
 import env from './helpers/env';
 import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';

@@ -116,13 +116,13 @@ describe('uicatalog - find by xpath @skip-ios6', function () {
 
     describe('finding specific path', function () {
       for (let n = 0; n < runs; n++) {
-        describe('test ' + (n + 1), test("//UIAApplication[1]/UIAWindow/UIATableView/UIATableCell", 17));
+        describe(`test ${n + 1}`, test("//UIAApplication[1]/UIAWindow/UIATableView/UIATableCell", 17));
       }
     });
 
     describe('finding //*', function () {
       for (let n = 0; n < runs; n++) {
-        describe('test ' + (n + 1), test("//*", 52));
+        describe(`test ${n + 1}`, test("//*", 52));
       }
     });
   });

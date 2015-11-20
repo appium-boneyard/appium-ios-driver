@@ -60,7 +60,7 @@ describe('testapp - basics - calc app 2', function () {
     let dir = path.resolve(process.env.HOME, "Library", "Logs", "DiagnosticReports");
     let msg = 'boom';
     let logs = await driver.getLog('crashlog');
-    await fs.writeFile(dir + '/myApp_' + Date.parse(new Date()) + '_rocksauce.crash', msg);
+    await fs.writeFile(`${dir}/myApp_${Date.parse(new Date())}_rocksauce.crash`, msg);
     logs = await driver.getLog('crashlog');
     logs.length.should.equal(1);
     _.last(logs).message.should.not.include("\n");

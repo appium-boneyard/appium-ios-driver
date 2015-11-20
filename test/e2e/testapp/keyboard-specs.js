@@ -8,7 +8,7 @@ describe('testapp - keyboard', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
   let test = function (strategy) {
-    describe('typing with strategy:' + (strategy || 'undefined'), function () {
+    describe(`typing with strategy: ${strategy || 'undefined'}`, function () {
       // TODO: when sending 'Appium Rocks', autocompletion kicks in and
       //       messes up the test, investigate.
       let text = 'good morning';
@@ -57,7 +57,7 @@ describe('testapp - keyboard', function () {
       };
 
       for (let n = 0; n < runs; n++) {
-        describe('sendKeys test ' + (n + 1), test);
+        describe(`sendKeys test ${n + 1}`, test);
       }
     });
 
