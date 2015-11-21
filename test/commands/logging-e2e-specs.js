@@ -30,7 +30,8 @@ describe('commands - logging', function () {
       app: path.resolve('test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       deviceName: 'iPhone 6',
-      showIOSLog: true
+      showIOSLog: true,
+      noReset: true
     };
 
     describe('errors', () => {
