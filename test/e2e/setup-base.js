@@ -8,6 +8,19 @@ import _ from 'lodash';
 import log from '../../lib/logger';
 import './helpers/setup_testlibs';
 
+
+let serverStarted = false;
+
+function globalSetup (session) {
+  // we only want to do this once
+  if (!serverStarted) {
+    let router = routeConfiguringFunction(session.rawDriver);
+    baseServer(router, env.APPIUM_PORT, 'localhost');
+    log.info(`IosDriver server listening on http://localhost:${env.APPIUM_PORT}`);
+    serverStarted = true;
+  }
+}
+
 function setup (context, desired, opts = {}, envOverrides = false) {
   context.timeout(env.MOCHA_INIT_TIMEOUT);
   let newEnv = _.clone(env);
@@ -24,9 +37,7 @@ function setup (context, desired, opts = {}, envOverrides = false) {
   let session = new Session(desired, opts);
   let allPassed = true;
 
-  let router = routeConfiguringFunction(session.rawDriver);
-  baseServer(router, env.APPIUM_PORT, 'localhost');
-  log.info(`IosDriver server listening on http://localhost:${env.APPIUM_PORT}`);
+  globalSetup(session);
 
   before(async () => {
     await session.setUp(getTitle(context));

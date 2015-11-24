@@ -3,7 +3,7 @@ import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
-describe("safari - webview - touch actions @skip-ios6", function () {
+describe("safari - webview - touch actions @skip-ios6 @skip-ci", function () {
   const driver = setup(this, Object.assign({ 'noReset': true }, desired)).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 

@@ -35,7 +35,6 @@ describe('safari - webview - execute @skip-ios6', function() {
 
   it('should convert selenium element arg to webview element', async () => {
     let el = await driver.findElement('id', 'useragent');
-    console.log(el);
     await driver.execute(SCROLL_INTO_VIEW, [el]);
   });
 
