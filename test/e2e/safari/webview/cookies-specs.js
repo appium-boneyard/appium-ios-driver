@@ -1,15 +1,16 @@
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView, testEndpoint, ignoreEncodingBug } from '../../helpers/webview';
+import { loadWebView } from '../../helpers/webview';
+import env from '../../helpers/env';
 
 describe('safari - webview - cookies @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
 
   describe('within iframe webview', function() {
     it('should be able to get cookies for a page with none', async () => {
-      await loadWebView(desired, driver, testEndpoint(desired) + 'iframes.html', 'Iframe guinea pig');
+      await loadWebView(desired, driver, env.TEST_END_POINT + 'iframes.html', 'Iframe guinea pig');
       await driver.deleteCookies();
-      await driver.setUrl(testEndpoint(desired));
+      await driver.setUrl(env.TEST_END_POINT);
       (await driver.getCookies()).should.have.length(0);
     });
   });
@@ -21,9 +22,9 @@ describe('safari - webview - cookies @skip-ios6', function() {
       let cookies = await driver.getCookies();
       cookies.length.should.equal(2);
       cookies[0].name.should.equal('guineacookie1');
-      cookies[0].value.should.equal(ignoreEncodingBug('i am a cookie value', desired));
+      cookies[0].value.should.equal('i am a cookie value');
       cookies[1].name.should.equal('guineacookie2');
-      cookies[1].value.should.equal(ignoreEncodingBug('cookié2', desired));
+      cookies[1].value.should.equal('cookié2');
     });
 
     it('should be able to set a cookie for a page', async () => {
@@ -43,7 +44,7 @@ describe('safari - webview - cookies @skip-ios6', function() {
       cookies.map((c) => c.value).should.include(newCookie.value);
       // should not clobber old cookies
       cookies.map((c) => c.name).should.include('guineacookie1');
-      cookies.map((c) => c.value).should.include(ignoreEncodingBug('i am a cookie value', desired));
+      cookies.map((c) => c.value).should.include('i am a cookie value');
     });
 
     it('should be able to set a cookie with expiry', async () => {
@@ -65,7 +66,7 @@ describe('safari - webview - cookies @skip-ios6', function() {
       cookies.map((c) => c.value).should.not.include(newCookie.value);
       // should not clobber old cookies
       cookies.map((c) => c.name).should.include('guineacookie1');
-      cookies.map((c) => c.value).should.include(ignoreEncodingBug('i am a cookie value', desired));
+      cookies.map((c) => c.value).should.include('i am a cookie value');
     });
 
     it('should be able to delete one cookie', async () => {

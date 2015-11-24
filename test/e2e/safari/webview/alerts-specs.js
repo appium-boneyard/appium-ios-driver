@@ -46,7 +46,7 @@ describe('safari - webview - alerts @skip-ios6 @skip-real-device', function() {
     (await driver.getAttribute('value', el)).toLowerCase().should.equal('yes i do!');
   });
 
-  it('should fail to set text of alert @skip-chrome', async () => {
+  it('should fail to set text of alert', async () => {
     let el = await driver.findElement('id' ,'alert1');
     await driver.click(el);
     return driver.setAlertText('yes I do!')

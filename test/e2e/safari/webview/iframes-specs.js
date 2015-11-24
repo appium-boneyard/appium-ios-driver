@@ -1,6 +1,8 @@
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView, testEndpoint } from '../../helpers/webview';
+import { loadWebView } from '../../helpers/webview';
+import env from '../../helpers/env';
+
 
 describe('safari - webview - iframes @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
@@ -8,7 +10,7 @@ describe('safari - webview - iframes @skip-ios6', function() {
   beforeEach(async () => await loadWebView(
     desired,
     driver,
-    testEndpoint(desired) + 'iframes.html',
+    `${env.TEST_END_POINT}iframes.html`,
     'Iframe guinea pig'
   ));
 

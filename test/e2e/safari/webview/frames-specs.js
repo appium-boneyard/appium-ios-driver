@@ -1,6 +1,8 @@
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView, testEndpoint } from '../../helpers/webview';
+import { loadWebView } from '../../helpers/webview';
+import env from '../../helpers/env';
+
 
 const GET_ELEM_SYNC = `return document.getElementsByTagName('h1')[0].innerHTML;`;
 const GET_ELEM_ASYNC = `arguments[arguments.length - 1](document.getElementsByTagName('h1')[0].innerHTML);`;
@@ -11,7 +13,7 @@ describe('safari - webview - frames @skip-ios6', function() {
   beforeEach(async () => await loadWebView(
     desired,
     driver,
-    testEndpoint(desired) + 'frameset.html',
+    `${env.TEST_END_POINT}frameset.html`,
     'Frameset guinea pig'
   ));
 

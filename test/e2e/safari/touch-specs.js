@@ -2,7 +2,6 @@ import setup from "../setup-base";
 import env from '../helpers/env';
 import B from 'bluebird';
 
-const testEndpoint = env.TEST_END_POINT;
 
 /**
  * touch command doesn't work
@@ -15,7 +14,7 @@ describe.skip('touch', function() {
   }).driver;
 
   it('should flick element', async () => {
-    await driver.setUrl(testEndpoint + 'touch.html');
+    await driver.setUrl(`${env.TEST_END_POINT}touch.html`);
     let flickElem = await driver.findElement('id', 'flickElem');
 
     let l1 = await driver.getLocation(flickElem);

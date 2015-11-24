@@ -19,7 +19,7 @@ function setup (context, desired, opts = {}, envOverrides = false) {
     opts.port = env.APPIUM_PORT;
   }
 
-  opts.callbackAddress = 'localhost'
+  opts.callbackAddress = 'localhost';
 
   let session = new Session(desired, opts);
   let allPassed = true;

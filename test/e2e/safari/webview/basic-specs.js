@@ -1,6 +1,8 @@
+/* globals expect */
 import desired from './desired';
 import setup from '../../setup-base';
-import { loadWebView, isChrome, spinTitle, spinWait } from '../../helpers/webview';
+import { loadWebView, spinTitle, spinWait } from '../../helpers/webview';
+
 
 describe('safari - webview - basics @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
@@ -124,7 +126,7 @@ describe('safari - webview - basics @skip-ios6', function() {
     (await driver.getTagName(a)).should.be.equal('a');
   });
 
-  it('should retrieve a window size @skip-chrome', async () => {
+  it('should retrieve a window size', async () => {
     let size = await driver.getWindowSize();
     size.height.should.be.above(0);
     size.width.should.be.above(0);
@@ -184,15 +186,5 @@ describe('safari - webview - basics @skip-ios6', function() {
 
   it('should be able to refresh', async () => {
     await driver.refresh();
-  });
-
-  it('should be able to get performance logs', async () => {
-    if (!isChrome(desired)) {
-      return console.warn(`Performance logs aren't available except in Chrome`);
-    }
-
-    (await driver.getLogTypes()).should.include('performance');
-    let logs = await driver.getLog('performance');
-    logs.length.should.be.above(0);
   });
 });

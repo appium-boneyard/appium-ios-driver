@@ -2,8 +2,8 @@ import env from './env';
 import B from 'bluebird';
 import uuidGenerator from 'node-uuid';
 
-const CHROMES = ['chrome', 'chromium', 'chromebeta', 'browser'];
-const BROWSERS = CHROMES.concat(['safari']);
+
+const BROWSERS = ['safari'];
 
 async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined) {
   if (timeout <= 0) {
@@ -22,7 +22,7 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
   let uuid = uuidGenerator.v1();
 
   if (typeof urlToLoad === 'undefined') {
-    urlToLoad = guineaEndpoint(app) + `?${uuid}`;
+    urlToLoad = `${env.GUINEA_TEST_END_POINT}?${uuid}`;
   }
   if (typeof titleToSpin === 'undefined') {
     titleToSpin = uuid;
@@ -62,37 +62,10 @@ async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
   await spin(spinFn);
 }
 
-function isChrome (desired) {
-  if (typeof desired === 'string') {
-    desired = { browserName: desired };
-  }
-
-  return CHROMES.indexOf(desired.app) > -1 ||
-         CHROMES.indexOf(desired.browserName) > -1;
-}
-
 function skip(reason, done) {
   console.warn('skipping: ' + reason);
   return done();
 }
 
-let testEndpoint = function (desired) {
-  return isChrome(desired) ? env.CHROME_TEST_END_POINT : env.TEST_END_POINT;
-};
 
-function guineaEndpoint (desired) {
-  return isChrome(desired) ? env.CHROME_GUINEA_TEST_END_POINT :
-                             env.GUINEA_TEST_END_POINT;
-}
-
-// TODO: investigate why we need that
-let ignoreEncodingBug = function(value, desired) {
-  if (isChrome(desired)) {
-    console.warn('Going round android bug: whitespace in cookies.');
-    return encodeURI(value);
-  }
-
-  return value;
-};
-
-export { spinTitle, loadWebView, isChrome, skip, testEndpoint, ignoreEncodingBug, spinWait };
+export { spinTitle, loadWebView, skip, spinWait };

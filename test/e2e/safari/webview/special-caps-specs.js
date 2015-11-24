@@ -14,7 +14,7 @@ describe('safari - webview - special capabilities @skip-ios6', function() {
   // addresses, even when running the sim manually
   // TODO: find another way to trigger the phishing warning that IS disabled
   // by the pref on iOS8
-  it('should not display a phishing warning with safariIgnoreFraudWarning @skip-chrome @skip-ios8', async () => {
+  it('should not display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async () => {
     await driver.setUrl(env.PHISHING_END_POINT + 'guinea-pig2.html');
     await spinWait(async () => {
       (await driver.getTitle()).should.contain("I am another page title");
