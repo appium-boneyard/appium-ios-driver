@@ -8,7 +8,6 @@ import B from 'bluebird';
 describe('uicatalog - alerts @skip-ios6', function () {
 
   let alertTag = env.IOS7 ? '@label' : '@value';
-
   let session = setup(this, desired);
   let driver = session.driver;
 
@@ -22,7 +21,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Simple')]`);
     await driver.click(el2);
     await B.delay(2000);
-    (await driver.getAlertText()).should.include('A Short Title Is Best');
+    (await driver.getAlertText()).should.include('A message should be a short, complete sentence');
     await driver.postDismissAlert();
   });
 
@@ -32,7 +31,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Okay')]`);
     await driver.click(el2);
     await B.delay(2000);
-    (await driver.getAlertText()).should.include('A Short Title Is Best');
+    (await driver.getAlertText()).should.include('A message should be a short, complete sentence');
     await driver.postAcceptAlert();
   });
 
@@ -42,7 +41,7 @@ describe('uicatalog - alerts @skip-ios6', function () {
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Other')]`);
     await driver.click(el2);
     await B.delay(2000);
-    (await driver.getAlertText()).should.include('A Short Title Is Best');
+    (await driver.getAlertText()).should.include('A message should be a short, complete sentence');
     await driver.postDismissAlert();
   });
 });
