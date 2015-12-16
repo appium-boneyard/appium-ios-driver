@@ -5,7 +5,8 @@ describe('uicatalog - background app @skip-ios6', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it("should background the app for 4 of seconds (+/- 6 secs)", async () => {
+  // only works on iOS84 & below
+  it.skip("should background the app for 4 of seconds (+/- 6 secs)", async () => {
     let before = new Date().getTime() / 1000;
     await driver.background(8);
     let timeDifference = ((new Date().getTime() / 1000) - before);

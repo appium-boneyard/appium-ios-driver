@@ -26,8 +26,8 @@ before_script:
   - gulp transpile
   # Xcode 7+ IWD
   # https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/iwd_xcode7.md
-  - $xcode_path=/Applications/Xcode.app
-  - $appium_path=/Users/travis/build/appium/appium-ios-driver
+  - xcode_path=/Applications/Xcode.app
+  - appium_path=/Users/travis/build/appium/appium-ios-driver
   - plist_path=$xcode_path/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/Developer/Library/LaunchDaemons/com.apple.instruments.deviceservice.plist
   - iwd_path=$appium_path/node_modules/appium-instruments/thirdparty/iwd7
   - /usr/libexec/PlistBuddy -c "Add :EnvironmentVariables dict" $plist_path
