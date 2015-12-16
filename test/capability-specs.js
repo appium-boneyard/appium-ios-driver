@@ -1,7 +1,9 @@
 import { IosDriver } from '../';
+import utils from '../lib/utils';
 import chai from 'chai';
+import sinon from 'sinon';
 
-
+let sandbox = sinon.sandbox.create();
 const should = chai.Should();
 
 describe('Desired Capabilities', () => {
@@ -88,6 +90,25 @@ describe('Desired Capabilities', () => {
         launchTimeout: 'launch timeout!'
       };
       checkCaps(caps, true);
+    });
+  });
+
+  describe('server capabilities', () => {
+    it('should collect server capabilities', async () => {
+      sandbox.stub(driver, 'configureApp');
+      sandbox.stub(driver, 'validateDesiredCaps');
+      sandbox.stub(driver, 'start');
+      sandbox.stub(driver, 'startNewCommandTimeout');
+      sandbox.stub(utils, 'detectUdid');
+      sandbox.stub(utils, 'prepareIosOpts');
+      let caps = {
+        platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        app: 'some-app'
+      };
+      await driver.createSession(caps);
+      driver.caps.takesScreenshot.should.exist;
+      sandbox.restore();
     });
   });
 });
