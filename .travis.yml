@@ -1,14 +1,14 @@
 sudo: required
 env:
   # Run tests in parellel, up to 5 at once
-  - DEVICE=ios84 TEST=commands FINAL_GULP=coveralls
-  - DEVICE=ios84 TEST=e2e/testapp
-  - DEVICE=ios84 TEST=e2e/uicatalog
-  - DEVICE=ios84 TEST=e2e/safari/*.js
-  - DEVICE=ios84 TEST=e2e/safari/webview/*.js
+  - DEVICE=ios91 TEST=commands FINAL_GULP=coveralls
+  - DEVICE=ios91 TEST=e2e/testapp
+  - DEVICE=ios91 TEST=e2e/uicatalog
+  - DEVICE=ios91 TEST=e2e/safari/*.js
+  - DEVICE=ios91 TEST=e2e/safari/webview/*.js
 language:
   - objective-c
-osx_image: xcode6.4
+osx_image: xcode7.1
 before_install:
   # TavisCI's OSX environment gives us node 0.10.32
   # Use NVM to update it to 0.12
