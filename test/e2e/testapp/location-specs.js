@@ -10,7 +10,14 @@ describe('testapp - location - 1 @skip-ci', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('should return the right x/y coordinates', async () => {
+  it('should return the right x/y coordinates for getLocation', async () => {
+    let el = await driver.findElement('class name', 'UIAButton');
+    let loc = await driver.getLocation(el);
+     [94, 110].should.contain(parseInt(loc.x, 10));
+     loc.y.should.be.above(120);
+  });
+
+  it('should return the right x/y coordinates for getLocationInView', async () => {
     let el = await driver.findElement('class name', 'UIAButton');
     let loc = await driver.getLocation(el);
      [94, 110].should.contain(parseInt(loc.x, 10));
