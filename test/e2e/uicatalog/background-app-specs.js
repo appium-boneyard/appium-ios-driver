@@ -11,5 +11,7 @@ describe('uicatalog - background app @skip-ios6', function () {
     let timeDifference = ((new Date().getTime() / 1000) - before);
     timeDifference.should.be.above(8);
     timeDifference.should.be.below(15);
+
+    (await driver.getPageSource()).should.include('UICatalog');
   });
 });
