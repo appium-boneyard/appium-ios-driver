@@ -1,6 +1,7 @@
 import setup from "../setup-base";
 import desired from './desired';
 import { clickButton } from '../helpers/recipes';
+import B from 'bluebird';
 
 
 describe('uicatalog - controls @skip-ios6', function () {
@@ -42,6 +43,9 @@ describe('uicatalog - controls @skip-ios6', function () {
     value.should.equal('42%');
 
     await driver.setValue(0.8, slider);
+    // give a moment for the change to register
+    await B.delay(500);
+
     value = await driver.getAttribute("value", slider);
     value = parseInt(value.replace('%', ''), 10);
     value.should.be.above(75);
