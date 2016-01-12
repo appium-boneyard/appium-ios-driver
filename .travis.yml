@@ -1,11 +1,11 @@
 sudo: required
 env:
   # Run tests in parellel, up to 5 at once
-  - DEVICE=ios84 TEST=e2e/driver FINAL_GULP=coveralls
-  - DEVICE=ios84 TEST=e2e/testapp
-  - DEVICE=ios84 TEST=e2e/uicatalog
-  - DEVICE=ios84 TEST=e2e/safari/*.js
-  - DEVICE=ios84 TEST=e2e/safari/webview/*.js
+  - DEVICE=ios84 FINAL_GULP=coveralls
+  - DEVICE=ios84 TEST=e2e/testapp RECURSIVE=1
+  - DEVICE=ios84 TEST=e2e/uicatalog RECURSIVE=1
+  - DEVICE=ios84 TEST=e2e/safari RECURSIVE=1
+  - DEVICE=ios84 TEST=e2e/driver RECURSIVE=1
 language:
   - objective-c
 osx_image: xcode6.4
@@ -25,5 +25,5 @@ before_script:
   - npm install -g mocha
   - gulp transpile
 script:
-  - mocha build/test/$TEST -g @skip-ci -i
+  - if [ -z "$RECURSIVE" ]; then mocha build/test/$TEST -r -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi
