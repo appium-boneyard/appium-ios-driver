@@ -14,6 +14,11 @@ chai.use(chaiAsPromised);
 describe('capabilities', function () {
   this.timeout(120000);
   let driver;
+
+  after(async () => {
+    await driver.deleteSession();
+  });
+
   it('should contain server details', async () => {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),

@@ -2,10 +2,10 @@ sudo: required
 env:
   # Run tests in parellel, up to 5 at once
   - DEVICE=ios84 FINAL_GULP=coveralls
+  - DEVICE=ios84 TEST=e2e/driver
   - DEVICE=ios84 TEST=e2e/testapp RECURSIVE=1
   - DEVICE=ios84 TEST=e2e/uicatalog RECURSIVE=1
   - DEVICE=ios84 TEST=e2e/safari RECURSIVE=1
-  - DEVICE=ios84 TEST=e2e/driver RECURSIVE=1
 language:
   - objective-c
 osx_image: xcode6.4
