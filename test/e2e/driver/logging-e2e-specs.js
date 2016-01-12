@@ -1,7 +1,8 @@
 // transpile:mocha
 
-import { IosDriver } from '../..';
-import { SUPPORTED_LOG_TYPES } from '../../lib/commands/logging.js';
+import env from '../helpers/env';
+import { IosDriver } from '../../..';
+import { SUPPORTED_LOG_TYPES } from '../../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
@@ -29,10 +30,10 @@ describe('commands - logging', function () {
     let caps = {
       app: path.resolve('test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
-      deviceName: 'iPhone 6',
       showIOSLog: true,
       noReset: true
     };
+    caps = _.merge({}, env.CAPS, caps);
 
     describe('errors', () => {
       it('should throw an error when an invalid type is given', async () => {

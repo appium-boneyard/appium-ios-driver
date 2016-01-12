@@ -51,7 +51,6 @@ function iphoneOrIpadSimulator(device, version) {
 }
 
 switch (env.DEVICE) {
-  case 'ios':
   case 'ios6':
   case 'ios6_iphone':
   case 'ios6_ipad':
@@ -143,6 +142,7 @@ switch (env.DEVICE) {
       app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
     };
     break;
+  case 'ios':
   case 'ios92':
   case 'ios92_iphone':
   case 'ios92_ipad':

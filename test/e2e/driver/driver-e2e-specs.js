@@ -1,26 +1,33 @@
 // transpile:mocha
 
-import { IosDriver } from '../../lib/driver';
-import { rootDir } from '../../lib/utils';
+import _ from 'lodash';
+import env from '../helpers/env';
+import { IosDriver } from '../../../lib/driver';
+import { rootDir } from '../../../lib/utils';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
+import B from 'bluebird';
 
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('capabilities', function () {
+describe('driver', function () {
   this.timeout(120000);
   let driver;
-  it('should contain server details', async () => {
+  it('should start', async () => {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
-      deviceName: 'iPhone 5'
     };
+    caps = _.merge({}, env.CAPS, caps);
     driver = new IosDriver();
     await driver.createSession(caps);
-    let serverCaps = await driver.getSession();
-    serverCaps.takesScreenshot.should.exist;
+  });
+
+  it('should stop', async () => {
+    await B.delay(2000);
+    await driver.deleteSession();
   });
 });
+
