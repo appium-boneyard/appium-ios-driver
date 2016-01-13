@@ -8,7 +8,9 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
 import B from 'bluebird';
+import sinon from 'sinon';
 
+let sandbox = sinon.sandbox.create();
 chai.should();
 chai.use(chaiAsPromised);
 
@@ -33,6 +35,12 @@ describe('driver', function () {
 
 describe.only('getDeviceTime',function(){
   it('should get device time', async () => {
+    sandbox.stub(driver, 'configureApp');
+    sandbox.stub(driver, 'validateDesiredCaps');
+    sandbox.stub(driver, 'start');
+    sandbox.stub(driver, 'startNewCommandTimeout');
+    sandbox.stub(utils, 'detectUdid');
+    sandbox.stub(utils, 'prepareIosOpts');
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
@@ -42,6 +50,7 @@ describe.only('getDeviceTime',function(){
     await driver.createSession(caps);
     await driver.getDeviceTime().should.be.a.Date;
     await driver.deleteSession();
+    sandbox.restore();
   });
 });
 
