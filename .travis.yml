@@ -25,5 +25,5 @@ before_script:
   - npm install -g mocha
   - gulp transpile
 script:
-  - if [ -z "$RECURSIVE" ]; then mocha build/test/$TEST -r -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
+  - if [ -n "$RECURSIVE" ]; then mocha --recursive build/test/$TEST -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi
