@@ -145,79 +145,9 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `webContextIndex`                 |
 | `webFlickElement`                 |
 | `xySpeedFlick`                    |
-| `getDeviceTime`					| 
-| `getLatestWebviewContextForTitle` | 
-| `getLocation`                     | 
-| `getLocationInView`               | 
-| `getLog`                          | 
-| `getLogTypes`                     | 
-| `getName`                         | 
-| `getOrientation`                  | 
-| `getPageSource`                   | 
-| `getScreenshot`                   | 
-| `getSimFileFullPath`              | 
-| `getSize`                         | 
-| `getText`                         | 
-| `getUrl`                          | 
-| `getWindowHandle`                 | 
-| `getWindowHandles`                | 
-| `getWindowSize`                   | 
-| `handleTap`                       | 
-| `hideKeyboard`                    | 
-| `initAutoWebview`                 | 
-| `isWebContext`                    | 
-| `keys`                            | 
-| `launchApp`                       | 
-| `listWebFrames`                   | 
-| `lock`                            | 
-| `mobileRotation`                  | 
-| `mobileScroll`                    | 
-| `mobileShake`                     | 
-| `mobileWebNav`                    | 
-| `moveTo`                          | 
-| `nativeTap`                       | 
-| `nativeWebTap`                    | 
-| `navToInitialWebview`             | 
-| `navToViewThroughFavorites`       | 
-| `navToViewWithTitle`              | 
-| `onPageChange`                    | 
-| `parseElementResponse`            | 
-| `parseExecuteResponse`            | 
-| `parseTouch`                      | 
-| `performMultiAction`              | 
-| `performTouch`                    | 
-| `postAcceptAlert`                 | 
-| `postDismissAlert`                | 
-| `pullFile`                        | 
-| `pullFolder`                      | 
-| `pushFile`                        | 
-| `receiveAsyncResponse`            | 
-| `refresh`                         | 
-| `setAlertText`                    | 
-| `setContext`                      | 
-| `setCookie`                       | 
-| `setFrame`                        | 
-| `setGeoLocation`                  | 
-| `setOrientation`                  | 
-| `setUrl`                          | 
-| `setValue`                        | 
-| `setValueImmediate`               | 
-| `setWindow`                       | 
-| `stopRemote`                      | 
-| `submit`                          | 
-| `title`                           | 
-| `translateWebCoords`              | 
-| `typeAndNavToUrl`                 | 
-| `useAtomsElement`                 | 
-| `useNewSafari`                    | 
-| `waitForAtom`                     | 
-| `webContextIndex`                 | 
-| `webFlickElement`                 | 
-| `xySpeedFlick`                    | 
 
 
-## Watch
->>>>>>> updated command name as per jlips comments
+## Watch code for changes, re-transpile and run unit tests:
 
 ```
 gulp
