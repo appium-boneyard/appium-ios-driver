@@ -40,7 +40,7 @@ describe('testapp - keyboard', function () {
   _.each([undefined, 'oneByOne', 'grouped', 'setValue'], test);
 
   describe("typing", function () {
-    let session = setup(this, _.defaults({deviceName: 'iPad 2'}, desired));
+    let session = setup(this, desired);
     let driver = session.driver;
 
     describe("stability @skip-ci", function () {
