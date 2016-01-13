@@ -155,10 +155,11 @@ gulp
 
 ## Test
 
-For tests, the default sim required is an iOS 9.2 iPhone 6, which you can create as follows if one doesn't already exist on your system (use `xcrun simctl list` to check first):
+For tests, the default sims required are an iOS 9.2 iPhone 6 and iPad 2, which you can create as follows if one doesn't already exist on your system (use `xcrun simctl list` to check first):
 
 ```
 xcrun simctl create "iPhone 6" "iPhone 6" 9.2
+xcrun simctl create "iPad 2" "iPad 2" 9.2
 ```
 
 Then you can run unit and e2e-tests:
