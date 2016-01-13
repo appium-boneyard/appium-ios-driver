@@ -31,3 +31,17 @@ describe('driver', function () {
   });
 });
 
+describe.only('getDeviceTime',function(){
+  it('should get device time', async () => {
+    let caps = {
+      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
+      platformName: 'iOS',
+      deviceName: 'iPhone 5'
+    };
+    let driver = new IosDriver();
+    await driver.createSession(caps);
+    await driver.getDeviceTime().should.be.a.Date;
+    await driver.deleteSession();
+  });
+});
+
