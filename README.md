@@ -149,6 +149,8 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 
 ## Watch code for changes, re-transpile and run unit tests:
 =======
+=======
+>>>>>>> 4fcbcef7cc12cc3a2f112415cdc8ed720eb9ded9
 | `getDeviceTime`					| 
 | `getLatestWebviewContextForTitle` | 
 | `getLocation`                     | 
