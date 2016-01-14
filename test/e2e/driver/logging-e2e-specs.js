@@ -1,12 +1,14 @@
 // transpile:mocha
 
 import env from '../helpers/env';
+import { rootDir } from '../../../lib/utils';
+import path from 'path';
 import { IosDriver } from '../../..';
 import { SUPPORTED_LOG_TYPES } from '../../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import path from 'path';
 import _ from 'lodash';
+
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -28,10 +30,11 @@ describe('commands - logging', function () {
 
   describe('getLog', () => {
     let caps = {
-      app: path.resolve('test', 'assets', 'TestApp.zip'),
+      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       showIOSLog: true,
-      noReset: true
+      noReset: true,
+      newCommandTimeout: 120
     };
     caps = _.merge({}, env.CAPS, caps);
 
@@ -46,7 +49,6 @@ describe('commands - logging', function () {
 
     describe('success', () => {
       before(async () => {
-        // these tests don't need to be isolated, so use one session
         await driver.createSession(caps);
       });
       after(async () => {
