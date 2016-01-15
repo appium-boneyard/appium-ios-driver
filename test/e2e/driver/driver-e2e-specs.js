@@ -32,25 +32,3 @@ describe('driver', function () {
     await driver.deleteSession();
   });
 });
-
-describe.only('getDeviceTime',function(){
-  it('should get device time', async () => {
-    sandbox.stub(driver, 'configureApp');
-    sandbox.stub(driver, 'validateDesiredCaps');
-    sandbox.stub(driver, 'start');
-    sandbox.stub(driver, 'startNewCommandTimeout');
-    sandbox.stub(utils, 'detectUdid');
-    sandbox.stub(utils, 'prepareIosOpts');
-    let caps = {
-      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
-      platformName: 'iOS',
-      deviceName: 'iPhone 5'
-    };
-    let driver = new IosDriver();
-    await driver.createSession(caps);
-    await driver.getDeviceTime().should.be.a.Date;
-    await driver.deleteSession();
-    sandbox.restore();
-  });
-});
-

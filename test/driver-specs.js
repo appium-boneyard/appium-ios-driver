@@ -3,6 +3,9 @@
 import IosDriver from '../';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import { withMocks } from 'appium-test-support';
+import * as teen_process from 'teen_process';
+import { fs } from 'appium-support';
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -14,3 +17,35 @@ describe('driver', () => {
   });
 });
 
+describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
+    it('should return a valid date string', async () => {
+      let udid = 'some-udid';
+      let date = new Date().toString();
+      mocks.fs.expects('which')
+        .once().returns('/path/to/idevicedate');
+      mocks.teen_process.expects('exec')
+        .once().withExactArgs('idevicedate', ['-u', udid])
+        .returns({stdout: date});
+      let driver = new IosDriver();
+      driver.opts = {udid};
+
+      (await driver.getDeviceTime()).should.equal(date);
+    });
+    it('should not return a valid date string', async () => {
+      let udid = 'some-udid';
+      let date = new Date().toString();
+      mocks.fs.expects('which')
+        .once().returns('/path/to/idevicedate');
+      mocks.teen_process.expects('exec')
+        .once().withExactArgs('idevicedate', ['-u', udid])
+        .returns("");
+      let driver = new IosDriver();
+      driver.opts = {udid};
+
+      (await driver.getDeviceTime()).should.not.equal(date);
+    });
+    it('should return NotYetImplementedError for simulator', async () => {
+    	(await driver.getDeviceTime()).should.Throw(function() { throw new Error('NotYetImplementedError!') }, Error, 'NotYetImplementedError!');
+    });
+  }));
+});
