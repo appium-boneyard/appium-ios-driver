@@ -31,19 +31,19 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
 
       (await driver.getDeviceTime()).should.equal(date);
     });
-    it('should not return a valid date string', async () => {
+
+    it('should not capture device date and time', async () => {
       let udid = 'some-udid';
       let date = new Date().toString();
-      mocks.fs.expects('which')
-        .once().returns('/path/to/idevicedate');
-      mocks.teen_process.expects('exec')
-        .once().withExactArgs('idevicedate', ['-u', udid])
-        .returns("");
+      mocks.teen_process.expects("exec")
+        .once()
+        .throws("ENOENT");
       let driver = new IosDriver();
       driver.opts = {udid};
-
-      (await driver.getDeviceTime()).should.not.equal(date);
+      await adb.getDeviceTime()
+        .should.eventually.be.rejectedWith("Could not capture device date and time");
     });
+
     it('should return NotYetImplementedError for simulator', async () => {
     	(await driver.getDeviceTime()).should.Throw(function() { throw new Error('NotYetImplementedError!') }, Error, 'NotYetImplementedError!');
     });
