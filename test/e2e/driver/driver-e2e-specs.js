@@ -8,9 +8,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
 import B from 'bluebird';
-import sinon from 'sinon';
 
-let sandbox = sinon.sandbox.create();
 chai.should();
 chai.use(chaiAsPromised);
 
