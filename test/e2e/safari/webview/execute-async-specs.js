@@ -3,7 +3,7 @@ import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
-describe('safari - webview - executeAsync @skip-ios6 @skip-ci', function() {
+describe('safari - webview - executeAsync @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}, false, true).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
@@ -12,7 +12,7 @@ describe('safari - webview - executeAsync @skip-ios6 @skip-ci', function() {
   });
 
   it('should execute async javascript', async () => {
-    await driver.asyncScriptTimeout(100000);
+    await driver.asyncScriptTimeout(10000);
     (await driver.executeAsync(`arguments[arguments.length - 1](123);`)).should.be.equal(123);
   });
 
