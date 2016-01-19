@@ -76,7 +76,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `getCookies`                      |
 | `getCssProperty`                  |
 | `getCurrentContext`               |
-| `getDeviceDateAndTime`            |
+| `getDeviceTime`                   |
 | `getLatestWebviewContextForTitle` |
 | `getLocation`                     |
 | `getLocationInView`               |
@@ -160,6 +160,7 @@ For tests, the default sims required are an iOS 9.2 iPhone 6 and iPad 2, which y
 ```
 xcrun simctl create "iPhone 6" "iPhone 6" 9.2
 xcrun simctl create "iPad 2" "iPad 2" 9.2
+
 ```
 
 Then you can run unit and e2e-tests:
