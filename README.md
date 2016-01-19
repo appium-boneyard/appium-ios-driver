@@ -76,7 +76,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `getCookies`                      |
 | `getCssProperty`                  |
 | `getCurrentContext`               |
-| `getDeviceDateAndTime`            |
+| `getDeviceTime`                   |
 | `getLatestWebviewContextForTitle` |
 | `getLocation`                     |
 | `getLocationInView`               |
