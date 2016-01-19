@@ -162,14 +162,12 @@ xcrun simctl create "iPhone 6" "iPhone 6" 9.2
 xcrun simctl create "iPad 2" "iPad 2" 9.2
 ```
 
-Then you can run unit and e2e-tests:
+Then you can run unit and e2e tests:
 
 ```
-gulp once && gulp e2e-test
-```
+// unit tests:
+gulp once
 
-If you don't have iOS 9.2, you can force the tests to use a different version as follows, for example to use iOS 8.4:
-
-```
+// e2e tests - specify your desired iOS version, for example iOS8.4:
 DEVICE=ios84 gulp e2e-test
 ```
