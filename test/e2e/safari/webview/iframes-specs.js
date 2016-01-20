@@ -4,7 +4,7 @@ import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
 
 
-describe('safari - webview - iframes @skip-ios6 @skip-ci', function() {
+describe('safari - webview - iframes @skip-ios6', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
 
   beforeEach(async () => await loadWebView(
