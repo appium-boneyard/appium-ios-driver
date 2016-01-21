@@ -1,7 +1,7 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
 
-describe('safari - basics @skip-ios6 @skip-real-device', function() {
+describe('safari - basics @skip-real-device', function() {
   if (!(env.IOS8 || env.IOS9) && env.IOS80) {
     return describe('default init', function() {
       const driver = setup(this, { browserName: 'safari' }).driver;

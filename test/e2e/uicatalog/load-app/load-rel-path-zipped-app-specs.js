@@ -3,7 +3,7 @@ import desired from '../desired';
 import path from 'path';
 import _ from 'lodash';
 
-describe('uicatalog - load zipped app with relative path @skip-ios6', function () {
+describe('uicatalog - load zipped app with relative path', function () {
 
   let appZipPath = 'test/assets/UICatalog7.1.app.zip';
 

@@ -2,7 +2,7 @@ import env from '../helpers/env';
 import setup from "../setup-base";
 import desired from './desired';
 
-describe('uicatalog - basic @skip-ios6', () => {
+describe('uicatalog - basic', () => {
   let textTag = env.IOS7 ? '@label' : '@value';
 
   describe('api', function () {

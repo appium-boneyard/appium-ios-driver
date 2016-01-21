@@ -2,7 +2,7 @@ import setup from "../setup-base";
 import desired from './desired';
 import B from 'bluebird';
 
-describe('uicatalog - reset @skip-ios6', function () {
+describe('uicatalog - reset', function () {
 
   describe('app reset', function () {
     let session = setup(this, desired);

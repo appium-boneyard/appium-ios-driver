@@ -2,7 +2,7 @@ import setup from "../setup-base";
 import desired from './desired';
 import B from 'bluebird';
 
-describe('uicatalog - clear @skip-ios6', function () {
+describe('uicatalog - clear', function () {
 
   describe('hide keyboard', function () {
     let session = setup(this, desired);

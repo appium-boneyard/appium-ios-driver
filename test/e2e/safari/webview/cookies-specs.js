@@ -3,7 +3,7 @@ import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
 
-describe('safari - webview - cookies @skip-ios6', function() {
+describe('safari - webview - cookies', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
 
   describe('within iframe webview', function() {

@@ -4,7 +4,7 @@ import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
 import B from 'bluebird';
 
-describe(`safari - windows and frames (${env.DEVICE}) @skip-ios6`, function() {
+describe(`safari - windows and frames (${env.DEVICE})`, function() {
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true,
@@ -52,7 +52,7 @@ describe(`safari - windows and frames (${env.DEVICE}) @skip-ios6`, function() {
   });
 });
 
-describe(`safari - windows and frames (${env.DEVICE}) @skip-ios6 - without safariAllowPopups`, function() {
+describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function() {
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false

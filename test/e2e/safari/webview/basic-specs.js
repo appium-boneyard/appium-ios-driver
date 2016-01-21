@@ -4,7 +4,7 @@ import setup from '../../setup-base';
 import { loadWebView, spinTitle, spinWait } from '../../helpers/webview';
 
 
-describe('safari - webview - basics @skip-ios6', function() {
+describe('safari - webview - basics', function() {
   const driver = setup(this, desired, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 

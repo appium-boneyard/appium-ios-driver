@@ -5,7 +5,7 @@ import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 
-describe('uicatalog - alerts @skip-ios6', function () {
+describe('uicatalog - alerts', function () {
 
   let alertTag = env.IOS7 ? '@label' : '@value';
 

@@ -44,7 +44,7 @@ describe('testapp - basics - calc app 2', function () {
 
   // TODO: Fails on sauce, investigate
   // TODO: Fails with 8.4 or Appium 1.5, investigate cause
-  it.skip('should be able to get syslog logs @skip-ios6 @skip-ios8 @skip-ci', async () => {
+  it.skip('should be able to get syslog logs @skip-ios8 @skip-ci', async () => {
     await driver.implicitWait(4000);
     await B.resolve(driver.findElement('name', 'SumLabelz'))
       .catch(throwMatchableError)

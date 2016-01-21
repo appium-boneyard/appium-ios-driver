@@ -3,7 +3,7 @@ import desired from './desired';
 import B from 'bluebird';
 import { throwMatchableError } from '../helpers/recipes';
 
-describe('uicatalog - execute @skip-ios6', function () {
+describe('uicatalog - execute', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

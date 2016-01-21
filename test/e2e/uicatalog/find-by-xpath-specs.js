@@ -4,7 +4,7 @@ import B from 'bluebird';
 import _ from 'lodash';
 import { throwMatchableError } from '../helpers/recipes.js';
 
-describe('uicatalog - find by xpath @skip-ios6', function () {
+describe('uicatalog - find by xpath', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

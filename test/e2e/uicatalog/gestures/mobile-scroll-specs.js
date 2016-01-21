@@ -1,7 +1,7 @@
 import setup from "../../setup-base";
 import desired from '../desired';
 
-describe('uicatalog - gestures - mobile scroll @skip-ios6', function () {
+describe('uicatalog - gestures - mobile scroll', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

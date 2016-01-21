@@ -1,7 +1,7 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
 
-describe('safari - page load timeout @skip-ios6', function() {
+describe('safari - page load timeout', function() {
   if (!env.IOS81) {
     return;
   }

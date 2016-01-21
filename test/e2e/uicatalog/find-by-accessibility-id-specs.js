@@ -3,7 +3,7 @@ import setup from "../setup-base";
 import desired from './desired';
 import { clickButton } from '../helpers/recipes';
 
-describe('uicatalog - find by accessibility id @skip-ios6', function () {
+describe('uicatalog - find by accessibility id', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
