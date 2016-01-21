@@ -1,7 +1,7 @@
 import setup from "../setup-base";
 import B from 'bluebird';
 
-describe('safari - screenshots @skip-ios6', function() {
+describe('safari - screenshots', function() {
   describe('default' ,function() {
     const driver = setup(this, { browserName: 'safari' }).driver;
 

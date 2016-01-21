@@ -7,7 +7,7 @@ let SLOW_DOWN_MS = 1000;
 // TODO: from the skip flick does not work in any supported ios,
 //       (the element flick actually work, just speedFlick is broken)
 //       maybe try it on real devices
-describe('uicatalog - gestures - flick @skip-ios8 @skip-ios7 @skip-ios6', function () {
+describe('uicatalog - gestures - flick @skip-ios8 @skip-ios7', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

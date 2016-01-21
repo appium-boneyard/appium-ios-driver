@@ -3,7 +3,7 @@ import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
-describe("safari - webview - window title @skip-ios6", function () {
+describe("safari - webview - window title", function () {
   const driver = setup(this, desired, {'no-reset': true}).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 

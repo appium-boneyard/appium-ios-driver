@@ -3,7 +3,7 @@ import desired from '../desired';
 import path from 'path';
 import _ from 'lodash';
 
-describe('uicatalog - load app with relative path @skip-ios6', function () {
+describe('uicatalog - load app with relative path', function () {
   let appPath = path.relative(process.cwd(), desired.app);
 
   let session = setup(this, _.defaults({'app': appPath}, desired));

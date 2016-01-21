@@ -5,7 +5,7 @@ import B from 'bluebird';
 import { clickButton, filterDisplayed, filterVisibleUiaSelector } from '../helpers/recipes';
 //  , filterVisible = require('../../../helpers/ios-uiautomation').filterVisible;
 
-describe('uicatalog - find by ios-ui-automation @skip-ios6', function () {
+describe('uicatalog - find by ios-ui-automation', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

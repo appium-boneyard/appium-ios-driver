@@ -2,7 +2,7 @@ import setup from "../setup-base";
 import env from '../helpers/env';
 import B from 'bluebird';
 
-describe(`safari - context - (${env.DEVICE}) @skip-ios6`, function() {
+describe(`safari - context - (${env.DEVICE})`, function() {
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true

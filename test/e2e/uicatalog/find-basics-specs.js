@@ -4,7 +4,7 @@ import desired from './desired';
 import B from 'bluebird';
 import { clickButton, throwMatchableError } from '../helpers/recipes';
 
-describe('uicatalog - find - basics @skip-ios6', function () {
+describe('uicatalog - find - basics', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

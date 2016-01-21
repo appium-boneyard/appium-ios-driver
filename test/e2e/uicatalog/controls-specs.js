@@ -4,7 +4,7 @@ import { clickButton } from '../helpers/recipes';
 import B from 'bluebird';
 
 
-describe('uicatalog - controls @skip-ios6', function () {
+describe('uicatalog - controls', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

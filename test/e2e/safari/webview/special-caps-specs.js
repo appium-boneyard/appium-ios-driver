@@ -3,7 +3,7 @@ import setup from '../../setup-base';
 import env from '../../helpers/env';
 import { loadWebView, spinWait } from '../../helpers/webview';
 
-describe('safari - webview - special capabilities @skip-ios6', function() {
+describe('safari - webview - special capabilities', function() {
   let specialCaps = Object.assign({}, desired);
   specialCaps.safariIgnoreFraudWarning = true;
 

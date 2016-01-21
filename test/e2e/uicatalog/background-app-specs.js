@@ -1,7 +1,7 @@
 import setup from "../setup-base";
 import desired from './desired';
 
-describe('uicatalog - background app @skip-ios6', function () {
+describe('uicatalog - background app', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 

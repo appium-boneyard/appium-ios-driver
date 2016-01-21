@@ -2,7 +2,7 @@ import env from '../helpers/env';
 import setup from "../setup-base";
 import desired from './desired';
 
-describe('uicatalog - move @skip-ios6', function () {
+describe('uicatalog - move', function () {
 
   describe('moveTo and click', function () {
     let session = setup(this, desired);
