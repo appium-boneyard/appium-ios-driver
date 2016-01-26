@@ -45,6 +45,8 @@ function iphoneOrIpadSimulator(device, version) {
       return isIpad ? 'iPad 2' : 'iPhone 6';
     case '9.2':
       return isIpad ? 'iPad 2' : 'iPhone 6';
+    case '9.3':
+      return isIpad ? 'iPad 2' : 'iPhone 6';
     default:
       throw new Error("invalid version");
   }
@@ -152,6 +154,16 @@ switch (env.DEVICE) {
       app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
     };
     break;
+  case 'ios':
+  case 'ios93':
+  case 'ios93_iphone':
+  case 'ios93_ipad':
+    env.CAPS = {
+      browserName: '',
+      deviceName: iphoneOrIpadSimulator(env.DEVICE, "9.3"),
+      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
+    };
+    break;
   default:
     throw new Error('Unknown device!!!');
 }
@@ -168,6 +180,7 @@ env.IOS84 = env.DEVICE.match(/ios84/i);
 env.IOS9 = env.DEVICE.match(/ios9/i);
 env.IOS91 = env.DEVICE.match(/ios91/i);
 env.IOS92 = env.DEVICE.match(/ios92/i);
+env.IOS93 = env.DEVICE.match(/ios93/i);
 
 // better timeout settings for 71
 env.LAUNCH_TIMEOUT =  process.env.LAUNCH_TIMEOUT ? JSON.parse(process.env.LAUNCH_TIMEOUT) :
@@ -207,6 +220,8 @@ if (env.PLATFORM_VERSION) {
   env.CAPS.platformVersion = "9.1";
 } else if (env.IOS92) {
   env.CAPS.platformVersion = "9.2";
+} else if (env.IOS93) {
+  env.CAPS.platformVersion = "9.3";
 } else if (env.IOS9) {
   env.CAPS.platformVersion = "9.0";
 }
