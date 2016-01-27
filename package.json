@@ -4,7 +4,7 @@
   "keywords": [
     "appium"
   ],
-  "version": "1.6.1",
+  "version": "1.7.0",
   "author": "appium",
   "license": "Apache-2.0",
   "repository": {
@@ -28,7 +28,7 @@
     "appium-cookies": "^1.1.0",
     "appium-express": "^1.2.0",
     "appium-instruments": "^3.6.0",
-    "appium-ios-log": "^1.1.0",
+    "appium-ios-log": "^1.2.0",
     "appium-ios-simulator": "^1.4.0",
     "appium-logger": "^2.1.0",
     "appium-remote-debugger": "^1.9.0",
