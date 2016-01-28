@@ -40,7 +40,7 @@
     "bluebird": "^2.9.32",
     "ios-app-utils": "^1.1.0",
     "js2xmlparser2": "^0.2.0",
-    "lodash": "^3.10.0",
+    "lodash": "^4.0.1",
     "mobile-json-wire-protocol": "^1.2.0",
     "node-idevice": "^0.1.5",
     "path": "^0.12.7",
