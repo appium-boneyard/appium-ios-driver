@@ -52,117 +52,73 @@ function iphoneOrIpadSimulator(device, version) {
   }
 }
 
+// set up the default capabilities
+env.CAPS = {
+  browserName: '',
+  app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
+};
 switch (env.DEVICE) {
   case 'ios6':
   case 'ios6_iphone':
   case 'ios6_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "6.1"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
-    break;
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "6.1");
   case 'ios7':
   case 'ios7_iphone':
   case 'ios7_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "7.0"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "7.0");
     break;
   case 'ios71':
   case 'ios71_iphone':
   case 'ios71_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "7.1"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "7.1");
     break;
   case 'ios8':
   case 'ios80':
   case 'ios8_iphone':
   case 'ios8_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "8.0"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.0");
     break;
   case 'ios81':
   case 'ios81_iphone':
   case 'ios81_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "8.1"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.1");
     break;
   case 'ios82':
   case 'ios82_iphone':
   case 'ios82_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "8.2"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.2");
     break;
   case 'ios83':
   case 'ios83_iphone':
   case 'ios83_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "8.3"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.3");
     break;
   case 'ios84':
   case 'ios84_iphone':
   case 'ios84_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "8.4"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.4");
     break;
   case 'ios9':
   case 'ios9_iphone':
   case 'ios9_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "9.0"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.0");
     break;
   case 'ios91':
   case 'ios91_iphone':
   case 'ios91_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "9.1"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.1");
     break;
   case 'ios':
   case 'ios92':
   case 'ios92_iphone':
   case 'ios92_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "9.2"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.2");
     break;
   case 'ios':
   case 'ios93':
   case 'ios93_iphone':
   case 'ios93_ipad':
-    env.CAPS = {
-      browserName: '',
-      deviceName: iphoneOrIpadSimulator(env.DEVICE, "9.3"),
-      app: process.env.APP ? path.resolve(__dirname, `../../sample-code/apps/${process.env.APP}/build/Release-iphonesimulator/${process.env.APP}.app`) : ''
-    };
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.3");
     break;
   default:
     throw new Error('Unknown device!!!');
