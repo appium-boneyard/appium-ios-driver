@@ -62,6 +62,7 @@ switch (env.DEVICE) {
   case 'ios6_iphone':
   case 'ios6_ipad':
     env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "6.1");
+    break;
   case 'ios7':
   case 'ios7_iphone':
   case 'ios7_ipad':
