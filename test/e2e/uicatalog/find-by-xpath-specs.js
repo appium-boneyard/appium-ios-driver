@@ -15,7 +15,7 @@ describe('uicatalog - find by xpath', function () {
     });
 
     afterEach(async () => {
-      let el = await driver.findElement('name', 'UICatalog');
+      let el = await driver.findElement('accessibility id', 'UICatalog');
       await driver.click(el);
       await B.delay(1000);
     });
@@ -73,13 +73,13 @@ describe('uicatalog - find by xpath', function () {
   describe('duplicate text field', function () {
 
     beforeEach(async () => {
-      let el = await driver.findElement('name', '*Text Fields*');
+      let el = await driver.findElement('accessibility id', 'Text Fields');
       await driver.click(el);
       await B.delay(2000);
     });
 
     afterEach(async () => {
-      let el = await driver.findElement('name', 'UICatalog');
+      let el = await driver.findElement('accessibility id', 'UICatalog');
       await driver.click(el);
       await B.delay(1000);
     });

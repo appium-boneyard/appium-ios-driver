@@ -70,12 +70,12 @@ describe('testapp - basics - calc app 1', function () {
   });
 
   it('should confirm that the disabled button is disabled', async () => {
-    let el = await driver.findElement('name', 'DisabledButton');
+    let el = await driver.findElement('accessibility id', 'DisabledButton');
     (await driver.elementEnabled(el)).should.not.be.ok;
   });
 
   it('should confirm that the compute sum button is enabled', async () => {
-    let el = await driver.findElement('name', 'ComputeSumButton');
+    let el = await driver.findElement('accessibility id', 'ComputeSumButton');
     (await driver.elementEnabled(el)).should.be.ok;
   });
 

@@ -42,7 +42,7 @@ describe('testapp - location - 2 @skip-ci', function () {
   let driver = session.driver;
 
   it('should be able to be turned on', async () => {
-    let el = await driver.findElement('name', 'locationStatus');
+    let el = await driver.findElement('accessibility id', 'locationStatus');
     (await driver.getAttribute('value', el)).should.equal(1);
   });
 });
@@ -64,7 +64,7 @@ describe('testapp - location - 4 @skip-ci @skip-real-device', function () {
   let driver = session.driver;
 
   it('should be able to be turned off', async () => {
-    let el = await driver.findElement('name', 'locationStatus');
+    let el = await driver.findElement('accessibility id', 'locationStatus');
     (await driver.getAttribute('value', el)).should.equal(0);
   });
 });
@@ -78,7 +78,7 @@ describe('testapp - location - 5 @skip-ci', function () {
   let driver = session.driver;
 
   it('should be able to be turned on when using a zip/ipa file', async () => {
-    let el = await driver.findElement('name', 'locationStatus');
+    let el = await driver.findElement('accessibility id', 'locationStatus');
     (await driver.getAttribute('value', el)).should.equal(1);
   });
 });

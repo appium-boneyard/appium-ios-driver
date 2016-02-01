@@ -16,14 +16,14 @@ describe('testapp - basics - calc app 2', function () {
     let lookup = async function (textFieldNum) {
       let num = Math.round(Math.random() * 10000);
       sum += num;
-      let el = await driver.findElement('name', 'TextField' + textFieldNum);
+      let el = await driver.findElement('accessibility id', `TextField${textFieldNum}`);
       await driver.setValue(num, el);
     };
 
-    let answer = await driver.findElement('name', 'Answer');
+    let answer = await driver.findElement('accessibility id', 'Answer');
     await lookup(1);
     await lookup(2);
-    let button = await driver.findElement('name', 'ComputeSumButton');
+    let button = await driver.findElement('accessibility id', 'ComputeSumButton');
     await driver.click(button);
     let res = parseInt(await driver.getText(answer),10);
     res.should.equal(sum);
@@ -46,7 +46,7 @@ describe('testapp - basics - calc app 2', function () {
   // TODO: Fails with 8.4 or Appium 1.5, investigate cause
   it.skip('should be able to get syslog logs @skip-ios8 @skip-ci', async () => {
     await driver.implicitWait(4000);
-    await B.resolve(driver.findElement('name', 'SumLabelz'))
+    await B.resolve(driver.findElement('accessibility id', 'SumLabelz'))
       .catch(throwMatchableError)
       .should.be.rejectedWith(/jsonwpCode: 7/);
     let logs = await driver.getLog();

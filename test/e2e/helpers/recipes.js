@@ -7,7 +7,7 @@ async function elOrNull(driver, using, value) {
 }
 
 async function clickBack (driver) {
-  let el = await elOrNull(driver, 'name', 'Back');
+  let el = await elOrNull(driver, 'accessibility id', 'Back');
   if(el && (await driver.elementDisplayed(el))) {
     await driver.click(el);
   }
