@@ -16,7 +16,7 @@ describe('testapp - timeout', function () {
     it('should die with short command timeout', async () => {
       await driver.timeouts('command', 3000);
       await B.delay(5500);
-      await B.resolve(driver.findElement('name', 'dont exist dogg'))
+      await B.resolve(driver.findElement('accessibility id', 'dont exist dogg'))
         .catch(throwMatchableError)
         .should.be.rejectedWith(/jsonwpCode: (13|6)/);
     });

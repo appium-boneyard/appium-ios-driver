@@ -44,8 +44,8 @@ describe('testapp - find element', function () {
     let els = await driver.findElements('class name', 'UIAButton');
     await driver.click(els[1]);
     let alert = await driver.findElement('class name', 'UIAAlert');
-    (await driver.findElementFromElement('name', 'OK', alert)).should.exist;
-    (await driver.findElementFromElement('name', 'Cancel', alert)).should.exist;
+    (await driver.findElementFromElement('accessibility id', 'OK', alert)).should.exist;
+    (await driver.findElementFromElement('accessibility id', 'Cancel', alert)).should.exist;
     await driver.postDismissAlert();
   });
 
@@ -73,12 +73,12 @@ describe('testapp - find element', function () {
   });
 
   it('should find element by valid name', async () => {
-    let el = await driver.findElement('name', 'ComputeSumButton');
+    let el = await driver.findElement('accessibility id', 'ComputeSumButton');
     el.should.exist;
   });
 
   it('should not find element by invalid name but return respective error code', async () => {
-    await B.resolve(driver.findElement('name', 'InvalidNameForElement'))
+    await B.resolve(driver.findElement('accessibility id', 'InvalidNameForElement'))
       .catch(throwMatchableError)
       .should.be.rejectedWith(/jsonwpCode: 7/);
   });
@@ -95,7 +95,7 @@ describe('testapp - find element', function () {
   });
 
   it('should find multiple elements by valid name', async () => {
-    let els = await driver.findElements('name', 'AppElem');
+    let els = await driver.findElements('accessibility id', 'AppElem');
     els.should.have.length(3);
   });
 
