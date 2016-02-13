@@ -59,6 +59,7 @@ describe('uicatalog - find by xpath', function () {
     });
 
     it('should filter by indices', async () => {
+      await driver.implicitWait(10000);
       let el = await driver.findElement('xpath', "//UIATableCell[4]/UIAButton[1]");
       (await driver.getAttribute('name', el)).should.equal('X Button');
     });
