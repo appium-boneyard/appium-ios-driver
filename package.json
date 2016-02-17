@@ -33,7 +33,7 @@
     "appium-logger": "^2.1.0",
     "appium-remote-debugger": "^2.0.0",
     "appium-support": "^2.0.9",
-    "appium-uiauto": "^2.2.0",
+    "appium-uiauto": "^2.3.1",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.2.0",
     "babel-runtime": "=5.8.24",

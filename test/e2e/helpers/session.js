@@ -54,7 +54,7 @@ class Session {
     if (env.MAX_RETRY) attempts = Math.min(env.MAX_RETRY, attempts);
     await init(attempts);
     this.initialized = true;
-    this.driver.implicitWait(env.IMPLICIT_WAIT_TIMEOUT);
+    await this.driver.implicitWait(env.IMPLICIT_WAIT_TIMEOUT);
   }
 
   async tearDown () {
