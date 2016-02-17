@@ -189,9 +189,9 @@ if (process.env.MAX_RETRY) env.MAX_RETRY = parseInt(process.env.MAX_RETRY, 10);
 env.APPIUM_PORT = parseInt(process.env.APPIUM_PORT || 4723, 10);
 env.LOCAL_APPIUM_PORT = env.SAUCE ? 4443 : env.APPIUM_PORT;
 if (env.REAL_DEVICE) {
-  env.TEST_END_POINT = 'http://' + localIp() + ':' + env.LOCAL_APPIUM_PORT + '/test/';
+  env.TEST_END_POINT = `http://${localIp()}:${env.LOCAL_APPIUM_PORT}/test/`;
 } else {
-  env.TEST_END_POINT = 'http://localhost:' + env.LOCAL_APPIUM_PORT + '/test/';
+  env.TEST_END_POINT = `http://localhost:${env.LOCAL_APPIUM_PORT}/test/`;
 }
 env.GUINEA_TEST_END_POINT = env.TEST_END_POINT + 'guinea-pig';
 env.PHISHING_END_POINT = env.TEST_END_POINT.replace('http://', 'http://foo:bar@');
