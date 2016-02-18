@@ -63,7 +63,7 @@ async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
 }
 
 function skip(reason, done) {
-  console.warn('skipping: ' + reason);
+  console.warn(`skipping: ${reason}`);
   return done();
 }
 
