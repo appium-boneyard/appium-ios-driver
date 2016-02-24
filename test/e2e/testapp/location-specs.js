@@ -13,15 +13,15 @@ describe('testapp - location - 1 @skip-ci', function () {
   it('should return the right x/y coordinates for getLocation', async () => {
     let el = await driver.findElement('class name', 'UIAButton');
     let loc = await driver.getLocation(el);
-     [94, 110].should.contain(parseInt(loc.x, 10));
-     loc.y.should.be.above(120);
+    [94, 110].should.contain(parseInt(loc.x, 10));
+    loc.y.should.be.above(120);
   });
 
   it('should return the right x/y coordinates for getLocationInView', async () => {
     let el = await driver.findElement('class name', 'UIAButton');
     let loc = await driver.getLocation(el);
-     [94, 110].should.contain(parseInt(loc.x, 10));
-     loc.y.should.be.above(120);
+    [94, 110].should.contain(parseInt(loc.x, 10));
+    loc.y.should.be.above(120);
   });
 
   it('should not error with valid lat/lon and no options', async () => {

@@ -8,7 +8,7 @@ describe('testapp - context methods', function () {
   let driver = session.driver;
 
   it('getting list multiple times should not crash appium', async () => {
-    for(let i=0; i<8; i++) {
+    for (let i=0; i<8; i++) {
       let contexts = await driver.getContexts();
       contexts.should.have.length(1);
     }

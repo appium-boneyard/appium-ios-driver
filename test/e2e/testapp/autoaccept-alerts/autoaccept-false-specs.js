@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 describe('testapp - autoAcceptAlerts cap = false', function () {
   let session = setup(this, _.defaults({
-    autoAcceptAlerts: false} ,desired));
+    autoAcceptAlerts: false}, desired));
   let driver = session.driver;
 
   it('does not auto-accept alerts', async () => {

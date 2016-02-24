@@ -11,7 +11,7 @@ env.IMPLICIT_WAIT_TIMEOUT = 5000;
 env.PLATFORM_VERSION = process.env.PLATFORM_VERSION;
 
 env.VERBOSE = process.env.VERBOSE;
-if (env.VERBOSE) console.log("process.env.LAUNCH_TIMEOUT -->", process.env.LAUNCH_TIMEOUT);
+if (env.VERBOSE) console.log("process.env.LAUNCH_TIMEOUT -->", process.env.LAUNCH_TIMEOUT); //eslint-disable-line no-console
 env.LAUNCH_TIMEOUT = JSON.parse(process.env.LAUNCH_TIMEOUT || 60000);
 env.MOCHA_INIT_TIMEOUT = parseInt(process.env.MOCHA_INIT_TIMEOUT || 300000, 10);
 
@@ -109,13 +109,12 @@ switch (env.DEVICE) {
   case 'ios91_ipad':
     env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.1");
     break;
-  case 'ios':
+  case 'ios': // default. move as versions go up
   case 'ios92':
   case 'ios92_iphone':
   case 'ios92_ipad':
     env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.2");
     break;
-  case 'ios':
   case 'ios93':
   case 'ios93_iphone':
   case 'ios93_ipad':

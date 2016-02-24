@@ -13,7 +13,7 @@ describe('uicatalog - find by ios-ui-automation', function () {
 
   before(async () => {
     let el = await driver.findElement(byUIA, '.navigationBars()[0]');
-    if((await driver.getAttribute('name', el)) !== 'UICatalog') {
+    if ((await driver.getAttribute('name', el)) !== 'UICatalog') {
       await clickButton(driver, 'UICatalog');
     }
     await B.delay(500);

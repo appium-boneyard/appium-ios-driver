@@ -6,7 +6,7 @@ import { throwMatchableError } from '../../helpers/recipes';
 
 describe('testapp - autoDismissAlerts cap = true', function () {
   let session = setup(this, _.defaults({
-    autoDismissAlerts: true} ,desired));
+    autoDismissAlerts: true}, desired));
   let driver = session.driver;
 
   it('auto-dismiss alerts', async () => {

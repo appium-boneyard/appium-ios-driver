@@ -7,7 +7,7 @@ function tagChaiAssertionError (err) {
 }
 
 function ChaiAsserter (assertFunc) {
-    return new Asserter((driver) => assertFunc(driver).catch(tagChaiAssertionError));
+  return new Asserter((driver) => assertFunc(driver).catch(tagChaiAssertionError));
 }
 
 export { tagChaiAssertionError, ChaiAsserter };

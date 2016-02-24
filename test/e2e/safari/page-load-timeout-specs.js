@@ -11,7 +11,7 @@ describe('safari - page load timeout', function() {
 
     it('should go to the requested page', async () => {
       await driver.timeouts('page load', 5000);
-      await driver.setUrl(env.GUINEA_TEST_END_POINT + '?delay=30000')
+      await driver.setUrl(env.GUINEA_TEST_END_POINT + '?delay=30000');
 
       // the page should not have time to load
       (await driver.getPageSource()).should.include('Let\'s browse!');

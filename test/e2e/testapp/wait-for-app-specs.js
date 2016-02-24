@@ -13,7 +13,7 @@ describe('testapp - wait-for-apps', function () {
       it('should work', async () => {
         let el = await driver.findElement('class name', 'UIAButton');
         el.should.exist;
-        if(checkAfter) {
+        if (checkAfter) {
           (await driver.execute('env.currentTest')).should.equal(desc);
         }
       });

@@ -7,28 +7,28 @@ describe('safari - webview - alerts @skip-real-device', function() {
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should accept alert', async () => {
-    let el = await driver.findElement('id' ,'alert1');
+    let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postAcceptAlert();
     (await driver.title()).should.include('I am a page title');
   });
 
   it('should dismiss alert', async () => {
-    let el = await driver.findElement('id' ,'alert1');
+    let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postDismissAlert();
     (await driver.title()).should.include('I am a page title');
   });
 
   it('should get text of alert', async () => {
-    let el = await driver.findElement('id' ,'alert1');
+    let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     (await driver.getAlertText()).should.include('I am an alert');
     await driver.postDismissAlert();
   });
 
   it('should not get text of alert that closed', async () => {
-    let el = await driver.findElement('id' ,'alert1');
+    let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postAcceptAlert();
     return driver.getAlertText()
@@ -36,7 +36,7 @@ describe('safari - webview - alerts @skip-real-device', function() {
   });
 
   it('should set text of prompt', async () => {
-    let el = await driver.findElement('id' ,'prompt1');
+    let el = await driver.findElement('id', 'prompt1');
     await driver.click(el);
     await driver.setAlertText('yes I do!');
     await driver.postAcceptAlert();
@@ -47,7 +47,7 @@ describe('safari - webview - alerts @skip-real-device', function() {
   });
 
   it('should fail to set text of alert', async () => {
-    let el = await driver.findElement('id' ,'alert1');
+    let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     return driver.setAlertText('yes I do!')
       .should.be.rejectedWith(/Tried to set text of an alert that wasn't a prompt/);

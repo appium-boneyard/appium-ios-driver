@@ -25,7 +25,7 @@ describe('testapp - basics - calc app 2', function () {
     await lookup(2);
     let button = await driver.findElement('accessibility id', 'ComputeSumButton');
     await driver.click(button);
-    let res = parseInt(await driver.getText(answer),10);
+    let res = parseInt(await driver.getText(answer), 10);
     res.should.equal(sum);
   });
 

@@ -32,7 +32,7 @@ describe('uicatalog - basic', () => {
       });
 
       it('should confirm element is not visible', async () => {
-        let el1 = await driver.findElement('xpath',`//UIAStaticText[contains(${textTag}, 'Buttons')]`);
+        let el1 = await driver.findElement('xpath', `//UIAStaticText[contains(${textTag}, 'Buttons')]`);
         await driver.click(el1);
         let el2 = await driver.findElement('xpath', "//UIANavigationBar/UIAImage");
         (await driver.elementDisplayed(el2)).should.not.be.ok;

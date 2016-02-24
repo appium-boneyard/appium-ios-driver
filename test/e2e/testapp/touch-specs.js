@@ -93,8 +93,8 @@ describe('testapp - swipe actions', function () {
   describe('swipe', function () {
     let slider, target, loc;
     let leftPos = { x: 0, y: 0 },
-      rightPos = { x: 0, y: 0 },
-      centerPos = { x: 0, y: 0 };
+        rightPos = { x: 0, y: 0 },
+        centerPos = { x: 0, y: 0 };
 
     let getNumericValue = function (pctVal) {
       pctVal = pctVal.replace("%", "");
