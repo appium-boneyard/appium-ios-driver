@@ -50,7 +50,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `closeAlertBeforeTest`            |
 | `closeApp`                        |
 | `closeWindow`                     |
-| `convertElementForAtoms`          |
+| `convertElementsForAtoms`         |
 | `deleteCookie`                    |
 | `deleteCookies`                   |
 | `elementDisplayed`                |
