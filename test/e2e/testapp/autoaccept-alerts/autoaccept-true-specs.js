@@ -6,7 +6,7 @@ import { throwMatchableError } from '../../helpers/recipes';
 
 describe('testapp - autoAcceptAlerts cap = true', function () {
   let session = setup(this, _.defaults({
-    autoAcceptAlerts: true} ,desired));
+    autoAcceptAlerts: true}, desired));
   let driver = session.driver;
 
   it('auto-accepts alerts', async () => {

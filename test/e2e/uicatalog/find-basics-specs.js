@@ -73,15 +73,15 @@ describe('uicatalog - find - basics', function () {
       el1.ELEMENT.should.not.equal(el2.ELEMENT);
       el1Name.should.not.equal(el2Name);
 
-       // el1 is gone, so it doesn't have a name anymore
-       (await driver.getAttribute('name', el1)).should.equal("");
+      // el1 is gone, so it doesn't have a name anymore
+      (await driver.getAttribute('name', el1)).should.equal("");
     });
   });
 
   it('should return all image elements with internally generated ids', async () => {
     let els = await driver.findElements('class name', 'UIAImage');
     els.length.should.be.above(0);
-    for(let el of els) {
+    for (let el of els) {
       el.should.exist;
     }
   });
@@ -104,8 +104,8 @@ describe('uicatalog - find - basics', function () {
 
   describe('findElement(s) containing accessibility id', () => {
     afterEach(async () => {
-        await clickButton(driver, 'UICatalog');
-        await B.delay(1000);
+      await clickButton(driver, 'UICatalog');
+      await B.delay(1000);
     });
 
     let axIdExt = (env.IOS8 || env.IOS9) ? '' : ', AAPLActionSheetViewController';
@@ -132,8 +132,8 @@ describe('uicatalog - find - basics', function () {
     });
 
     afterEach(async () => {
-        await clickButton(driver, 'UICatalog');
-        await B.delay(1000);
+      await clickButton(driver, 'UICatalog');
+      await B.delay(1000);
     });
 
     let axIdExt = (env.IOS8 || env.IOS9) ? '' : ', AAPLTextFieldViewController';

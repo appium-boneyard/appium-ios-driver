@@ -21,7 +21,7 @@ describe('testapp - rotation gesture', function () {
 
     await driver.mobileRotation(114, 198, 3, 0, 2, 5);
     await B.delay(1000);
-   });
+  });
 
   it('should rotate map with element', async () => {
     let map = await driver.findElement('class name', 'UIAMapView');

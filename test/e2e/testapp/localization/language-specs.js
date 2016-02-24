@@ -17,7 +17,7 @@ describe('localization - language @skip-ios8 @skip-real-device', function () {
 
   describe('changing to fr', function () {
     let session = setup(this, _.defaults({
-      language: 'fr'} ,desired));
+      language: 'fr'}, desired));
     let driver = session.driver;
 
     it('should be fr', async () => {
@@ -28,7 +28,7 @@ describe('localization - language @skip-ios8 @skip-real-device', function () {
 
   describe('changing to de', function () {
     let session = setup(this, _.defaults({
-      language: 'de'} ,desired));
+      language: 'de'}, desired));
     let driver = session.driver;
 
     it('should be de', async () => {

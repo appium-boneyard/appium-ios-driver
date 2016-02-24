@@ -8,7 +8,7 @@ async function elOrNull(driver, using, value) {
 
 async function clickBack (driver) {
   let el = await elOrNull(driver, 'accessibility id', 'Back');
-  if(el && (await driver.elementDisplayed(el))) {
+  if (el && (await driver.elementDisplayed(el))) {
     await driver.click(el);
   }
 }
@@ -40,9 +40,9 @@ async function okIfAlert(driver) {
   let text;
   try {
     text = await driver.getAlertText();
-  } catch(err) {
+  } catch (err) {
     // if NoAlertOpenError (27) continue
-    if(err.jsonwpCode !== 27) {
+    if (err.jsonwpCode !== 27) {
       throw err;
     }
   }

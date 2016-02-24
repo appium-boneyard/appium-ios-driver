@@ -28,7 +28,7 @@ describe('localization - locale @skip-real-device', function () {
 
   describe('changing locale @skip-real-device', function () {
     let session = setup(this, _.defaults({
-      locale: 'fr'} ,desired));
+      locale: 'fr'}, desired));
     let driver = session.driver;
 
     it('should be fr', async () => {
@@ -39,7 +39,7 @@ describe('localization - locale @skip-real-device', function () {
 
   describe('changing back @skip-real-device', function () {
     let session = setup(this, _.defaults({
-      locale: 'en_US'} ,desired));
+      locale: 'en_US'}, desired));
     let driver = session.driver;
 
     it('should be en', async () => {

@@ -2,7 +2,7 @@ import setup from "../setup-base";
 import B from 'bluebird';
 
 describe('safari - screenshots', function() {
-  describe('default' ,function() {
+  describe('default', function() {
     const driver = setup(this, { browserName: 'safari' }).driver;
 
     it('should get an app screenshot', async () => {

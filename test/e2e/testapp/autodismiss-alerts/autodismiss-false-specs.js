@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 describe('testapp - autoDismissAlerts cap = false', function () {
   let session = setup(this, _.defaults({
-    autoDismissAlerts: false} ,desired));
+    autoDismissAlerts: false}, desired));
   let driver = session.driver;
 
   it('does not auto-dismiss alerts', async () => {

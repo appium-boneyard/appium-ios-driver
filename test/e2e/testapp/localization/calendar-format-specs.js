@@ -19,7 +19,7 @@ describe('localization - calendarFormat @skip-ios8 @skip-real-device', function 
 
   describe('changing to gregorian calendar', function () {
     let session = setup(this, _.defaults({
-      calendarFormat: 'gregorian'} ,desired));
+      calendarFormat: 'gregorian'}, desired));
     let driver = session.driver;
 
     it('should have gregorian calendar format', async () => {
@@ -30,7 +30,7 @@ describe('localization - calendarFormat @skip-ios8 @skip-real-device', function 
 
   describe('changing to buddhist calendar', function () {
     let session = setup(this, _.defaults({
-      calendarFormat: 'buddhist'} ,desired));
+      calendarFormat: 'buddhist'}, desired));
     let driver = session.driver;
 
     it('should have buddhist calendar format', async () => {
