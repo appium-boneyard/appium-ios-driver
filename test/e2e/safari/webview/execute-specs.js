@@ -47,4 +47,8 @@ describe('safari - webview - execute', function() {
     let res = await driver.execute(GET_ELEM_BY_TAGNAME);
     expect(res).to.have.length.above(0);
   });
+  it('should pass along non-element arguments', async () => {
+    let arg = 'non-element-argument';
+    (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args[0];', [arg])).should.be.equal(arg);
+  });
 });
