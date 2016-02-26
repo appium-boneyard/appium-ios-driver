@@ -24,7 +24,7 @@ describe('Desired Capabilities', () => {
     }
   }
 
-  describe('app and bundleId', () => {
+  describe('platform name, app and bundleId', () => {
     it('should throw error if neither app nor bundleId are present', () => {
       let caps = {
         platformName: 'iOS',
@@ -43,6 +43,14 @@ describe('Desired Capabilities', () => {
     it('should accept a bundleId', () => {
       let caps = {
         platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        bundleId: 'com.some-company.some-app'
+      };
+      checkCaps(caps);
+    });
+    it('should not be sensitive to platform name casing', () => {
+      let caps = {
+        platformName: 'IoS',
         deviceName: 'iPhone 5',
         bundleId: 'com.some-company.some-app'
       };
