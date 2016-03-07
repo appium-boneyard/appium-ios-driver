@@ -51,4 +51,8 @@ describe('safari - webview - execute', function() {
     let arg = 'non-element-argument';
     (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args[0];', [arg])).should.be.equal(arg);
   });
+  it('should handle return values correctly', async () => {
+    let arg = ['one', 'two', 'three'];
+    (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args;', arg)).should.eql(arg);
+  });
 });
