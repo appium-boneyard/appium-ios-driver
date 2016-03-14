@@ -87,6 +87,22 @@ describe('testapp - keyboard', function () {
       await driver.setValue('\ue017\ue017', el);
       (await driver.getText(el)).should.equal('ab');
     });
-  });
 
+    it('should send single quote text with setValue', async () => {
+      let testText = "'";
+      let els = await driver.findElements('class name', 'UIATextField');
+      let el = els[1];
+      await driver.clear(el);
+      await driver.setValue(testText, el);
+      (await driver.getText(el)).should.equal(testText);
+    });
+    it('should send single quote text with keys', async () => {
+      let testText = "'";
+      let els = await driver.findElements('class name', 'UIATextField');
+      let el = els[1];
+      await driver.clear(el);
+      await driver.keys(testText);
+      (await driver.getText(el)).should.equal(testText);
+    });
+  });
 });
