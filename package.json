@@ -29,7 +29,7 @@
     "appium-express": "^1.2.0",
     "appium-instruments": "^3.6.0",
     "appium-ios-log": "^1.2.0",
-    "appium-ios-simulator": "^1.5.1",
+    "appium-ios-simulator": "^1.5.3",
     "appium-logger": "^2.1.0",
     "appium-remote-debugger": "^2.0.0",
     "appium-support": "^2.0.9",
