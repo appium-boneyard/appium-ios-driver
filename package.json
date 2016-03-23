@@ -27,7 +27,7 @@
     "appium-base-driver": "^1.4.1",
     "appium-cookies": "^1.1.0",
     "appium-express": "^1.2.2",
-    "appium-instruments": "^3.6.3",
+    "appium-instruments": "^3.6.4",
     "appium-ios-log": "^1.2.0",
     "appium-ios-simulator": "^1.5.3",
     "appium-logger": "^2.1.0",
