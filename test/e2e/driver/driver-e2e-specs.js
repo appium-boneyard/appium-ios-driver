@@ -19,10 +19,18 @@ describe('driver', function () {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
+      showIOSLog: false,
+      noReset: true,
+      newCommandTimeout: 120
     };
     caps = _.merge({}, env.CAPS, caps);
     driver = new IosDriver();
     await driver.createSession(caps);
+  });
+
+  it('should return server details', async () => {
+    let serverCaps = await driver.getSession();
+    serverCaps.takesScreenshot.should.exist;
   });
 
   it('should stop', async () => {
@@ -30,4 +38,3 @@ describe('driver', function () {
     await driver.deleteSession();
   });
 });
-
