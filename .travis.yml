@@ -9,6 +9,9 @@ env:
 language:
   - objective-c
 osx_image: xcode6.4
+cache:
+  directories
+    - node_modules
 before_install:
   # TavisCI's OSX environment gives us node 0.10.32
   # Use NVM to update it to 0.12

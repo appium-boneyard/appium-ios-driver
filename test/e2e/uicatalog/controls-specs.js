@@ -44,7 +44,7 @@ describe('uicatalog - controls', function () {
 
     await driver.setValue(0.8, slider);
     // give a moment for the change to register
-    await B.delay(500);
+    await B.delay(5000);
 
     value = await driver.getAttribute("value", slider);
     value = parseInt(value.replace('%', ''), 10);

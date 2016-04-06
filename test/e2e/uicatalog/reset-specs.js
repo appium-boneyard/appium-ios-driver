@@ -29,5 +29,13 @@ describe('uicatalog - reset', function () {
       let els = await driver.findElements('class name', 'UIATableView');
       els.should.have.length(1);
     });
+
+    it.only('should launch app even if it is already launched', async () => {
+      rawDriver.ready.should.be.ok;
+      await driver.launchApp();
+      rawDriver.ready.should.be.ok;
+      let els = await driver.findElements('class name', 'UIATableView');
+      els.should.have.length(1);
+    });
   });
 });
