@@ -101,6 +101,49 @@ describe('Desired Capabilities', () => {
     });
   });
 
+  describe('processArguments', () => {
+    it('should accept plain string', () => {
+      let caps = {
+        platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        app: 'some-app',
+        processArguments: 'this is a process argument'
+      };
+      checkCaps(caps);
+    });
+    it('should accept an object', () => {
+      let caps = {
+        platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        app: 'some-app',
+        processArguments: {
+          global: 1
+        }
+      };
+      checkCaps(caps);
+    });
+    it('should accept a stringified object', () => {
+      let caps = {
+        platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        app: 'some-app',
+        processArguments: JSON.stringify({
+          global: 1
+        })
+      };
+      checkCaps(caps);
+    });
+    it('should fail for non-string, non-object', () => {
+      let caps = {
+        platformName: 'iOS',
+        deviceName: 'iPhone 5',
+        app: 'some-app',
+        processArguments: 4
+      };
+      checkCaps(caps, true);
+    });
+  });
+
   describe('server capabilities', () => {
     it('should collect server capabilities', async () => {
       sandbox.stub(driver, 'configureApp');
