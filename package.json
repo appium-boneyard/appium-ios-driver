@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.7",
-    "appium-base-driver": "^1.4.1",
+    "appium-base-driver": "^1.5.0",
     "appium-cookies": "^1.1.0",
     "appium-express": "^1.2.2",
     "appium-instruments": "^3.7.1",

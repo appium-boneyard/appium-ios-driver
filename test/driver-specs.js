@@ -15,6 +15,46 @@ describe('driver', () => {
     let driver = new IosDriver();
     driver.should.exist;
   });
+
+  describe('timeouts', () => {
+    let driver;
+    before(async () => {
+      driver = new IosDriver();
+      // await driver.createSession({});
+    });
+    describe('command', () => {
+      it('should exist by default', async () => {
+        driver.newCommandTimeoutMs.should.equal(60000);
+      });
+      it('should be settable through `timeouts`', async () => {
+        await driver.timeouts('command', 20);
+        driver.newCommandTimeoutMs.should.equal(20);
+      });
+    });
+    describe('implicit', () => {
+      it('should not exist by default', async () => {
+        driver.implicitWaitMs.should.equal(0);
+      });
+      it('should be settable through `timeouts`', async () => {
+        await driver.timeouts('implicit', 20);
+        driver.implicitWaitMs.should.equal(20);
+      });
+    });
+    describe('page load', () => {
+      it('should be settable through `timeouts`', async () => {
+        let to = driver.pageLoadMs;
+        await driver.timeouts('page load', to + 20);
+        driver.pageLoadMs.should.equal(to + 20);
+      });
+    });
+    describe('script', () => {
+      it('should be settable through `timeouts`', async () => {
+        let to = driver.asyncWaitMs;
+        await driver.timeouts('script', to + 20);
+        driver.asyncWaitMs.should.equal(to + 20);
+      });
+    });
+  });
 });
 
 describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {

@@ -20,7 +20,7 @@ describe('driver', function () {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       showIOSLog: false,
-      noReset: true,
+      fullReset: true,
       newCommandTimeout: 120
     };
     caps = _.merge({}, env.CAPS, caps);
