@@ -20,6 +20,16 @@ describe('uicatalog - find by xpath', function () {
       await B.delay(1000);
     });
 
+    it('should respect implicit wait', async () => {
+      await driver.implicitWait(5000);
+
+      let begin = Date.now();
+      await driver.findElement('xpath', "//something_not_there")
+        .should.eventually.be.rejected;
+      let end = Date.now();
+      (end - begin).should.be.above(5000);
+    });
+
     it('should return the last button', async () => {
       let el = await driver.findElement('xpath', "//UIAButton[last()]");
       (await driver.getText(el)).should.equal("Button"); // this is the name of the last button
