@@ -4,7 +4,7 @@ import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
 describe('safari - webview - executeAsync', function() {
-  const driver = setup(this, desired, {'no-reset': true}, false, true).driver;
+  const driver = setup(this, desired, {noReset: true}, false, true).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should bubble up javascript errors', async () => {

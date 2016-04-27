@@ -38,7 +38,7 @@ describe('testapp - location - 1 @skip-ci', function () {
 describe('testapp - location - 2 @skip-ci', function () {
   let session = setup(this, _.defaults(
     {locationServicesAuthorized: true, bundleId: 'io.appium.TestApp'},
-    desired), {'no-reset': true});
+    desired), {noReset: true});
   let driver = session.driver;
 
   it('should be able to be turned on', async () => {
@@ -60,7 +60,7 @@ describe('testapp - location - 3 @skip-ci', function () {
 describe('testapp - location - 4 @skip-ci @skip-real-device', function () {
   let session = setup(this, _.defaults(
     {locationServicesAuthorized: false, bundleId: 'io.appium.TestApp'},
-    desired), {'no-reset': true});
+    desired), {noReset: true});
   let driver = session.driver;
 
   it('should be able to be turned off', async () => {
@@ -74,7 +74,7 @@ describe('testapp - location - 5 @skip-ci', function () {
     locationServicesAuthorized: true,
     bundleId: 'io.appium.TestApp',
     app: 'test/assets/TestApp.zip'
-  }, desired), {'no-reset': true});
+  }, desired), {noReset: true});
   let driver = session.driver;
 
   it('should be able to be turned on when using a zip/ipa file', async () => {

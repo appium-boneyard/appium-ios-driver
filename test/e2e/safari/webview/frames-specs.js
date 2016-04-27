@@ -8,7 +8,7 @@ const GET_ELEM_SYNC = `return document.getElementsByTagName('h1')[0].innerHTML;`
 const GET_ELEM_ASYNC = `arguments[arguments.length - 1](document.getElementsByTagName('h1')[0].innerHTML);`;
 
 describe('safari - webview - frames', function() {
-  const driver = setup(this, desired, {'no-reset': true}, false, true).driver;
+  const driver = setup(this, desired, {noReset: true}, false, true).driver;
 
   beforeEach(async () => await loadWebView(
     desired,

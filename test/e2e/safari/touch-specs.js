@@ -10,7 +10,7 @@ describe.skip('touch', function() {
   const driver = setup(this, {
     browserName: "safari"
   }, {
-    'no-reset': true
+    noReset: true
   }).driver;
 
   it('should flick element', async () => {

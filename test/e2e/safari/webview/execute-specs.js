@@ -9,7 +9,7 @@ const GET_WRONG_INNERHTML = `return document.body.innerHTML.indexOf('I am not so
 const GET_ELEM_BY_TAGNAME = `return document.getElementsByTagName('a');`;
 
 describe('safari - webview - execute', function() {
-  const driver = setup(this, desired, {'no-reset': true}).driver;
+  const driver = setup(this, desired, {noReset: true}).driver;
   before(async () => await loadWebView(desired, driver));
 
   it('should bubble up javascript errors', async () => {

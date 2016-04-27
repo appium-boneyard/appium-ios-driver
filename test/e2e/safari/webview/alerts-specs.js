@@ -3,7 +3,7 @@ import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
 describe('safari - webview - alerts @skip-real-device', function() {
-  const driver = setup(this, desired, {'no-reset': true}).driver;
+  const driver = setup(this, desired, {noReset: true}).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should accept alert', async () => {
