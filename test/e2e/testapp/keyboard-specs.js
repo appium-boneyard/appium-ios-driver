@@ -76,6 +76,7 @@ describe('testapp - keyboard', function () {
       let el = els[1];
       await driver.clear(el);
       await driver.setValue('abcd', el);
+      (await driver.getText(el)).should.equal('abcd');
       await driver.setValue('\uE003\uE003', el);
       (await driver.getText(el)).should.equal('ab');
     });
