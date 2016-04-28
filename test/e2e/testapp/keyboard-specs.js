@@ -4,6 +4,7 @@ import _ from 'lodash';
 import env from '../helpers/env';
 import unorm from 'unorm';
 
+
 describe('testapp - keyboard', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
@@ -75,6 +76,7 @@ describe('testapp - keyboard', function () {
       let el = els[1];
       await driver.clear(el);
       await driver.setValue('abcd', el);
+      (await driver.getText(el)).should.equal('abcd');
       await driver.setValue('\uE003\uE003', el);
       (await driver.getText(el)).should.equal('ab');
     });
@@ -103,6 +105,14 @@ describe('testapp - keyboard', function () {
       await driver.clear(el);
       await driver.keys(testText);
       (await driver.getText(el)).should.equal(testText);
+    });
+    it('should send text with a newline', async () => {
+      let testText = ['my string\n'];
+      let els = await driver.findElements('class name', 'UIATextField');
+      let el = els[1];
+      await driver.clear(el);
+      await driver.keys(testText);
+      (await driver.getText(el)).should.equal('my string');
     });
   });
 });
