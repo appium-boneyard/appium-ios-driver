@@ -3,11 +3,8 @@
 import _ from 'lodash';
 import env from '../helpers/env';
 import { IosDriver } from '../../../lib/driver';
-import { rootDir } from '../../../lib/utils';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import path from 'path';
-import B from 'bluebird';
 
 chai.should();
 chai.use(chaiAsPromised);
