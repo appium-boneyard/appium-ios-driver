@@ -4,7 +4,7 @@ import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
 
 describe('safari - webview - cookies', function() {
-  const driver = setup(this, desired, {'no-reset': true}).driver;
+  const driver = setup(this, desired, {noReset: true}).driver;
 
   describe('within iframe webview', function() {
     it('should be able to get cookies for a page with none', async () => {

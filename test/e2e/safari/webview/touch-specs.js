@@ -4,7 +4,7 @@ import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 
 describe("safari - webview - touch actions", function () {
-  const driver = setup(this, Object.assign({ 'noReset': true }, desired)).driver;
+  const driver = setup(this, Object.assign({noReset: true}, desired)).driver;
   beforeEach(async () => await loadWebView(desired, driver));
 
   it('should not be able to do native touch actions', async () => {

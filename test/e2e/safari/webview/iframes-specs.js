@@ -5,7 +5,7 @@ import env from '../../helpers/env';
 
 
 describe('safari - webview - iframes', function() {
-  const driver = setup(this, desired, {'no-reset': true}).driver;
+  const driver = setup(this, desired, {noReset: true}).driver;
 
   beforeEach(async () => await loadWebView(
     desired,
