@@ -17,7 +17,7 @@ describe('built-in apps', function () {
       let caps = {
         app: 'Calendar',
         platformName: 'iOS',
-        deviceName: 'iPhone 6s',
+        deviceName: 'iPhone 6',
         showIOSLog: false,
         fullReset: false,
         newCommandTimeout: 120
