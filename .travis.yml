@@ -9,13 +9,9 @@ env:
 language:
   - objective-c
 osx_image: xcode6.4
+node_js:
+  - "0.12"
 before_install:
-  # TavisCI's OSX environment gives us node 0.10.32
-  # Use NVM to update it to 0.12
-  - rm -rf ~/.nvm
-  - git clone https://github.com/creationix/nvm.git ~/.nvm
-  - source ~/.nvm/nvm.sh
-  - nvm install 0.12
   # Instruments fix:
   # https://github.com/travis-ci/travis-ci/issues/4218
   - ./bin/instruments-auth.sh

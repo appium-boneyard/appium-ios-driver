@@ -7,10 +7,10 @@ import desired from './desired';
 import B from 'bluebird';
 import '../helpers/setup_testlibs';
 
-describe('testapp - device', function () {
+describe('testapp - device @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
-  describe('invalid deviceName @skip-real-device', function () {
+  describe('invalid deviceName', function () {
     it('should fail gracefully with an invalid deviceName', async () => {
       let session = new Session(_.defaults({deviceName: "iFailure 3.5-inch"},  desired),
         {'no-retry': true});

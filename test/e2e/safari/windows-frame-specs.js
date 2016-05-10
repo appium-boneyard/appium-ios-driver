@@ -1,4 +1,3 @@
-/* globals expect */
 import setup from "../setup-base";
 import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
@@ -60,8 +59,8 @@ describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopup
 
   beforeEach(async () => await loadWebView("safari", driver));
 
-  it("should not be able to open js popup windows with safariAllowPopups set to false", async () => {
+  it("should not be able to open js popup windows", async () => {
     await driver.execute("window.open('/test/guinea-pig2.html', null)");
-    expect(async () => await spinTitle("I am another page title", driver, 5)).to.throw;
+    await spinTitle("I am another page title", driver, 5).should.eventually.be.rejected;
   });
 });

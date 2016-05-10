@@ -33,4 +33,13 @@ describe.skip('touch', function() {
     l2.x.should.be.within(l1.x + dx - 2, l1.x + dx + 2);
     l2.y.should.be.within(l1.y + dy - 2, l1.y + dy + 2);
   });
+
+  it('should not be able to do native touch actions', async () => {
+    let el = await driver.findElement('id', 'comments');
+    let gestures = [
+      {action: 'press', options: {element: el}},
+      {action: 'release'}
+    ];
+    await driver.performTouch(gestures).should.eventually.be.rejected;
+  });
 });

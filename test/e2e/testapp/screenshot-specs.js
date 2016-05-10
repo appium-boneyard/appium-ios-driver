@@ -1,9 +1,11 @@
 import setup from "../setup-base";
 import B from 'bluebird';
+import desired from './desired';
 
-describe('safari - screenshots', function() {
+
+describe('testapp - screenshots', function() {
   describe('default', function() {
-    const driver = setup(this, { browserName: 'safari' }).driver;
+    const driver = setup(this, desired).driver;
 
     it('should get an app screenshot', async () => {
       (await driver.getScreenshot()).should.exist;
@@ -30,10 +32,7 @@ describe('safari - screenshots', function() {
   });
 
   describe('setting screenshotWaitTimeout', function() {
-    const driver = setup(this, {
-      browserName: 'safari',
-      screenshotWaitTimeout: 5
-    }).driver;
+    const driver = setup(this, desired).driver;
 
     it('should get an app screenshot', async () => {
       (await driver.getScreenshot()).should.exist;
