@@ -40,10 +40,10 @@ describe('commands - logging', function () {
 
     describe('errors', () => {
       it('should throw an error when an invalid type is given', async () => {
-        (async () => await driver.getLog('something-random')).should.throw;
+        await driver.getLog('something-random').should.eventually.be.rejected;
       });
       it('should throw an error when driver is not started', async () => {
-        (async () => await driver.getLog('syslog')).should.throw;
+        await driver.getLog('syslog').should.eventually.be.rejected;
       });
     });
 
