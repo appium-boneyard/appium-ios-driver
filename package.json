@@ -24,9 +24,8 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.7",
-    "appium-base-driver": "^1.5.0",
+    "appium-base-driver": "^2.0.0",
     "appium-cookies": "^1.1.0",
-    "appium-express": "^1.2.2",
     "appium-instruments": "^3.7.1",
     "appium-ios-log": "^1.2.0",
     "appium-ios-simulator": "^1.5.3",
@@ -41,7 +40,6 @@
     "ios-app-utils": "^1.1.0",
     "js2xmlparser2": "^0.2.0",
     "lodash": "^4.6.1",
-    "mobile-json-wire-protocol": "^1.3.3",
     "node-idevice": "^0.1.5",
     "path": "^0.12.7",
     "safari-launcher": "^2.0.5",
