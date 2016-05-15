@@ -3,7 +3,7 @@ import env from './env';
 import B from "bluebird";
 import _ from "lodash";
 import { IosDriver } from '../../..';
-import { ALL_COMMANDS } from 'mobile-json-wire-protocol';
+import { ALL_COMMANDS } from 'appium-base-driver';
 import log from '../../../lib/logger';
 
 class Session {

@@ -2,8 +2,7 @@
 import env from './helpers/env';
 import { Session } from './helpers/session';
 import { getTitle } from './helpers/title';
-import { default as baseServer } from 'appium-express';
-import { routeConfiguringFunction } from 'mobile-json-wire-protocol';
+import { server as baseServer, routeConfiguringFunction } from 'appium-base-driver';
 import _ from 'lodash';
 import log from '../../lib/logger';
 import './helpers/setup_testlibs';
