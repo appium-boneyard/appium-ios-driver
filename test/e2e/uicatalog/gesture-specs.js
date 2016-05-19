@@ -18,9 +18,8 @@ describe('uicatalog - touch', function () {
       try {
         await driver.back();
       } catch (ign) {}
-      try {
-        await driver.execute("mobile: scroll", {direction: 'down'});
-      } catch (ign) {}
+
+      await driver.execute("mobile: scroll", {direction: 'down'});
     });
 
     afterEach(async () => {
@@ -89,10 +88,9 @@ describe('uicatalog - touch', function () {
       try {
         await driver.back();
       } catch (ign) {}
-      try {
-        // we want to begin at the top, so try to scroll up there
-        await driver.execute("mobile: scroll", {direction: 'up'});
-      } catch (ign) {}
+
+      // we want to begin at the top, so try to scroll up there
+      await driver.execute("mobile: scroll", {direction: 'up'});
     });
 
     it('should scroll down and up', async () => {
@@ -125,6 +123,14 @@ describe('uicatalog - touch', function () {
       loc3.x.should.equal(loc2.x);
       loc3.y.should.not.equal(loc2.y);
     });
+
+    it('should be able to be called multiple times', async () => {
+      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute("mobile: scroll", {direction: 'down'});
+    });
   });
 
   describe('mobile shake', function () {
@@ -134,6 +140,16 @@ describe('uicatalog - touch', function () {
   });
 
   describe('moveTo and click', function () {
+    before(async () => {
+      try {
+        await driver.back();
+      } catch (ign) {}
+      try {
+        // we want to begin at the top, so try to scroll up there
+        await driver.execute("mobile: scroll", {direction: 'up'});
+      } catch (ign) {}
+    });
+    
     it('should be able to click on arbitrary x-y elements', async () => {
       let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
       let el1 = await driver.findElement('accessibility id', `Buttons${axIdExt}`);
