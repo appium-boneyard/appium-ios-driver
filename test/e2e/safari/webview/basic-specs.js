@@ -7,13 +7,11 @@ import B from 'bluebird';
 
 describe('safari - webview - basics', function() {
   const driver = setup(this, desired, {noReset: true}).driver;
-  let webviewContext;
 
   describe('context', function () {
     it('getting current context should work initially', async () => {
       await B.delay(500);
-      webviewContext = await driver.getCurrentContext();
-      webviewContext.should.be.ok;
+      (await driver.getCurrentContext()).should.be.ok;
     });
   });
 
@@ -46,16 +44,10 @@ describe('safari - webview - basics', function() {
 
     it('should return a valid title on web view', async () => {
       (await driver.title()).should.include("I am a page title");
-
-      await driver.setContext('NATIVE_APP');
-      await driver.title().should.eventually.be.rejected;
     });
   });
 
   describe('element handling', function () {
-    before(async () => {
-      await driver.setContext(webviewContext);
-    });
     beforeEach(async () => await loadWebView(desired, driver));
 
     it('should find a web element in the web view', async () => {

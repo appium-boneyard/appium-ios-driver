@@ -3,14 +3,18 @@ import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
 import B from 'bluebird';
 
-describe(`safari - windows and frames (${env.DEVICE})`, function() {
+describe(`safari - windows and frames (${env.DEVICE})`, function () {
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true,
     safariAllowPopups: true
   }).driver;
 
-  describe('within webview', function() {
+  describe('within webview', function () {
+    before(async () => {
+      // minimize waiting if something goes wrong
+      await driver.implicitWait(1000);
+    });
     beforeEach(() => loadWebView("safari", driver));
 
     it("should throw nosuchwindow if there's not one", () => {
@@ -28,7 +32,7 @@ describe(`safari - windows and frames (${env.DEVICE})`, function() {
       await B.delay(2000);
       await driver.closeWindow();
       await B.delay(3000);
-      (await driver.getWindowHandles()).should.be.below(handles.length);
+      (await driver.getWindowHandles()).length.should.be.below(handles.length);
       await spinTitle("I am a page title", driver);
     });
 
@@ -51,12 +55,16 @@ describe(`safari - windows and frames (${env.DEVICE})`, function() {
   });
 });
 
-describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function() {
+describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function () {
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
   }).driver;
 
+  before(async () => {
+    // minimize waiting if something goes wrong
+    await driver.implicitWait(5000);
+  });
   beforeEach(async () => await loadWebView("safari", driver));
 
   it("should not be able to open js popup windows", async () => {
