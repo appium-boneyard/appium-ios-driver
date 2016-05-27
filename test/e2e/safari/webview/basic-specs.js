@@ -109,6 +109,13 @@ describe('safari - webview - basics', function() {
       (await driver.getUrl()).should.include('test/guinea-pig');
     });
 
+    it('should get updated URL without breaking window handles', async () => {
+      let el = await driver.findElement('link text', 'i am an anchor link');
+      await driver.click(el);
+      (await driver.getUrl()).should.contain('#anchor');
+      (await driver.getWindowHandles()).should.be.ok;
+    });
+
     it('should send keystrokes to specific element', async () => {
       let el = await driver.findElement('id', 'comments');
       await driver.clear(el);
