@@ -7,6 +7,7 @@ import { withMocks } from 'appium-test-support';
 import * as teen_process from 'teen_process';
 import { fs } from 'appium-support';
 
+
 chai.should();
 chai.use(chaiAsPromised);
 
@@ -114,3 +115,56 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
     mocks.teen_process.verify();
   });
 }));
+
+describe('setGeoLocation', function () {
+  let uiAutoClient = {sendCommand: function () {}};
+  let driver = new IosDriver();
+  driver.uiAutoClient = uiAutoClient;
+
+  describe('parsing arguments', withMocks({uiAutoClient}, (mocks) => {
+    it('should handle latitude and longitude', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocation({"longitude":50,"latitude":100})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus altitude', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"altitude":42})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, altitude: 42});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus horizontalAccuracy', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"horizontalAccuracy":43})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, horizontalAccuracy: 43});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus verticalAccuracy', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"verticalAccuracy":44})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, verticalAccuracy: 44});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus course', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"course":45})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, course: 45});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus speed', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"speed":46})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, speed: 46});
+      mocks.uiAutoClient.verify();
+    });
+    it('should handle latitude and longitude, plus all the options', async () => {
+      mocks.uiAutoClient.expects('sendCommand')
+        .withExactArgs('target.setLocationWithOptions({"longitude":50,"latitude":100}, {"altitude":42,"horizontalAccuracy":43,"verticalAccuracy":44,"course":45,"speed":46})');
+      await driver.setGeoLocation({longitude: 50, latitude: 100, altitude: 42,
+                                   horizontalAccuracy: 43, verticalAccuracy: 44,
+                                   course: 45, speed: 46});
+      mocks.uiAutoClient.verify();
+    });
+  }));
+});
