@@ -20,7 +20,7 @@ before_script:
   - npm install -g gulp
   - npm install -g mocha
   - gulp transpile
-  - gulp jshint
+  - gulp eslint
 script:
   - if [ -n "$RECURSIVE" ]; then mocha --recursive build/test/$TEST -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi
