@@ -62,7 +62,7 @@ async function spinWait (spinFn, waitMs = 10000, intMs = 500) {
   await spin(spinFn);
 }
 
-function skip(reason, done) {
+function skip (reason, done) {
   console.warn(`skipping: ${reason}`); //eslint-disable-line no-console
   return done();
 }

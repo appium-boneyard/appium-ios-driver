@@ -22,7 +22,7 @@ env.EMU = !env.REAL_DEVICE;
 // device selection
 env.DEVICE = (process.env.DEVICE || 'ios').toLowerCase();
 
-function iphoneOrIpadSimulator(device, version) {
+function iphoneOrIpadSimulator (device, version) {
   let isIpad = device.match(/ipad/i);
   switch (version) {
     case '6.1':

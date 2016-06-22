@@ -5,7 +5,7 @@ import { loadWebView, spinTitle, spinWait } from '../../helpers/webview';
 import B from 'bluebird';
 
 
-describe('safari - webview - basics', function() {
+describe('safari - webview - basics', function () {
   const driver = setup(this, desired, {noReset: true}).driver;
 
   describe('context', function () {

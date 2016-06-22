@@ -7,7 +7,7 @@ import env from '../../helpers/env';
 const GET_ELEM_SYNC = `return document.getElementsByTagName('h1')[0].innerHTML;`;
 const GET_ELEM_ASYNC = `arguments[arguments.length - 1](document.getElementsByTagName('h1')[0].innerHTML);`;
 
-describe('safari - webview - frames', function() {
+describe('safari - webview - frames', function () {
   const driver = setup(this, desired, {noReset: true}, false, true).driver;
 
   describe('frames', function () {

@@ -3,8 +3,8 @@ import B from 'bluebird';
 import desired from './desired';
 
 
-describe('testapp - screenshots', function() {
-  describe('default', function() {
+describe('testapp - screenshots', function () {
+  describe('default', function () {
     const driver = setup(this, desired).driver;
 
     it('should get an app screenshot', async () => {
@@ -31,7 +31,7 @@ describe('testapp - screenshots', function() {
     });
   });
 
-  describe('setting screenshotWaitTimeout', function() {
+  describe('setting screenshotWaitTimeout', function () {
     const driver = setup(this, desired).driver;
 
     it('should get an app screenshot', async () => {
