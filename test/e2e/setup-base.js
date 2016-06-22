@@ -37,13 +37,16 @@ function setup (context, desired, opts = {}, envOverrides = false, needsNewServe
     if (!server) {
       await startServer(session);
     } else if (needsNewServer) {
-      server.close();
+      await server.close();
       await startServer(session);
     }
     await session.setUp(getTitle(context));
   });
 
   after(async () => {
+    if (server) {
+      await server.close();
+    }
     await session.tearDown(allPassed);
   });
 
