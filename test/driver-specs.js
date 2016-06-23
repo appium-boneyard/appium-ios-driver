@@ -6,6 +6,8 @@ import chaiAsPromised from 'chai-as-promised';
 import { withMocks } from 'appium-test-support';
 import * as teen_process from 'teen_process';
 import { fs } from 'appium-support';
+import xcode from 'appium-xcode';
+
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -15,6 +17,29 @@ describe('driver', () => {
     let driver = new IosDriver();
     driver.should.exist;
   });
+
+  describe('unsupported infrastructure', withMocks({xcode}, (mocks) => {
+    let driver;
+    before(async () => {
+      driver = new IosDriver();
+    });
+    it('should throw an error for Xcode version 8+', async () => {
+      mocks.xcode.expects('getVersion')
+        .once().returns({
+          versionString: '8.0.0',
+          versionFloat: 8.0,
+          major: 8,
+          minor: 0,
+          patch: 0
+        });
+      await driver.createSession({
+        platformName: 'iOS',
+        deviceName: 'iPhone Simulator',
+        app: '/path/to/app'
+      }).should.eventually.be.rejectedWith(/Appium's IosDriver does not support xcode version 8.0.0/);
+      mocks.xcode.verify();
+    });
+  }));
 
   describe('timeouts', () => {
     let driver;
