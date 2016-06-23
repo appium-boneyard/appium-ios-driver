@@ -3,10 +3,10 @@ import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
 
-describe('safari - webview - cookies', function() {
+describe('safari - webview - cookies', function () {
   const driver = setup(this, desired, {noReset: true}).driver;
 
-  describe('within iframe webview', function() {
+  describe('within iframe webview', function () {
     it('should be able to get cookies for a page with none', async () => {
       await loadWebView(desired, driver, env.TEST_END_POINT + 'iframes.html', 'Iframe guinea pig');
       await driver.deleteCookies();
@@ -15,7 +15,7 @@ describe('safari - webview - cookies', function() {
     });
   });
 
-  describe('within webview', function() {
+  describe('within webview', function () {
     beforeEach(async () => await loadWebView(desired, driver));
 
     it('should be able to get cookies for a page', async () => {

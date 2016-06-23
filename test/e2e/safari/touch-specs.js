@@ -6,7 +6,7 @@ import B from 'bluebird';
 /**
  * touch command doesn't work
  */
-describe.skip('touch', function() {
+describe.skip('touch', function () {
   const driver = setup(this, {
     browserName: "safari"
   }, {

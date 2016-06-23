@@ -17,6 +17,7 @@ before_install:
   - ./bin/instruments-auth.sh
 before_script:
   - npm install
+  - pushd node_modules/sample-apps && npm install ios-test-app && popd
   - npm install -g gulp
   - npm install -g mocha
   - gulp transpile

@@ -1,9 +1,9 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
 
-describe('safari - basics @skip-real-device', function() {
+describe('safari - basics @skip-real-device', function () {
   if (!(env.IOS8 || env.IOS9) && env.IOS80) {
-    return describe('default init', function() {
+    return describe('default init', function () {
       const driver = setup(this, { browserName: 'safari' }).driver;
 
       it('it should use safari default init page', async () => {
@@ -12,7 +12,7 @@ describe('safari - basics @skip-real-device', function() {
     });
   }
 
-  describe('default init', function() {
+  describe('default init', function () {
     const driver = setup(this, { browserName: 'safari' }).driver;
 
     it('it should use appium default init page', async () => {
@@ -20,7 +20,7 @@ describe('safari - basics @skip-real-device', function() {
     });
   });
 
-  describe('init with safariInitialUrl', function() {
+  describe('init with safariInitialUrl', function () {
     const driver = setup(this, {
       browserName: 'safari',
       safariInitialUrl: env.GUINEA_TEST_END_POINT

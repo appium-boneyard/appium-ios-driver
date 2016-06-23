@@ -9,7 +9,7 @@ describe('testapp - touch actions', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  async function goToMap() {
+  async function goToMap () {
     let map;
     try {
       map = await driver.findElement('xpath', '//UIAMapView');
