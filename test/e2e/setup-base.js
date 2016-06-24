@@ -44,9 +44,6 @@ function setup (context, desired, opts = {}, envOverrides = false, needsNewServe
   });
 
   after(async () => {
-    if (server) {
-      await server.close();
-    }
     await session.tearDown(allPassed);
   });
 
