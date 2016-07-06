@@ -78,6 +78,11 @@ describe('driver', () => {
         await driver.timeouts('script', to + 20);
         driver.asyncWaitMs.should.equal(to + 20);
       });
+      it('should be settable through asyncScriptTimeout', async () => {
+        let to = driver.asyncWaitMs;
+        await driver.asyncScriptTimeout(to + 20);
+        driver.asyncWaitMs.should.equal(to + 20);
+      });
     });
   });
 });
