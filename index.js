@@ -6,7 +6,7 @@ import { asyncify } from 'asyncbox';
 import { startServer } from './lib/server';
 import { IosDriver } from './lib/driver';
 import { desiredCapConstraints, desiredCapValidation } from './lib/desired-caps';
-import { commands } from './lib/commands/index';
+import { commands, iosCommands } from './lib/commands/index';
 
 const DEFAULT_HOST = "localhost";
 const DEFAULT_PORT = 4723;
@@ -21,6 +21,6 @@ if (require.main === module) {
   asyncify(main);
 }
 
-export { IosDriver, desiredCapConstraints, desiredCapValidation, commands };
+export { IosDriver, desiredCapConstraints, desiredCapValidation, commands, iosCommands };
 
 export default IosDriver;
