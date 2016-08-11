@@ -327,6 +327,11 @@ describe('uicatalog - find -', function () {
         (await driver.getText(el)).should.equal("X Button");
       });
 
+      it('should find an element within itself', async () => {
+        let e1 = await driver.findElement('xpath', "//UIATableCell[@name='X Button']");
+        let e2 = await driver.findElementFromElement('xpath', "//UIAButton[1]", e1);
+        (await driver.getText(e2)).should.equal("X Button");
+      });
     });
 
     describe('duplicate text field', function () {
