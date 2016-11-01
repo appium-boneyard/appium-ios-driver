@@ -10,7 +10,7 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('built-in apps', function () {
-  this.timeout(120000);
+  process.env.TRAVIS ? this.timeout(240000) : this.timeout(120000);
   let driver;
   describe('Calendar', () => {
     it('should start', async () => {
@@ -18,7 +18,7 @@ describe('built-in apps', function () {
         app: 'Calendar',
         platformName: 'iOS',
         showIOSLog: false,
-        fullReset: false,
+        noReset: true,
         newCommandTimeout: 120
       };
       caps = _.merge({}, env.CAPS, caps);
