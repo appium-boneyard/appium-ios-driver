@@ -56,6 +56,7 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
 });
 
 describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function () {
+  if (process.env.TRAVIS) this.timeout(240000);
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
