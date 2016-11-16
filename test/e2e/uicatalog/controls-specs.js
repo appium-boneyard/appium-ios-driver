@@ -16,7 +16,7 @@ describe('uicatalog - controls', function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Picker View')]");
     await driver.click(el1);
 
-    for (let color of ['Red', 'Green', 'Blue']){
+    for (let color of ['Red', 'Green', 'Blue']) {
       let wheel = await driver.findElement('xpath', `//UIAPickerWheel[@name = '${color} color component value']`);
       let value;
       if (color === 'Red') {

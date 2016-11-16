@@ -12,7 +12,7 @@ describe('testapp - basics - calc app 1', function () {
   let clearFields = async function () {
     values = [];
     let els = await driver.findElements('class name', 'UIATextField');
-    for (let el of els){
+    for (let el of els) {
       await driver.clear(el);
     }
     let button = await driver.findElement('class name', 'UIAButton');
@@ -22,7 +22,7 @@ describe('testapp - basics - calc app 1', function () {
   let populate = async function (type) {
     values = [];
     let els = await driver.findElements(byUIA, filterVisibleUiaSelector('.textFields();'));
-    for (let el of els){
+    for (let el of els) {
       let val = Math.round(Math.random() * 10);
       values.push(val);
       if (type === "elem") {
@@ -97,7 +97,7 @@ describe('testapp - basics - calc app 1', function () {
       let alert = await driver.findElement('class name', 'UIAAlert');
       let els = await driver.findElementsFromElement('class name', 'UIAStaticText', alert);
       let texts = [];
-      for (let el of els){
+      for (let el of els) {
         texts.push(await driver.getText(el));
       }
       texts.should.include('Cool title');

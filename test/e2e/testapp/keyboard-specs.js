@@ -19,7 +19,7 @@ describe('testapp - keyboard', function () {
 
       it("should send keys to a text field", async () => {
         let env = await driver.execute('env');
-        if (strategy){
+        if (strategy) {
           env.sendKeyStrategy.should.equal(strategy);
         } else {
           env.sendKeyStrategy.should.equal(
