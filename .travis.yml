@@ -19,7 +19,6 @@ before_script:
   - pushd node_modules/sample-apps && npm install ios-test-app && popd
   - npm install -g gulp
   - npm install -g mocha
-  - gulp transpile
   - gulp eslint
 script:
   - if [ -n "$RECURSIVE" ]; then mocha --recursive build/test/$TEST -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
