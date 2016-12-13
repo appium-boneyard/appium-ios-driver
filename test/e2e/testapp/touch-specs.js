@@ -121,7 +121,7 @@ describe('testapp - swipe actions', function () {
       centerPos.x = loc.x + (size.width * 0.5);
       rightPos.x = loc.x + size.width + 5;
       leftPos.y = rightPos.y = centerPos.y = loc.y + (size.height * 0.5);
-      target = driver.findElement('Accessibility id', "Access'ibility");
+      target = await driver.findElement('accessibility id', "Access'ibility");
       testSliderValueNot0or100(await getSliderValue());
     });
 
