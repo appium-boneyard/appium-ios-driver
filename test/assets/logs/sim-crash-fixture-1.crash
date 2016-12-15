@@ -1,0 +1,44 @@
+Process:               launchd_sim [49879]
+Path:                  /Volumes/VOLUME/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/sbin/launchd_sim
+Identifier:            launchd_sim
+Version:               ???
+Code Type:             X86-64 (Native)
+Parent Process:        ??? [1]
+Responsible:           launchd_sim [49879]
+User ID:               501
+
+Date/Time:             2015-07-31 08:45:47.110 -0700
+OS Version:            Mac OS X 10.10.4 (14E46)
+Report Version:        11
+Anonymous UUID:        BC588834-429A-422A-C089-6103800A7286
+
+Sleep/Wake UUID:       FE600D26-045B-417F-B854-43C76D3CD78E
+
+Time Awake Since Boot: 42000 seconds
+Time Since Wake:       3000 seconds
+
+Crashed Thread:        0
+
+Exception Type:        EXC_BREAKPOINT (SIGTRAP)
+Exception Codes:       0x0000000000000002, 0x0000000000000000
+
+Dyld Error Message:
+  problem loading iOS simulator dyld
+
+Binary Images:
+    0x7fff6558c000 -     0x7fff655c2837  dyld (353.2.1) <72A99D0F-0B56-3938-ABC5-67A0F33757C4> /usr/lib/dyld
+
+
+System Profile:
+AirPort: spairport_wireless_card_type_airport_extreme (0x14E4, 0x117), Broadcom BCM43xx 1.0 (7.15.166.24.3)
+Bluetooth: Version 4.3.5f8 15969, 3 services, 27 devices, 1 incoming serial ports
+Thunderbolt Bus: MacBook Air, Apple Inc., 23.6
+Memory Module: BANK 0/DIMM0, 4 GB, DDR3, 1600 MHz, 0x02FE, -
+Memory Module: BANK 1/DIMM0, 4 GB, DDR3, 1600 MHz, 0x02FE, -
+USB Device: Internal Memory Card Reader
+USB Device: BRCM20702 Hub
+USB Device: Bluetooth USB Host Controller
+Serial ATA Device: APPLE SSD SM0512F, 500.28 GB
+Model: MacBookAir6,2, BootROM MBA61.0099.B19, 2 processors, Intel Core i7, 1.7 GHz, 8 GB, SMC 2.13f15
+Network Service: Wi-Fi, AirPort, en0
+Graphics: Intel HD Graphics 5000, Intel HD Graphics 5000, Built-In

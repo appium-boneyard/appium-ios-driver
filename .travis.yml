@@ -1,7 +1,7 @@
 sudo: required
 env:
   # Run tests in parellel, up to 5 at once
-  - DEVICE=ios93 FINAL_GULP=coveralls
+  - DEVICE=ios93 TEST=unit FINAL_GULP=coveralls
   - DEVICE=ios93 TEST=e2e/driver
   - DEVICE=ios93 TEST=e2e/testapp RECURSIVE=1
   - DEVICE=ios93 TEST=e2e/uicatalog RECURSIVE=1

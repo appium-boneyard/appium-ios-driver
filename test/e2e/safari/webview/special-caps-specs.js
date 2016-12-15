@@ -5,6 +5,7 @@ import { loadWebView, spinWait } from '../../helpers/webview';
 
 
 describe('safari - webview - special capabilities', function () {
+  this.timeout(120 * 1000);
   describe('safariIgnoreFraudWarning', function () {
     describe('true', function () {
       let specialCaps = Object.assign({}, desired);

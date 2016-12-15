@@ -1,0 +1,230 @@
+Aug 12 15:40:19 isaac syslogd[37932]: --- syslogd restarted ---
+Aug 12 15:40:19 isaac syslogd[37932]: Configuration Notice:
+	ASL Module "com.apple.cloudd" claims selected messages.
+	Those messages may not appear in standard system log files or in the ASL database.
+Aug 12 15:40:19 isaac syslogd[37932]: Configuration Notice:
+	ASL Module "com.apple.testmanagerd" claims selected messages.
+	Those messages may not appear in standard system log files or in the ASL database.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930]: assertion failed: 14E46: launchd_sim + 164366 [ED38649C-0141-3197-9AE6-67BBCD671479]: 0xd
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.assertiond): This service is defined to be constantly running and is inherently inefficient.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.assetsd.notificationServer): The HideUntilCheckIn property is an architectural performance issue. Please transition away from it.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.assetsd): The JetsamProperties key is not available on this platform.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.assetsd.nebulad): The JetsamProperties key is not available on this platform.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.backboardd): Unknown key for Boolean: HighPriorityIO
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.backboardd): This service is defined to be constantly running and is inherently inefficient.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.calaccessd.xpc): The HideUntilCheckIn property is an architectural performance issue. Please transition away from it.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.calaccessd): The JetsamProperties key is not available on this platform.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.certui.relay): ThrottleInterval set to zero. You're not that important. Ignoring.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.certui.relay): The JetsamProperties key is not available on this platform.
+Aug 12 15:40:18 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.cloudphotod): The JetsamProperties key is not available on this platform.
+Aug 12 15:40:19 isaac.local securityd[37955]: unable to access hwaes key
+Aug 12 15:40:19 isaac.local configd_sim[37951]: network changed: v4(en5+:10.35.5.158) DNS+ Proxy+
+Aug 12 15:40:19 isaac.local identityservicesd[37940]: [Warning] DeviceHeartbeat - Failed loading device heartbeat data from keychain -25300
+Aug 12 15:40:19 isaac.local locationd[37947]: Logging binary sensor data to /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/Library/Caches/locationd/locationdSensors.bin
+Aug 12 15:40:19 isaac.local backboardd[37945]: void __IOHIDPlugInLoadBundles(): Loaded 0 HID plugins
+Aug 12 15:40:19 isaac.local backboardd[37945]: ____IOHIDSessionScheduleAsync_block_invoke: thread_id=0x110be7000
+Aug 12 15:40:19 isaac.local backboardd[37945]: HID Session async scheduling initiated.
+Aug 12 15:40:19 isaac.local backboardd[37945]: HID Session async root queue running at priority 63 and schedule 2.
+Aug 12 15:40:19 isaac.local backboardd[37945]: HID Session async scheduling complete.
+Aug 12 15:40:19 isaac.local backboardd[37945]: Successfully opened the IOHIDSession
+Aug 12 15:40:19 isaac.local locationd[37947]: NBB-Could not get UDID for stable refill timing, falling back on random
+Aug 12 15:40:19 isaac.local identityservicesd[37940]: [Warning] NULL accountGUIDs passed to CFArrayRef IDSOutgoingMessageRecordCopyUnsentMessagesForAccountsAndPriority(NSArray *, int64_t, int64_t, IDSDataProtectionClass)
+Aug 12 15:40:19 isaac.local distnoted[37959]: # distnote server daemon  absolute time: 78935.792351815   civil time: Wed Aug 12 15:40:19 2015   pid: 37959 uid: 501  root: yes
+Aug 12 15:40:19 isaac.local identityservicesd[37940]: [Warning] NULL accountGUIDs passed to CFArrayRef IDSOutgoingMessageRecordCopyUnsentMessagesForAccountsAndPriority(NSArray *, int64_t, int64_t, IDSDataProtectionClass)
+Aug 12 15:40:19 --- last message repeated 1 time ---
+Aug 12 15:40:19 isaac.local CoreSimulatorBridge[37952]: Switching to keyboard:
+Aug 12 15:40:19 isaac.local lsd[37958]: LaunchServices: Seeding database
+Aug 12 15:40:19 isaac.local nanoregistryd[37960]: libMobileGestalt MobileGestalt.c:1025: Could not retrieve region info
+Aug 12 15:40:19 isaac.local locationd[37947]: PairedSync, Debugging at level 0 for console and level 0 for log files
+Aug 12 15:40:19 isaac.local locationd[37947]: Error: Could not create service from plist at path: file:///System/Library/PairedSyncServices/com.apple.pairedsync.locationd.plist. Returning nil PSYSyncCoordinator for service name com.apple.pairedsync.locationd.  Please check that your plist exists and is in the correct format.
+Aug 12 15:40:19 isaac.local locationd[37947]: Error: Could not create service from plist at path: file:///System/Library/PairedSyncServices/com.apple.pairedsync.locationauth.plist. Returning nil PSYSyncCoordinator for service name com.apple.pairedsync.locationauth.  Please check that your plist exists and is in the correct format.
+Aug 12 15:40:19 isaac.local locationd[37947]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:19 isaac.local installd[37939]: 0x10c3ac300 main: Reboot detected
+Aug 12 15:40:19 isaac.local installd[37939]: 0x10c3ac300 is_build_upgrade: Current build version (12H141) equal to last version recorded; skipping upgrade
+Aug 12 15:40:19 isaac.local installd[37939]: 0x10c3ac300 __47-[MIDeveloperDiskImageTracker checkMountPoint:]_block_invoke: /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/Developer/Applications is not present now or before
+Aug 12 15:40:19 isaac.local containermanagerd[37962]: 0x105d28300 main: containermanagerd performing first boot initialization
+Aug 12 15:40:19 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.routined[37935]): Could not find program specified by service: 2: No such file or directory: /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/routined
+Aug 12 15:40:19 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.routined[37935]): Service setup event to handle failure and will not launch until it fires.
+Aug 12 15:40:19 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.sharingd[37946]): Could not find program specified by service: 2: No such file or directory: /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/sharingd
+Aug 12 15:40:19 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.sharingd[37946]): Service setup event to handle failure and will not launch until it fires.
+Aug 12 15:40:19 isaac.local backboardd[37945]: BKSystemAppSentinel: Now monitoring "com.apple.springboard"
+Aug 12 15:40:20 isaac.local installd[37939]: 0x110233000 -[MIClientConnection fetchInstalledAppsWithOptions:completion:]: Fetch installed apps requested by lsd (pid 37958) with options (null)
+Aug 12 15:40:20 isaac.local filecoordinationd[37963]: (Error) FileProvider: Could not load bundle com.apple.CloudDocsFileProvider. Error: The bundle “CloudDocsFileProvider” couldn’t be loaded because it is damaged or missing necessary resources.
+Aug 12 15:40:20 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imfoundation.IMRemoteURLConnectionAgent): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:20 --- last message repeated 2 times ---
+Aug 12 15:40:20 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.accounts.dom): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:20 isaac.local backboardd[37945]: Migration complete (if performed). (Elapsed time: 0.85 seconds)
+Aug 12 15:40:20 isaac.local installd[37939]: 0x110233000 -[MIBundle _validateWithError:]: 37: Bundle at path /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/JavaScriptCore.framework did not have a CFBundleIdentifier in its Info.plist
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: FBDefaultLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: FBAppLibraryLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: FBWorkspaceLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBIconLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBStatusBarishLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBLocalNotificationLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBAlarmLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBBannerLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local SpringBoard[37944]: Loaded logger: SBSoundLog; isEnabled: 0
+Aug 12 15:40:20 isaac.local installd[37939]: 0x110233000 __69-[MIFileManager urlsForItemsInDirectoryAtURL:ignoringSymlinks:error:]_block_invoke: Ignoring symlink at /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/WebKit.framework
+Aug 12 15:40:20 isaac.local fileproviderd[37934]: (Note ) FileProvider: /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/FileProvider.framework/Support/fileproviderd starting.
+Aug 12 15:40:21 isaac.local locationd[37947]: Location icon should now be in state 'Inactive'
+Aug 12 15:40:21 isaac.local CoreSimulatorBridge[37952]: KEYMAP: Failed to determine iOS keyboard layout for language .
+Aug 12 15:40:21 isaac SpringBoard[37944]: assertion failed: 14E46 12H141: libxpc.dylib + 59338 [AF8FA08F-353B-303B-A08E-AEBB3C60A640]: 0x7d
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:21 --- last message repeated 3 times ---
+Aug 12 15:40:21 isaac.local networkd[37964]: networkd-413.20.6 pid 37964
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: libMobileGestalt MobileGestalt.c:841: still-camera is static and will never generate a notification
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: libMobileGestalt MobileGestalt.c:841: stand-alone-contacts is static and will never generate a notification
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: Installed apps did change.
+	Added: {(
+	    "com.apple.SharedWebCredentialViewService",
+	    "com.apple.FacebookAccountMigrationDialog",
+	    "com.apple.mobilesafari",
+	    "com.apple.AdSheetPhone",
+	    "com.apple.share",
+	    "com.apple.appleaccount.AACredentialRecoveryDialog",
+	    "com.apple.Preferences",
+	    "com.apple.CloudKit.ShareBear",
+	    "com.apple.WebContentFilter.remoteUI.WebContentAnalysisUI",
+	    "com.apple.Passbook",
+	    "com.apple.WatchKitSettings",
+	    "com.apple.TrustMe",
+	    "com.apple.mobileslideshow",
+	    "com.apple.mobilesms.compose",
+	    "com.apple.MailCompositionService",
+	    "com.apple.iad.iAdOptOut",
+	    "com.apple.TencentWeiboAccountMigrationDialog",
+	    "com.apple.MusicUIService",
+	    "com.apple.AccountAuthenticationDialog",
+	    "com.apple.WebViewService",
+	    "com.apple.Maps",
+	    "com.apple.PhotosViewService",
+	    "com.apple.uikit.PrintStatus",
+	    "com.apple.quicklook.quicklookd",
+	    "com.apple.Health",
+	    "com.apple.MobileAddressBook",
+	    "com.apple.datadetectors.DDActionsService",
+	    "com.apple.social.SLGoogleAuth",
+	    "com.apple.DataActivation",
+	    "com.apple.HealthPrivacyService",
+	    "com.apple.WebSheet",
+	    "com.apple.camera",
+	    "com.apple.mobilecal",
+	    "com.apple.ios.StoreKitUIService",
+	    "com.apple.gamecenter.GameCenterUIService",
+	    "com.apple.PassbookUIService",
+	    "com.apple.webapp",
+	    "com.apple.PrintKit.Print-Center",
+	    "com.apple.webapp1",
+	    "com.apple.gamecenter"
+	)}
+	Removed: {(
+	)}
+	Modified: {(
+	)}
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: *** error reading settings archive file: <SBRootSettings: /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/Documents/com.apple.springboard.settings/RootSettings.plist>
+Aug 12 15:40:21 isaac.local SpringBoard[37944]: *** error reading settings archive file: <SBRootSettings: /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/Documents/com.apple.springboard.settings/RootSettings.previous.plist>
+Aug 12 15:40:21 isaac.local geod[37965]: 2015-08-12 15:40:21.835, 37965, b0e14f60, [GEOPersistenceManager]: readPhoneNumberMuidMapping:uniquePhoneNumbers:version:atPath:error: could not read file at ~/Library/GeoServices/PhoneNumberMapping.plist
+Aug 12 15:40:21 isaac.local geod[37965]: 2015-08-12 15:40:21.838, 37965, b0e14f60, [GEOPersistenceManager]: Mapping directory does not exist. Will create it at path: /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/Library/GeoServices/PhoneNumberMapping.plist
+Aug 12 15:40:21 isaac.local geod[37965]: 2015-08-12 15:40:21.845, 37965, b0e14f60, [GEOPhoneNumberMUIDMapper]: Unable to create directory at path: /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/Library/GeoServices/PhoneNumberMapping.plist with error: (null)
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: -[BBObserver setDelegate:] Delegate implements addBulletin but does not implement noteInvalidatedBulletinIDs: <SBBulletinLocalObserverGateway: 0x7fe98074ff10>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.MobileSMS
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: throwing out icon because its isn't visible in the model : node=<SBApplicationIcon: 0x7fe980562890; nodeID: "com.apple.camera"> com.apple.camera
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.weather
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.mobiletimer
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.videos
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.mobilenotes
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.reminders
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.stocks
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.iBooks
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.MobileStore
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.AppStore
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.facetime
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.calculator
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.podcasts
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.compass
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.tips
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.VoiceMemos
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.nike
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.Bridge
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.mobilephone
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.mobilemail
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: could not find icon for representation -> com.apple.Music
+Aug 12 15:40:22 isaac.local lsd[37958]: Launch Services: Failed to find app container URL for identifier com.apple.mobilecal
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.mobilecal_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local profiled[37966]: (Note ) profiled: Service starting...
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.accessibility.AccessibilityUIServer): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imfoundation.IMRemoteURLConnectionAgent): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imdpersistence.IMDPersistenceAgent): The _DirtyJetsamPriority key is not available on this platform.
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imdpersistence.IMDPersistenceAgent): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.lakitu): The JoinExistingSession key is not available on this platform.
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.mobilecal, <BBLocalDataProvider 0x7fe98058bd10; com.apple.mobilecal>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.reminders, <BBLocalDataProvider 0x7fe982997740; com.apple.reminders>
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.mobileslideshow_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING REMOTE com.apple.springboard.notificationcenter.today, <BBRemoteDataProvider 0x7fe9806a72b0; com.apple.springboard.notificationcenter.today>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING REMOTE com.apple.springboard.notificationcenter.tomorrow, <BBRemoteDataProvider 0x7fe9828d6bb0; com.apple.springboard.notificationcenter.tomorrow>
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.Maps_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.Passbook_defaultRole-Icon@2x_Icon@3x_Icon-Small_Icon-Small@2x_Icon-Small@3x-15
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.Health_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.Preferences_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.gamecenter_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.MobileAddressBook_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.WatchKitSettings_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: table drop: 101
+Aug 12 15:40:22 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.mobilesafari_CFBundleIcon[15]
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.mobilecal.today, <BBLocalDataProvider 0x7fe9828d22b0; com.apple.mobilecal.today>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.cmas, <BBLocalDataProvider 0x7fe982b35090; com.apple.cmas>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: attaching to BTServer
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: failed to attach with error 9
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: attaching to BTServer
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: failed to attach with error 9
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: attaching to BTServer
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: BTM: failed to attach with error 9
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.mobileslideshow, <BBLocalDataProvider 0x7fe982a4a6b0; com.apple.mobileslideshow>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: table drop: 101
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.MobileSMS, <BBLocalDataProvider 0x7fe9806ba340; com.apple.MobileSMS>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING LOCAL com.apple.SocialBulletinBoardProvider, <BBLocalDataProvider 0x7fe982b394a0; com.apple.SocialBulletinBoardProvider>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: [MPUSystemMediaControls] Updating supported commands for now playing application.
+Aug 12 15:40:22 isaac.local mediaremoted[37937]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: Application windows are expected to have a root view controller at the end of application launch
+Aug 12 15:40:22 --- last message repeated 2 times ---
+Aug 12 15:40:22 isaac.local mediaremoted[37937]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imfoundation.IMRemoteURLConnectionAgent): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: |GAXGeneral|info| whitelistedApps and appSelfLockIDs both nil.  No need to enable GAX (Single App Mode)
+Aug 12 15:40:22 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.imfoundation.IMRemoteURLConnectionAgent): The _DirtyJetsamMemoryLimit key is not available on this platform.
+Aug 12 15:40:22 isaac.local mstreamd[37936]: (Note ) mstreamd: mstreamd starting up.
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: table drop: 101
+Aug 12 15:40:22 isaac.local mediaremoted[37937]: Property list invalid for format: 200 (property lists cannot contain NULL)
+Aug 12 15:40:22 isaac.local locationd[37947]: ERROR: /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreServices/SpringBoard.app/SpringBoard is depending on legacy on-demand authorization, which is not supported for new apps
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a scenario producer: PLCloudPruneAgent
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a scenario producer: PLCloudDownloadAgent
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCloudSystemStartedTrigger
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCacheDeleteTrigger
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCLoudSettingsChangedTrigger
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCloudAppInForegroundTrigger
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCloudMetadataChangedTrigger
+Aug 12 15:40:22 isaac.local assetsd[37943]: Cloud Resources scheduler activated a trigger: PLCloudMetadataStableTrigger
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: ADDING REMOTE com.apple.mobilecal.widget, <BBRemoteDataProvider 0x7fe9805d3080; com.apple.mobilecal.widget>
+Aug 12 15:40:22 isaac.local SpringBoard[37944]: table drop: 101
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: [MPUSystemMediaControls] Updating supported commands for now playing application.
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: Failed to get the user name
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: [MPUSystemMediaControls] Updating supported commands for now playing application.
+Aug 12 15:40:23 isaac.local /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.4.simruntime/Contents/Resources/RuntimeRoot/usr/libexec/lsd[37958]: LaunchServices: Failed to set the data protection class for /Users/isaac/Library/Developer/CoreSimulator/Devices/D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB/data/tmp/com.apple.IconsCache/com.apple.mobilecal_CFBundleIcon[31]
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: SMS Plugin initialized.
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: Sharing Plugin initialized.
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: Normal message received by listener connection. Ignoring.
+Aug 12 15:40:23 isaac.local mstreamd[37936]: (Note ) PS: The subscription plugin class does not support push notification refreshing.
+Aug 12 15:40:23 isaac.local SpringBoard[37944]: table drop: 101
+Aug 12 15:40:23 isaac.local mstreamd[37936]: (Note ) PS: Media stream daemon starting...
+Aug 12 15:40:25 isaac.local syncdefaultsd[37973]: (Note ) SYDAlwaysOnAccount: no account (null)
+Aug 12 15:40:25 isaac.local syncdefaultsd[37973]: (Note ) SYDAccount: no account
+Aug 12 15:40:25 isaac.local syncdefaultsd[37973]: (Note ) SYDPIMAccount: no account (null)
+Aug 12 15:40:26 isaac.local calaccessd[37970]: table drop: 101
+Aug 12 15:40:26 isaac com.apple.CoreSimulator.SimDevice.D9137DA1-F2C8-4F25-BD2D-9B89CD6E19BB.launchd_sim[37930] (com.apple.xpc.launchd.domain.system): Could not read path: 2: No such file or directory
+	path: /System/Library/NanoLaunchDaemons
+Aug 12 15:40:26 isaac.local nanoregistrylaunchd[37974]: Failed to enable path: code = 2: No such file or directory, /System/Library/NanoLaunchDaemons
+Aug 12 15:40:49 isaac.local lsd[37958]: LaunchServices: Currently 0 installed placeholders: (
+	)
+Aug 12 15:41:03 isaac.local mstreamd[37936]: (Note ) PS: Media stream daemon stopping.
+Aug 12 15:41:03 isaac.local mstreamd[37936]: (Note ) AS: <MSIOSAlbumSharingDaemon: 0x7ff3a350ff40>: Shared Streams daemon has shut down.
+Aug 12 15:41:03 isaac.local mstreamd[37936]: (Warn ) mstreamd: mstreamd shutting down.
