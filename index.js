@@ -37,3 +37,8 @@ import IOSCrashLog from './lib/device-log/ios-crash-log';
 import IOSPerformanceLog from './lib/device-log/ios-performance-log';
 
 export { IOSLog, IOSCrashLog, IOSPerformanceLog };
+
+// app utils
+import * as appUtils from './lib/app-utils';
+
+export { appUtils };
