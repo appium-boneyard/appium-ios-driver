@@ -1,6 +1,6 @@
 // transpile:mocha
 
-import * as utils from '../lib/utils';
+import * as utils from '../../lib/utils';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 

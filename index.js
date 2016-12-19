@@ -29,3 +29,16 @@ export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
          iosCommands, settings, device, defaultServerCaps, utils };
 
 export default IosDriver;
+
+
+// ios log access
+import IOSLog from './lib/device-log/ios-log';
+import IOSCrashLog from './lib/device-log/ios-crash-log';
+import IOSPerformanceLog from './lib/device-log/ios-performance-log';
+
+export { IOSLog, IOSCrashLog, IOSPerformanceLog };
+
+// app utils
+import * as appUtils from './lib/app-utils';
+
+export { appUtils };

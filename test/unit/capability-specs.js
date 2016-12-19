@@ -1,5 +1,5 @@
-import { IosDriver } from '../';
-import utils from '../lib/utils';
+import { IosDriver } from '../..';
+import utils from '../../lib/utils';
 import chai from 'chai';
 import sinon from 'sinon';
 

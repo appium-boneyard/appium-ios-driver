@@ -1,6 +1,6 @@
 // transpile:mocha
 
-import cookies from '../lib/cookies.js';
+import cookies from '../../lib/cookies.js';
 import chai from 'chai';
 
 
