@@ -37,7 +37,6 @@
     "bluebird": "^2.10.2",
     "continuation-local-storage": "^3.1.7",
     "date-utils": "^1.2.21",
-    "ios-app-utils": "^1.1.0",
     "js2xmlparser2": "^0.2.0",
     "lodash": "^4.13.1",
     "node-idevice": "^0.1.6",
