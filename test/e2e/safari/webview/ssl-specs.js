@@ -10,13 +10,6 @@ describe('When accessing an HTTPS encrypted site in Safari', async function () {
   let sslServer;
 
   before(async function () {
-    // TODO: investigate why this test fails in TRAVIS
-    //   it seems that the simulator never gets the `Librarys/Keychains/TrustStore.sqlite3`
-    //   directory that is needed to add the certificate
-    if (process.env.TRAVIS) {
-      this.skip();
-      return;
-    }
     // Create an HTTPS server with a random pem certificate
     let privateKey = await pem.createPrivateKeyAsync();
     let keys = await pem.createCertificateAsync({days:1, selfSigned: true, serviceKey: privateKey.key});
