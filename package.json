@@ -26,7 +26,7 @@
     "adm-zip": "^0.4.7",
     "appium-base-driver": "^2.0.9",
     "appium-instruments": "^3.9.0",
-    "appium-ios-simulator": "^1.9.0",
+    "appium-ios-simulator": "^1.10.3",
     "appium-logger": "^2.1.0",
     "appium-remote-debugger": "^3.0.0",
     "appium-support": "^2.3.0",
