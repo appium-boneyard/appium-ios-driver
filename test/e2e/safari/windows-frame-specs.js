@@ -28,11 +28,9 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
       await driver.click(el);
       await spinTitle("I am another page title", driver);
 
-      let handles = await driver.getWindowHandles();
       await B.delay(2000);
       await driver.closeWindow();
       await B.delay(3000);
-      (await driver.getWindowHandles()).length.should.be.below(handles.length);
       await spinTitle("I am a page title", driver);
     });
 

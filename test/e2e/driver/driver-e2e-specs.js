@@ -13,7 +13,7 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('driver', function () {
-  this.timeout(120000);
+  process.env.TRAVIS ? this.timeout(240000) : this.timeout(120000);
   let driver;
   it('should start', async () => {
     let caps = {
