@@ -3,7 +3,6 @@ import B from 'bluebird';
 import https from 'https';
 import setup from '../../setup-base';
 
-
 const pem = B.promisifyAll(require('pem'));
 
 describe('When accessing an HTTPS encrypted site in Safari', async function () {
