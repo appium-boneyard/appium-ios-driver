@@ -44,7 +44,7 @@ describe.only('ios webkit debug proxy class', () => {
     iwdpInstance.start();
   });
 
-  it.only('should not start IWDP server if one is already started', async function(done){
+  it('should not start IWDP server if one is already started on the same port', async function(done){
     // Copy the IWDP process and start it
     let process = Object.assign(iwdpInstance.process);
     await process.start();
@@ -52,6 +52,14 @@ describe.only('ios webkit debug proxy class', () => {
       done();
     });
     iwdpInstance.start();
+  });
 
+  it('should start IWDP server if one is started on a different port', async function(){
+    // Start IWDP on it's default port
+    let process = new SubProcess('ios_webkit_debug_proxy');
+    await process.start();
+    await iwdpInstance.start();
+    let devices = await iwdpInstance.getDevices();
+    expect(devices.length).to.equal(0);
   });
 });
