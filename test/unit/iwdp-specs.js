@@ -1,7 +1,7 @@
 // transpile:mocha
 
-/*import sinon from 'sinon';
-import { fs } from 'appium-support';
+import sinon from 'sinon';
+/*import { fs } from 'appium-support';
 import path from 'path';
 import logger from '../../lib/device-log/logger';*/
 import chai from 'chai';
@@ -26,6 +26,16 @@ describe.only('ios webkit debug proxy class', () => {
     try {
       await iwdpInstance.stop();
     } catch (ign) {}
+  });
+
+  it('should detect that IWDP is supported on this machine', async function () {
+    expect(IWDP.isSupported());
+  });
+
+  it('should throw an exception if IWDP is unsupported and we attempt to instantiate it', async function() {
+    let whichStub = sinon.stub(IWDP, 'isSupported', () => false);
+    expect(() => new IWDP()).to.throw(/not supported/);
+    whichStub.restore();
   });
 
   it('should start ios-webkit-debug-proxy and have no connected devices', async function () {
@@ -61,5 +71,6 @@ describe.only('ios webkit debug proxy class', () => {
     await iwdpInstance.start();
     let devices = await iwdpInstance.getDevices();
     expect(devices.length).to.equal(0);
+    process.stop();
   });
 });
