@@ -11,7 +11,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 let iwdpInstance;
 
-describe('ios webkit debug proxy class', () => {
+describe('ios webkit debug proxy class', async () => {
   beforeEach(async () => {
     iwdpInstance = new IWDP();
   });
@@ -26,26 +26,45 @@ describe('ios webkit debug proxy class', () => {
     expect(IWDP.isSupported());
   });
 
-  it('should start IWDP and be able to access the webpage', async function () {
+  it('should start IWDP and be able to access the main page', async function () {
     await iwdpInstance.start();
     await request(iwdpInstance.endpoint).should.eventually.have.string('<html'); 
   });
 
-  it('should start IWDP server if one is started on a different port', async function() {
+  it('should still start IWDP server if one is started on a different port', async function() {
     let process = new SubProcess('ios_webkit_debug_proxy', ['c', 'null:12345']);
     await process.start();
     await iwdpInstance.start();
     await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
   });
 
-  it('should restart after the process is stopped abruptly', async function() {
+  it('should restart after the process is stopped abruptly', async function () {
     await iwdpInstance.start();
     await iwdpInstance.process.stop();
-    await Promise.delay(1000); // Give the process time to start
+    await new Promise((resolve) => {
+      iwdpInstance.once('start', resolve);   
+    });
     await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
   });
 
-  it('should fail after reaching max retries', async function() {
+  it('should fail after reaching max retries', async (done) => {
     await iwdpInstance.start();
+    let retries = 0;
+
+    // It should give up restarting after 10 failed attempts
+    iwdpInstance.on('error', () => {
+      expect(retries).to.equal(10);
+      done();
+    });
+
+    while (++retries <= 10) {
+      let promise = new Promise((resolve) => {
+        iwdpInstance.once('start', () => {
+          resolve();
+        });
+      });
+      await iwdpInstance.process.stop();
+      await promise;
+    }
   });
 });
