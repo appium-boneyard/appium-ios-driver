@@ -10,14 +10,14 @@ Appium iOS Driver is a test automation tool for iOS devices. Appium iOS Driver a
 Appium iOS Driver supports iOS versions 8+
 
 ## Installation
-```
+```bash
 npm install appium-ios-driver
 ```
 
 ## Usage
 Import iOS Driver, set [desired capabilities](http://appium.io/slate/en/1.5/?javascript#appium-server-capabilities) and create a session:
 
-```
+```js
 import { IosDriver } from `appium-ios-driver`
 
 let defaultCaps = {
@@ -30,7 +30,7 @@ let driver = new IosDriver();
 await driver.createSession(defaultCaps);
 ```
 Run commands:
-```
+```js
 await driver.setOrientation('LANDSCAPE');
 console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 ```
@@ -151,7 +151,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 
 ## Watch code for changes, re-transpile and run unit tests:
 
-```
+```bash
 gulp
 ```
 
@@ -159,15 +159,14 @@ gulp
 
 For tests, the default sims required are an iOS 9.2 iPhone 6 and iPad 2, which you can create as follows if one doesn't already exist on your system (use `xcrun simctl list` to check first):
 
-```
+```bash
 xcrun simctl create "iPhone 6" "iPhone 6" 9.2
 xcrun simctl create "iPad 2" "iPad 2" 9.2
-
 ```
 
 Then you can run unit and e2e tests:
 
-```
+```bash
 // unit tests:
 gulp once
 
