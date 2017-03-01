@@ -38,10 +38,13 @@ describe('ios webkit debug proxy class', async () => {
   });
 
   it('should still start IWDP server if one is started on a different port', async function() {
-    let process = new SubProcess('ios_webkit_debug_proxy', ['c', 'null:12345']);
-    await process.start();
+    let process = new SubProcess('ios_webkit_debug_proxy', ['--config', 'null:56789']);
+    process.start();
+    await Promise.delay(500);
+    await request('http://localhost:56789/').should.eventually.have.string('<html');
     await iwdpInstance.start();
     await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
+    await process.stop();
   });
 
   it('should restart after the process is stopped abruptly', async function () {
