@@ -11,7 +11,9 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 let iwdpInstance;
 
-describe('ios webkit debug proxy class', async () => {
+describe('ios webkit debug proxy class', function () {
+  this.timeout(20000);
+
   beforeEach(async () => {
     iwdpInstance = new IWDP();
   });

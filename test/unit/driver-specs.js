@@ -89,25 +89,43 @@ describe('driver', () => {
   });
 
   describe('IWDP runner', async () => {
-    it('should not start IWDP server if startIWDP !== true', async () => {
-      let driver = new IosDriver();
-      let stub = sinon.stub(driver, 'isRealDevice', () => true);
-      await driver.startIWDP();
-      expect(driver.iwdpServer).to.be.undefined;
-      await driver.stopIWDP();
+    let driver, stub;
+
+    beforeEach(() => {
+      driver = new IosDriver();
+      stub = sinon.stub(driver, 'isRealDevice', () => true);
+    });
+
+    afterEach(() => {
       stub.restore();
     });
 
+    it('should not start IWDP server if startIWDP !== true', async () => {
+      await driver.startIWDP();
+      expect(driver.iwdpServer).to.be.undefined;
+      await driver.stopIWDP();
+    });
+
     it('should start IWDP server if "startIWDP=true" and then close it when stopIWDP is called', async () => {
-      let driver = new IosDriver({startIWDP: true});
-      let stub = sinon.stub(driver, 'isRealDevice', () => true);
+      driver.opts.startIWDP = true;
       await driver.startIWDP();
       let endpoint = driver.iwdpServer.endpoint;
       await request(endpoint).should.eventually.have.string('<html');
       await driver.stopIWDP();
       await request(endpoint).should.eventually.be.rejected;
       expect(driver.iwdpServer).to.be.undefined;
-      stub.restore();
+    });
+
+    it('should start IWDP server at the port specified in opts.webkitDebugProxyPort', async () => {
+      driver.opts.webkitDebugProxyPort = 56789;
+      driver.opts.startIWDP = true;
+      await driver.startIWDP();
+      let endpoint = driver.iwdpServer.endpoint;
+      endpoint.should.have.string('56789');
+      await request(endpoint).should.eventually.have.string('<html');
+      await driver.stopIWDP();
+      await request(endpoint).should.eventually.be.rejected;
+      expect(driver.iwdpServer).to.be.undefined;
     });
   });
 });
