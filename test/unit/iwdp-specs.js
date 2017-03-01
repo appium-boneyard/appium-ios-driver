@@ -22,8 +22,8 @@ describe('ios webkit debug proxy class', async () => {
     } catch (ign) { }
   });
 
-  it('should detect that IWDP is supported on this machine', function () {
-    expect(IWDP.isSupported());
+  it('should detect that IWDP is supported on this machine', async function () {
+    iwdpInstance.isSupported().should.eventually.be.true;
   });
 
   it('should start IWDP and be able to access the main page', async function () {
@@ -66,6 +66,7 @@ describe('ios webkit debug proxy class', async () => {
       done();
     });
 
+    // Keep stopping the process after it has been started
     while (++retries <= 10) {
       let promise = new Promise((resolve) => {
         iwdpInstance.once('start', () => {
