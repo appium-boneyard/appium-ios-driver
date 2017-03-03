@@ -2,12 +2,15 @@ import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
+import { MOCHA_TIMEOUT } from '../../helpers/session';
 
 
 const GET_ELEM_SYNC = `return document.getElementsByTagName('h1')[0].innerHTML;`;
 const GET_ELEM_ASYNC = `arguments[arguments.length - 1](document.getElementsByTagName('h1')[0].innerHTML);`;
 
 describe('safari - webview - frames', function () {
+  this.timeout(MOCHA_TIMEOUT);
+  
   const driver = setup(this, desired, {noReset: true}, false, true).driver;
 
   describe('frames', function () {

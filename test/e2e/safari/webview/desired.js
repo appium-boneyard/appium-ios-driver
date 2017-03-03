@@ -1,4 +1,5 @@
 export default {
   nativeWebTap: true,
-  browserName: 'safari'
+  browserName: 'safari',
+  noReset: true,
 };

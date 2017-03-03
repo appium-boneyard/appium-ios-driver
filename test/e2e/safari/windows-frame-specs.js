@@ -2,8 +2,12 @@ import setup from "../setup-base";
 import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
 import B from 'bluebird';
+import { MOCHA_TIMEOUT } from '../helpers/session';
+
 
 describe(`safari - windows and frames (${env.DEVICE})`, function () {
+  this.timeout(MOCHA_TIMEOUT);
+
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true,
@@ -54,7 +58,8 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
 });
 
 describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function () {
-  if (process.env.TRAVIS) this.timeout(240000);
+  this.timeout(MOCHA_TIMEOUT);
+  
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
