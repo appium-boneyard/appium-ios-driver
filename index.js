@@ -10,6 +10,7 @@ import { commands, iosCommands } from './lib/commands/index';
 import * as settings from './lib/settings';
 import * as device from './lib/device';
 import utils from './lib/utils';
+import { IWDP } from './lib/iwdp';
 
 
 const DEFAULT_HOST = "localhost";
@@ -26,7 +27,7 @@ if (require.main === module) {
 }
 
 export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
-         iosCommands, settings, device, defaultServerCaps, utils };
+         iosCommands, settings, device, defaultServerCaps, utils, IWDP };
 
 export default IosDriver;
 
