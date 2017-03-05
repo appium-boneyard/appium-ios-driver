@@ -8,19 +8,21 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import path from 'path';
 import B from 'bluebird';
+import { MOCHA_TIMEOUT } from '../helpers/session';
+
 
 chai.should();
 chai.use(chaiAsPromised);
 
 describe('driver', function () {
-  process.env.TRAVIS ? this.timeout(240000) : this.timeout(120000);
+  this.timeout(MOCHA_TIMEOUT);
   let driver;
   it('should start', async () => {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
       showIOSLog: false,
-      fullReset: true,
+      noReset: true,
       newCommandTimeout: 120
     };
     caps = _.merge({}, env.CAPS, caps);

@@ -2,8 +2,11 @@ import desired from './desired';
 import setup from '../../setup-base';
 import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
+import { MOCHA_TIMEOUT } from '../../helpers/session';
 
 describe('safari - webview - cookies', function () {
+  this.timeout(MOCHA_TIMEOUT);
+  
   const driver = setup(this, desired, {noReset: true}).driver;
 
   describe('within iframe webview', function () {

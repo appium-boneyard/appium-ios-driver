@@ -8,13 +8,14 @@ import { SUPPORTED_LOG_TYPES } from '../../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import _ from 'lodash';
+import { MOCHA_TIMEOUT } from '../helpers/session';
 
 
 chai.should();
 chai.use(chaiAsPromised);
 
 describe('commands - logging', function () {
-  this.timeout(120000);
+  this.timeout(MOCHA_TIMEOUT);
   let driver;
 
   before(() => {

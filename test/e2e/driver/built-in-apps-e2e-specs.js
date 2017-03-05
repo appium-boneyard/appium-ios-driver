@@ -5,12 +5,14 @@ import env from '../helpers/env';
 import { IosDriver } from '../../../lib/driver';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import { MOCHA_TIMEOUT } from '../helpers/session';
 
 chai.should();
 chai.use(chaiAsPromised);
 
 describe('built-in apps', function () {
-  process.env.TRAVIS ? this.timeout(240000) : this.timeout(120000);
+  this.timeout(MOCHA_TIMEOUT);
+  
   let driver;
   describe('Calendar', () => {
     it('should start', async () => {
