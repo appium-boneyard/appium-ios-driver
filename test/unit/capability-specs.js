@@ -2,6 +2,8 @@ import { IosDriver } from '../..';
 import utils from '../../lib/utils';
 import chai from 'chai';
 import sinon from 'sinon';
+import { withMocks } from 'appium-test-support';
+import xcode from 'appium-xcode';
 
 let sandbox = sinon.sandbox.create();
 const should = chai.Should();
@@ -144,8 +146,17 @@ describe('Desired Capabilities', () => {
     });
   });
 
-  describe('server capabilities', () => {
+  describe('server capabilities', withMocks({xcode}, (mocks) => {
     it('should collect server capabilities', async () => {
+      mocks.xcode.expects('getVersion')
+        .once().returns({
+          versionString: '7.0.0',
+          versionFloat: 7.0,
+          major: 7,
+          minor: 0,
+          patch: 0
+        });
+
       sandbox.stub(driver, 'configureApp');
       sandbox.stub(driver, 'validateDesiredCaps');
       sandbox.stub(driver, 'start');
@@ -161,5 +172,5 @@ describe('Desired Capabilities', () => {
       driver.caps.takesScreenshot.should.exist;
       sandbox.restore();
     });
-  });
+  }));
 });

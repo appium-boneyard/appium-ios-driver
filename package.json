@@ -40,6 +40,8 @@
     "lodash": "^4.13.1",
     "node-idevice": "^0.1.6",
     "path": "^0.12.7",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
     "safari-launcher": "^2.0.5",
     "source-map-support": "^0.4.0",
     "teen_process": "^1.6.0",

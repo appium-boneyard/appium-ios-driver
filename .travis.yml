@@ -13,6 +13,7 @@ node_js: "6"
 before_install:
   # Instruments fix:
   # https://github.com/travis-ci/travis-ci/issues/4218
+  - brew install ios-webkit-debug-proxy
   - ./bin/instruments-auth.sh
 before_script:
   - npm install

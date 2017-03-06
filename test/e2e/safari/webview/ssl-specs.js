@@ -4,7 +4,6 @@ import https from 'https';
 import setup from '../../setup-base';
 import { MOCHA_TIMEOUT } from '../../helpers/session';
 
-
 const pem = B.promisifyAll(require('pem'));
 
 describe('When accessing an HTTPS encrypted site in Safari', function () {
