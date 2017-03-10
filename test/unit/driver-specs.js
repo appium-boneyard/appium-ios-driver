@@ -7,10 +7,7 @@ import { withMocks } from 'appium-test-support';
 import * as teen_process from 'teen_process';
 import { fs } from 'appium-support';
 import xcode from 'appium-xcode';
-import sinon from 'sinon';
-import request from 'request-promise';
 
-let expect = chai.expect;
 chai.should();
 chai.use(chaiAsPromised);
 
@@ -85,47 +82,6 @@ describe('driver', () => {
         await driver.asyncScriptTimeout(to + 20);
         driver.asyncWaitMs.should.equal(to + 20);
       });
-    });
-  });
-
-  describe('IWDP runner', async () => {
-    let driver, stub;
-
-    beforeEach(() => {
-      driver = new IosDriver();
-      stub = sinon.stub(driver, 'isRealDevice', () => true);
-    });
-
-    afterEach(() => {
-      stub.restore();
-    });
-
-    it('should not start IWDP server if startIWDP !== true', async () => {
-      await driver.startIWDP();
-      expect(driver.iwdpServer).to.be.undefined;
-      await driver.stopIWDP();
-    });
-
-    it('should start IWDP server if "startIWDP=true" and then close it when stopIWDP is called', async () => {
-      driver.opts.startIWDP = true;
-      await driver.startIWDP();
-      let endpoint = driver.iwdpServer.endpoint;
-      await request(endpoint).should.eventually.have.string('<html');
-      await driver.stopIWDP();
-      await request(endpoint).should.eventually.be.rejected;
-      expect(driver.iwdpServer).to.be.undefined;
-    });
-
-    it('should start IWDP server at the port specified in opts.webkitDebugProxyPort', async () => {
-      driver.opts.webkitDebugProxyPort = 56789;
-      driver.opts.startIWDP = true;
-      await driver.startIWDP();
-      let endpoint = driver.iwdpServer.endpoint;
-      endpoint.should.have.string('56789');
-      await request(endpoint).should.eventually.have.string('<html');
-      await driver.stopIWDP();
-      await request(endpoint).should.eventually.be.rejected;
-      expect(driver.iwdpServer).to.be.undefined;
     });
   });
 });
