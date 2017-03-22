@@ -2,11 +2,11 @@ import setup from "../setup-base";
 import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
 import B from 'bluebird';
-import { MOCHA_TIMEOUT } from '../helpers/session';
+import { MOCHA_SAFARI_TIMEOUT } from '../helpers/session';
 
 
 describe(`safari - windows and frames (${env.DEVICE})`, function () {
-  this.timeout(MOCHA_TIMEOUT);
+  this.timeout(MOCHA_SAFARI_TIMEOUT);
 
   const driver = setup(this, {
     browserName: 'safari',
@@ -58,8 +58,8 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
 });
 
 describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopups`, function () {
-  this.timeout(MOCHA_TIMEOUT);
-  
+  this.timeout(MOCHA_SAFARI_TIMEOUT);
+
   const driver = setup(this, {
     browserName: 'safari',
     safariAllowPopups: false
