@@ -2,13 +2,13 @@ import desired from './desired';
 import B from 'bluebird';
 import https from 'https';
 import setup from '../../setup-base';
-import { MOCHA_TIMEOUT } from '../../helpers/session';
+import { MOCHA_SAFARI_TIMEOUT } from '../../helpers/session';
 
 const pem = B.promisifyAll(require('pem'));
 
 describe('When accessing an HTTPS encrypted site in Safari', function () {
-  this.timeout(MOCHA_TIMEOUT);
-  
+  this.timeout(MOCHA_SAFARI_TIMEOUT);
+
   let sslServer;
 
   before(async function () {

@@ -45,6 +45,9 @@ function setup (context, desired, opts = {}, envOverrides = false, needsNewServe
 
   after(async () => {
     await session.tearDown(allPassed);
+    if (needsNewServer) {
+      await server.close();
+    }
   });
 
   afterEach(function () {

@@ -7,14 +7,16 @@ import { ALL_COMMANDS } from 'appium-base-driver';
 import log from '../../../lib/logger';
 
 
-const MOCHA_TIMEOUT = 60 * 1000 * (process.env.TRAVIS ? 10 : 4);
+const MOCHA_TIMEOUT = 60 * 1000 * (process.env.TRAVIS ? 20 : 4);
+const MOCHA_SAFARI_TIMEOUT = MOCHA_TIMEOUT * 2;
 
 class Session {
   constructor (desired={}, opts={}) {
     this.desired = desired;
     this.opts = opts;
     this.initialized = false;
-    this.rawDriver = new IosDriver(opts);
+
+    this.rawDriver = new IosDriver(this.opts);
 
     // wrapping the driver so that the call goes
     // through executeCommand
@@ -72,4 +74,4 @@ class Session {
 
 }
 
-export { Session, MOCHA_TIMEOUT };
+export { Session, MOCHA_TIMEOUT, MOCHA_SAFARI_TIMEOUT };

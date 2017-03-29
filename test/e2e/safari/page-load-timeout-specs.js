@@ -1,13 +1,13 @@
 import setup from "../setup-base";
 import env from '../helpers/env';
-import { MOCHA_TIMEOUT } from '../helpers/session';
+import { MOCHA_SAFARI_TIMEOUT } from '../helpers/session';
 
 
 // TODO: fix page load handling in appium-remote-debugger
 // right now it is not respected, so we need to skip
 describe.skip('safari - page load timeout', function () {
-  this.timeout(MOCHA_TIMEOUT);
-  
+  this.timeout(MOCHA_SAFARI_TIMEOUT);
+
   const driver = setup(this, { browserName: 'safari' }).driver;
 
   describe('small timeout, slow page load', function () {

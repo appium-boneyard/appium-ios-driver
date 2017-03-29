@@ -63,7 +63,7 @@ describe('testapp - find element', function () {
 
   it('should find all elements by class name in the app', async () => {
     let els = await driver.findElements('class name', 'UIAButton');
-    [4, 7].should.contain(els.length);
+    [4, 7, 8].should.contain(els.length);
     els[0].should.exist;
   });
 
