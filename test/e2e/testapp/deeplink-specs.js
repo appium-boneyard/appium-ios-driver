@@ -5,7 +5,7 @@ describe('testapp - deeplink', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('should return page source', async () => {
+  it('should successfully open the URL', async () => {
     await driver.setUrl('testapp://');
   });
 });
