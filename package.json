@@ -39,6 +39,7 @@
     "js2xmlparser2": "^0.2.0",
     "lodash": "^4.13.1",
     "node-idevice": "^0.1.6",
+    "node-simctl": "^3.6.0",
     "path": "^0.12.7",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
