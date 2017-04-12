@@ -87,12 +87,14 @@ describe('system logs', () => {
       }
       log.logs.should.have.length.at.most(maxBufferSize);
     }
-    log.logs.should.have.length.within(2, maxBufferSize);
 
+    // This is to make sure the new entry has been captured on slow Travis nodes
+    await B.delay(30);
+    log.logs.should.have.lengthOf(maxBufferSize);
     const firstBufferMessage = parseInt(log.logs[0].message, 10);
-    firstBufferMessage.should.be.within(1, logRecordsCount - log.logs.length);
+    firstBufferMessage.should.be.equal(logRecordsCount - log.logs.length + 1);
     const lastBufferMessage = parseInt(log.logs[log.logs.length - 1].message, 10);
-    lastBufferMessage.should.be.within(logRecordsCount - log.logs.length + 1, logRecordsCount);
+    lastBufferMessage.should.be.equal(logRecordsCount);
 
     await log.stopCapture();
   });
