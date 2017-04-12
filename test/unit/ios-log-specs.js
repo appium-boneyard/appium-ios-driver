@@ -59,7 +59,9 @@ describe('system logs', () => {
   it('should rotate log buffer', async function () {
     const maxBufferSize = 10;
     const sliceSizeLimit = maxBufferSize / 2;
+    sliceSizeLimit.should.be.below(maxBufferSize);
     const logRecordsCount = maxBufferSize * 2;
+    logRecordsCount.should.be.above(maxBufferSize);
 
     let log = new IOSLog({sim, showLogs: false});
     log.maxBufferSize = maxBufferSize;
@@ -71,7 +73,7 @@ describe('system logs', () => {
 
     for (let i = 1; i <= logRecordsCount; ++i) {
       await fs.writeFile(tmpSystemLog, `${i}\n`, {flag: 'a'});
-      // This is to make sure the new entry has been captured on slow nodes
+      // This is to make sure the new entry has been captured on slow Travis nodes
       await B.delay(10);
       if (i >= sliceSizeLimit && i % sliceSizeLimit === 0) {
         // on some slow system (e.g., Travis) need a moment
@@ -80,16 +82,17 @@ describe('system logs', () => {
         if (previousRecentLogs.length && recentLogs.length) {
           previousRecentLogs[0].message.should.not.be.equal(recentLogs[0].message);
         }
-        recentLogs.should.have.lengthOf(sliceSizeLimit);
+        recentLogs.should.have.length.within(1, sliceSizeLimit);
         log.logIdxSinceLastRequest.should.be.within(0, log.logs.length);
       }
       log.logs.should.have.length.at.most(maxBufferSize);
     }
+    log.logs.should.have.length.within(2, maxBufferSize);
 
     const firstBufferMessage = parseInt(log.logs[0].message, 10);
-    firstBufferMessage.should.be.equal(logRecordsCount > maxBufferSize ? logRecordsCount - log.logs.length : 1);
+    firstBufferMessage.should.be.within(1, logRecordsCount - log.logs.length);
     const lastBufferMessage = parseInt(log.logs[log.logs.length - 1].message, 10);
-    lastBufferMessage.should.be.equal(logRecordsCount);
+    lastBufferMessage.should.be.within(logRecordsCount - log.logs.length + 1, logRecordsCount);
 
     await log.stopCapture();
   });
