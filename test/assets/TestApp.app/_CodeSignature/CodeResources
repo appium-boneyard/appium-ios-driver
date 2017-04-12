@@ -10,15 +10,15 @@
 		</data>
 		<key>GestureTestViewController.nib/objects.nib</key>
 		<data>
-		lWMGweucNr4UFdTwgB7v6dZct4w=
+		MDHIih9NIZEOYML+PkkozKi+1XM=
 		</data>
 		<key>GestureTestViewController.nib/runtime.nib</key>
 		<data>
-		drVY5ECUzokvBSeU7Ii2SFrschw=
+		76xZL+duWC4IH9js7AfzC+z1buc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nZQtL9wLXbCUGhoJit5Evrdajbw=
+		FlsK1sHqawxoSUOhmcSprgVPsNw=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -46,7 +46,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4eKh9Itu4WXPM8io2IqrZwzJUwA=
+			OqUWKUuvGjgkPSCZGP2EacBvoDo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -55,7 +55,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2BQINdc+fKGXcNftRvah54cUfCE=
+			alTrlvS+anzu8qXedJwoxVc1YiM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -78,22 +78,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lWMGweucNr4UFdTwgB7v6dZct4w=
+			MDHIih9NIZEOYML+PkkozKi+1XM=
 			</data>
 			<key>hash2</key>
 			<data>
-			pZB1SkhNtHXMYSBA4itjOHGT1QSFwc1/IQ6Lgzqb67M=
+			dieCIR1CeqH2Ik8W3apah153yZZ7JdznRf6kyn4r/y4=
 			</data>
 		</dict>
 		<key>GestureTestViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			drVY5ECUzokvBSeU7Ii2SFrschw=
+			76xZL+duWC4IH9js7AfzC+z1buc=
 			</data>
 			<key>hash2</key>
 			<data>
-			pGvXgJ1rx66gH1woqLxwuh4FeavGrxHi8AgIDjUM7u0=
+			rvZYFPsL94LFOWIgLEVwbQwTqrtLmHDv/rAz6LlYq0M=
 			</data>
 		</dict>
 		<key>en.lproj/InfoPlist.strings</key>
@@ -126,11 +126,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4eKh9Itu4WXPM8io2IqrZwzJUwA=
+			OqUWKUuvGjgkPSCZGP2EacBvoDo=
 			</data>
 			<key>hash2</key>
 			<data>
-			C9GGlC67rBeMTpxQIs8edc3ghS4lRlm5N3FOj6uMn8U=
+			YniyEq1J37HTKODPoZh7yWz87tBCvMipZtBwfhTtcRg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -139,11 +139,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2BQINdc+fKGXcNftRvah54cUfCE=
+			alTrlvS+anzu8qXedJwoxVc1YiM=
 			</data>
 			<key>hash2</key>
 			<data>
-			QpEjsv/FtB761nlMPbqBf7vumh+jLD32Lkh81Oia8ms=
+			z8b+LbvnI7yXTJ7w9qNrr/x11yxspQmfNmEd3W2RPBg=
 			</data>
 			<key>optional</key>
 			<true/>
