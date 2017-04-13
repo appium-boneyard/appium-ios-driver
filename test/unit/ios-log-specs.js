@@ -55,4 +55,40 @@ describe('system logs', () => {
 
     await log.stopCapture();
   });
+
+  it('should rotate log buffer', async function () {
+    const maxBufferSize = 10;
+    const sliceSizeLimit = maxBufferSize / 2;
+    sliceSizeLimit.should.be.below(maxBufferSize);
+    const logRecordsCount = maxBufferSize * 2;
+    logRecordsCount.should.be.above(maxBufferSize);
+
+    let log = new IOSLog({sim, showLogs: false});
+    log.maxBufferSize = maxBufferSize;
+    log.logIdxSinceLastRequest.should.be.below(0);
+    let recentLogs = await log.getLogs();
+    recentLogs.should.have.lengthOf(0);
+    log.logIdxSinceLastRequest.should.be.below(0);
+
+    for (let i = 1; i <= logRecordsCount; ++i) {
+      log.logRow = `${i}\n`;
+      log.onOutput();
+      if (i >= sliceSizeLimit && i % sliceSizeLimit === 0) {
+        let previousRecentLogs = recentLogs;
+        recentLogs = await log.getLogs();
+        if (previousRecentLogs.length && recentLogs.length) {
+          previousRecentLogs[0].message.should.not.be.equal(recentLogs[0].message);
+        }
+        recentLogs.should.have.lengthOf(sliceSizeLimit);
+        let reminder = log.logIdxSinceLastRequest % sliceSizeLimit;
+        reminder.should.equal(0);
+      }
+      log.logs.should.have.lengthOf(i < maxBufferSize ? i : maxBufferSize);
+    }
+
+    const firstBufferMessage = parseInt(log.logs[0].message, 10);
+    firstBufferMessage.should.be.equal(logRecordsCount - log.logs.length + 1);
+    const lastBufferMessage = parseInt(log.logs[log.logs.length - 1].message, 10);
+    lastBufferMessage.should.be.equal(logRecordsCount);
+  });
 });
