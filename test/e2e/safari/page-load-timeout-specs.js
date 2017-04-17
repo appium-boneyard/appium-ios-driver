@@ -8,7 +8,10 @@ import { MOCHA_SAFARI_TIMEOUT } from '../helpers/session';
 describe.skip('safari - page load timeout', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
-  const driver = setup(this, { browserName: 'safari' }).driver;
+  const driver = setup(this, {
+    browserName: 'safari',
+    fullReset: true,
+  }).driver;
 
   describe('small timeout, slow page load', function () {
     it('should not go to the requested page', async () => {

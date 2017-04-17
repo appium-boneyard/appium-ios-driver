@@ -1,6 +1,6 @@
 /* globals expect */
 import desired from './desired';
-import setup from '../../setup-base';
+import setup from '../safari-setup';
 import { loadWebView, spinTitle, spinWait } from '../../helpers/webview';
 import B from 'bluebird';
 import { MOCHA_SAFARI_TIMEOUT } from '../../helpers/session';
@@ -11,7 +11,7 @@ describe('safari - webview ', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
   describe('basics', () => {
-    const driver = setup(this, desired, {noReset: true}).driver;
+    const driver = setup(this, desired).driver;
 
     describe('context', function () {
       it('getting current context should work initially', async () => {

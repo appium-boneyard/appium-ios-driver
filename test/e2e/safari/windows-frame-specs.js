@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from './safari-setup';
 import env from '../helpers/env';
 import { loadWebView, spinTitle } from "../helpers/webview";
 import B from 'bluebird';
@@ -11,7 +11,8 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
   const driver = setup(this, {
     browserName: 'safari',
     nativeWebTap: true,
-    safariAllowPopups: true
+    safariAllowPopups: true,
+    fullReset: true,
   }).driver;
 
   describe('within webview', function () {
