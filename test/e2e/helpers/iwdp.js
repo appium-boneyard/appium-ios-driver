@@ -24,8 +24,12 @@ describe('ios webkit debug proxy class', function () {
     } catch (ign) { }
   });
 
+  it('should reject calls to http://localhost:27753; if this test fails, IWDP is already being run on port 27753', async function () {
+    await request(iwdpInstance.endpoint).should.be.rejected; 
+  });
+
   it('should detect that IWDP is supported on this machine', async function () {
-    iwdpInstance.isSupported().should.eventually.be.true;
+    await iwdpInstance.isSupported().should.eventually.be.true;
   });
 
   it('should start IWDP and be able to access the main page', async function () {
@@ -36,7 +40,7 @@ describe('ios webkit debug proxy class', function () {
   it('should not keep running after stop is called', async function () {
     await iwdpInstance.start();
     await iwdpInstance.stop();
-    request(iwdpInstance.endpoint).should.be.rejected;
+    await request(iwdpInstance.endpoint).should.be.rejected;
   });
 
   it('should still start IWDP server if one is started on a different port', async function() {
