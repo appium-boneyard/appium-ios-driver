@@ -1,7 +1,7 @@
 // transpile:mocha
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import IWDP from '../../lib/iwdp';
+import IWDP from '../../../lib/iwdp';
 import { SubProcess } from 'teen_process';
 import request from 'request-promise';
 import B from 'bluebird';
