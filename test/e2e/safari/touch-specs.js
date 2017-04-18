@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from './safari-setup';
 import env from '../helpers/env';
 import B from 'bluebird';
 import { MOCHA_SAFARI_TIMEOUT } from '../helpers/session';
@@ -12,8 +12,6 @@ describe.skip('touch', function () {
 
   const driver = setup(this, {
     browserName: "safari"
-  }, {
-    noReset: true
   }).driver;
 
   it('should flick element', async () => {

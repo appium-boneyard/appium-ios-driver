@@ -1,6 +1,6 @@
 /* globals expect */
 import desired from './desired';
-import setup from '../../setup-base';
+import setup from '../safari-setup';
 import { loadWebView } from '../../helpers/webview';
 import { MOCHA_SAFARI_TIMEOUT } from '../../helpers/session';
 
@@ -13,7 +13,7 @@ const GET_ELEM_BY_TAGNAME = `return document.getElementsByTagName('a');`;
 describe('safari - webview - execute', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
-  const driver = setup(this, desired, {noReset: true}, false, true).driver;
+  const driver = setup(this, desired).driver;
   before(async () => await loadWebView(desired, driver));
 
   describe('synchronous', function () {

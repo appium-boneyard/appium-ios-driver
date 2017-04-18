@@ -1,5 +1,5 @@
 import desired from './desired';
-import setup from '../../setup-base';
+import setup from '../safari-setup';
 import { loadWebView } from '../../helpers/webview';
 import env from '../../helpers/env';
 import { MOCHA_SAFARI_TIMEOUT } from '../../helpers/session';
@@ -11,7 +11,7 @@ const GET_ELEM_ASYNC = `arguments[arguments.length - 1](document.getElementsByTa
 describe('safari - webview - frames', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
-  const driver = setup(this, desired, {noReset: true}, false, true).driver;
+  const driver = setup(this, desired).driver;
 
   describe('frames', function () {
     beforeEach(async () => await loadWebView(
