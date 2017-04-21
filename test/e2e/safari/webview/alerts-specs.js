@@ -4,6 +4,7 @@ import { loadWebView } from '../../helpers/webview';
 import { MOCHA_SAFARI_TIMEOUT } from '../../helpers/session';
 
 
+
 describe('safari - webview - alerts @skip-real-device', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 

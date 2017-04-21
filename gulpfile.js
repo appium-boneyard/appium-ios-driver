@@ -6,6 +6,7 @@ var gulp = require('gulp'),
 boilerplate({
   build: 'appium-ios-driver',
   jscs: false,
+  files: ["*.js", "lib/**/*.js", "test/**/*.js", "!gulpfile.js", "!test/assets/**/*.js"],
   test: {
     files: ['${testDir}/**/*-specs.js', '!${testDir}/e2e/**']
   },

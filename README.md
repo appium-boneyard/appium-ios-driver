@@ -1,8 +1,21 @@
-[![Build Status](https://travis-ci.org/appium/appium-ios-driver.svg)](https://travis-ci.org/appium/appium-ios-driver) [![Coverage Status](https://coveralls.io/repos/appium/appium-ios-driver/badge.svg?branch=master&service=github)](https://coveralls.io/github/appium/appium-ios-driver?branch=master)
+# Appium iOS Driver
 
-Appium iOS Driver
-===================
-Appium iOS Driver is a test automation tool for iOS devices. Appium iOS Driver automates native, hybrid and mobile web apps, tested on simulators and real devices. Appium iOS Driver is part of the [Appium](https://github.com/appium/appium) mobile test automation tool.
+[![NPM version](http://img.shields.io/npm/v/appium-ios-driver.svg)](https://npmjs.org/package/appium-ios-driver)
+[![Downloads](http://img.shields.io/npm/dm/appium-ios-driver.svg)](https://npmjs.org/package/appium-ios-driver)
+[![Dependency Status](https://david-dm.org/appium/appium-ios-driver/master.svg)](https://david-dm.org/appium/appium-ios-driver/)
+[![devDependency Status](https://david-dm.org/appium/appium-ios-driver/master/dev-status.svg)](https://david-dm.org/appium/appium-ios-driver/master#info=devDependencies)
+
+[![Build Status](https://travis-ci.org/appium/appium-ios-driver.svg)](https://travis-ci.org/appium/appium-ios-driver)
+[![Coverage Status](https://coveralls.io/repos/appium/appium-ios-driver/badge.svg?branch=master&service=github)](https://coveralls.io/github/appium/appium-ios-driver?branch=master)
+
+
+Appium iOS Driver is a test automation tool for iOS devices up to an including
+iOS 9.3. Appium iOS Driver automates native, hybrid and mobile web apps, tested
+on simulators and real devices, using Apples' [UI Automation framework](uiauto.md).
+Appium iOS Driver is part of the [Appium](https://github.com/appium/appium)
+mobile test automation tool.
+
+To automation iOS devices with a version of iOS greater than 9.3, see [appium-xcuitest-driver](https://github.com/appium/appium-xcuitest-driver).
 
 *Note*: Issue tracking for this repo has been disabled. Please use the [main Appium issue tracker](https://github.com/appium/appium/issues) instead.
 
@@ -152,7 +165,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 ## Watch code for changes, re-transpile and run unit tests:
 
 ```bash
-gulp
+gulp watch
 ```
 
 ## Test
