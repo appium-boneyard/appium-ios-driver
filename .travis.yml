@@ -2,7 +2,7 @@ sudo: required
 env:
   # Run tests in parellel, up to 5 at once
   - DEVICE=ios93 TEST=unit FINAL_GULP=coveralls
-  - DEVICE=ios93 TEST=e2e/driver
+  - DEVICE=ios93 TEST=e2e/driver RECURSIVE=1
   - DEVICE=ios93 TEST=e2e/testapp RECURSIVE=1
   - DEVICE=ios93 TEST=e2e/uicatalog RECURSIVE=1
   - DEVICE=ios93 TEST=e2e/safari RECURSIVE=1
@@ -19,7 +19,7 @@ before_script:
   - npm install
   - npm install -g gulp
   - npm install -g mocha
-  - gulp eslint
 script:
+  - gulp eslint
   - if [ -n "$RECURSIVE" ]; then mocha --recursive build/test/$TEST -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
   - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi

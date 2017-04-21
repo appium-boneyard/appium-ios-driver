@@ -11,6 +11,7 @@ import * as settings from './lib/settings';
 import * as device from './lib/device';
 import utils from './lib/utils';
 import { IWDP } from './lib/iwdp';
+import * as uiauto from './lib/uiauto/uiauto';
 
 
 const DEFAULT_HOST = "localhost";
@@ -27,7 +28,7 @@ if (require.main === module) {
 }
 
 export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
-         iosCommands, settings, device, defaultServerCaps, utils, IWDP };
+         iosCommands, settings, device, defaultServerCaps, utils, IWDP, uiauto };
 
 export default IosDriver;
 

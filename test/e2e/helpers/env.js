@@ -20,7 +20,7 @@ env.REAL_DEVICE = process.env.REAL_DEVICE;
 env.EMU = !env.REAL_DEVICE;
 
 // device selection
-env.DEVICE = (process.env.DEVICE || 'ios').toLowerCase();
+env.DEVICE = (process.env.DEVICE || 'ios93').toLowerCase();
 
 function iphoneOrIpadSimulator (device, version) {
   let isIpad = device.match(/ipad/i);
