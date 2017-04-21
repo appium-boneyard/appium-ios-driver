@@ -23,7 +23,6 @@
     "lib": "lib"
   },
   "dependencies": {
-    "adm-zip": "^0.4.7",
     "appium-base-driver": "^2.0.9",
     "appium-instruments": "^3.9.0",
     "appium-ios-simulator": "^1.10.3",
