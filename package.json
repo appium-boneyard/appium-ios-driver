@@ -23,12 +23,11 @@
     "lib": "lib"
   },
   "dependencies": {
-    "adm-zip": "^0.4.7",
     "appium-base-driver": "^2.0.9",
     "appium-instruments": "^3.9.0",
     "appium-ios-simulator": "^1.10.3",
     "appium-remote-debugger": "^3.3.0",
-    "appium-support": "^2.4.0",
+    "appium-support": "^2.8.0",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.3.1",
     "babel-runtime": "=5.8.24",
