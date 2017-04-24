@@ -2,7 +2,10 @@
   "name": "appium-ios-driver",
   "description": "Appium driver for iOS",
   "keywords": [
-    "appium"
+    "appium",
+    "ios",
+    "ui automation",
+    "instruments"
   ],
   "version": "1.21.1",
   "author": "appium",
@@ -18,13 +21,14 @@
     "node"
   ],
   "main": "./build/index.js",
-  "bin": {},
+  "bin": {
+    "xcode-iwd": "./bin/xcode-iwd.sh"
+  },
   "directories": {
     "lib": "lib"
   },
   "dependencies": {
     "appium-base-driver": "^2.0.9",
-    "appium-instruments": "^3.9.0",
     "appium-ios-simulator": "^1.10.3",
     "appium-remote-debugger": "^3.3.0",
     "appium-support": "^2.8.0",
@@ -32,6 +36,7 @@
     "asyncbox": "^2.3.1",
     "babel-runtime": "=5.8.24",
     "bluebird": "^2.10.2",
+    "colors": "^1.1.2",
     "continuation-local-storage": "^3.1.7",
     "js2xmlparser2": "^0.2.0",
     "lodash": "^4.13.1",
@@ -43,6 +48,7 @@
     "safari-launcher": "^2.0.5",
     "source-map-support": "^0.4.0",
     "teen_process": "^1.6.0",
+    "through": "^2.3.8",
     "url": "^0.11.0",
     "uuid-js": "^0.7.5",
     "xmldom": "^0.1.22",
@@ -63,11 +69,10 @@
   ],
   "devDependencies": {
     "appium-gulp-plugins": "^1.4.5",
-    "appium-test-support": "0.0.5",
+    "appium-test-support": "^0.0.5",
     "babel-eslint": "^6.0.4",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
-    "colors": "^1.1.2",
     "eslint": "^2.12.0",
     "eslint-config-appium": "^0.1.0",
     "eslint-plugin-babel": "^3.2.0",

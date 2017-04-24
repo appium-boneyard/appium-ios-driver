@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import B from 'bluebird';
 import { uiauto } from '../../../..';
-import { utils as instrumentsUtils } from 'appium-instruments';
+import { instrumentsUtils } from '../../../../';
 import log from '../../../../lib/uiauto/logger';
 import _ from 'lodash';
 import path from 'path';
