@@ -237,8 +237,12 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
     });
   }));
 
-  describe('quickLaunch', withMocks({fs, tp}, (mocks) => {
+  describe('quickLaunch', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => {
     it('should remove trace directory', async () => {
+      mocks.xcode
+        .expects('getAutomationTraceTemplatePath')
+        .once()
+        .returns(B.resolve('/a/b/c/d/tracetemplate'));
       mocks.fs
         .expects('rimraf')
         .once()
