@@ -3,7 +3,7 @@
 
 import yargs from 'yargs';
 import { asyncify } from 'asyncbox';
-import { startServer } from './lib/server';
+import { startServer, startHttpsServer } from './lib/server';
 import { IosDriver, defaultServerCaps } from './lib/driver';
 import { desiredCapConstraints, desiredCapValidation } from './lib/desired-caps';
 import { commands, iosCommands } from './lib/commands/index';
@@ -30,7 +30,7 @@ if (require.main === module) {
 
 export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
          iosCommands, settings, device, defaultServerCaps, utils, IWDP, uiauto,
-         Instruments, instrumentsUtils };
+         Instruments, instrumentsUtils, startHttpsServer };
 
 export default IosDriver;
 
