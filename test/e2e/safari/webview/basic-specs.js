@@ -283,4 +283,20 @@ describe('safari - webview ', function () {
       });
     });
   });
+
+  describe('enablePerformanceLogging', function () {
+    let specialCaps = Object.assign({enablePerformanceLogging: true}, desired);
+
+    const driver = setup(this, specialCaps).driver;
+    before(async () => await loadWebView(specialCaps, driver));
+
+    it('should be able to get the performance logs', async () => {
+      let logTypes = await driver.getLogTypes();
+      logTypes.should.include('performance');
+
+      let logs = await driver.getLog('performance');
+      logs.should.be.an.instanceof(Array);
+      logs.length.should.be.above(0);
+    });
+  });
 });
