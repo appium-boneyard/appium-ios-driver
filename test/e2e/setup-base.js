@@ -19,6 +19,7 @@ async function startServer (session) {
 
 function setup (context, desired, opts = {}, envOverrides = false, needsNewServer = false) {
   context.timeout(env.MOCHA_INIT_TIMEOUT);
+  context.retries(2);
   let newEnv = _.clone(env);
   if (envOverrides) {
     _.extend(newEnv, envOverrides);

@@ -12,7 +12,6 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
     browserName: 'safari',
     nativeWebTap: true,
     safariAllowPopups: true,
-    fullReset: true,
   }).driver;
 
   describe('within webview', function () {
