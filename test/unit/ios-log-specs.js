@@ -160,22 +160,22 @@ describe('system logs', () => {
         initStatStub(false);
         let log = getLogger(`${dcPath}/deviceconsole`);
         await log.startCapture();
-        log.proc.cmd.should.eql('deviceconsole');
-        log.proc.opts.env.PATH.indexOf(`${dcPath}:`).should.eql(0);
+        log.proc.cmd.should.eql(`${dcPath}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(dcPath).should.eql(0);
       });
       it('should correctly use the install directory when given directly', async function () {
         initStatStub();
         let log = getLogger(dcPath);
         await log.startCapture();
-        log.proc.cmd.should.eql('deviceconsole');
-        log.proc.opts.env.PATH.indexOf(`${dcPath}:`).should.eql(0);
+        log.proc.cmd.should.eql(`${dcPath}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(dcPath).should.eql(0);
       });
       it('should use default deviceconsole if path not passed in', async function () {
         initStatStub();
         let log = getLogger(`deviceconsole`);
         await log.startCapture();
-        log.proc.cmd.should.eql('deviceconsole');
-        log.proc.opts.env.PATH.indexOf(`${DEVICE_CONSOLE_PATH}:`).should.eql(0);
+        log.proc.cmd.should.eql(`${DEVICE_CONSOLE_PATH}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(DEVICE_CONSOLE_PATH).should.eql(0);
       });
       it('should fail if an executable other than deviceconsole is passed in', async function () {
         initStatStub(false);
