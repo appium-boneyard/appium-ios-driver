@@ -1,6 +1,7 @@
 // transpile:mocha
 
 import { IOSLog } from '../..';
+import { DEVICE_CONSOLE_PATH } from '../../lib/device-log/ios-log';
 import sinon from 'sinon';
 import { fs } from 'appium-support';
 import path from 'path';
@@ -90,5 +91,109 @@ describe('system logs', () => {
     firstBufferMessage.should.be.equal(logRecordsCount - log.logs.length + 1);
     const lastBufferMessage = parseInt(log.logs[log.logs.length - 1].message, 10);
     lastBufferMessage.should.be.equal(logRecordsCount);
+  });
+
+  describe('real device logging', function () {
+    function getLogger (realDeviceLogger) {
+      let log = new IOSLog({sim, udid: '1234', realDeviceLogger});
+      log.finishStartingLogCapture = async function () {};
+      return log;
+    }
+    describe('idevicesyslog', function () {
+      describe('system version', function () {
+        let whichStub;
+        afterEach(function () {
+          whichStub.restore();
+        });
+
+        it('should use system idevicesyslog if no path specified', async function () {
+          whichStub = sinon.stub(fs, 'which').returns('/path/to/idevicesyslog');
+          let log = getLogger('idevicesyslog');
+          await log.startCapture();
+          log.proc.cmd.should.eql('idevicesyslog');
+        });
+        it('should fail if no system idevicesyslog found', async function () {
+          whichStub = sinon.stub(fs, 'which').throws(new Error('ENOENT'));
+          let log = getLogger('idevicesyslog');
+          await log.startCapture().should.eventually.be.rejectedWith(/Unable to find system idevicesyslog/);
+        });
+      });
+      describe('specific path', function () {
+        let existstub;
+        afterEach(function () {
+          existstub.restore();
+        });
+        it('should use specified idevicesyslog if given', async function () {
+          existstub = sinon.stub(fs, 'exists').returns(true);
+          let log = getLogger('/path/to/my/idevicesyslog');
+          await log.startCapture();
+          log.proc.cmd.should.eql('/path/to/my/idevicesyslog');
+        });
+        it('should fail if specified idevicesyslog is not found', async function () {
+          existstub = sinon.stub(fs, 'exists').returns(false);
+          let log = getLogger('/path/to/my/idevicesyslog');
+          await log.startCapture().should.eventually.be.rejectedWith(/Unable to find idevicesyslog from 'realDeviceLogger' capability/);
+        });
+      });
+    });
+    describe('deviceconsole', function () {
+      let dcPath = '/path/to/deviceconsole/install/directory';
+      let statStub;
+      afterEach(function () {
+        statStub.restore();
+      });
+
+      function initStatStub (directory = true, throws = false) {
+        statStub = sinon.stub(fs, 'stat');
+        if (throws) {
+          statStub.throws(new Error('ENOENT'));
+        } else {
+          statStub.returns({
+            isDirectory () {
+              return directory;
+            }
+          });
+        }
+      }
+
+      it('should correctly parse the install directory from executable path', async function () {
+        initStatStub(false);
+        let log = getLogger(`${dcPath}/deviceconsole`);
+        await log.startCapture();
+        log.proc.cmd.should.eql(`${dcPath}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(dcPath).should.eql(0);
+      });
+      it('should correctly use the install directory when given directly', async function () {
+        initStatStub();
+        let log = getLogger(dcPath);
+        await log.startCapture();
+        log.proc.cmd.should.eql(`${dcPath}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(dcPath).should.eql(0);
+      });
+      it('should use default deviceconsole if path not passed in', async function () {
+        initStatStub();
+        let log = getLogger(`deviceconsole`);
+        await log.startCapture();
+        log.proc.cmd.should.eql(`${DEVICE_CONSOLE_PATH}/deviceconsole`);
+        log.proc.opts.env.DYLD_LIBRARY_PATH.indexOf(DEVICE_CONSOLE_PATH).should.eql(0);
+      });
+      it('should fail if an executable other than deviceconsole is passed in', async function () {
+        initStatStub(false);
+        let log = getLogger(`${dcPath}/someotherlogger`);
+        await log.startCapture().should.eventually.be.rejectedWith(/Unable to parse 'deviceconsole' installation directory/);
+      });
+      it('should fail if path passed in is not stat-able', async function () {
+        initStatStub(false, true);
+        let log = getLogger(`/path/to/something/that/does/not/exist`);
+        await log.startCapture().should.eventually.be.rejectedWith(/Unknown 'realDeviceLogger'/);
+      });
+    });
+
+    describe('anything else', function () {
+      it('should fail if something other than idevicesyslog or deviceconsole are specified', async function () {
+        let log = getLogger('mysupadupalogga');
+        await log.startCapture().should.eventually.be.rejectedWith(/Unable to capture device log. Unknown 'realDeviceLogger'/);
+      });
+    });
   });
 });
