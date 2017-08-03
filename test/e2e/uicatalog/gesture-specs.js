@@ -149,7 +149,7 @@ describe('uicatalog - touch', function () {
         await driver.execute("mobile: scroll", {direction: 'up'});
       } catch (ign) {}
     });
-    
+
     it('should be able to click on arbitrary x-y elements', async () => {
       let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
       let el1 = await driver.findElement('accessibility id', `Buttons${axIdExt}`);

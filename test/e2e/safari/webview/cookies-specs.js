@@ -73,7 +73,7 @@ describe('safari - webview - cookies', function () {
     });
 
     it('should be able to delete one cookie', async () => {
-      var newCookie = {
+      let newCookie = {
         name: `newcookie`,
         value: `i'm new here`
       };

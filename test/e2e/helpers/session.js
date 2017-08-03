@@ -44,7 +44,7 @@ class Session {
         await this.driver.createSession(caps);
       } catch (err) {
         log.debug(`Init failed with error --> ${err}`);
-        remainingAttempts --;
+        remainingAttempts--;
         if (remainingAttempts === 0) {
           throw err;
         } else {
@@ -56,7 +56,9 @@ class Session {
     };
 
     let attempts = this.opts['no-retry'] ? 1 : 3;
-    if (env.MAX_RETRY) attempts = Math.min(env.MAX_RETRY, attempts);
+    if (env.MAX_RETRY) {
+      attempts = Math.min(env.MAX_RETRY, attempts);
+    }
     await init(attempts);
     this.initialized = true;
     await this.driver.implicitWait(env.IMPLICIT_WAIT_TIMEOUT);

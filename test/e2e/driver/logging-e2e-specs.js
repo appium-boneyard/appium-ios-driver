@@ -51,7 +51,7 @@ describe('commands - logging', function () {
     describe('success', () => {
       before(async function () {
         // TODO: figure out why this is so flakey in Travis
-        if (process.env.TRAVIS) this.skip();
+        if (process.env.TRAVIS) this.skip(); // eslint-disable-line curly
         await driver.createSession(caps);
       });
       after(async () => {

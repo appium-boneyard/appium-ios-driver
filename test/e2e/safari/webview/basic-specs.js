@@ -226,7 +226,7 @@ describe('safari - webview ', function () {
       });
 
       it('should return the active element', async () => {
-        var testText = 'hi there';
+        let testText = 'hi there';
         let el = await driver.findElement('id', 'i_am_a_textbox');
         await driver.setValue(testText, el);
         let activeEl = await driver.active();

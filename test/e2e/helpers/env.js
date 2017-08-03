@@ -11,7 +11,9 @@ env.IMPLICIT_WAIT_TIMEOUT = 5000;
 env.PLATFORM_VERSION = process.env.PLATFORM_VERSION;
 
 env.VERBOSE = process.env.VERBOSE;
-if (env.VERBOSE) console.log("process.env.LAUNCH_TIMEOUT -->", process.env.LAUNCH_TIMEOUT); //eslint-disable-line no-console
+if (env.VERBOSE) {
+  console.log("process.env.LAUNCH_TIMEOUT -->", process.env.LAUNCH_TIMEOUT); //eslint-disable-line no-console
+}
 env.LAUNCH_TIMEOUT = JSON.parse(process.env.LAUNCH_TIMEOUT || 60000);
 env.MOCHA_INIT_TIMEOUT = parseInt(process.env.MOCHA_INIT_TIMEOUT || 300000, 10);
 
@@ -183,7 +185,9 @@ if (env.PLATFORM_VERSION) {
 }
 
 // max retry
-if (process.env.MAX_RETRY) env.MAX_RETRY = parseInt(process.env.MAX_RETRY, 10);
+if (process.env.MAX_RETRY) {
+  env.MAX_RETRY = parseInt(process.env.MAX_RETRY, 10);
+}
 
 env.APPIUM_PORT = parseInt(process.env.APPIUM_PORT || 4723, 10);
 env.LOCAL_APPIUM_PORT = env.SAUCE ? 4443 : env.APPIUM_PORT;
