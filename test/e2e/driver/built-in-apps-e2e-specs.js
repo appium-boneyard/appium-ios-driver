@@ -12,7 +12,7 @@ chai.use(chaiAsPromised);
 
 describe('built-in apps', function () {
   this.timeout(MOCHA_TIMEOUT);
-  
+
   let driver;
   describe('Calendar', () => {
     it('should start', async () => {

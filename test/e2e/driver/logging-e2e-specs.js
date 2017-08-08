@@ -24,7 +24,7 @@ describe('commands - logging', function () {
 
   describe('getLogTypes', () => {
     it('should get the list of available logs', async () => {
-      driver.getLogTypes.should.be.a.Function;
+      driver.getLogTypes.should.an.instanceof(Function);
       (await driver.getLogTypes()).should.eql(_.keys(SUPPORTED_LOG_TYPES));
     });
   });
@@ -51,17 +51,17 @@ describe('commands - logging', function () {
     describe('success', () => {
       before(async function () {
         // TODO: figure out why this is so flakey in Travis
-        if (process.env.TRAVIS) this.skip();
+        if (process.env.TRAVIS) this.skip(); // eslint-disable-line curly
         await driver.createSession(caps);
       });
       after(async () => {
         await driver.deleteSession();
       });
       it('should get system logs', async () => {
-        (await driver.getLog('syslog')).should.be.an.Array;
+        (await driver.getLog('syslog')).should.be.an.instanceof(Array);
       });
       it('should get crash logs', async () => {
-        (await driver.getLog('crashlog')).should.be.an.Array;
+        (await driver.getLog('crashlog')).should.be.an.instanceof(Array);
       });
     });
   });

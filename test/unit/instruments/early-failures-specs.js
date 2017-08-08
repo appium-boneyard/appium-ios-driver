@@ -21,7 +21,7 @@ describe('Early failures', withSandbox({}, (S) => {
     let onExitSpy = sinon.spy();
     instruments.onShutdown.then(onExitSpy, onExitSpy).done(); // eslint-disable-line
     await instruments.launch().should.be.rejectedWith(/Instruments-based automation was removed in Xcode 8/);
-    onExitSpy.should.not.have.been.called;
+    onExitSpy.callCount.should.eql(0);
   });
 
   it('should error when Xcode 5.0.1 is used', async () => {
@@ -31,7 +31,7 @@ describe('Early failures', withSandbox({}, (S) => {
     let onExitSpy = sinon.spy();
     instruments.onShutdown.then(onExitSpy, onExitSpy).done(); // eslint-disable-line
     await instruments.launch().should.be.rejectedWith(/Xcode 5.0.1 ships with a broken version of Instruments/);
-    onExitSpy.should.not.have.been.called;
+    onExitSpy.callCount.should.eql(0);
   });
 
   it('should error on getAutomationTraceTemplatePath failure', async () => {
@@ -42,7 +42,7 @@ describe('Early failures', withSandbox({}, (S) => {
     let onExitSpy = sinon.spy();
     instruments.onShutdown.then(onExitSpy, onExitSpy).done(); // eslint-disable-line
     await instruments.launch().should.be.rejectedWith(/ouch!/);
-    onExitSpy.should.not.have.been.called;
+    onExitSpy.callCount.should.eql(0);
   });
 
   it('should error on getInstrumentsPath failure', async () => {
@@ -54,6 +54,6 @@ describe('Early failures', withSandbox({}, (S) => {
     let onExitSpy = sinon.spy();
     instruments.onShutdown.then(onExitSpy, onExitSpy).done(); // eslint-disable-line
     await instruments.launch().should.be.rejectedWith(/ouch!/);
-    onExitSpy.should.not.have.been.called;
+    onExitSpy.callCount.should.eql(0);
   });
 }));

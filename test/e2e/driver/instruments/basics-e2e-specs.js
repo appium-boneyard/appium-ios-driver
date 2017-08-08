@@ -13,8 +13,8 @@ import { retry } from 'asyncbox';
 chai.should();
 chai.use(chaiAsPromised);
 
-var LAUNCH_HANDLER_TIMEOUT = 10000;
-var TEMP_DIR = path.resolve(__dirname, 'tmp');
+const LAUNCH_HANDLER_TIMEOUT = 10000;
+const TEMP_DIR = path.resolve(__dirname, 'tmp');
 
 describe('instruments tests', function () {
   this.timeout(90000);
