@@ -5,7 +5,7 @@ env:
   matrix:
   # Run tests in parellel
     - DEVICE=ios93 TEST=unit COVERALLS=1
-    - DEVICE=ios93 TEST=e2e/driver RECURSIVE=1
+    - DEVICE=ios93 TEST=e2e/driver RECURSIVE=1 IWDP=1
     - DEVICE=ios93 TEST=e2e/testapp RECURSIVE=1
     - DEVICE=ios93 TEST=e2e/uicatalog RECURSIVE=1
     - DEVICE=ios93 TEST=e2e/safari RECURSIVE=1
@@ -17,6 +17,7 @@ before_install:
   # Instruments fix:
   # https://github.com/travis-ci/travis-ci/issues/4218
   - ./bin/instruments-auth.sh
+  - if [ -n "$IWDP=1" ]; then brew install ios-webkit-debug-proxy --HEAD; fi
 before_script:
   - npm install
 script:
