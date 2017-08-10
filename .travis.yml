@@ -4,7 +4,7 @@ env:
     - MOCHA_INIT_TIMEOUT=600000
   matrix:
   # Run tests in parellel
-    - DEVICE=ios93 TEST=unit FINAL_GULP=coveralls
+    - DEVICE=ios93 TEST=unit COVERALLS=1
     - DEVICE=ios93 TEST=e2e/driver RECURSIVE=1
     - DEVICE=ios93 TEST=e2e/testapp RECURSIVE=1
     - DEVICE=ios93 TEST=e2e/uicatalog RECURSIVE=1
@@ -20,9 +20,7 @@ before_install:
   - ./bin/instruments-auth.sh
 before_script:
   - npm install
-  - npm install -g gulp
-  - npm install -g mocha
 script:
-  - gulp eslint
-  - if [ -n "$RECURSIVE" ]; then mocha --recursive build/test/$TEST -g @skip-ci -i; else mocha build/test/$TEST -g @skip-ci -i; fi
-  - if [ -n "$FINAL_GULP" ]; then gulp $FINAL_GULP; fi
+  - npm run lint
+  - if [ -n "$RECURSIVE" ]; then npm run mocha -- --recursive build/test/$TEST -g @skip-ci -i; else npm run mocha -- build/test/$TEST -g @skip-ci -i; fi
+  - if [ -n "$COVERALLS=1" ]; then npm run coverage; fi

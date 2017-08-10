@@ -11,7 +11,9 @@ chai.use(chaiAsPromised);
 
 // this happens a single time, at load-time for the test suite,
 // so sync method is not overly problematic
-let app = path.resolve(__dirname, '..', '..', '..', 'test', 'assets', 'UICatalog.app');
+let app = __filename.indexOf('build/test/unit/app-util-specs') !== -1 ?
+  path.resolve(__dirname, '..', '..', '..', 'test', 'assets', 'UICatalog.app') :
+  path.resolve(__dirname, '..', '..', 'test', 'assets', 'UICatalog.app');
 
 describe('extractAppDisplayName', () => {
   it('should get application name of app', async () => {
