@@ -64,6 +64,7 @@
     "build": "gulp transpile",
     "e2e-test": "gulp 2e2-test",
     "mocha": "mocha",
+    "coverage": "gulp coveralls",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint": "gulp eslint"
   },
@@ -73,7 +74,7 @@
     "test"
   ],
   "devDependencies": {
-    "appium-gulp-plugins": "^2.0.0",
+    "appium-gulp-plugins": "^2.1.4",
     "appium-test-support": "^0.4.0",
     "babel-eslint": "^7.1.1",
     "chai": "^3.5.0",
