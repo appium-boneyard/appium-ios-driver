@@ -181,7 +181,6 @@ var commands;
             type: 'chunk',
           };
         } else {
-          /* jshint evil:true */
           if (cmd.indexOf("$.crash()") === 0) {
             // if we get something that looks like '$.crash()', fail.
             // this is for testing purposes
@@ -212,5 +211,3 @@ var commands;
     }
   };
 })();
-
-

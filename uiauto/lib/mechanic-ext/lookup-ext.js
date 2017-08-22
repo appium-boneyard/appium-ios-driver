@@ -153,7 +153,6 @@
       }
 
       $.debug('byUIAutomation: evaluating code: ' + code);
-      /* jshint evil: true */
       var elems = eval(code);
       return $.smartWrap(elems);
     }

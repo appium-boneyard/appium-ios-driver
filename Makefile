@@ -1,15 +1,7 @@
 current_dir = $(shell pwd)
 xcode_path:="$(shell xcode-select -print-path | sed s/\\/Contents\\/Developer//g)"
-JSHINT_BIN=./node_modules/.bin/jshint
-JSCS_BIN=./node_modules/.bin/jscs
 
-DEFAULT: jshint jscs
-
-jshint:
-	gulp jshint
-
-jscs:
-	@$(JSCS_BIN) build/lib build/test
+DEFAULT: iwd
 
 iwd: clone_iwd build_iwd export_iwd
 
@@ -47,7 +39,7 @@ print_env:
 	@echo Node.js version: `node -v`
 
 travis:
-	make jshint print_env
+	make print_env
 ifeq ($(CI_CONFIG),unit)
 	gulp once
 else ifeq ($(CI_CONFIG),functional)
@@ -61,15 +53,13 @@ else ifeq ($(CI_CONFIG),functional)
 	gulp coverage-e2e
 endif
 
-prepublish: jshint jscs iwd test
+prepublish: iwd test
 
 clean_trace:
 	rm -rf instrumentscli*.trace
 
 .PHONY: \
 	DEFAULT \
-	jshint \
-	jscs \
 	iwd \
 	clone_iwd \
 	build_iwd \
