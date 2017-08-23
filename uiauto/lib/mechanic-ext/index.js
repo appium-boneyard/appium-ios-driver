@@ -1,4 +1,4 @@
-/* jshint ignore:start */
+
 #import "./basics-ext.js"
 #import "./util-ext.js"
 #import "./alert-ext.js"
@@ -8,4 +8,3 @@
 #import "./lookup-ext.js"
 #import "./screen-ext.js"
 #import "./xpath-ext.js"
-/* jshint ignore:end */

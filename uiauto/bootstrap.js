@@ -1,6 +1,5 @@
 /* globals env, alerts, commands, $ */
 
-/* jshint ignore:start */
 #import "./vendors/mechanic.js"
 #import "lib/env.js"
 #import "lib/status.js"
@@ -8,7 +7,7 @@
 #import "lib/element-patch/index.js"
 #import "lib/commands.js"
 #import "lib/alerts.js"
-/* jshint ignore:end */
+
 var bootstrap;
 
 (function () {
