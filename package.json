@@ -30,7 +30,7 @@
   "dependencies": {
     "appium-base-driver": "^2.0.9",
     "appium-ios-simulator": "^2.2.0",
-    "appium-remote-debugger": "^3.3.0",
+    "appium-remote-debugger": "^3.6.3",
     "appium-support": "^2.8.0",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.3.1",
