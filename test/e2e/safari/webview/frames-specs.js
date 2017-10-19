@@ -81,12 +81,12 @@ describe('safari - webview - frames', function () {
     });
 
     it('should get source within a frame', async function () {
-      let pageSource = await driver.source();
+      let pageSource = await driver.getPageSource();
       pageSource.should.include(FRAMESET_TITLE);
 
-      await driver.frame('first');
+      await driver.setFrame('first');
 
-      let frameSource = await driver.source();
+      let frameSource = await driver.getPageSource();
       frameSource.should.include(SUB_FRAME_1_TITLE);
       frameSource.should.not.include(FRAMESET_TITLE);
     });
@@ -150,12 +150,12 @@ describe('safari - webview - frames', function () {
     });
 
     it('should get source within an iframe', async function () {
-      let pageSource = await driver.source();
+      let pageSource = await driver.getPageSource();
       pageSource.should.include(IFRAME_FRAMESET_TITLE);
 
-      await driver.frame('iframe1');
+      await driver.setFrame('iframe1');
 
-      let frameSource = await driver.source();
+      let frameSource = await driver.getPageSource();
       frameSource.should.include(SUB_FRAME_1_TITLE);
       frameSource.should.not.include(IFRAME_FRAMESET_TITLE);
     });
