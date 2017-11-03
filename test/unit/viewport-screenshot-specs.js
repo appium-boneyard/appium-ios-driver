@@ -10,7 +10,7 @@ chai.expect();
 let expect = chai.expect;
 
 describe('viewport screenshot', () => {
-  it('expect not empty string to be returned', async () => {
+  it('should return non-empty string', async () => {
     let driver = new IosDriver();
     sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
     sinon.stub(driver, 'getDevicePixelRatio').returns(2);

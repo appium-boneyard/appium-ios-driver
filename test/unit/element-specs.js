@@ -18,14 +18,14 @@ describe('content size', () => {
     driver.uiAutoClient = new uiauto.UIAutoClient();
   });
 
-  it('UIATableView and UIACollectionView are only possible types. Expect to be null', async () => {
+  it('should be null for wrong element type', async () => {
     sinon.stub(driver.uiAutoClient, 'sendCommand').returns([]);
     sinon.stub(driver, 'getName').returns('UIAButton');
     let result = await driver.getElementContentSize('0');
     expect(result).to.be.null;
   });
 
-  it('content size of element with type UIATableView with specific input data. Should return {left: 0, top: 20, width:320, height: 548, scrollableOffset: 2000}', async () => {
+  it('should return correct size for UIATableView', async () => {
     sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{origin:{x: 0, y: 0}, size:{width:320, height:1000}}, {origin:{x: 0, y: 1000}, size:{width:320, height:1000}}]);
     sinon.stub(driver, 'getName').returns('UIATableView');
     sinon.stub(driver, 'getSize').returns({width: 320, height:548});
@@ -38,7 +38,7 @@ describe('content size', () => {
     contentSize.scrollableOffset.should.equal(2000);
   });
 
-  it('content size of element with type UIACollectionView with specific input data.', async () => {
+  it('should return correct size for UIACollectionView', async () => {
     sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{origin:{x: 0, y: 44}, size:{width:100, height:500}},
       {origin:{x: 110, y: 44}, size:{width:100, height:500}},
       {origin:{x: 220, y: 44}, size:{width:100, height:500}},

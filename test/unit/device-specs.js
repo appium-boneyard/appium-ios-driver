@@ -29,7 +29,7 @@ describe('device pixel ratio', () => {
 });
 
 describe('status bar height', () => {
-  it('expect invocation of correct command', async () => {
+  it('should invoke correct command', async () => {
     let driver = new IosDriver();
     driver.uiAutoClient = new uiauto.UIAutoClient();
     driver.uiAutoClient.sendCommand = (cmd) => {
@@ -41,7 +41,7 @@ describe('status bar height', () => {
 });
 
 describe('viewport rect', () => {
-  it('rect should equal {left: 0, top: 20, width:320, height: 548}', async () => {
+  it('should equal {left: 0, top: 20, width:320, height: 548}', async () => {
     let driver = new IosDriver();
     sinon.stub(driver, 'getStatusBarHeight').returns(20);
     sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
