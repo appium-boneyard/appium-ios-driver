@@ -1,7 +1,3 @@
-/**
- * Created by antonchuev on 9/20/17.
- */
-
 import { IosDriver } from '../../lib/driver';
 import { uiauto } from '../..';
 import chai from 'chai';
