@@ -28,9 +28,9 @@
     "lib": "lib"
   },
   "dependencies": {
-    "appium-base-driver": "^2.0.9",
-    "appium-ios-simulator": "^2.2.0",
-    "appium-remote-debugger": "^3.6.3",
+    "appium-base-driver": "^2.18.2",
+    "appium-ios-simulator": "^1.10.3",
+    "appium-remote-debugger": "^3.3.0",
     "appium-support": "^2.8.0",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.3.1",
@@ -41,7 +41,7 @@
     "js2xmlparser2": "^0.2.0",
     "lodash": "^4.13.1",
     "node-idevice": "^0.1.6",
-    "node-simctl": "^3.6.0",
+    "node-simctl": "^3.11.5",
     "path": "^0.12.7",
     "pem": "^1.8.3",
     "portfinder": "^1.0.13",
