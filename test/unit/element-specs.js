@@ -26,7 +26,7 @@ describe('content size', () => {
     sinon.stub(driver, 'getName').returns('UIATableView');
     sinon.stub(driver, 'getSize').returns({width: 320, height:548});
     sinon.stub(driver, 'getLocationInView').returns({x: 0, y: 20});
-    let contentSize = await driver.getElementContentSize('0');
+    let contentSize = JSON.parse(await driver.getElementContentSize('0'));
     contentSize.left.should.equal(0);
     contentSize.top.should.equal(20);
     contentSize.width.should.equal(320);
@@ -44,7 +44,7 @@ describe('content size', () => {
     sinon.stub(driver, 'getName').returns('UIACollectionView');
     sinon.stub(driver, 'getSize').returns({width: 320, height:524});
     sinon.stub(driver, 'getLocationInView').returns({x: 0, y: 44});
-    let contentSize = await driver.getElementContentSize('0');
+    let contentSize = JSON.parse(await driver.getElementContentSize('0'));
     contentSize.left.should.equal(0);
     contentSize.top.should.equal(44);
     contentSize.width.should.equal(320);

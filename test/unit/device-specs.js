@@ -5,20 +5,23 @@ import sinon from 'sinon';
 
 chai.should();
 
+const PLUS_HEIGHT = 736;
+const NONPLUS_HEIGHT = 568;
+
 describe('device pixel ratio', () => {
   let driver;
   beforeEach(async () => {
     driver = new IosDriver();
   });
 
-  it('pixel ratio should equal 2', async () => {
-    sinon.stub(driver, 'getScreenHeight').returns(568);
+  it('pixel ratio should equal 2 with non plus device', async () => {
+    sinon.stub(driver, 'getScreenHeight').returns(NONPLUS_HEIGHT);
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(2);
   });
 
-  it('pixel ratio should equal 3', async () => {
-    sinon.stub(driver, 'getScreenHeight').returns(736);
+  it('pixel ratio should equal 3 with plus device', async () => {
+    sinon.stub(driver, 'getScreenHeight').returns(PLUS_HEIGHT);
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(3);
   });
@@ -37,7 +40,7 @@ describe('status bar height', () => {
 });
 
 describe('viewport rect', () => {
-  it('should equal {left: 0, top: 20, width:320, height: 548}', async () => {
+  it('should return the viewport rect without statusbar height', async () => {
     let driver = new IosDriver();
     sinon.stub(driver, 'getStatusBarHeight').returns(20);
     sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
