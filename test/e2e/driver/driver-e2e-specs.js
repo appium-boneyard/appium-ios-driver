@@ -17,15 +17,16 @@ chai.use(chaiAsPromised);
 describe('driver', function () {
   this.timeout(MOCHA_TIMEOUT);
   let driver;
+  let caps = {
+    app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
+    platformName: 'iOS',
+    showIOSLog: false,
+    noReset: true,
+    newCommandTimeout: 120
+  };
+  caps = _.merge({}, env.CAPS, caps);
+
   it('should start', async () => {
-    let caps = {
-      app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
-      platformName: 'iOS',
-      showIOSLog: false,
-      noReset: true,
-      newCommandTimeout: 120
-    };
-    caps = _.merge({}, env.CAPS, caps);
     driver = new IosDriver();
     await driver.createSession(caps);
   });
@@ -38,5 +39,16 @@ describe('driver', function () {
   it('should stop', async () => {
     await B.delay(2000);
     await driver.deleteSession();
+  });
+
+  it('should accept W3C parameters', async () => {
+    let w3cCaps = {
+      alwaysMatch: _.merge({}, env.CAPS, caps),
+      firstMatch: [{}],
+    };
+    driver = new IosDriver();
+    let [sessionId, modifiedCaps] = await driver.createSession(null, null, w3cCaps);
+    sessionId.should.exist;
+    modifiedCaps.should.exist;
   });
 });
