@@ -31,23 +31,25 @@ describe('status bar height', () => {
   it('should invoke correct command', async () => {
     let driver = new IosDriver();
     driver.uiAutoClient = new uiauto.UIAutoClient();
-    driver.uiAutoClient.sendCommand = (cmd) => {
-      cmd.should.equal('UIATarget.localTarget().frontMostApp().statusBar().rect().size.height;');
-    };
-
-    await driver.getStatusBarHeight();
+    sinon.stub(driver.uiAutoClient, 'sendCommand')
+      .withArgs('UIATarget.localTarget().frontMostApp().statusBar().rect().size.height;')
+      .returns(24);
+    sinon.stub(driver, 'getScreenHeight').returns(PLUS_HEIGHT);
+    let scale = await driver.getDevicePixelRatio();
+    await driver.getStatusBarHeight().should.eventually.eql(24 * scale);
   });
 });
 
 describe('viewport rect', () => {
   it('should return the viewport rect without statusbar height', async () => {
     let driver = new IosDriver();
-    sinon.stub(driver, 'getStatusBarHeight').returns(20);
+    sinon.stub(driver, 'getDevicePixelRatio').returns(3.0);
+    sinon.stub(driver, 'getStatusBarHeight').returns(72);
     sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
     let viewportRect = await driver.getViewportRect();
     viewportRect.left.should.equal(0);
-    viewportRect.top.should.equal(20);
-    viewportRect.width.should.equal(320);
-    viewportRect.height.should.equal(548);
+    viewportRect.top.should.equal(72);
+    viewportRect.width.should.equal(320 * 3);
+    viewportRect.height.should.equal(568 * 3 - 72);
   });
 });
