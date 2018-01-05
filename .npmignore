@@ -1,5 +1,7 @@
 node_modules
 *.log
-test/assets
+test
+build/test
 *.plist
 coverage
+instruments-iwd/*/TestApp*
