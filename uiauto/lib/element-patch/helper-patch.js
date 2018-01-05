@@ -149,4 +149,15 @@
     return this.value() === 1;
   };
 
+  UIAElement.prototype.childElementsFrames = function () {
+    var childElements = this.elements();
+    var frames = [];
+    childElements.toArray().forEach(function(el) {
+      var frame = el.rect();
+      frames.push(frame);
+    });
+
+    return frames;
+  };
+
 })();
