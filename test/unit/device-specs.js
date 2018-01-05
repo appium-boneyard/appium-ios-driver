@@ -15,13 +15,13 @@ describe('device pixel ratio', () => {
   });
 
   it('pixel ratio should equal 2 with non plus device', async () => {
-    sinon.stub(driver, 'getScreenHeight').returns(NONPLUS_HEIGHT);
+    sinon.stub(driver, 'getWindowSize').returns({width: 1000, height: NONPLUS_HEIGHT});
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(2);
   });
 
   it('pixel ratio should equal 3 with plus device', async () => {
-    sinon.stub(driver, 'getScreenHeight').returns(PLUS_HEIGHT);
+    sinon.stub(driver, 'getWindowSize').returns({width: 1000, height: PLUS_HEIGHT});
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(3);
   });
