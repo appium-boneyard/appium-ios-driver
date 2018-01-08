@@ -31,7 +31,7 @@
     "appium-base-driver": "^2.18.2",
     "appium-ios-simulator": "^1.10.3",
     "appium-remote-debugger": "^3.3.0",
-    "appium-support": "^2.8.0",
+    "appium-support": "^2.12.0",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.3.1",
     "babel-runtime": "=5.8.24",
@@ -75,7 +75,7 @@
   ],
   "devDependencies": {
     "appium-gulp-plugins": "^2.2.0",
-    "appium-test-support": "^0.4.0",
+    "appium-test-support": "^0.7.1",
     "babel-eslint": "^7.1.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
