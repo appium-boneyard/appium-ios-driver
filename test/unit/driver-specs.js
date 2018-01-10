@@ -55,6 +55,10 @@ describe('driver', () => {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.newCommandTimeoutMs.should.equal(20);
       });
+      it('should not be settable through `timeouts` for W3C', async () => {
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, command: 3000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        driver.newCommandTimeoutMs.should.equal(20);
+      });
     });
     describe('implicit', () => {
       it('should not exist by default', async () => {
@@ -64,11 +68,20 @@ describe('driver', () => {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'implicit', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.implicitWaitMs.should.equal(20);
       });
+      it('should be settable through `timeouts` for W3C', async () => {
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        driver.implicitWaitMs.should.equal(20);
+      });
     });
     describe('page load', () => {
       it('should be settable through `timeouts`', async () => {
         let to = driver.pageLoadMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        driver.pageLoadMs.should.equal(to + 20);
+      });
+      it('should be settable through `timeouts` for W3C', async () => {
+        let to = driver.pageLoadMs;
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, pageLoad: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.pageLoadMs.should.equal(to + 20);
       });
     });
@@ -78,9 +91,23 @@ describe('driver', () => {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'script', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.asyncWaitMs.should.equal(to + 20);
       });
+      it('should be settable through `timeouts` for W3C', async () => {
+        let to = driver.asyncWaitMs;
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, script: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        driver.asyncWaitMs.should.equal(to + 20);
+      });
       it('should be settable through asyncScriptTimeout', async () => {
         let to = driver.asyncWaitMs;
         await driver.asyncScriptTimeout(to + 20);
+        driver.asyncWaitMs.should.equal(to + 20);
+      });
+    });
+    describe('script, page load and implicit', () => {
+      it('should be settable through `timeouts` for W3C', async () => {
+        let to = driver.asyncWaitMs;
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 20, pageLoad: to + 20, script: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        driver.implicitWaitMs.should.equal(20);
+        driver.pageLoadMs.should.equal(to + 20);
         driver.asyncWaitMs.should.equal(to + 20);
       });
     });
