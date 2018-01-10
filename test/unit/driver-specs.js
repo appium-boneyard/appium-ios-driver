@@ -7,6 +7,7 @@ import { withMocks } from 'appium-test-support';
 import * as teen_process from 'teen_process';
 import { fs } from 'appium-support';
 import xcode from 'appium-xcode';
+import {BaseDriver} from "appium-base-driver";
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -51,7 +52,7 @@ describe('driver', () => {
         driver.newCommandTimeoutMs.should.equal(60000);
       });
       it('should be settable through `timeouts`', async () => {
-        await driver.timeouts('command', 20);
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.newCommandTimeoutMs.should.equal(20);
       });
     });
@@ -60,21 +61,21 @@ describe('driver', () => {
         driver.implicitWaitMs.should.equal(0);
       });
       it('should be settable through `timeouts`', async () => {
-        await driver.timeouts('implicit', 20);
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'implicit', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.implicitWaitMs.should.equal(20);
       });
     });
     describe('page load', () => {
       it('should be settable through `timeouts`', async () => {
         let to = driver.pageLoadMs;
-        await driver.timeouts('page load', to + 20);
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.pageLoadMs.should.equal(to + 20);
       });
     });
     describe('script', () => {
       it('should be settable through `timeouts`', async () => {
         let to = driver.asyncWaitMs;
-        await driver.timeouts('script', to + 20);
+        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'script', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.asyncWaitMs.should.equal(to + 20);
       });
       it('should be settable through asyncScriptTimeout', async () => {
