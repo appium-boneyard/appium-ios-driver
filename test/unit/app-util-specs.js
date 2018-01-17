@@ -15,16 +15,16 @@ let app = __filename.indexOf('build/test/unit/app-util-specs') !== -1 ?
   path.resolve(__dirname, '..', '..', '..', 'test', 'assets', 'UICatalog.app') :
   path.resolve(__dirname, '..', '..', 'test', 'assets', 'UICatalog.app');
 
-describe('extractAppDisplayName', () => {
-  it('should get application name of app', async () => {
+describe('extractAppDisplayName', function () {
+  it('should get application name of app', async function () {
     let appName = await appUtils.extractAppDisplayName(app);
 
     appName.should.equal('UICatalog');
   });
 });
 
-describe('extractBundleId', () => {
-  it('should get bundleId of app', async () => {
+describe('extractBundleId', function () {
+  it('should get bundleId of app', async function () {
     let bundleId = await appUtils.extractBundleId(app);
 
     bundleId.should.equal('com.example.apple-samplecode.UICatalog');

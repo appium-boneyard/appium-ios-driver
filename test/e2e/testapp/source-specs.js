@@ -7,7 +7,7 @@ describe('testapp - source', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('should return page source', async () => {
+  it('should return page source', async function () {
     let source = await driver.getPageSource();
     let dom = new XMLDom().parseFromString(source);
     let nodes = xpath.select('//AppiumAUT', dom);

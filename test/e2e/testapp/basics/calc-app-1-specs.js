@@ -44,42 +44,42 @@ describe('testapp - basics - calc app 1', function () {
     result.should.equal(values[0] + values[1]);
   };
 
-  beforeEach(async () => {
+  beforeEach(async function () {
     await clearFields();
   });
 
-  it('should fill two fields with numbers', async () => {
+  it('should fill two fields with numbers', async function () {
     await populate("elem");
     await computeAndCheck();
   });
 
   // using sendKeysToActiveElement
-  it('should fill two fields with numbers - sendKeys', async () => {
+  it('should fill two fields with numbers - sendKeys', async function () {
     await populate("driver");
     await computeAndCheck();
   });
 
-  it('should fill two fields with numbers - setValue', async () => {
+  it('should fill two fields with numbers - setValue', async function () {
     await populate("elem-setvalue");
     await computeAndCheck();
   });
 
-  it('should confirm that button is displayed', async () => {
+  it('should confirm that button is displayed', async function () {
     let el = await driver.findElement('class name', 'UIATextField');
     (await driver.elementDisplayed(el)).should.be.ok;
   });
 
-  it('should confirm that the disabled button is disabled', async () => {
+  it('should confirm that the disabled button is disabled', async function () {
     let el = await driver.findElement('accessibility id', 'DisabledButton');
     (await driver.elementEnabled(el)).should.not.be.ok;
   });
 
-  it('should confirm that the compute sum button is enabled', async () => {
+  it('should confirm that the compute sum button is enabled', async function () {
     let el = await driver.findElement('accessibility id', 'ComputeSumButton');
     (await driver.elementEnabled(el)).should.be.ok;
   });
 
-  it('should interact with alert', async () => {
+  it('should interact with alert', async function () {
     let button = (await driver.findElements('class name', 'UIAButton'))[1];
     await driver.click(button);
     await driver.postAcceptAlert();
@@ -90,7 +90,7 @@ describe('testapp - basics - calc app 1', function () {
     await driver.postDismissAlert();
   });
 
-  it('should find alert like other elements', async () => {
+  it('should find alert like other elements', async function () {
     try {
       let button = (await driver.findElements('class name', 'UIAButton'))[1];
       await driver.click(button);
@@ -107,14 +107,14 @@ describe('testapp - basics - calc app 1', function () {
     }
   });
 
-  it('should get tag names of elements', async () => {
+  it('should get tag names of elements', async function () {
     let el = await driver.findElement('class name', 'UIAButton');
     (await driver.getName(el)).should.equal("UIAButton");
     el = await driver.findElement('class name', 'UIAStaticText');
     (await driver.getName(el)).should.equal('UIAStaticText');
   });
 
-  it('should be able to get text of a button', async () => {
+  it('should be able to get text of a button', async function () {
     let el = await driver.findElement('class name', 'UIAButton');
     (await driver.getText(el)).should.equal("Compute Sum");
   });

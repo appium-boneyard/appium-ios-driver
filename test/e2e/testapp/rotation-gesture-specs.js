@@ -7,7 +7,7 @@ describe('testapp - rotation gesture', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  before(async () => {
+  before(async function () {
     let buttons = await driver.findElements('class name', 'UIAButton');
     await driver.click(buttons[5]);
 
@@ -15,7 +15,7 @@ describe('testapp - rotation gesture', function () {
     await okIfAlert(driver);
   });
 
-  it('should rotate map with coordinates', async () => {
+  it('should rotate map with coordinates', async function () {
     await driver.mobileRotation(114, 198, 3, 220, 2, 5);
     await B.delay(2000);
 
@@ -23,7 +23,7 @@ describe('testapp - rotation gesture', function () {
     await B.delay(1000);
   });
 
-  it('should rotate map with element', async () => {
+  it('should rotate map with element', async function () {
     let map = await driver.findElement('class name', 'UIAMapView');
     await driver.mobileRotation(undefined, undefined, 3, -220, 2, 5, map);
     await B.delay(2000);

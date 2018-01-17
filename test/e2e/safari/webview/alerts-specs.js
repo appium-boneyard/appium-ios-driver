@@ -9,30 +9,30 @@ describe('safari - webview - alerts @skip-real-device', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
   const driver = setup(this, desired).driver;
-  beforeEach(async () => await loadWebView(desired, driver));
+  beforeEach(async function () { return await loadWebView(desired, driver); });
 
-  it('should accept alert', async () => {
+  it('should accept alert', async function () {
     let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postAcceptAlert();
     (await driver.title()).should.include('I am a page title');
   });
 
-  it('should dismiss alert', async () => {
+  it('should dismiss alert', async function () {
     let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postDismissAlert();
     (await driver.title()).should.include('I am a page title');
   });
 
-  it('should get text of alert', async () => {
+  it('should get text of alert', async function () {
     let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     (await driver.getAlertText()).should.include('I am an alert');
     await driver.postDismissAlert();
   });
 
-  it('should not get text of alert that closed', async () => {
+  it('should not get text of alert that closed', async function () {
     let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     await driver.postAcceptAlert();
@@ -40,7 +40,7 @@ describe('safari - webview - alerts @skip-real-device', function () {
       .should.be.rejectedWith(/An attempt was made to operate on a modal dialog when one was not open/);
   });
 
-  it('should set text of prompt', async () => {
+  it('should set text of prompt', async function () {
     let el = await driver.findElement('id', 'prompt1');
     await driver.click(el);
     await driver.setAlertText('yes I do!');
@@ -51,7 +51,7 @@ describe('safari - webview - alerts @skip-real-device', function () {
     (await driver.getAttribute('value', el)).toLowerCase().should.equal('yes i do!');
   });
 
-  it('should fail to set text of alert', async () => {
+  it('should fail to set text of alert', async function () {
     let el = await driver.findElement('id', 'alert1');
     await driver.click(el);
     return driver.setAlertText('yes I do!')

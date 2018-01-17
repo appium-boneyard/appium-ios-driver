@@ -29,13 +29,13 @@ describe('When accessing an HTTPS encrypted site in Safari', function () {
 
   const driver = setup(this, caps).driver;
 
-  after(async () => {
+  after(async function () {
     if (sslServer) {
       await sslServer.close();
     }
   });
 
-  it('should be able to access it as long the PEM certificate is provided as a capability', async () => {
+  it('should be able to access it as long the PEM certificate is provided as a capability', async function () {
     await B.delay(500);
     await driver.setUrl('https://localhost:9758');
     (await driver.getPageSource()).should.include('Arbitrary text');

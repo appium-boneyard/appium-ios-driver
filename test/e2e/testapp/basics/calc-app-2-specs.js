@@ -11,7 +11,7 @@ describe('testapp - basics - calc app 2', function () {
   let driver = session.driver;
 
   it('should lookup two fields by name and populate them with ' +
-      'random numbers to finally sum them up', async () => {
+      'random numbers to finally sum them up', async function () {
     let sum = 0;
     let lookup = async function (textFieldNum) {
       let num = Math.round(Math.random() * 10000);
@@ -29,13 +29,13 @@ describe('testapp - basics - calc app 2', function () {
     res.should.equal(sum);
   });
 
-  it('should receive correct error', async () => {
+  it('should receive correct error', async function () {
     await B.resolve(driver.execute("mobile: doesn't exist"))
       .catch(throwMatchableError)
       .should.be.rejectedWith(/jsonwpCode: 9/);
   });
 
-  it('should be able to get syslog log type', async () => {
+  it('should be able to get syslog log type', async function () {
     let logTypes = await driver.getLogTypes();
     logTypes.should.include('syslog');
     logTypes.should.include('crashlog');
@@ -56,7 +56,7 @@ describe('testapp - basics - calc app 2', function () {
     logs[0].timestamp.should.exist;
   });
 
-  it('should be able to get crashlog logs @skip-ci', async () => {
+  it('should be able to get crashlog logs @skip-ci', async function () {
     let dir = path.resolve(process.env.HOME, "Library", "Logs", "DiagnosticReports");
     let msg = 'boom';
     let logs = await driver.getLog('crashlog');

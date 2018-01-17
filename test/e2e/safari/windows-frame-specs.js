@@ -15,19 +15,19 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
   }).driver;
 
   describe('within webview', function () {
-    before(async () => {
+    before(async function () {
       // minimize waiting if something goes wrong
       await driver.implicitWait(1000);
     });
-    beforeEach(() => loadWebView("safari", driver));
+    beforeEach(function () { return loadWebView("safari", driver); });
 
-    it("should throw nosuchwindow if there's not one", () => {
+    it("should throw nosuchwindow if there's not one", function () {
       return driver.setWindow('noexistman').should.be.rejectedWith(/window could not be found/);
     });
 
     // unfortunately, iOS8 doesn't respond to the close() method on window
     // the way iOS7 does
-    it("should be able to open and close windows @skip-ios8", async () => {
+    it("should be able to open and close windows @skip-ios8", async function () {
       let el = await driver.findElement('id', 'blanklink');
       await driver.click(el);
       await spinTitle("I am another page title", driver);
@@ -38,7 +38,7 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
       await spinTitle("I am a page title", driver);
     });
 
-    it('should be able to go back and forward', async () => {
+    it('should be able to go back and forward', async function () {
       let link = await driver.findElement('link text', 'i am a link');
       await driver.click(link);
       await driver.findElement('id', 'only_on_page_2');
@@ -49,7 +49,7 @@ describe(`safari - windows and frames (${env.DEVICE})`, function () {
     });
 
     // broken on real devices, see https://github.com/appium/appium/issues/5167
-    it("should be able to open js popup windows with safariAllowPopups set to true @skip-real-device", async () => {
+    it("should be able to open js popup windows with safariAllowPopups set to true @skip-real-device", async function () {
       let link = await driver.findElement('link text', 'i am a new window link');
       await driver.click(link);
       await spinTitle("I am another page title", driver, 30);
@@ -65,13 +65,13 @@ describe(`safari - windows and frames (${env.DEVICE}) - without safariAllowPopup
     safariAllowPopups: false
   }).driver;
 
-  before(async () => {
+  before(async function () {
     // minimize waiting if something goes wrong
     await driver.implicitWait(5000);
   });
-  beforeEach(async () => await loadWebView("safari", driver));
+  beforeEach(async function () { return await loadWebView("safari", driver); });
 
-  it("should not be able to open js popup windows", async () => {
+  it("should not be able to open js popup windows", async function () {
     await driver.execute("window.open('/test/guinea-pig2.html', null)");
     await spinTitle("I am another page title", driver, 5).should.eventually.be.rejected;
   });

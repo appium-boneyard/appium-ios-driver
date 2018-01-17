@@ -6,7 +6,7 @@ describe('testapp - default autoDismissAlerts cap', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('does not auto-dismiss alerts', async () => {
+  it('does not auto-dismiss alerts', async function () {
     let el = await driver.findElement('accessibility id', 'show alert');
     await driver.click(el);
     await B.delay(2000);

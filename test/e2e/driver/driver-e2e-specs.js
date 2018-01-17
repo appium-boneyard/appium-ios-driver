@@ -26,22 +26,22 @@ describe('driver', function () {
   };
   caps = _.merge({}, env.CAPS, caps);
 
-  it('should start', async () => {
+  it('should start', async function () {
     driver = new IosDriver();
     await driver.createSession(caps);
   });
 
-  it('should return server details', async () => {
+  it('should return server details', async function () {
     let serverCaps = await driver.getSession();
     serverCaps.takesScreenshot.should.exist;
   });
 
-  it('should stop', async () => {
+  it('should stop', async function () {
     await B.delay(2000);
     await driver.deleteSession();
   });
 
-  it('should accept W3C parameters', async () => {
+  it('should accept W3C parameters', async function () {
     let w3cCaps = {
       alwaysMatch: _.merge({}, env.CAPS, caps),
       firstMatch: [{}],

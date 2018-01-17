@@ -13,7 +13,7 @@ describe('safari - basics @skip-real-device', function () {
         noReset: true,
       }).driver;
 
-      it('it should use safari default init page', async () => {
+      it('it should use safari default init page', async function () {
         (await driver.getPageSource()).should.include('Apple');
       });
     });
@@ -25,7 +25,7 @@ describe('safari - basics @skip-real-device', function () {
       noReset: true,
     }).driver;
 
-    it('it should use appium default init page', async () => {
+    it('it should use appium default init page', async function () {
       (await driver.getPageSource()).should.include('Let\'s browse!');
     });
   });
@@ -37,7 +37,7 @@ describe('safari - basics @skip-real-device', function () {
       noReset: true,
     }).driver;
 
-    it('should go to the requested page', async () => {
+    it('should go to the requested page', async function () {
       (await driver.getPageSource()).should.include('I am some page content');
     });
   });

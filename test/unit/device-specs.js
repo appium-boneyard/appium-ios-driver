@@ -8,27 +8,27 @@ chai.should();
 const PLUS_HEIGHT = 736;
 const NONPLUS_HEIGHT = 568;
 
-describe('device pixel ratio', () => {
+describe('device pixel ratio', function () {
   let driver;
-  beforeEach(async () => {
+  beforeEach(async function () {
     driver = new IosDriver();
   });
 
-  it('pixel ratio should equal 2 with non plus device', async () => {
+  it('pixel ratio should equal 2 with non plus device', async function () {
     sinon.stub(driver, 'getWindowSize').returns({width: 1000, height: NONPLUS_HEIGHT});
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(2);
   });
 
-  it('pixel ratio should equal 3 with plus device', async () => {
+  it('pixel ratio should equal 3 with plus device', async function () {
     sinon.stub(driver, 'getWindowSize').returns({width: 1000, height: PLUS_HEIGHT});
     let pixelRatio = await driver.getDevicePixelRatio();
     pixelRatio.should.equal(3);
   });
 });
 
-describe('status bar height', () => {
-  it('should invoke correct command', async () => {
+describe('status bar height', function () {
+  it('should invoke correct command', async function () {
     let driver = new IosDriver();
     driver.uiAutoClient = new uiauto.UIAutoClient();
     sinon.stub(driver.uiAutoClient, 'sendCommand')
@@ -38,8 +38,8 @@ describe('status bar height', () => {
   });
 });
 
-describe('viewport rect', () => {
-  it('should return the viewport rect without statusbar height', async () => {
+describe('viewport rect', function () {
+  it('should return the viewport rect without statusbar height', async function () {
     let driver = new IosDriver();
     sinon.stub(driver, 'getDevicePixelRatio').returns(3.0);
     sinon.stub(driver, 'getStatusBarHeight').returns(24);

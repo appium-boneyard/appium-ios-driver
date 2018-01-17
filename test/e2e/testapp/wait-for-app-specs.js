@@ -10,7 +10,7 @@ describe('testapp - wait-for-apps', function () {
       let session = setup(this, _.defaults({waitForAppScript: script}, desired));
       let driver = session.driver;
 
-      it('should work', async () => {
+      it('should work', async function () {
         let el = await driver.findElement('class name', 'UIAButton');
         el.should.exist;
         if (checkAfter) {

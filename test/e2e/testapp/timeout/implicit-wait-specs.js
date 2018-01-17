@@ -8,7 +8,7 @@ import {BaseDriver} from "appium-base-driver";
 describe('testapp - timeout', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
-  afterEach(async () => { await B.delay(3000); });
+  afterEach(async function () { await B.delay(3000); });
 
   describe('implicit wait', function () {
     let session = setup(this, desired);
@@ -33,20 +33,20 @@ describe('testapp - timeout', function () {
       (afterMs - beforeMs).should.be.above(impWaitMs);
     };
 
-    it('should set the implicit wait for finding elements', async () => {
+    it('should set the implicit wait for finding elements', async function () {
       await driver.implicitWait(4000);
       await impWaitCheck('class name', 'UIANotGonnaBeHere', 4000);
       await impWaitCheck('accessibility id', 'FoShoIAintHere', 4000);
       await impWaitCheckSingle('accessibility id', 'FoShoIAintHere', 4000);
     });
 
-    it('should work with small command timeout', async () => {
+    it('should work with small command timeout', async function () {
       await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 5000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.implicitWait(10000);
       await impWaitCheck('class name', 'UIANotGonnaBeHere', 10000);
     });
 
-    it('should work even with a reset in the middle', async () => {
+    it('should work even with a reset in the middle', async function () {
       await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 60000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.implicitWait(4000);
       await impWaitCheck('class name', 'UIANotGonnaBeHere', 4000);

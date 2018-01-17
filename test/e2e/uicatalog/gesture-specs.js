@@ -13,7 +13,7 @@ describe('uicatalog - touch', function () {
   let driver = session.driver;
 
   describe('tap', function () {
-    before(async () => {
+    before(async function () {
       // make sure we are in the right place
       try {
         await driver.back();
@@ -22,13 +22,13 @@ describe('uicatalog - touch', function () {
       await driver.execute("mobile: scroll", {direction: 'down'});
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       try {
         await driver.back();
       } catch (ign) {}
     });
 
-    it('should tap element with count', async () => {
+    it('should tap element with count', async function () {
       let el1 = await driver.findElement('xpath', '//UIAStaticText[contains(@label, \'Steppers\')]');
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Increment');
@@ -38,7 +38,7 @@ describe('uicatalog - touch', function () {
       els.should.have.length(2);
     });
 
-    it('should tap element with offset and count', async () => {
+    it('should tap element with offset and count', async function () {
       let el1 = await driver.findElement('xpath', '//UIAStaticText[contains(@label, \'Steppers\')]');
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Increment');
@@ -48,7 +48,7 @@ describe('uicatalog - touch', function () {
       els.should.have.length(2);
     });
 
-    it('should tap offset with count', async () => {
+    it('should tap offset with count', async function () {
       let el1 = await driver.findElement('xpath', '//UIAStaticText[contains(@label, \'Steppers\')]');
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Increment');
@@ -63,14 +63,14 @@ describe('uicatalog - touch', function () {
   describe('flick @skip-ios8 @skip-ios7', function () {
     const SLOW_DOWN_MS = 1000;
 
-    afterEach(async () => {
+    afterEach(async function () {
       await driver.flick(undefined, 0, 100);
       await driver.flick(undefined, 0, 100);
       await B.delay(SLOW_DOWN_MS);
     });
 
     describe('with element', function () {
-      it("slider value should change", async () => {
+      it("slider value should change", async function () {
         let els = await driver.findElements('class name', 'UIATableCell');
         await driver.click(els[10]);
         let slider = await driver.findElement('class name', "UIASlider");
@@ -84,7 +84,7 @@ describe('uicatalog - touch', function () {
   });
 
   describe('mobile scroll', function () {
-    before(async () => {
+    before(async function () {
       try {
         await driver.back();
       } catch (ign) {}
@@ -93,7 +93,7 @@ describe('uicatalog - touch', function () {
       await driver.execute("mobile: scroll", {direction: 'up'});
     });
 
-    it('should scroll down and up', async () => {
+    it('should scroll down and up', async function () {
       let el = await driver.findElement('class name', 'UIATableCell');
       let loc1 = await driver.getLocationInView(el);
 
@@ -108,7 +108,7 @@ describe('uicatalog - touch', function () {
       loc3.y.should.not.equal(loc2.y);
     });
 
-    it('should scroll down and up using element', async () => {
+    it('should scroll down and up using element', async function () {
       let tableView = await driver.findElement('class name', 'UIATableView');
       let el = await driver.findElement('class name', 'UIATableCell');
       let loc1 = await driver.getLocationInView(el);
@@ -124,7 +124,7 @@ describe('uicatalog - touch', function () {
       loc3.y.should.not.equal(loc2.y);
     });
 
-    it('should be able to be called multiple times', async () => {
+    it('should be able to be called multiple times', async function () {
       await driver.execute("mobile: scroll", {direction: 'down'});
       await driver.execute("mobile: scroll", {direction: 'down'});
       await driver.execute("mobile: scroll", {direction: 'down'});
@@ -134,13 +134,13 @@ describe('uicatalog - touch', function () {
   });
 
   describe('mobile shake', function () {
-    it('should not error', async () => {
+    it('should not error', async function () {
       await driver.mobileShake();
     });
   });
 
   describe('moveTo and click', function () {
-    before(async () => {
+    before(async function () {
       try {
         await driver.back();
       } catch (ign) {}
@@ -150,7 +150,7 @@ describe('uicatalog - touch', function () {
       } catch (ign) {}
     });
 
-    it('should be able to click on arbitrary x-y elements', async () => {
+    it('should be able to click on arbitrary x-y elements', async function () {
       let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
       let el1 = await driver.findElement('accessibility id', `Buttons${axIdExt}`);
       await driver.moveTo(el1, 10, 10);

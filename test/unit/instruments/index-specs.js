@@ -6,8 +6,8 @@ import chai from 'chai';
 
 chai.should();
 
-describe('index', () => {
-  it('exported objects should exist', () => {
+describe('index', function () {
+  it('exported objects should exist', function () {
     Instruments.should.exist;
     instrumentsUtils.should.exist;
   });

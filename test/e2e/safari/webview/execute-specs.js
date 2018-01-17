@@ -15,68 +15,68 @@ describe('safari - webview - execute', function () {
 
   describe('http', function () {
     const driver = setup(this, desired).driver;
-    before(async () => await loadWebView(desired, driver));
+    before(async function () { return await loadWebView(desired, driver); });
     after(async function () {
       await driver.deleteSession();
     });
 
     describe('synchronous', function () {
-      it('should bubble up javascript errors', async () => {
+      it('should bubble up javascript errors', async function () {
         await driver.execute(`'nan'--`).should.eventually.be.rejected;
       });
 
-      it('should eval javascript', async () => {
+      it('should eval javascript', async function () {
         (await driver.execute('return 1')).should.be.equal(1);
       });
 
-      it('should not be returning hardcoded results', async () => {
+      it('should not be returning hardcoded results', async function () {
         (await driver.execute('return 1+1')).should.be.equal(2);
       });
 
-      it(`should return nothing when you don't explicitly return`, async () => {
+      it(`should return nothing when you don't explicitly return`, async function () {
         expect(await driver.execute('1+1')).to.not.exist;
       });
 
-      it('should execute code inside the web view', async () => {
+      it('should execute code inside the web view', async function () {
         (await driver.execute(GET_RIGHT_INNERHTML)).should.be.ok;
         (await driver.execute(GET_WRONG_INNERHTML)).should.not.be.ok;
       });
 
-      it('should convert selenium element arg to webview element', async () => {
+      it('should convert selenium element arg to webview element', async function () {
         let el = await driver.findElement('id', 'useragent');
         await driver.execute(SCROLL_INTO_VIEW, [el]);
       });
 
-      it('should catch stale or undefined element as arg', async () => {
+      it('should catch stale or undefined element as arg', async function () {
         let el = await driver.findElement('id', 'useragent');
         return driver.execute(SCROLL_INTO_VIEW, [{'ELEMENT': (el.value + 1)}]).should.beRejected;
       });
 
-      it('should be able to return multiple elements from javascript', async () => {
+      it('should be able to return multiple elements from javascript', async function () {
         let res = await driver.execute(GET_ELEM_BY_TAGNAME);
         expect(res).to.have.length.above(0);
       });
-      it('should pass along non-element arguments', async () => {
+      it('should pass along non-element arguments', async function () {
         let arg = 'non-element-argument';
         (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args[0];', [arg])).should.be.equal(arg);
       });
-      it('should handle return values correctly', async () => {
+      it('should handle return values correctly', async function () {
         let arg = ['one', 'two', 'three'];
         (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args;', arg)).should.eql(arg);
       });
     });
 
     describe('asynchronous', function () {
-      it('should bubble up javascript errors', async () => {
+      it('should bubble up javascript errors', async function () {
         await driver.execute(`'nan'--`).should.eventually.be.rejected;
       });
 
-      it('should execute async javascript', async () => {
+      it('should execute async javascript', async function () {
         await driver.asyncScriptTimeout(1000);
         (await driver.executeAsync(`arguments[arguments.length - 1](123);`)).should.be.equal(123);
       });
 
-      it('should timeout when callback is not invoked', async () => {
+      it('should timeout when callback is not invoked', async function () {
         await driver.asyncScriptTimeout(1000);
         await driver.executeAsync(`return 1 + 2`).should.eventually.be.rejected;
       });
@@ -85,50 +85,50 @@ describe('safari - webview - execute', function () {
 
   describe('https', function () {
     const driver = setup(this, Object.assign({}, desired, {enableAsyncExecuteFromHttps: true})).driver;
-    before(async () => await loadWebView(desired, driver, 'https://www.google.com', 'Google'));
+    before(async function () { return await loadWebView(desired, driver, 'https://www.google.com', 'Google'); });
     after(async function () {
       await driver.deleteSession();
     });
 
     describe('synchronous', function () {
-      it('should bubble up javascript errors', async () => {
+      it('should bubble up javascript errors', async function () {
         await driver.execute(`'nan'--`).should.eventually.be.rejected;
       });
 
-      it('should eval javascript', async () => {
+      it('should eval javascript', async function () {
         (await driver.execute('return 1')).should.be.equal(1);
       });
 
-      it('should not be returning hardcoded results', async () => {
+      it('should not be returning hardcoded results', async function () {
         (await driver.execute('return 1+1')).should.be.equal(2);
       });
 
-      it(`should return nothing when you don't explicitly return`, async () => {
+      it(`should return nothing when you don't explicitly return`, async function () {
         expect(await driver.execute('1+1')).to.not.exist;
       });
 
-      it('should pass along non-element arguments', async () => {
+      it('should pass along non-element arguments', async function () {
         let arg = 'non-element-argument';
         (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args[0];', [arg])).should.be.equal(arg);
       });
 
-      it('should handle return values correctly', async () => {
+      it('should handle return values correctly', async function () {
         let arg = ['one', 'two', 'three'];
         (await driver.execute('var args = Array.prototype.slice.call(arguments, 0); return args;', arg)).should.eql(arg);
       });
     });
 
     describe('asynchronous', function () {
-      it('should bubble up javascript errors', async () => {
+      it('should bubble up javascript errors', async function () {
         await driver.execute(`'nan'--`).should.eventually.be.rejected;
       });
 
-      it('should execute async javascript', async () => {
+      it('should execute async javascript', async function () {
         await driver.asyncScriptTimeout(1000);
         (await driver.executeAsync(`arguments[arguments.length - 1](123);`)).should.be.equal(123);
       });
 
-      it('should timeout when callback is not invoked', async () => {
+      it('should timeout when callback is not invoked', async function () {
         await driver.asyncScriptTimeout(1000);
         await driver.executeAsync(`return 1 + 2`).should.eventually.be.rejected;
       });

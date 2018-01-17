@@ -8,11 +8,11 @@ describe('uicatalog - controls', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  afterEach(async () => {
+  afterEach(async function () {
     await clickButton(driver, 'UICatalog');
   });
 
-  it('should be able to get and set a picker value(s)', async () => {
+  it('should be able to get and set a picker value(s)', async function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Picker View')]");
     await driver.click(el1);
 
@@ -33,7 +33,7 @@ describe('uicatalog - controls', function () {
     values.should.have.length(52);
   });
 
-  it('should be able to get and set a slider value @skip-ci', async () => {
+  it('should be able to get and set a slider value @skip-ci', async function () {
     await driver.execute("mobile: scroll", {direction: 'down'});
     let el = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Sliders')]");
     await driver.click(el);

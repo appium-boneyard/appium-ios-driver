@@ -13,7 +13,7 @@ import { getXcodeVersion } from './helpers';
 
 chai.should();
 
-describe('instruments', () => {
+describe('instruments', function () {
   function getInstruments (opts = {}) {
     let instruments = new Instruments(opts);
     instruments.xcodeVersion = getXcodeVersion();
@@ -22,7 +22,7 @@ describe('instruments', () => {
     return instruments;
   }
   describe('quickInstrument', withMocks({xcode, instrumentsUtils}, (mocks) => {
-    it('should create instruments', async () => {
+    it('should create instruments', async function () {
       mocks.xcode
         .expects('getVersion')
         .once()
@@ -42,8 +42,8 @@ describe('instruments', () => {
       instruments.app.should.equal(opts.app);
     });
   }));
-  describe('constructor', () => {
-    it('should create instruments', () => {
+  describe('constructor', function () {
+    it('should create instruments', function () {
       let opts = {
         app: '/a/b/c/my.app',
       };
@@ -52,7 +52,7 @@ describe('instruments', () => {
     });
   });
   describe('configure', withMocks({xcode, instrumentsUtils}, (mocks) => {
-    it('should work', async () => {
+    it('should work', async function () {
       let instruments = new Instruments({});
       mocks.xcode
         .expects('getVersion')
@@ -74,7 +74,7 @@ describe('instruments', () => {
     });
   }));
   describe('spawnInstruments', withMocks({fs, tp, instrumentsUtils}, (mocks) => {
-    it('should work', async () => {
+    it('should work', async function () {
       let instruments = getInstruments();
       mocks.fs.expects('exists').once().returns(B.resolve(false));
       mocks.tp.expects('spawn').once().returns({});
@@ -85,7 +85,7 @@ describe('instruments', () => {
       await instruments.spawnInstruments();
       verify(mocks);
     });
-    it('should properly handle process arguments', async () => {
+    it('should properly handle process arguments', async function () {
       let instruments = getInstruments();
       instruments.processArguments = '-e firstoption firstoptionsarg -e secondoption second option arg';
       mocks.fs.expects('exists').once().returns(B.resolve(false));
@@ -110,7 +110,7 @@ describe('instruments', () => {
 
       verify(mocks);
     });
-    it('should properly handle non-environment-variable process arguments', async () => {
+    it('should properly handle non-environment-variable process arguments', async function () {
       let instruments = getInstruments();
       instruments.processArguments = 'some random process arguments';
       mocks.fs.expects('exists').once().returns(B.resolve(false));
@@ -134,7 +134,7 @@ describe('instruments', () => {
 
       verify(mocks);
     });
-    it('should properly handle process arguments as hash', async () => {
+    it('should properly handle process arguments as hash', async function () {
       let instruments = getInstruments();
       instruments.processArguments = {firstoption: 'firstoptionsarg', secondoption: 'second option arg'};
       mocks.fs.expects('exists').once().returns(B.resolve(false));
@@ -159,7 +159,7 @@ describe('instruments', () => {
 
       verify(mocks);
     });
-    it('should add language and locale arguments when appropriate', async () => {
+    it('should add language and locale arguments when appropriate', async function () {
       let instruments = getInstruments({locale: "de_DE", language: "de"});
       instruments.processArguments = 'some random process arguments';
       mocks.fs.expects('exists').once().returns(B.resolve(false));

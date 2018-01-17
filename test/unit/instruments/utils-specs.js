@@ -13,9 +13,9 @@ import B from 'bluebird';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('utils', () => {
+describe('utils', function () {
   describe('getInstrumentsPath', withMocks({tp}, (mocks) => {
-    it('should retrieve path', async () => {
+    it('should retrieve path', async function () {
       mocks.tp
         .expects('exec')
         .once()
@@ -23,7 +23,7 @@ describe('utils', () => {
       (await instrumentsUtils.getInstrumentsPath()).should.equal('/a/b/c/d');
       verify(mocks);
     });
-    it('should throw an error if cannnot find Instruments', async () => {
+    it('should throw an error if cannnot find Instruments', async function () {
       mocks.tp
         .expects('exec')
         .once()
@@ -151,7 +151,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
     };
 
     Object.keys(xcodeVersions).forEach((version) =>
-      it(`should work for Xcode ${version}`, async () => {
+      it(`should work for Xcode ${version}`, async function () {
         mocks.tp
           .expects('exec')
           .once()
@@ -165,7 +165,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       })
     );
 
-    it('should throw an error when Instruments fails', async () => {
+    it('should throw an error when Instruments fails', async function () {
       mocks.tp
         .expects('exec')
         .once()
@@ -179,7 +179,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
     });
   }));
   describe('killAllInstruments', withMocks({tp}, (mocks) => {
-    it('should work', async () => {
+    it('should work', async function () {
       mocks.tp
         .expects('exec')
         .once()
@@ -190,7 +190,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
   }));
   describe('cleanAllTraces', withMocks({fs}, (mocks) => {
     stubEnv();
-    it('should work', async () => {
+    it('should work', async function () {
       process.env.CLEAN_TRACES = 1;
       mocks.fs
         .expects('rimraf')
@@ -200,9 +200,9 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       verify(mocks);
     });
   }));
-  describe('parseLaunchTimeout', () => {
+  describe('parseLaunchTimeout', function () {
     stubEnv();
-    it('should work', () => {
+    it('should work', function () {
       instrumentsUtils.parseLaunchTimeout(90000).should.deep.equal({
         global: 90000 });
       instrumentsUtils.parseLaunchTimeout('90000').should.deep.equal({
@@ -212,12 +212,12 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       instrumentsUtils.parseLaunchTimeout('{"global": 90000, "afterLaunch": 30000}').should.deep.equal({
         global: 90000, afterLaunch: 30000 });
     });
-    it('should work with invalid JSON', () => {
+    it('should work with invalid JSON', function () {
       instrumentsUtils.parseLaunchTimeout('x').should.equal('x');
     });
   });
   describe('getIwdPath', withMocks({fs}, (mocks) => {
-    it('should work when path is found', async () => {
+    it('should work when path is found', async function () {
       mocks.fs
         .expects('exists')
         .once()
@@ -226,7 +226,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         /.*instruments-iwd\/iwd10/);
       verify(mocks);
     });
-    it('should work when path is not found', async () => {
+    it('should work when path is not found', async function () {
       mocks.fs
         .expects('exists')
         .once()
@@ -238,7 +238,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
   }));
 
   describe('quickLaunch', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => {
-    it('should remove trace directory', async () => {
+    it('should remove trace directory', async function () {
       mocks.xcode
         .expects('getAutomationTraceTemplatePath')
         .once()
@@ -258,14 +258,14 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
   }));
 
   describe('quickInstruments', withMocks({xcode}, (mocks) => {
-    it('should create an Instruments object', async () => {
+    it('should create an Instruments object', async function () {
       let inst = await instrumentsUtils.quickInstruments({
         xcodeTraceTemplatePath: '/some/path'
       });
       inst.should.be.an.instanceof(Instruments);
     });
 
-    it('should get xcode trace template if none supplied', async () => {
+    it('should get xcode trace template if none supplied', async function () {
       mocks.xcode
         .expects('getAutomationTraceTemplatePath')
         .once()

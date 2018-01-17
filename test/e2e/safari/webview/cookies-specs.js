@@ -10,7 +10,7 @@ describe('safari - webview - cookies', function () {
   const driver = setup(this, desired).driver;
 
   describe('within iframe webview', function () {
-    it('should be able to get cookies for a page with none', async () => {
+    it('should be able to get cookies for a page with none', async function () {
       await loadWebView(desired, driver, env.TEST_END_POINT + 'iframes.html', 'Iframe guinea pig');
       await driver.deleteCookies();
       await driver.setUrl(env.TEST_END_POINT);
@@ -19,9 +19,9 @@ describe('safari - webview - cookies', function () {
   });
 
   describe('within webview', function () {
-    beforeEach(async () => await loadWebView(desired, driver));
+    beforeEach(async function () { return await loadWebView(desired, driver); });
 
-    it('should be able to get cookies for a page', async () => {
+    it('should be able to get cookies for a page', async function () {
       let cookies = await driver.getCookies();
       cookies.length.should.equal(2);
       cookies[0].name.should.equal('guineacookie1');
@@ -30,7 +30,7 @@ describe('safari - webview - cookies', function () {
       cookies[1].value.should.equal('cookié2');
     });
 
-    it('should be able to set a cookie for a page', async () => {
+    it('should be able to set a cookie for a page', async function () {
       let newCookie = {
         name: `newcookie`,
         value: `i'm new here`
@@ -50,7 +50,7 @@ describe('safari - webview - cookies', function () {
       cookies.map((c) => c.value).should.include('i am a cookie value');
     });
 
-    it('should be able to set a cookie with expiry', async () => {
+    it('should be able to set a cookie with expiry', async function () {
       let newCookie = {
         name: `newcookie`,
         value: `i'm new here`
@@ -72,7 +72,7 @@ describe('safari - webview - cookies', function () {
       cookies.map((c) => c.value).should.include('i am a cookie value');
     });
 
-    it('should be able to delete one cookie', async () => {
+    it('should be able to delete one cookie', async function () {
       let newCookie = {
         name: `newcookie`,
         value: `i'm new here`
@@ -94,7 +94,7 @@ describe('safari - webview - cookies', function () {
       cookies.map((c) => c.value).should.not.include(newCookie.value);
     });
 
-    it('should be able to delete all cookie', async () => {
+    it('should be able to delete all cookie', async function () {
       let newCookie = {
         name: `newcookie`,
         value: `i'm new here`

@@ -15,7 +15,7 @@ describe.skip('safari - page load timeout', function () {
   }).driver;
 
   describe('small timeout, slow page load', function () {
-    it('should not go to the requested page', async () => {
+    it('should not go to the requested page', async function () {
       await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: 5000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.setUrl(env.GUINEA_TEST_END_POINT + '?delay=30000');
 
@@ -27,7 +27,7 @@ describe.skip('safari - page load timeout', function () {
   describe('no timeout, very slow page', function () {
     let startMs = Date.now();
 
-    it('should go to the requested page', async () => {
+    it('should go to the requested page', async function () {
       await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 120000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: 0}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.setUrl(env.GUINEA_TEST_END_POINT + '?delay=5000');

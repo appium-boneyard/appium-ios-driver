@@ -17,7 +17,7 @@ describe('testapp - keyboard', function () {
       let session = setup(this, _.defaults({sendKeyStrategy: strategy}, desired));
       let driver = session.driver;
 
-      it("should send keys to a text field", async () => {
+      it("should send keys to a text field", async function () {
         let env = await driver.execute('env');
         if (strategy) {
           env.sendKeyStrategy.should.equal(strategy);
@@ -49,7 +49,7 @@ describe('testapp - keyboard', function () {
         , text = 'Delhi is New @@@ BREAKFAST-FOOD-0001';
 
       let test = function () {
-        it("should send keys to a text field", async () => {
+        it("should send keys to a text field", async function () {
           let el = await driver.findElement('class name', 'UIATextField');
           await driver.clear(el);
           driver.setValue(text, el);
@@ -62,7 +62,7 @@ describe('testapp - keyboard', function () {
       }
     });
 
-    it('should send accented text', async () => {
+    it('should send accented text', async function () {
       let testText = unorm.nfd("é Œ ù ḍ");
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
@@ -71,7 +71,7 @@ describe('testapp - keyboard', function () {
       (await driver.getText(el)).should.equal(testText);
     });
 
-    it('should send backspace key', async () => {
+    it('should send backspace key', async function () {
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
       await driver.clear(el);
@@ -81,7 +81,7 @@ describe('testapp - keyboard', function () {
       (await driver.getText(el)).should.equal('ab');
     });
 
-    it('should send delete key', async () => {
+    it('should send delete key', async function () {
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
       await driver.clear(el);
@@ -90,7 +90,7 @@ describe('testapp - keyboard', function () {
       (await driver.getText(el)).should.equal('ab');
     });
 
-    it('should send single quote text with setValue', async () => {
+    it('should send single quote text with setValue', async function () {
       let testText = "'";
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
@@ -98,7 +98,7 @@ describe('testapp - keyboard', function () {
       await driver.setValue(testText, el);
       (await driver.getText(el)).should.equal(testText);
     });
-    it('should send single quote text with keys', async () => {
+    it('should send single quote text with keys', async function () {
       let testText = "'";
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
@@ -106,7 +106,7 @@ describe('testapp - keyboard', function () {
       await driver.keys(testText);
       (await driver.getText(el)).should.equal(testText);
     });
-    it('should send text with a newline', async () => {
+    it('should send text with a newline', async function () {
       let testText = ['my string\n'];
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
