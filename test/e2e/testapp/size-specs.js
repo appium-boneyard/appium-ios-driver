@@ -27,6 +27,8 @@ describe('testapp - size', function () {
       size.width.should.exist;
       size.width.should.be.above(319);
       size.height.should.be.above(479);
+      size.x.should.be.equal(0);
+      size.y.should.be.equal(0);
     });
   });
 });

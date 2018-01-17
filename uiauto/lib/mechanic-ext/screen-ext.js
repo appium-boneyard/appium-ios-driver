@@ -59,6 +59,11 @@
       return size;
     }
 
+  , getWindowRect: function () {
+      var rect = $.target().rect();
+      return rect;
+  }
+
   , getWindowIndicators: function (win) {
       var activityIndicators = win.activityIndicators();
       var pageIndicators = win.pageIndicators();
