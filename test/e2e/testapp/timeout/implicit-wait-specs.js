@@ -3,6 +3,7 @@ import desired from '../desired';
 import env from '../../helpers/env';
 import B from 'bluebird';
 import { throwMatchableError } from '../../helpers/recipes';
+import {BaseDriver} from "appium-base-driver";
 
 describe('testapp - timeout', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
@@ -40,13 +41,13 @@ describe('testapp - timeout', function () {
     });
 
     it('should work with small command timeout', async () => {
-      await driver.timeouts('command', 5000);
+      await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 5000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.implicitWait(10000);
       await impWaitCheck('class name', 'UIANotGonnaBeHere', 10000);
     });
 
     it('should work even with a reset in the middle', async () => {
-      await driver.timeouts('command', 60000);
+      await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 60000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
       await driver.implicitWait(4000);
       await impWaitCheck('class name', 'UIANotGonnaBeHere', 4000);
       await driver.reset();
