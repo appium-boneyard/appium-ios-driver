@@ -21,5 +21,12 @@ describe('testapp - size', function () {
       size.width.should.be.above(319);
       size.height.should.be.above(479);
     });
+
+    it('should return the window size for W3C', async () => {
+      let size = await driver.getWindowRect();
+      size.width.should.exist;
+      size.width.should.be.above(319);
+      size.height.should.be.above(479);
+    });
   });
 });

@@ -186,6 +186,12 @@ describe('safari - webview ', function () {
         size.width.should.be.above(0);
       });
 
+      it('should retrieve a window size for W3C', async () => {
+        let size = await driver.getWindowRect();
+        size.height.should.be.above(0);
+        size.width.should.be.above(0);
+      });
+
       it('should move to an arbitrary x-y element and click on it', async () => {
         let el = await driver.findElement('link text', 'i am a link');
         await driver.moveTo(el, 5, 15);
