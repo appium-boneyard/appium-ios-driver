@@ -8,9 +8,9 @@ import xcode from 'appium-xcode';
 let sandbox = sinon.sandbox.create();
 const should = chai.Should();
 
-describe('Desired Capabilities', () => {
+describe('Desired Capabilities', function () {
   let driver;
-  before(() => {
+  before(function () {
     driver = new IosDriver();
   });
 
@@ -26,15 +26,15 @@ describe('Desired Capabilities', () => {
     }
   }
 
-  describe('platform name, app and bundleId', () => {
-    it('should throw error if neither app nor bundleId are present', () => {
+  describe('platform name, app and bundleId', function () {
+    it('should throw error if neither app nor bundleId are present', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5'
       };
       checkCaps(caps, true);
     });
-    it('should accept an app', () => {
+    it('should accept an app', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -42,7 +42,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should accept a bundleId', () => {
+    it('should accept a bundleId', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -50,7 +50,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should not be sensitive to platform name casing', () => {
+    it('should not be sensitive to platform name casing', function () {
       let caps = {
         platformName: 'IoS',
         deviceName: 'iPhone 5',
@@ -60,8 +60,8 @@ describe('Desired Capabilities', () => {
     });
   });
 
-  describe('launchTimeout', () => {
-    it('should accept a number', () => {
+  describe('launchTimeout', function () {
+    it('should accept a number', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -70,7 +70,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should accept an object', () => {
+    it('should accept an object', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -81,7 +81,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should accept a stringified object', () => {
+    it('should accept a stringified object', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -92,7 +92,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should fail for non-JSON string', () => {
+    it('should fail for non-JSON string', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -103,8 +103,8 @@ describe('Desired Capabilities', () => {
     });
   });
 
-  describe('processArguments', () => {
-    it('should accept plain string', () => {
+  describe('processArguments', function () {
+    it('should accept plain string', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -113,7 +113,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should accept an object', () => {
+    it('should accept an object', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -124,7 +124,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should accept a stringified object', () => {
+    it('should accept a stringified object', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -135,7 +135,7 @@ describe('Desired Capabilities', () => {
       };
       checkCaps(caps);
     });
-    it('should fail for non-string, non-object', () => {
+    it('should fail for non-string, non-object', function () {
       let caps = {
         platformName: 'iOS',
         deviceName: 'iPhone 5',
@@ -147,7 +147,7 @@ describe('Desired Capabilities', () => {
   });
 
   describe('server capabilities', withMocks({xcode}, (mocks) => {
-    it('should collect server capabilities', async () => {
+    it('should collect server capabilities', async function () {
       mocks.xcode.expects('getVersion')
         .once().returns({
           versionString: '7.0.0',

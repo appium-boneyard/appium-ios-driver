@@ -6,7 +6,7 @@ describe('testapp - autoAcceptAlerts default', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('does not auto-accept alerts', async () => {
+  it('does not auto-accept alerts', async function () {
     let el = await driver.findElement('accessibility id', 'show alert');
     await driver.click(el);
     await B.delay(2000);

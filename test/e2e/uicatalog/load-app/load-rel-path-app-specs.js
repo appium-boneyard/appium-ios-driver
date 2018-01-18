@@ -9,7 +9,7 @@ describe('uicatalog - load app with relative path', function () {
   let session = setup(this, _.defaults({'app': appPath}, desired));
   let driver = session.driver;
 
-  it('should load with relative path', async () => {
+  it('should load with relative path', async function () {
     path.isAbsolute(appPath).should.not.be.ok;
     let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;

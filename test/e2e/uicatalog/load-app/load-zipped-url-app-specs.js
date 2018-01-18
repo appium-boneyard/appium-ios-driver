@@ -10,7 +10,7 @@ describe('uicatalog - load zipped app via url @skip-real-device', function () {
   let session = setup(this, _.defaults({'app': appUrl}, desired));
   let driver = session.driver;
 
-  it('should load a zipped app via url', async () => {
+  it('should load a zipped app via url', async function () {
     let el = await driver.findElement('class name', 'UIATextField');
     el.should.exist;
   });

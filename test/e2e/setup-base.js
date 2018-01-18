@@ -34,7 +34,7 @@ function setup (context, desired, opts = {}, envOverrides = false, needsNewServe
   let session = new Session(desired, opts);
   let allPassed = true;
 
-  before(async () => {
+  before(async function () {
     if (!server) {
       await startServer(session);
     } else if (needsNewServer) {
@@ -44,7 +44,7 @@ function setup (context, desired, opts = {}, envOverrides = false, needsNewServe
     await session.setUp(getTitle(context));
   });
 
-  after(async () => {
+  after(async function () {
     await session.tearDown(allPassed);
     if (needsNewServer) {
       await server.close();

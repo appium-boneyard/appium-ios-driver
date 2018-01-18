@@ -6,7 +6,7 @@ chai.should();
 describe('utils', function () {
   this.timeout(90000);
 
-  describe('quickLaunch', () => {
+  describe('quickLaunch', function () {
     it.skip('should terminate', async () => {
       await instrumentsUtils.quickLaunch("iPhone 6 (8.4 Simulator)");
     });

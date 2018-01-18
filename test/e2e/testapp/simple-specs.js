@@ -19,7 +19,7 @@ describe('testapp - simple', function () {
       }
     };
 
-    it('should fill two fields with numbers', async () => {
+    it('should fill two fields with numbers', async function () {
       await populate();
       let el1 = await driver.findElement('class name', 'UIAButton');
       await driver.click(el1);

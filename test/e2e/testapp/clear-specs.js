@@ -5,7 +5,7 @@ describe('testapp - clear', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('should clear the text field', async () => {
+  it('should clear the text field', async function () {
     let el = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("some-value", el);
     (await driver.getText(el)).should.equal("some-value");
@@ -18,7 +18,7 @@ describe('testapp - clear', function () {
   // these tests need to be moved out of "clear-specs", and consolidated with the
   // UICatalog ones
 
-  it('should hide keyboard using "Done" key', async () => {
+  it('should hide keyboard using "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("1", el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
@@ -27,7 +27,7 @@ describe('testapp - clear', function () {
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
-  it('should hide keyboard using "pressKey" strategy with "Done" key', async () => {
+  it('should hide keyboard using "pressKey" strategy with "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("1", el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
@@ -36,7 +36,7 @@ describe('testapp - clear', function () {
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
-  it('should hide keyboard using "pressKey" strategy with "Done" keyName', async () => {
+  it('should hide keyboard using "pressKey" strategy with "Done" keyName', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("1", el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
@@ -45,7 +45,7 @@ describe('testapp - clear', function () {
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
-  it('should hide keyboard using "press" strategy with "Done" key', async () => {
+  it('should hide keyboard using "press" strategy with "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("1", el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');

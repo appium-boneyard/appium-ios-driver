@@ -12,8 +12,8 @@ async function getImage (file) {
   return await fs.readFile(imagePath, 'utf8');
 }
 
-describe('viewport screenshot', () => {
-  it('should return non-empty string', async () => {
+describe('viewport screenshot', function () {
+  it('should return non-empty string', async function () {
     let driver = new IosDriver();
     sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
     sinon.stub(driver, 'getDevicePixelRatio').returns(2);

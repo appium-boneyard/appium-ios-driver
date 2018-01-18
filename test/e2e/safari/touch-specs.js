@@ -14,7 +14,7 @@ describe.skip('touch', function () {
     browserName: "safari"
   }).driver;
 
-  it('should flick element', async () => {
+  it('should flick element', async function () {
     await driver.setUrl(`${env.TEST_END_POINT}touch.html`);
     let flickElem = await driver.findElement('id', 'flickElem');
 
@@ -35,7 +35,7 @@ describe.skip('touch', function () {
     l2.y.should.be.within(l1.y + dy - 2, l1.y + dy + 2);
   });
 
-  it('should not be able to do native touch actions', async () => {
+  it('should not be able to do native touch actions', async function () {
     let el = await driver.findElement('id', 'comments');
     let gestures = [
       {action: 'press', options: {element: el}},

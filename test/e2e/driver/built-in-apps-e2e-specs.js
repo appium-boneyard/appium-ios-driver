@@ -14,8 +14,8 @@ describe('built-in apps', function () {
   this.timeout(MOCHA_TIMEOUT);
 
   let driver;
-  describe('Calendar', () => {
-    it('should start', async () => {
+  describe('Calendar', function () {
+    it('should start', async function () {
       let caps = {
         app: 'Calendar',
         platformName: 'iOS',

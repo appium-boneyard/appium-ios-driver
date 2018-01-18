@@ -10,18 +10,18 @@ import env from '../../helpers/env';
 describe('safari - webview ', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
-  describe('basics', () => {
+  describe('basics', function () {
     const driver = setup(this, desired).driver;
 
     describe('context', function () {
-      it('getting current context should work initially', async () => {
+      it('getting current context should work initially', async function () {
         await B.delay(500);
         (await driver.getCurrentContext()).should.be.ok;
       });
     });
 
     describe('implicit wait', function () {
-      it('should set the implicit wait for finding web elements', async () => {
+      it('should set the implicit wait for finding web elements', async function () {
         await driver.implicitWait(7 * 1000);
 
         let before = new Date().getTime() / 1000;
@@ -45,53 +45,53 @@ describe('safari - webview ', function () {
     });
 
     describe('window title', function () {
-      beforeEach(async () => await loadWebView(desired, driver));
+      beforeEach(async function () { return await loadWebView(desired, driver); });
 
-      it('should return a valid title on web view', async () => {
+      it('should return a valid title on web view', async function () {
         (await driver.title()).should.include("I am a page title");
       });
     });
 
     describe('element handling', function () {
-      beforeEach(async () => await loadWebView(desired, driver));
+      beforeEach(async function () { return await loadWebView(desired, driver); });
 
-      it('should find a web element in the web view', async () => {
+      it('should find a web element in the web view', async function () {
         (await driver.findElement('id', 'i_am_an_id')).should.exist;
       });
 
-      it('should find multiple web elements in the web view', async () => {
+      it('should find multiple web elements in the web view', async function () {
         (await driver.findElements('tag name', 'a')).should.have.length.above(0);
       });
 
-      it('should fail gracefully to find multiple missing web elements in the web view', async () => {
+      it('should fail gracefully to find multiple missing web elements in the web view', async function () {
         (await driver.findElements('tag name', 'blar')).should.have.length(0);
       });
 
-      it('should find element from another element', async () => {
+      it('should find element from another element', async function () {
         let el = await driver.findElement('class name', 'border');
         (await driver.findElementFromElement('xpath', './form', el)).should.exist;
       });
 
-      it('should be able to click links', async () => {
+      it('should be able to click links', async function () {
         let el = await driver.findElement('link text', 'i am a link');
         await driver.click(el);
         await spinTitle('I am another page title', driver);
       });
 
-      it('should retrieve an element attribute', async () => {
+      it('should retrieve an element attribute', async function () {
         let el = await driver.findElement('id', 'i_am_an_id');
         (await driver.getAttribute('id', el)).should.be.equal('i_am_an_id');
         expect(await driver.getAttribute('blar', el)).to.be.null;
       });
 
-      it('should retrieve implicit attributes', async () => {
+      it('should retrieve implicit attributes', async function () {
         let els = await driver.findElements('tag name', 'option');
         els.should.have.length(3);
 
         (await driver.getAttribute('index', els[2])).should.be.equal('2');
       });
 
-      it('should retrieve an element text', async () => {
+      it('should retrieve an element text', async function () {
         let el = await driver.findElement('id', 'i_am_an_id');
         (await driver.getText(el)).should.be.equal('I am a div');
       });
@@ -102,7 +102,7 @@ describe('safari - webview ', function () {
         el1.should.be.equal(el2);
       });
 
-      it('should return the page source', async () => {
+      it('should return the page source', async function () {
         let source = await driver.getPageSource();
         source.should.include('<html');
         source.should.include('I am a page title');
@@ -110,25 +110,25 @@ describe('safari - webview ', function () {
         source.should.include('</html>');
       });
 
-      it('should get current url', async () => {
+      it('should get current url', async function () {
         (await driver.getUrl()).should.include('test/guinea-pig');
       });
 
-      it('should get updated URL without breaking window handles', async () => {
+      it('should get updated URL without breaking window handles', async function () {
         let el = await driver.findElement('link text', 'i am an anchor link');
         await driver.click(el);
         (await driver.getUrl()).should.contain('#anchor');
         (await driver.getWindowHandles()).should.be.ok;
       });
 
-      it('should send keystrokes to specific element', async () => {
+      it('should send keystrokes to specific element', async function () {
         let el = await driver.findElement('id', 'comments');
         await driver.clear(el);
         await driver.setValue('hello world', el);
         (await driver.getAttribute('value', el)).should.be.equal('hello world');
       });
 
-      it('should send keystrokes to active element', async () => {
+      it('should send keystrokes to active element', async function () {
         let el = await driver.findElement('id', 'comments');
         await driver.clear(el);
         await driver.click(el);
@@ -136,7 +136,7 @@ describe('safari - webview ', function () {
         (await driver.getAttribute('value', el)).should.be.equal('hello world');
       });
 
-      it('should clear element', async () => {
+      it('should clear element', async function () {
         let el = await driver.findElement('id', 'comments');
         await driver.setValue('hello world', el);
         (await driver.getAttribute('value', el)).should.have.length.above(0);
@@ -144,26 +144,26 @@ describe('safari - webview ', function () {
         (await driver.getAttribute('value', el)).should.be.equal('');
       });
 
-      it('should say whether an input is selected', async () => {
+      it('should say whether an input is selected', async function () {
         let el = await driver.findElement('id', 'unchecked_checkbox');
         (await driver.elementSelected(el)).should.not.be.ok;
         await driver.click(el);
         (await driver.elementSelected(el)).should.be.ok;
       });
 
-      it('should be able to retrieve css properties', async () => {
+      it('should be able to retrieve css properties', async function () {
         let el = await driver.findElement('id', 'fbemail');
         (await driver.getCssProperty('background-color', el.ELEMENT)).should.be.equal('rgba(255, 255, 255, 1)');
       });
 
-      it('should retrieve an element size', async () => {
+      it('should retrieve an element size', async function () {
         let el = await driver.findElement('id', 'i_am_an_id');
         let size = await driver.getSize(el);
         size.width.should.be.above(0);
         size.height.should.be.above(0);
       });
 
-      it('should get location of an element', async () => {
+      it('should get location of an element', async function () {
         let el = await driver.findElement('id', 'fbemail');
         let loc = await driver.getLocation(el);
         loc.x.should.be.above(0);
@@ -180,20 +180,20 @@ describe('safari - webview ', function () {
         (await driver.getTagName(a)).should.be.equal('a');
       });
 
-      it('should retrieve a window size', async () => {
+      it('should retrieve a window size', async function () {
         let size = await driver.getWindowSize();
         size.height.should.be.above(0);
         size.width.should.be.above(0);
       });
 
-      it('should move to an arbitrary x-y element and click on it', async () => {
+      it('should move to an arbitrary x-y element and click on it', async function () {
         let el = await driver.findElement('link text', 'i am a link');
         await driver.moveTo(el, 5, 15);
         await driver.click(el);
         await spinTitle('I am another page title', driver);
       });
 
-      it('should submit a form', async () => {
+      it('should submit a form', async function () {
         let el = await driver.findElement('id', 'comments');
         let form = await driver.findElement('id', 'jumpContact');
         await driver.setValue('This is a comment', el);
@@ -204,28 +204,28 @@ describe('safari - webview ', function () {
         });
       });
 
-      it('should return true when the element is displayed', async () => {
+      it('should return true when the element is displayed', async function () {
         let el = await driver.findElement('link text', 'i am a link');
         (await driver.elementDisplayed(el)).should.be.ok;
       });
 
-      it('should return false when the element is not displayed', async () => {
+      it('should return false when the element is not displayed', async function () {
         let el = await driver.findElement('id', 'invisible div');
         (await driver.elementDisplayed(el)).should.not.be.ok;
       });
 
-      it('should return true when the element is enabled', async () => {
+      it('should return true when the element is enabled', async function () {
         let el = await driver.findElement('link text', 'i am a link');
         (await driver.elementEnabled(el)).should.be.ok;
       });
 
-      it('should return false when the element is not enabled', async () => {
+      it('should return false when the element is not enabled', async function () {
         let el = await driver.findElement('id', 'fbemail');
         await driver.execute(`$('#fbemail').attr('disabled', 'disabled');`);
         (await driver.elementEnabled(el)).should.not.be.ok;
       });
 
-      it('should return the active element', async () => {
+      it('should return the active element', async function () {
         let testText = 'hi there';
         let el = await driver.findElement('id', 'i_am_a_textbox');
         await driver.setValue(testText, el);
@@ -233,12 +233,12 @@ describe('safari - webview ', function () {
         (await driver.getAttribute('value', activeEl)).should.be.equal(testText);
       });
 
-      it('should properly navigate to anchor', async () => {
+      it('should properly navigate to anchor', async function () {
         let curl = await driver.getUrl();
         await driver.setUrl(curl);
       });
 
-      it('should be able to refresh', async () => {
+      it('should be able to refresh', async function () {
         await driver.refresh();
       });
     });
@@ -250,13 +250,13 @@ describe('safari - webview ', function () {
       specialCaps.safariIgnoreFraudWarning = true;
 
       const driver = setup(this, specialCaps).driver;
-      before(async () => await loadWebView(specialCaps, driver));
+      before(async function () { return await loadWebView(specialCaps, driver); });
 
       // iOS8 currently does not disable the phishing warning for foo:bar@ type
       // addresses, even when running the sim manually
       // TODO: find another way to trigger the phishing warning that IS disabled
       // by the pref on iOS8
-      it('should not display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async () => {
+      it('should not display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async function () {
         await driver.setUrl(env.PHISHING_END_POINT + 'guinea-pig2.html');
         await spinWait(async () => {
           (await driver.getTitle()).should.contain("I am another page title");
@@ -269,13 +269,13 @@ describe('safari - webview ', function () {
       specialCaps.safariIgnoreFraudWarning = false;
 
       const driver = setup(this, specialCaps).driver;
-      before(async () => await loadWebView(specialCaps, driver));
+      before(async function () { return await loadWebView(specialCaps, driver); });
 
       // iOS8 currently does not disable the phishing warning for foo:bar@ type
       // addresses, even when running the sim manually
       // TODO: find another way to trigger the phishing warning that IS disabled
       // by the pref on iOS8
-      it('should display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async () => {
+      it('should display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async function () {
         await driver.setUrl(env.PHISHING_END_POINT + 'guinea-pig2.html');
         await spinWait(async () => {
           (await driver.getTitle()).toLowerCase().should.contain("phishing");
@@ -288,9 +288,9 @@ describe('safari - webview ', function () {
     let specialCaps = Object.assign({enablePerformanceLogging: true}, desired);
 
     const driver = setup(this, specialCaps).driver;
-    before(async () => await loadWebView(specialCaps, driver));
+    before(async function () { return await loadWebView(specialCaps, driver); });
 
-    it('should be able to get the performance logs', async () => {
+    it('should be able to get the performance logs', async function () {
       let logTypes = await driver.getLogTypes();
       logTypes.should.include('performance');
 

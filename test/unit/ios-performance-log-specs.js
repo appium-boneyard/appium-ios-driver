@@ -10,7 +10,7 @@ import chaiAsPromised from 'chai-as-promised';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('performance logs', () => {
+describe('performance logs', function () {
   let onTimelineEventCb;
   let log;
   let remote = {
@@ -19,7 +19,7 @@ describe('performance logs', () => {
   };
   let startTimelineStub;
   let stopTimelineStub;
-  beforeEach(() => {
+  beforeEach(function () {
     startTimelineStub = sinon.stub(remote, 'startTimeline', async function (cb) { // eslint-disable-line promise/prefer-await-to-callbacks
       onTimelineEventCb = cb;
     });
@@ -27,24 +27,24 @@ describe('performance logs', () => {
 
     log = new IOSPerformanceLog(remote);
   });
-  afterEach(() => {
+  afterEach(function () {
     startTimelineStub.restore();
     stopTimelineStub.restore();
   });
 
-  it('should be able to start the timeline listening', async () => {
+  it('should be able to start the timeline listening', async function () {
     await log.startCapture();
     startTimelineStub.calledOnce.should.be.true;
   });
 
-  it('should be able to stop the timeline listening', async () => {
+  it('should be able to stop the timeline listening', async function () {
     await log.startCapture();
     startTimelineStub.calledOnce.should.be.true;
     await log.stopCapture();
     stopTimelineStub.calledOnce.should.be.true;
   });
 
-  it('should capture timeline events', async () => {
+  it('should capture timeline events', async function () {
     await log.startCapture();
 
     let message = 'Some timeline event';
@@ -53,7 +53,7 @@ describe('performance logs', () => {
     (await log.getLogs()).should.eql([message]);
   });
 
-  it('should consume timeline events when logs are retrieved', async () => {
+  it('should consume timeline events when logs are retrieved', async function () {
     await log.startCapture();
 
     let message = 'Some timeline event';

@@ -18,18 +18,18 @@ describe('commands - logging', function () {
   this.timeout(MOCHA_TIMEOUT);
   let driver;
 
-  before(() => {
+  before(function () {
     driver = new IosDriver();
   });
 
-  describe('getLogTypes', () => {
-    it('should get the list of available logs', async () => {
+  describe('getLogTypes', function () {
+    it('should get the list of available logs', async function () {
       driver.getLogTypes.should.an.instanceof(Function);
       (await driver.getLogTypes()).should.eql(_.keys(SUPPORTED_LOG_TYPES));
     });
   });
 
-  describe('getLog', () => {
+  describe('getLog', function () {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
       platformName: 'iOS',
@@ -39,28 +39,28 @@ describe('commands - logging', function () {
     };
     caps = _.merge({}, env.CAPS, caps);
 
-    describe('errors', () => {
-      it('should throw an error when an invalid type is given', async () => {
+    describe('errors', function () {
+      it('should throw an error when an invalid type is given', async function () {
         await driver.getLog('something-random').should.eventually.be.rejected;
       });
-      it('should throw an error when driver is not started', async () => {
+      it('should throw an error when driver is not started', async function () {
         await driver.getLog('syslog').should.eventually.be.rejected;
       });
     });
 
-    describe('success', () => {
+    describe('success', function () {
       before(async function () {
         // TODO: figure out why this is so flakey in Travis
         if (process.env.TRAVIS) this.skip(); // eslint-disable-line curly
         await driver.createSession(caps);
       });
-      after(async () => {
+      after(async function () {
         await driver.deleteSession();
       });
-      it('should get system logs', async () => {
+      it('should get system logs', async function () {
         (await driver.getLog('syslog')).should.be.an.instanceof(Array);
       });
-      it('should get crash logs', async () => {
+      it('should get crash logs', async function () {
         (await driver.getLog('crashlog')).should.be.an.instanceof(Array);
       });
     });

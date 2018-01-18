@@ -5,7 +5,7 @@ describe('testapp - active', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it('should return active element', async () => {
+  it('should return active element', async function () {
     let els = await driver.findElements('class name', 'UIATextField');
     let el = els[1];
 

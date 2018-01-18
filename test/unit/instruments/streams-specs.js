@@ -11,7 +11,7 @@ import sinon from 'sinon';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('streams', () => {
+describe('streams', function () {
   async function runThroughStream (stream, text) {
     return new B(function (resolve) {
       stream.on('data', (data) => {
@@ -21,67 +21,67 @@ describe('streams', () => {
     });
   }
 
-  describe('outputStream', () => {
+  describe('outputStream', function () {
     let stream;
-    beforeEach(() => {
+    beforeEach(function () {
       stream = outputStream();
     });
-    it('should return a stream', () => {
+    it('should return a stream', function () {
       stream.should.be.an.instanceof(Stream);
     });
-    it('should append [INST] to the output', async () => {
+    it('should append [INST] to the output', async function () {
       let text = 'Some output';
       let output = await runThroughStream(stream, text);
 
       output.should.include('[INST] Some output');
     });
-    it('should remove beginning * from output', async () => {
+    it('should remove beginning * from output', async function () {
       let text = '***Some output***';
       let output = await runThroughStream(stream, text);
 
       output.should.include('Some output***');
     });
-    it('should remove final newlines', async () => {
+    it('should remove final newlines', async function () {
       let text = 'Some output\n';
       let output = await runThroughStream(stream, text);
 
       output.should.not.include('\n');
     });
-    it('should indent internal newlines', async () => {
+    it('should indent internal newlines', async function () {
       let text = 'Some output\non multiple lines';
       let output = await runThroughStream(stream, text);
 
       output.should.include('Some output\n       on multiple lines');
     });
   });
-  describe('errorStream', () => {
+  describe('errorStream', function () {
     let stream;
-    beforeEach(() => {
+    beforeEach(function () {
       stream = errorStream();
     });
-    it('should return a stream', () => {
+    it('should return a stream', function () {
       stream.should.be.an.instanceof(Stream);
     });
-    it('should append [INST STDERR] to the output', async () => {
+    it('should append [INST STDERR] to the output', async function () {
       let text = 'Some output';
       let output = await runThroughStream(stream, text);
 
       output.should.include('[INST STDERR] Some output');
     });
-    it('should remove beginning * from output', async () => {
+    it('should remove beginning * from output', async function () {
       let text = '***Some output***';
       let output = await runThroughStream(stream, text);
 
       output.should.include('Some output***');
     });
-    it('should remove final newlines', async () => {
+    it('should remove final newlines', async function () {
       let text = 'Some output\n';
       let output = await runThroughStream(stream, text);
 
       output.should.not.include('\n');
     });
   });
-  describe('webSocketAlertStream', () => {
+  describe('webSocketAlertStream', function () {
     let webSocket = {
       sockets: {
         emit: () => {}
@@ -89,27 +89,27 @@ describe('streams', () => {
     };
     let webSocketSpy = sinon.spy(webSocket.sockets, 'emit');
 
-    afterEach(() => {
+    afterEach(function () {
       webSocketSpy.reset();
     });
 
-    it('should return a stream', () => {
+    it('should return a stream', function () {
       webSocketAlertStream().should.be.an.instanceof(Stream);
     });
-    it('should queue data', async () => {
+    it('should queue data', async function () {
       let text = 'Some output';
       let output = await runThroughStream(webSocketAlertStream(), text);
 
       output.should.equal(text);
     });
-    it('should send data to websocket when appropriate', async () => {
+    it('should send data to websocket when appropriate', async function () {
       let text = 'Call to onAlert returned \'YES\'\nSome output';
 
       await runThroughStream(webSocketAlertStream(webSocket), text);
 
       webSocketSpy.calledWith('alert', {message: text});
     });
-    it('should not send data to websocket when inappropriate', async () => {
+    it('should not send data to websocket when inappropriate', async function () {
       let text = 'Some output';
 
       await runThroughStream(webSocketAlertStream(webSocket), text);
@@ -117,12 +117,12 @@ describe('streams', () => {
       webSocketSpy.called.should.be.false;
     });
   });
-  describe('dumpStream', () => {
+  describe('dumpStream', function () {
     let stream;
-    beforeEach(() => {
+    beforeEach(function () {
       stream = dumpStream();
     });
-    it('should return a stream', () => {
+    it('should return a stream', function () {
       stream.should.be.an.instanceof(Stream);
     });
   });

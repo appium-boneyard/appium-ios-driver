@@ -12,18 +12,18 @@ import {BaseDriver} from "appium-base-driver";
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('driver', () => {
-  it('should instantiate class', () => {
+describe('driver', function () {
+  it('should instantiate class', function () {
     let driver = new IosDriver();
     driver.should.exist;
   });
 
   describe('unsupported infrastructure', withMocks({xcode}, (mocks) => {
     let driver;
-    before(async () => {
+    before(async function () {
       driver = new IosDriver();
     });
-    it('should throw an error for Xcode version 8+', async () => {
+    it('should throw an error for Xcode version 8+', async function () {
       mocks.xcode.expects('getVersion')
         .once().returns({
           versionString: '8.0.0',
@@ -41,69 +41,69 @@ describe('driver', () => {
     });
   }));
 
-  describe('timeouts', () => {
+  describe('timeouts', function () {
     let driver;
-    before(async () => {
+    before(async function () {
       driver = new IosDriver();
       // await driver.createSession({});
     });
-    describe('command', () => {
-      it('should exist by default', async () => {
+    describe('command', function () {
+      it('should exist by default', async function () {
         driver.newCommandTimeoutMs.should.equal(60000);
       });
-      it('should be settable through `timeouts`', async () => {
+      it('should be settable through `timeouts`', async function () {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.newCommandTimeoutMs.should.equal(20);
       });
-      it('should not be settable through `timeouts` for W3C', async () => {
+      it('should not be settable through `timeouts` for W3C', async function () {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, command: 3000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.newCommandTimeoutMs.should.equal(20);
       });
     });
-    describe('implicit', () => {
-      it('should not exist by default', async () => {
+    describe('implicit', function () {
+      it('should not exist by default', async function () {
         driver.implicitWaitMs.should.equal(0);
       });
-      it('should be settable through `timeouts`', async () => {
+      it('should be settable through `timeouts`', async function () {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'implicit', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.implicitWaitMs.should.equal(20);
       });
-      it('should be settable through `timeouts` for W3C', async () => {
+      it('should be settable through `timeouts` for W3C', async function () {
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.implicitWaitMs.should.equal(30);
       });
     });
-    describe('page load', () => {
-      it('should be settable through `timeouts`', async () => {
+    describe('page load', function () {
+      it('should be settable through `timeouts`', async function () {
         let to = driver.pageLoadMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.pageLoadMs.should.equal(to + 20);
       });
-      it('should be settable through `timeouts` for W3C', async () => {
+      it('should be settable through `timeouts` for W3C', async function () {
         let to = driver.pageLoadMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, pageLoad: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.pageLoadMs.should.equal(to + 30);
       });
     });
-    describe('script', () => {
-      it('should be settable through `timeouts`', async () => {
+    describe('script', function () {
+      it('should be settable through `timeouts`', async function () {
         let to = driver.asyncWaitMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'script', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.asyncWaitMs.should.equal(to + 20);
       });
-      it('should be settable through `timeouts` for W3C', async () => {
+      it('should be settable through `timeouts` for W3C', async function () {
         let to = driver.asyncWaitMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, script: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.asyncWaitMs.should.equal(to + 30);
       });
-      it('should be settable through asyncScriptTimeout', async () => {
+      it('should be settable through asyncScriptTimeout', async function () {
         let to = driver.asyncWaitMs;
         await driver.asyncScriptTimeout(to + 20);
         driver.asyncWaitMs.should.equal(to + 20);
       });
     });
-    describe('script, page load and implicit', () => {
-      it('should be settable through `timeouts` for W3C', async () => {
+    describe('script, page load and implicit', function () {
+      it('should be settable through `timeouts` for W3C', async function () {
         let to = driver.asyncWaitMs;
         await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 20, pageLoad: to + 20, script: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
         driver.implicitWaitMs.should.equal(20);
@@ -136,7 +136,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       return driver;
     };
 
-    it('should call idevicedate', async () => {
+    it('should call idevicedate', async function () {
       let date = new Date().toString();
       let driver = setup(mocks, {date});
       (await driver.getDeviceTime()).should.equal(date);
@@ -145,7 +145,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       mocks.teen_process.verify();
     });
 
-    it('should return output of idevicedate if unparseable', async () => {
+    it('should return output of idevicedate if unparseable', async function () {
       let date = 'some time and date';
       let driver = setup(mocks, {date});
       (await driver.getDeviceTime()).should.equal(date);
@@ -154,7 +154,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       mocks.teen_process.verify();
     });
 
-    it('should throw an error when idevicedate cannot be found', async () => {
+    it('should throw an error when idevicedate cannot be found', async function () {
       mocks.fs.expects('which')
         .once().throws();
       let driver = new IosDriver();
@@ -165,7 +165,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       mocks.fs.verify();
     });
 
-    it('should throw an error when idevicedate fails', async () => {
+    it('should throw an error when idevicedate fails', async function () {
       let driver = setup(mocks);
       await driver.getDeviceTime()
         .should.eventually.be.rejectedWith("Could not capture device date and time");
@@ -176,7 +176,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
   });
 
   describe('simulator', function () {
-    it('should return system date', async () => {
+    it('should return system date', async function () {
       mocks.teen_process.expects('exec')
         .never();
       let driver = new IosDriver();
