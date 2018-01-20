@@ -16,10 +16,10 @@ chai.use(chaiAsPromised);
 
 const LOG_DIR = path.resolve('test', 'assets', 'logs');
 
-describe('system logs', () => {
+describe('system logs', function () {
   let tmpSystemLog;
   let sim;
-  beforeEach(async () => {
+  beforeEach(async function () {
     // get the simulator, and stub what will be called
     sim = {
       udid: 'fake-udid',
@@ -34,7 +34,7 @@ describe('system logs', () => {
     tmpSystemLog = path.resolve(LOG_DIR, 'system.log');
     await fs.copyFile(fixSystemLog, tmpSystemLog);
   });
-  afterEach(async () => {
+  afterEach(async function () {
     if (await fs.exists(tmpSystemLog)) {
       await fs.unlink(tmpSystemLog);
     }

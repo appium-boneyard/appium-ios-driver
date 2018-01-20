@@ -8,18 +8,18 @@ describe('uicatalog - clear', function () {
     let session = setup(this, desired);
     let driver = session.driver;
 
-    beforeEach(async () => {
+    beforeEach(async function () {
       try {
         await driver.execute("mobile: scroll", {direction: 'down'});
       } catch (ign) {}
     });
-    afterEach(async () => {
+    afterEach(async function () {
       try {
         await driver.back();
       } catch (ign) {}
     });
 
-    it('should be able to hide keyboard with the default strategy', async () => {
+    it('should be able to hide keyboard with the default strategy', async function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');
@@ -31,7 +31,7 @@ describe('uicatalog - clear', function () {
       (await driver.findElements('accessibility id', 'Go')).should.have.length(0);
     });
 
-    it('should be able to hide keyboard with the tapOutside strategy', async () => {
+    it('should be able to hide keyboard with the tapOutside strategy', async function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');
@@ -43,7 +43,7 @@ describe('uicatalog - clear', function () {
       (await driver.findElements('accessibility id', 'Go')).should.have.length(0);
     });
 
-    it('should be able to hide keyboard with the tapOut strategy', async () => {
+    it('should be able to hide keyboard with the tapOut strategy', async function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');

@@ -14,11 +14,11 @@ let iwdpInstance;
 describe('ios webkit debug proxy class', function () {
   this.timeout(20000);
 
-  beforeEach(async () => {
+  beforeEach(async function () {
     iwdpInstance = new IWDP();
   });
 
-  afterEach(async () => {
+  afterEach(async function () {
     try {
       await iwdpInstance.stop();
     } catch (ign) { }
@@ -62,7 +62,7 @@ describe('ios webkit debug proxy class', function () {
     await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
   });
 
-  it('should fail after reaching max retries', async ()  => {
+  it('should fail after reaching max retries', async function () {
     await iwdpInstance.start();
     let retries = 0;
 

@@ -25,7 +25,7 @@ describe('testapp - touch actions', function () {
   }
 
   describe('tap', function () {
-    it('should tap on a specified element', async () => {
+    it('should tap on a specified element', async function () {
       let buttons = await driver.findElements('class name', 'UIAButton');
       let gestures = [{action: 'tap', options: { element: buttons[1].ELEMENT}}];
       await driver.performTouch(gestures);
@@ -35,7 +35,7 @@ describe('testapp - touch actions', function () {
   });
 
   describe('wait', function () {
-    it('should move the page and wait a bit', async () => {
+    it('should move the page and wait a bit', async function () {
       await goToMap();
       let map = await driver.findElement('xpath', '//UIAMapView');
       let gestures = [
@@ -50,7 +50,7 @@ describe('testapp - touch actions', function () {
   });
 
   describe('pinch', function () {
-    it('should do some pinching', async () => {
+    it('should do some pinching', async function () {
       await goToMap();
       let map = await driver.findElement('xpath', '//UIAMapView');
       let actions = [
@@ -65,7 +65,7 @@ describe('testapp - touch actions', function () {
       await B.delay(1000);
     });
 
-    it('should do more involved pinching in and out', async () => {
+    it('should do more involved pinching in and out', async function () {
       await goToMap();
       let map = await driver.findElement('xpath', '//UIAMapView');
       let actions = [
@@ -113,7 +113,7 @@ describe('testapp - swipe actions', function () {
       return await driver.getAttribute('value', slider);
     };
 
-    before(async () => {
+    before(async function () {
       slider = await driver.findElement('class name', "UIASlider");
       loc = await driver.getLocation(slider);
       let size = await driver.getSize(slider);
@@ -126,7 +126,7 @@ describe('testapp - swipe actions', function () {
     });
 
     // TODO: For some reason it does not swipe to 100% in ci env, investigate
-    it('should work with: press {element}, moveTo {destEl} @skip-ci', async () => {
+    it('should work with: press {element}, moveTo {destEl} @skip-ci', async function () {
       let origValue = await getSliderValue();
       let gestures = [
         {action: 'press', options: {element: slider.ELEMENT}},
@@ -141,7 +141,7 @@ describe('testapp - swipe actions', function () {
       //(await getSliderValue()).should.equal("100%")
     });
 
-    it('should work with: press {element, x, y}, moveTo {element, x, y}', async () => {
+    it('should work with: press {element, x, y}, moveTo {element, x, y}', async function () {
       let gestures = [
         {action: 'press', options: {element: slider.ELEMENT, x: 0.8665, y: 0.5}},
         {action: 'wait', options: {ms: 500}},
@@ -153,7 +153,7 @@ describe('testapp - swipe actions', function () {
       await B.delay(1000);
     });
 
-    it('should work with: press {x, y}, moveTo {x, y}', async () => {
+    it('should work with: press {x, y}, moveTo {x, y}', async function () {
       let gestures = [
         {action: 'press', options: {x: centerPos.x, y: centerPos.y}},
         {action: 'wait', options: {ms: 500}},
@@ -164,7 +164,7 @@ describe('testapp - swipe actions', function () {
       (await getSliderValue()).should.equal("0%");
     });
 
-    it('should work with: {element, x, y}, moveTo {destEl, x, y} @skip-ci', async () => {
+    it('should work with: {element, x, y}, moveTo {destEl, x, y} @skip-ci', async function () {
       let gestures = [
         {action: 'press', options: {element: slider.ELEMENT, x: 0, y: 0.5}},
         {action: 'wait', options: {ms: 500}},
@@ -177,7 +177,7 @@ describe('testapp - swipe actions', function () {
 
     // TODO: Crashes in ci env, investigate
     // TODO: For some reason it does not swipe to 100% in ci env, investigate
-    it("should work with press {x, y}, moveTo {destEl} @skip-ci", async () => {
+    it("should work with press {x, y}, moveTo {destEl} @skip-ci", async function () {
       let origValue = await getSliderValue();
       let gestures = [
         {action: 'press', options: {x: centerPos.x, y: centerPos.y}},

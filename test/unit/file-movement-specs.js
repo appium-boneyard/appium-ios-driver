@@ -3,15 +3,15 @@ import sinon from 'sinon';
 import path from 'path';
 import { tempDir, fs, zip } from 'appium-support';
 
-describe('File Movement', () => {
+describe('File Movement', function () {
   let driver;
-  before(() => {
+  before(function () {
     driver = new IosDriver();
   });
 
-  describe('pullFolder()', () => {
+  describe('pullFolder()', function () {
 
-    it('should pull a folder from filesystem as a base64 zip, extract the zip and have same contents as in filesystem', async () => {
+    it('should pull a folder from filesystem as a base64 zip, extract the zip and have same contents as in filesystem', async function () {
       const getSimPathStub = sinon.stub(driver, 'getSimFileFullPath', () => tempPath);
 
       // Create a temporary directory with one file in it

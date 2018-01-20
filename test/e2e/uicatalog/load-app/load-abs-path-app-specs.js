@@ -9,7 +9,7 @@ describe('uicatalog - load app with absolute path', function () {
   let session = setup(this, _.defaults({'app': appPath}, desired));
   let driver = session.driver;
 
-  it('should load with absolute path', async () => {
+  it('should load with absolute path', async function () {
     path.isAbsolute(appPath).should.be.ok;
     let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;

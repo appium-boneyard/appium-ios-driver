@@ -5,7 +5,7 @@ describe('uicatalog - background app', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  it("should background the app for 2 of seconds (+/- 10 secs)", async () => {
+  it("should background the app for 2 of seconds (+/- 10 secs)", async function () {
     let before = new Date().getTime() / 1000;
     await driver.background(2);
     let timeDifference = ((new Date().getTime() / 1000) - before);

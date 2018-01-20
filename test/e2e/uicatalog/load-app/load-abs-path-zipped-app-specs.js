@@ -9,7 +9,7 @@ describe('uicatalog - load zipped app', function () {
   let session = setup(this, _.defaults({'app': appZipPath}, desired));
   let driver = session.driver;
 
-  it('should load a zipped app via path', async () => {
+  it('should load a zipped app via path', async function () {
     path.isAbsolute(appZipPath).should.be.ok;
     let el = await driver.findElement('class name', 'UIATableView');
     el.should.exist;

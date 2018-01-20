@@ -11,7 +11,7 @@ describe('testapp - device @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
   describe('invalid deviceName', function () {
-    it('should fail gracefully with an invalid deviceName', async () => {
+    it('should fail gracefully with an invalid deviceName', async function () {
       let session = new Session(_.defaults({deviceName: "iFailure 3.5-inch"},  desired),
         {'no-retry': true});
 
@@ -26,13 +26,13 @@ describe('testapp - device @skip-real-device', function () {
       await session.tearDown(this.currentTest.state === 'passed');
     });
 
-    it('should work with a generic iPhone deviceName', async () => {
+    it('should work with a generic iPhone deviceName', async function () {
       session = new Session(_.defaults({deviceName: "iPhone Simulator"},  desired),
         {'no-retry': true});
       await session.setUp();
     });
 
-    it('should work with a generic iPad deviceName', async () => {
+    it('should work with a generic iPad deviceName', async function () {
       session = new Session(_.defaults({deviceName: "iPad Simulator"},  desired),
         {'no-retry': true});
       await session.setUp();
@@ -42,7 +42,7 @@ describe('testapp - device @skip-real-device', function () {
 
   // TODO: reenable when realdevice logic is in
   describe("real device", function () {
-    it("shouldn't try to validate against sims", async () => {
+    it("shouldn't try to validate against sims", async function () {
       let session = new Session(
         _.defaults({deviceName: "BadSimulator", udid: "12341234123412341234"},  desired),
         {'no-retry': true}

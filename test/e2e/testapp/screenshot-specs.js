@@ -7,12 +7,12 @@ describe('testapp - screenshots', function () {
   describe('default', function () {
     const driver = setup(this, desired).driver;
 
-    it('should get an app screenshot', async () => {
+    it('should get an app screenshot', async function () {
       (await driver.getScreenshot()).should.exist;
     });
 
     // TODO: fails in ci env, investigate
-    it('should get an app screenshot in landscape mode @skip-ci', async () => {
+    it('should get an app screenshot in landscape mode @skip-ci', async function () {
       let screenshot1 = (await driver.getScreenshot());
       screenshot1.should.exist;
 
@@ -34,7 +34,7 @@ describe('testapp - screenshots', function () {
   describe('setting screenshotWaitTimeout', function () {
     const driver = setup(this, desired).driver;
 
-    it('should get an app screenshot', async () => {
+    it('should get an app screenshot', async function () {
       (await driver.getScreenshot()).should.exist;
     });
   });

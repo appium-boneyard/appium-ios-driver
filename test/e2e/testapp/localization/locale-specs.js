@@ -8,7 +8,7 @@ import path from 'path';
 describe('localization - locale @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
-  after(async () => {
+  after(async function () {
     if (process.env.HOME) {
       // cleaning up dir cause we've messed up with the config
       await fs.rimraf(path.resolve(process.env.HOME, 'Library/Application Support/iPhone Simulator'));
@@ -18,7 +18,7 @@ describe('localization - locale @skip-real-device', function () {
     let session = setup(this, desired);
     let driver = session.driver;
 
-    it('should be english @skip-ios8', async () => {
+    it('should be english @skip-ios8', async function () {
       // ios8 doesn't do default locale; it will be whatever was last in
       // the sim
       let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
@@ -31,7 +31,7 @@ describe('localization - locale @skip-real-device', function () {
       locale: 'fr'}, desired));
     let driver = session.driver;
 
-    it('should be fr', async () => {
+    it('should be fr', async function () {
       let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
       res.should.become('fr');
     });
@@ -42,7 +42,7 @@ describe('localization - locale @skip-real-device', function () {
       locale: 'en_US'}, desired));
     let driver = session.driver;
 
-    it('should be en', async () => {
+    it('should be en', async function () {
       let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
       res.should.become('en_US');
     });

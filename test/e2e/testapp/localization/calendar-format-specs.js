@@ -10,7 +10,7 @@ import path from 'path';
 describe('localization - calendarFormat @skip-ios8 @skip-real-device', function () {
   this.timeout(env.MOCHA_INIT_TIMEOUT);
 
-  after(async () => {
+  after(async function () {
     if (process.env.HOME) {
       // cleaning up dir cause we've messed up with the config
       await fs.rimraf(path.resolve(process.env.HOME, 'Library/Application Support/iPhone Simulator'));
@@ -22,7 +22,7 @@ describe('localization - calendarFormat @skip-ios8 @skip-real-device', function 
       calendarFormat: 'gregorian'}, desired));
     let driver = session.driver;
 
-    it('should have gregorian calendar format', async () => {
+    it('should have gregorian calendar format', async function () {
       let res = await driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
       res.should.include('@calendar=gregorian');
     });
@@ -33,7 +33,7 @@ describe('localization - calendarFormat @skip-ios8 @skip-real-device', function 
       calendarFormat: 'buddhist'}, desired));
     let driver = session.driver;
 
-    it('should have buddhist calendar format', async () => {
+    it('should have buddhist calendar format', async function () {
       let res = await driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
       res.should.include('@calendar=buddhist');
     });

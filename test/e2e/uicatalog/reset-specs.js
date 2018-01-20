@@ -9,7 +9,7 @@ describe('uicatalog - reset', function () {
     let driver = session.driver;
     let rawDriver = session.rawDriver;
 
-    it("should be able to find elements after a soft reset", async () => {
+    it("should be able to find elements after a soft reset", async function () {
       rawDriver.ready.should.be.ok;
       let els = await driver.findElements('class name', 'UIATableView');
       els.should.have.length(1);
@@ -20,7 +20,7 @@ describe('uicatalog - reset', function () {
       els.should.have.length(1);
     });
 
-    it('should successfully close an app', async () => {
+    it('should successfully close an app', async function () {
       rawDriver.ready.should.be.ok;
       await driver.closeApp();
       rawDriver.ready.should.not.be.ok;

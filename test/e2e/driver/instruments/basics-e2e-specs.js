@@ -32,7 +32,7 @@ describe('instruments tests', function () {
     checks = checks || {};
     let instruments;
 
-    it(`should launch${appendDesc}`, async () => {
+    it(`should launch${appendDesc}`, async function () {
       await killAllSimulators();
       instruments = await newInstrument(opts);
       if (checks.afterCreate) {
@@ -156,7 +156,7 @@ describe('instruments tests', function () {
   });
 
   describe('getting devices', function () {
-    before(async () => {
+    before(async function () {
       await killAllSimulators();
     });
 

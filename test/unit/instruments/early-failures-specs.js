@@ -14,7 +14,7 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('Early failures', withSandbox({}, (S) => {
-  it('should error when Xcode does not support Instruments', async () => {
+  it('should error when Xcode does not support Instruments', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion(8, 0, 0));
 
     let instruments = new Instruments({});
@@ -24,7 +24,7 @@ describe('Early failures', withSandbox({}, (S) => {
     onExitSpy.callCount.should.eql(0);
   });
 
-  it('should error when Xcode 5.0.1 is used', async () => {
+  it('should error when Xcode 5.0.1 is used', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion(5, 0, 1));
 
     let instruments = new Instruments({});
@@ -34,7 +34,7 @@ describe('Early failures', withSandbox({}, (S) => {
     onExitSpy.callCount.should.eql(0);
   });
 
-  it('should error on getAutomationTraceTemplatePath failure', async () => {
+  it('should error on getAutomationTraceTemplatePath failure', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion());
     S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').returns(B.reject(new Error('ouch!')));
 
@@ -45,7 +45,7 @@ describe('Early failures', withSandbox({}, (S) => {
     onExitSpy.callCount.should.eql(0);
   });
 
-  it('should error on getInstrumentsPath failure', async () => {
+  it('should error on getInstrumentsPath failure', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion());
     S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').returns('/path/to/trace/template');
 

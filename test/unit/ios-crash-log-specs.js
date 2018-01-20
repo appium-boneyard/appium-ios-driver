@@ -12,14 +12,14 @@ chai.use(chaiAsPromised);
 
 const LOG_DIR = path.resolve('test', 'assets', 'logs');
 
-describe('crash logs', () => {
+describe('crash logs', function () {
   let tmpFile1 = path.resolve(LOG_DIR, 'temp1.crash');
   let tmpFile2 = path.resolve(LOG_DIR, 'temp2.crash');
   let log;
-  beforeEach(() => {
+  beforeEach(function () {
     log = new IOSCrashLog(LOG_DIR);
   });
-  afterEach(async () => {
+  afterEach(async function () {
     if (await fs.exists(tmpFile1)) {
       await fs.unlink(tmpFile1);
     }
@@ -28,16 +28,16 @@ describe('crash logs', () => {
     }
   });
 
-  it('should get all the logs', async () => {
+  it('should get all the logs', async function () {
     (await log.getCrashes()).should.have.length(2);
   });
 
-  it('should get an empty array when no new crashes have happened', async () => {
+  it('should get an empty array when no new crashes have happened', async function () {
     log.startCapture();
     (await log.getLogs()).should.have.length(0);
   });
 
-  it('should get new log', async () => {
+  it('should get new log', async function () {
     let start = await log.getCrashes();
     start.should.have.length(2);
 
@@ -52,7 +52,7 @@ describe('crash logs', () => {
     end[0].message.should.equal(message);
   });
 
-  it('should only get logs since the last time logs were retrieved', async () => {
+  it('should only get logs since the last time logs were retrieved', async function () {
     let start = await log.getCrashes();
     start.should.have.length(2);
 

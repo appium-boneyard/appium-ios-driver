@@ -12,11 +12,11 @@ describe('uicatalog - alerts', function () {
   let session = setup(this, desired);
   let driver = session.driver;
 
-  afterEach(async () => {
+  afterEach(async function () {
     try { await driver.back(); } catch (ign) {}
   });
 
-  it('should detect Simple', async () => {
+  it('should detect Simple', async function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Simple')]`);
@@ -26,7 +26,7 @@ describe('uicatalog - alerts', function () {
     await driver.postDismissAlert();
   });
 
-  it('should detect Okay', async () => {
+  it('should detect Okay', async function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Okay')]`);
@@ -36,7 +36,7 @@ describe('uicatalog - alerts', function () {
     await driver.postAcceptAlert();
   });
 
-  it('should detect Other', async () => {
+  it('should detect Other', async function () {
     let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label,'Alert Views')]");
     await driver.click(el1);
     let el2 = await driver.findElement('xpath', `//UIAStaticText[contains(${alertTag},'Other')]`);

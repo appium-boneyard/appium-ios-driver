@@ -9,7 +9,7 @@ describe('testapp - autoAcceptAlerts cap = true', function () {
     autoAcceptAlerts: true}, desired));
   let driver = session.driver;
 
-  it('auto-accepts alerts', async () => {
+  it('auto-accepts alerts', async function () {
     let el = await driver.findElement('accessibility id', 'show alert');
     await driver.click(el);
     await B.delay(2000);
