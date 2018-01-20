@@ -22,7 +22,7 @@ describe('testapp - size', function () {
       size.height.should.be.above(479);
     });
 
-    it('should return the window size for W3C', async () => {
+    it('should return the window size for W3C', async function () {
       let size = await driver.getWindowRect();
       size.width.should.exist;
       size.width.should.be.above(319);
