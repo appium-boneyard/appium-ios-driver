@@ -108,6 +108,7 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `getWindowHandle`                 |
 | `getWindowHandles`                |
 | `getWindowSize`                   |
+| `getWindowRect`                   |
 | `handleTap`                       |
 | `hideKeyboard`                    |
 | `initAutoWebview`                 |
