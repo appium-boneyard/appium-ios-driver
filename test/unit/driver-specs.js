@@ -36,7 +36,7 @@ describe('driver', function () {
         platformName: 'iOS',
         deviceName: 'iPhone Simulator',
         app: '/path/to/app'
-      }).should.eventually.be.rejectedWith(/Appium's IosDriver does not support xcode version 8.0.0/);
+      }).should.eventually.be.rejectedWith(/Appium's IosDriver does not support Xcode version 8.0.0/);
       mocks.xcode.verify();
     });
   }));
