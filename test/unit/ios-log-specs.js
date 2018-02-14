@@ -41,7 +41,13 @@ describe('system logs', function () {
   });
 
   it('should begin log capture', async function () {
-    let log = new IOSLog({sim, showLogs: true});
+    let log = new IOSLog({
+      sim,
+      showLogs: true,
+      xcodeVersion: {
+        major: 7
+      },
+    });
     let spy = sinon.spy(logger, 'info');
 
     await log.startCapture();
@@ -64,7 +70,13 @@ describe('system logs', function () {
     const logRecordsCount = maxBufferSize * 2;
     logRecordsCount.should.be.above(maxBufferSize);
 
-    let log = new IOSLog({sim, showLogs: false});
+    let log = new IOSLog({
+      sim,
+      showLogs: false,
+      xcodeVersion: {
+        major: 7
+      },
+    });
     log.maxBufferSize = maxBufferSize;
     log.logIdxSinceLastRequest.should.be.below(0);
     let recentLogs = await log.getLogs();
