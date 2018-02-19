@@ -147,6 +147,13 @@ describe('system logs', function () {
           await log.startCapture().should.eventually.be.rejectedWith(/Unable to find idevicesyslog from 'realDeviceLogger' capability/);
         });
       });
+      it('should only use one instance of idevicesyslog', async function () {
+        let log = getLogger('idevicesyslog');
+        let anotherLog = getLogger('idevicesyslog');
+        await log.startCapture();
+        await anotherLog.startCapture();
+        anotherLog.proc.should.eql(log.proc);
+      });
     });
     describe('deviceconsole', function () {
       let dcPath = '/path/to/deviceconsole/install/directory';
