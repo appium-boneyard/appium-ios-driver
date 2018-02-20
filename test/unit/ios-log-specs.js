@@ -147,12 +147,22 @@ describe('system logs', function () {
           await log.startCapture().should.eventually.be.rejectedWith(/Unable to find idevicesyslog from 'realDeviceLogger' capability/);
         });
       });
-      it('should only use one instance of idevicesyslog', async function () {
+      it('should only use one instance of idevicesyslog', async function (done) {
         let log = getLogger('idevicesyslog');
         let anotherLog = getLogger('idevicesyslog');
         await log.startCapture();
         await anotherLog.startCapture();
-        anotherLog.proc.should.eql(log.proc);
+
+        // Check that both logs use the same proc
+        anotherLog.proc.should.equal(log.proc);
+        
+        // Check that when we stop the first process check the 'exit' event is called on the second process
+        anotherLog.proc.on('exit', (code) => {
+          code.should.equal(0);
+          done();
+        });
+        await log.proc.start();
+        await log.proc.stop();
       });
     });
     describe('deviceconsole', function () {
