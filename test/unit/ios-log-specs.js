@@ -11,7 +11,7 @@ import chaiAsPromised from 'chai-as-promised';
 import B from 'bluebird';
 
 
-chai.should();
+const should = chai.should();
 chai.use(chaiAsPromised);
 
 const LOG_DIR = path.resolve('test', 'assets', 'logs');
@@ -106,8 +106,8 @@ describe('system logs', function () {
   });
 
   describe('real device logging', function () {
-    function getLogger (realDeviceLogger) {
-      let log = new IOSLog({sim, udid: '1234', realDeviceLogger});
+    function getLogger (realDeviceLogger, udid = '1234') {
+      let log = new IOSLog({sim, udid, realDeviceLogger});
       log.finishStartingLogCapture = async function () {};
       return log;
     }
@@ -147,22 +147,33 @@ describe('system logs', function () {
           await log.startCapture().should.eventually.be.rejectedWith(/Unable to find idevicesyslog from 'realDeviceLogger' capability/);
         });
       });
-      it('should only use one instance of idevicesyslog', async function (done) {
+      it('should only use one instance of idevicesyslog per udid', async function () {
+        // Create two loggers for udid 1234 and one for udid 4567
         let log = getLogger('idevicesyslog');
         let anotherLog = getLogger('idevicesyslog');
+        let logForOtherDevice = getLogger('idevicesyslog', '4567');
+
+        // Start capturing
         await log.startCapture();
         await anotherLog.startCapture();
+        await logForOtherDevice.startCapture();
 
-        // Check that both logs use the same proc
+        // Check that the logs that use 1234 use the same proc and the udid 4567 does not
         anotherLog.proc.should.equal(log.proc);
+        logForOtherDevice.proc.should.not.equal(log.proc);
+        IOSLog.cachedIDeviceSysLogs['1234'].should.equal(log.proc);
+        IOSLog.cachedIDeviceSysLogs['4567'].should.equal(logForOtherDevice.proc);
         
-        // Check that when we stop the first process check the 'exit' event is called on the second process
+        // When we process for one log, check that the 'exit' event is called on the other log
         anotherLog.proc.on('exit', (code) => {
           code.should.equal(0);
-          done();
         });
         await log.proc.start();
         await log.proc.stop();
+
+        // Check that when the process stops, it's no longer cached
+        should.not.exist(IOSLog.cachedIDeviceSysLogs['1234']);
+        IOSLog.cachedIDeviceSysLogs['4567'].should.exist;
       });
     });
     describe('deviceconsole', function () {
