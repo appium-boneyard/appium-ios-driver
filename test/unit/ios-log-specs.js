@@ -211,6 +211,14 @@ describe('system logs', function () {
           killSubProcSpy.notCalled.should.be.true;
           otherKillSubProcSpy.calledOnce.should.be.true;
         });
+        it('should kill the cache if "exit" event was called on the process', async function () {
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
+          log.proc.emit('exit');
+          should.not.exist(IOSLog.cachedIDeviceSysLogs[log.subprocessId]);
+          await log.startCapture();
+          await logForSameDevice.startCapture();
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
+        });
       });
     });
     describe('deviceconsole', function () {
