@@ -149,10 +149,15 @@ describe('system logs', function () {
       });
       describe('cache idevicesyslog instances', function () {
         let log, logForSameDevice, logForOtherDevice;
+        let whichStub;
 
         before (async function () {
-          // reset the cached logs in case other tests had some subprocesses cached
+          whichStub = sinon.stub(fs, 'which').returns(true);
           IOSLog.cachedIDeviceSysLogs = {};
+        });
+
+        after (async function () {
+          whichStub.restore();
         });
 
         beforeEach(async function () {
