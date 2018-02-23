@@ -11,7 +11,7 @@ import chaiAsPromised from 'chai-as-promised';
 import B from 'bluebird';
 
 
-chai.should();
+const should = chai.should();
 chai.use(chaiAsPromised);
 
 const LOG_DIR = path.resolve('test', 'assets', 'logs');
@@ -106,8 +106,8 @@ describe('system logs', function () {
   });
 
   describe('real device logging', function () {
-    function getLogger (realDeviceLogger) {
-      let log = new IOSLog({sim, udid: '1234', realDeviceLogger});
+    function getLogger (realDeviceLogger, udid = '1234') {
+      let log = new IOSLog({sim, udid, realDeviceLogger});
       log.finishStartingLogCapture = async function () {};
       return log;
     }
@@ -145,6 +145,84 @@ describe('system logs', function () {
           existstub = sinon.stub(fs, 'exists').returns(false);
           let log = getLogger('/path/to/my/idevicesyslog');
           await log.startCapture().should.eventually.be.rejectedWith(/Unable to find idevicesyslog from 'realDeviceLogger' capability/);
+        });
+      });
+      describe('cache idevicesyslog instances', function () {
+        let log, logForSameDevice, logForOtherDevice;
+        let whichStub;
+
+        before (async function () {
+          whichStub = sinon.stub(fs, 'which').returns(true);
+          IOSLog.cachedIDeviceSysLogs = {};
+        });
+
+        after (async function () {
+          whichStub.restore();
+        });
+
+        beforeEach(async function () {
+          // Create two loggers for udid 1234 and one for udid 4567
+          log = getLogger('idevicesyslog');
+          logForSameDevice = getLogger('idevicesyslog');
+          logForOtherDevice = getLogger('idevicesyslog', '4567');
+
+          // Start capturing
+          await log.startCapture();
+          await logForSameDevice.startCapture();
+          await logForOtherDevice.startCapture();
+        });
+
+        afterEach(async function () {
+          await log.stopCapture();
+          await logForSameDevice.stopCapture();
+          await logForOtherDevice.stopCapture();
+        });
+
+        it('should use same subprocess for same device', async function () {
+          logForSameDevice.proc.should.equal(log.proc);
+          logForOtherDevice.proc.should.not.equal(log.proc);
+        });
+
+        it('should cache idevicesyslog subprocesses per device', async function () {
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(logForSameDevice.proc);
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].count.should.equal(2);
+          IOSLog.cachedIDeviceSysLogs[logForOtherDevice.subprocessId].proc.should.equal(logForOtherDevice.proc);
+          IOSLog.cachedIDeviceSysLogs[logForOtherDevice.subprocessId].count.should.equal(1);
+        });
+
+        it('should delete cached subprocess for a device when its only logger has stopped', async function () {
+          IOSLog.cachedIDeviceSysLogs[logForOtherDevice.subprocessId].should.exist;
+          await logForOtherDevice.stopCapture();
+          should.not.exist(IOSLog.cachedIDeviceSysLogs[logForOtherDevice.subprocessId]);
+        });
+
+        it('should delete cached subprocesses for a device when all loggers per stopped', async function () {
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].should.exist;
+          await log.stopCapture();
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].should.exist;
+          await logForSameDevice.stopCapture();
+          should.not.exist(IOSLog.cachedIDeviceSysLogs[log.subprocessId]);
+          await logForOtherDevice.stopCapture();
+          IOSLog.cachedIDeviceSysLogs.should.eql({});
+        });
+
+        it('should not stop idevicesyslog if another one is open for the same device', async function () {
+          const killSubProcSpy = sinon.spy(log, 'killLogSubProcess');
+          const otherKillSubProcSpy = sinon.spy(logForSameDevice, 'killLogSubProcess');
+          await log.stopCapture();
+          await logForSameDevice.stopCapture();
+
+          killSubProcSpy.notCalled.should.be.true;
+          otherKillSubProcSpy.calledOnce.should.be.true;
+        });
+        it('should kill the cache if "exit" event was called on the process', async function () {
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
+          log.proc.emit('exit');
+          should.not.exist(IOSLog.cachedIDeviceSysLogs[log.subprocessId]);
+          await log.startCapture();
+          await logForSameDevice.startCapture();
+          IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
         });
       });
     });
