@@ -4,7 +4,6 @@ import env from '../helpers/env';
 import { rootDir } from '../../../lib/utils';
 import path from 'path';
 import { IosDriver } from '../../..';
-import { SUPPORTED_LOG_TYPES } from '../../../lib/commands/logging.js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import _ from 'lodash';
@@ -20,13 +19,6 @@ describe('commands - logging', function () {
 
   before(function () {
     driver = new IosDriver();
-  });
-
-  describe('getLogTypes', function () {
-    it('should get the list of available logs', async function () {
-      driver.getLogTypes.should.an.instanceof(Function);
-      (await driver.getLogTypes()).should.eql(_.keys(SUPPORTED_LOG_TYPES));
-    });
   });
 
   describe('getLog', function () {
