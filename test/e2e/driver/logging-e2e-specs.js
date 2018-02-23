@@ -21,13 +21,6 @@ describe('commands - logging', function () {
     driver = new IosDriver();
   });
 
-  describe('getLogTypes', function () {
-    it('should get the list of available logs', async function () {
-      driver.getLogTypes.should.an.instanceof(Function);
-      (await driver.getLogTypes()).should.eql(_.keys(driver.supportedLogTypes));
-    });
-  });
-
   describe('getLog', function () {
     let caps = {
       app: path.resolve(rootDir, 'test', 'assets', 'TestApp.zip'),
