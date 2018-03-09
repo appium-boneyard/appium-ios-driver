@@ -96,7 +96,7 @@ describe('safari - webview ', function () {
         (await driver.getText(el)).should.be.equal('I am a div');
       });
 
-      it.skip('should check if two elements are equals', async () => {
+      it.skip('should check if two elements are equals', async function () {
         let el1 = await driver.findElement('id', 'i_am_an_id');
         let el2 = await driver.findElement('css selector', '#i_am_an_id');
         el1.should.be.equal(el2);
@@ -173,7 +173,7 @@ describe('safari - webview ', function () {
       /**
        * getTagName not supported by mjwp
        */
-      it.skip('should retrieve tag name of an element', async () => {
+      it.skip('should retrieve tag name of an element', async function () {
         let el = await driver.findElement('id', 'fbemail');
         let a = await driver.findElement('css selector', 'a');
         (await driver.getTagName(el)).should.be.equal('input');

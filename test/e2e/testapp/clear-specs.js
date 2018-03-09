@@ -55,7 +55,7 @@ describe('testapp - clear', function () {
   });
 
   // swipedown just doesn't work with testapp
-  it.skip('should hide keyboard using "swipeDown" strategy', async () => {
+  it.skip('should hide keyboard using "swipeDown" strategy', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
     await driver.setValue("1", el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
