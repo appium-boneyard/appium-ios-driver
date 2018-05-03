@@ -5,12 +5,10 @@ import log from '../../../../lib/uiauto/logger';
 import chai from 'chai';
 import { fs } from 'appium-support';
 import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
 import path from 'path';
 
 
 chai.should();
-chai.use(sinonChai);
 
 describe('uiauto - dynamic bootstrap', function () {
   function envFromCode(code) {
@@ -51,7 +49,7 @@ describe('uiauto - dynamic bootstrap', function () {
     let code = await fs.readFile(bootstrapFile, 'utf8');
     await checkCode(code);
     log.debug.calledWithMatch(/Creating or overwriting dynamic bootstrap/).should.be.true;
-    log.debug.reset();
+    log.debug.resetHistory();
 
     // second call: should reuse bootstrap file
     bootstrapFile = await uiauto.prepareBootstrap();
@@ -59,7 +57,7 @@ describe('uiauto - dynamic bootstrap', function () {
     code = await fs.readFile(bootstrapFile, 'utf8');
     await checkCode(code);
     log.debug.calledWithMatch(/Reusing dynamic bootstrap/).should.be.true;
-    log.debug.reset();
+    log.debug.resetHistory();
 
     // third call using custom socket path: should create different bootstrap file
     bootstrapFile = await uiauto.prepareBootstrap({sock: '/tmp/abcd/sock'});
@@ -68,6 +66,6 @@ describe('uiauto - dynamic bootstrap', function () {
     let env = await checkCode(code, {isVerbose: true, gracePeriod: 5});
     env.instrumentsSock.should.equal('/tmp/abcd/sock');
     log.debug.calledWithMatch(/Creating or overwriting dynamic bootstrap/).should.be.ok;
-    log.debug.reset();
+    log.debug.resetHistory();
   });
 });

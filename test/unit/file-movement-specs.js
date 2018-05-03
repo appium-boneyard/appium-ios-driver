@@ -4,19 +4,15 @@ import path from 'path';
 import { tempDir, fs, zip } from 'appium-support';
 
 describe('File Movement', function () {
-  let driver;
-  before(function () {
-    driver = new IosDriver();
-  });
+  let driver = new IosDriver();
 
   describe('pullFolder()', function () {
-
     it('should pull a folder from filesystem as a base64 zip, extract the zip and have same contents as in filesystem', async function () {
-      const getSimPathStub = sinon.stub(driver, 'getSimFileFullPath', () => tempPath);
-
       // Create a temporary directory with one file in it
       const tempPath = await tempDir.openDir();
       await fs.writeFile(path.resolve(tempPath, 'a.txt'), 'Hello World!');
+
+      const getSimPathStub = sinon.stub(driver, 'getSimFileFullPath').returns(tempPath);
 
       // Zip the directory to base64 and write it to 'zip.zip'
       const zippedData = await driver.pullFolder('/does/not/matter');

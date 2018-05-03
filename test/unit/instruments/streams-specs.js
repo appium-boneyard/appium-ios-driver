@@ -90,7 +90,7 @@ describe('streams', function () {
     let webSocketSpy = sinon.spy(webSocket.sockets, 'emit');
 
     afterEach(function () {
-      webSocketSpy.reset();
+      webSocketSpy.resetHistory();
     });
 
     it('should return a stream', function () {
