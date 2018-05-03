@@ -5,7 +5,7 @@ import * as tp from 'teen_process';
 import xcode from 'appium-xcode';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { withMocks, verify, stubEnv } from 'appium-test-support';
+import { withMocks, stubEnv } from 'appium-test-support';
 import { fs } from 'appium-support';
 import B from 'bluebird';
 
@@ -13,15 +13,17 @@ import B from 'bluebird';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('utils', function () {
-  describe('getInstrumentsPath', withMocks({tp}, (mocks) => {
+describe('utils', withMocks({tp, fs, xcode, instrumentsUtils}, function (mocks) {
+  beforeEach(function () {
+    mocks.verify();
+  });
+  describe('getInstrumentsPath', function () {
     it('should retrieve path', async function () {
       mocks.tp
         .expects('exec')
         .once()
         .returns(B.resolve({stdout: '/a/b/c/d\n', stderr:'' }));
       (await instrumentsUtils.getInstrumentsPath()).should.equal('/a/b/c/d');
-      verify(mocks);
     });
     it('should throw an error if cannnot find Instruments', async function () {
       mocks.tp
@@ -29,10 +31,9 @@ describe('utils', function () {
         .once()
         .throws(new Error('Instruments not found'));
       await instrumentsUtils.getInstrumentsPath().should.be.rejectedWith(/Could not find the instruments binary/);
-      verify(mocks);
     });
-  }));
-  describe('getAvailableDevices', withMocks({tp}, (mocks) => {
+  });
+  describe('getAvailableDevices', function () {
     const xcodeVersions = {
       '8.1(8B62)': {
         instrumentsOutput:
@@ -161,7 +162,6 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
           .once()
           .returns(B.resolve({stdout: xcodeVersions[version].instrumentsOutput, stderr:'' }));
         (await instrumentsUtils.getAvailableDevices()).should.deep.equal(xcodeVersions[version].devices);
-        verify(mocks);
       })
     );
 
@@ -175,20 +175,18 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .once()
         .throws(new Error('Instruments failed'));
       await instrumentsUtils.getAvailableDevices().should.be.rejectedWith(/Failed getting devices, err: Error: Instruments failed./);
-      verify(mocks);
     });
-  }));
-  describe('killAllInstruments', withMocks({tp}, (mocks) => {
+  });
+  describe('killAllInstruments', function () {
     it('should work', async function () {
       mocks.tp
         .expects('exec')
         .once()
         .returns(B.resolve({stdout: '', stderr:'' }));
       await instrumentsUtils.killAllInstruments();
-      verify(mocks);
     });
-  }));
-  describe('cleanAllTraces', withMocks({fs}, (mocks) => {
+  });
+  describe('cleanAllTraces', function () {
     stubEnv();
     it('should work', async function () {
       process.env.CLEAN_TRACES = 1;
@@ -197,9 +195,8 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .once()
         .returns(B.resolve({stdout: '', stderr:'' }));
       await instrumentsUtils.cleanAllTraces();
-      verify(mocks);
     });
-  }));
+  });
   describe('parseLaunchTimeout', function () {
     stubEnv();
     it('should work', function () {
@@ -216,7 +213,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       instrumentsUtils.parseLaunchTimeout('x').should.equal('x');
     });
   });
-  describe('getIwdPath', withMocks({fs}, (mocks) => {
+  describe('getIwdPath', function () {
     it('should work when path is found', async function () {
       mocks.fs
         .expects('exists')
@@ -224,7 +221,6 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .returns(B.resolve(true));
       (await instrumentsUtils.getIwdPath('10')).should.match(
         /.*instruments-iwd\/iwd10/);
-      verify(mocks);
     });
     it('should work when path is not found', async function () {
       mocks.fs
@@ -233,11 +229,10 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .returns(B.resolve(false));
       (await instrumentsUtils.getIwdPath('10')).should.match(
         /.*instruments-iwd\/iwd/);
-      verify(mocks);
     });
-  }));
+  });
 
-  describe('quickLaunch', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => {
+  describe('quickLaunch', function () {
     it('should remove trace directory', async function () {
       mocks.xcode
         .expects('getAutomationTraceTemplatePath')
@@ -253,11 +248,10 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .withArgs('xcrun')
         .returns(B.resolve({stdout: '', stderr:'' }));
       await instrumentsUtils.quickLaunch();
-      verify(mocks);
     });
-  }));
+  });
 
-  describe('quickInstruments', withMocks({xcode}, (mocks) => {
+  describe('quickInstruments', function () {
     it('should create an Instruments object', async function () {
       let inst = await instrumentsUtils.quickInstruments({
         xcodeTraceTemplatePath: '/some/path'
@@ -273,5 +267,5 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       let inst = await instrumentsUtils.quickInstruments();
       inst.template.should.equal('/some/path');
     });
-  }));
-});
+  });
+}));

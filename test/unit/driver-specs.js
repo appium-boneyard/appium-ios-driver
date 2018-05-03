@@ -23,6 +23,9 @@ describe('driver', function () {
     before(async function () {
       driver = new IosDriver();
     });
+    afterEach(function () {
+      mocks.verify();
+    });
     it('should throw an error for Xcode version 8+', async function () {
       mocks.xcode.expects('getVersion')
         .once().returns({
@@ -37,7 +40,6 @@ describe('driver', function () {
         deviceName: 'iPhone Simulator',
         app: '/path/to/app'
       }).should.eventually.be.rejectedWith(/Appium's IosDriver does not support Xcode version 8.0.0/);
-      mocks.xcode.verify();
     });
   }));
 
@@ -115,6 +117,9 @@ describe('driver', function () {
 });
 
 describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
+  afterEach(function () {
+    mocks.verify();
+  });
   describe('real device', function () {
     const setup = function (mocks, opts = {}) {
       let udid = 'some-udid';
@@ -140,18 +145,12 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       let date = new Date().toString();
       let driver = setup(mocks, {date});
       (await driver.getDeviceTime()).should.equal(date);
-
-      mocks.fs.verify();
-      mocks.teen_process.verify();
     });
 
     it('should return output of idevicedate if unparseable', async function () {
       let date = 'some time and date';
       let driver = setup(mocks, {date});
       (await driver.getDeviceTime()).should.equal(date);
-
-      mocks.fs.verify();
-      mocks.teen_process.verify();
     });
 
     it('should throw an error when idevicedate cannot be found', async function () {
@@ -161,17 +160,12 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       driver.opts = {udid: 'some-udid'};
       await driver.getDeviceTime()
         .should.eventually.be.rejectedWith('Could not capture device date and time');
-
-      mocks.fs.verify();
     });
 
     it('should throw an error when idevicedate fails', async function () {
       let driver = setup(mocks);
       await driver.getDeviceTime()
         .should.eventually.be.rejectedWith("Could not capture device date and time");
-
-      mocks.fs.verify();
-      mocks.teen_process.verify();
     });
   });
 
@@ -181,8 +175,6 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
         .never();
       let driver = new IosDriver();
       (await driver.getDeviceTime()).should.be.an instanceof(String);
-
-      mocks.teen_process.verify();
     });
   });
 }));

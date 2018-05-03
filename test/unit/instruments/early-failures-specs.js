@@ -5,7 +5,6 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import sinon from 'sinon';
 import { withSandbox } from 'appium-test-support';
-import B from 'bluebird';
 import xcode from 'appium-xcode';
 import { getXcodeVersion } from './helpers';
 
@@ -36,7 +35,9 @@ describe('Early failures', withSandbox({}, (S) => {
 
   it('should error on getAutomationTraceTemplatePath failure', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion());
-    S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').returns(B.reject(new Error('ouch!')));
+    S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').callsFake(async function () {
+      throw new Error('ouch!');
+    });
 
     let instruments = new Instruments({});
     let onExitSpy = sinon.spy();
@@ -50,7 +51,9 @@ describe('Early failures', withSandbox({}, (S) => {
     S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').returns('/path/to/trace/template');
 
     let instruments = new Instruments({});
-    S.sandbox.stub(instrumentsUtils, 'getInstrumentsPath').returns(B.reject(new Error('ouch!')));
+    S.sandbox.stub(instrumentsUtils, 'getInstrumentsPath').callsFake(async function () {
+      throw new Error('ouch!');
+    });
     let onExitSpy = sinon.spy();
     instruments.onShutdown.then(onExitSpy, onExitSpy).done(); // eslint-disable-line
     await instruments.launch().should.be.rejectedWith(/ouch!/);

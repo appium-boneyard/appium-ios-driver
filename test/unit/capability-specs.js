@@ -5,7 +5,7 @@ import sinon from 'sinon';
 import { withMocks } from 'appium-test-support';
 import xcode from 'appium-xcode';
 
-let sandbox = sinon.sandbox.create();
+let sandbox = sinon.createSandbox();
 const should = chai.Should();
 
 describe('Desired Capabilities', function () {

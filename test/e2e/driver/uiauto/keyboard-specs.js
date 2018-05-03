@@ -34,12 +34,16 @@ describe('uiauto - keyboard', function () {
     // });
 
     _.each(['pressKey', 'press'], function (strategy) {
-      it(`should hide the keyboard by pressing the done key (${strategy})`, async () => {
+      it(`should hide the keyboard by pressing the done key (${strategy})`, async function () {
         await ctx.execFunc(
           function (strategy) {
             rootPage.clickMenuItem('Text Fields');
-            $('textfield').first().tap();
-            $('#Done').should.have.length(1);
+            for (var i = 0; i < 5; i++) {
+              $('textfield').first().tap();
+              if ($('#Done').length === 1) {
+                break;
+              }
+            }
             $.hideKeyboard(strategy, 'Done');
             $('#Done').should.have.length(0);
           }, [strategy]
@@ -48,7 +52,7 @@ describe('uiauto - keyboard', function () {
     });
 
     _.each(['tapOutside', 'tapOut'], function (strategy) {
-      it(`should hide the keyboard by tapping outside (${strategy})`, async () => {
+      it(`should hide the keyboard by tapping outside (${strategy})`, async function () {
         await ctx.execFunc(
           function (strategy) {
             rootPage.clickMenuItem('Web View');
@@ -61,7 +65,7 @@ describe('uiauto - keyboard', function () {
       });
     });
 
-    it('should hide the keyboard with the default strategy', async () => {
+    it('should hide the keyboard with the default strategy', async function () {
       await ctx.execFunc(
         function () {
           rootPage.clickMenuItem('Web View');
