@@ -13,6 +13,7 @@ import utils from './lib/utils';
 import { IWDP } from './lib/iwdp';
 import * as uiauto from './lib/uiauto/uiauto';
 import { Instruments, instrumentsUtils } from './lib/instruments/index';
+import { NATIVE_WIN, WEBVIEW_WIN } from './lib/commands/context';
 
 
 const DEFAULT_HOST = "localhost";
@@ -30,7 +31,8 @@ if (require.main === module) {
 
 export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
          iosCommands, settings, device, defaultServerCaps, utils, IWDP, uiauto,
-         Instruments, instrumentsUtils, startHttpsServer };
+         Instruments, instrumentsUtils, startHttpsServer, NATIVE_WIN,
+         WEBVIEW_WIN };
 
 export default IosDriver;
 
