@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/appium/appium-ios-driver/master/dev-status.svg)](https://david-dm.org/appium/appium-ios-driver/master#info=devDependencies)
 
 [![Build Status](https://travis-ci.org/appium/appium-ios-driver.svg)](https://travis-ci.org/appium/appium-ios-driver)
-[![Coverage Status](https://coveralls.io/repos/appium/appium-ios-driver/badge.svg?branch=master&service=github)](https://coveralls.io/github/appium/appium-ios-driver?branch=master)
+[![Coverage Status](https://coveralls.io/repos/appium/appium-ios-driver/badge.svg?branch=master&service=github)](https://coveralls.io/github/appium/appium-ios-driver?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/appium/appium-ios-driver.svg)](https://greenkeeper.io/)
 
 
 Appium iOS Driver is a test automation tool for iOS devices up to an including
