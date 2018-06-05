@@ -49,7 +49,7 @@ describe('safari - webview - execute', function () {
 
       it('should catch stale or undefined element as arg', async function () {
         let el = await driver.findElement('id', 'useragent');
-        return driver.execute(SCROLL_INTO_VIEW, [{'ELEMENT': (el.value + 1)}]).should.beRejected;
+        await driver.execute(SCROLL_INTO_VIEW, [{'ELEMENT': (el.value + 1)}]).should.be.rejected;
       });
 
       it('should be able to return multiple elements from javascript', async function () {
