@@ -54,7 +54,7 @@
     "url": "^0.11.0",
     "uuid-js": "^0.7.5",
     "xmldom": "^0.1.22",
-    "xpath": "^0.0.27",
+    "xpath": "^0.0.24",
     "yargs": "^11.0.0"
   },
   "scripts": {
@@ -62,7 +62,7 @@
     "test": "gulp once",
     "watch": "gulp watch",
     "build": "gulp transpile",
-    "e2e-test": "gulp 2e2-test",
+    "e2e-test": "gulp e2e-test",
     "mocha": "mocha",
     "coverage": "gulp coveralls",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
@@ -106,7 +106,8 @@
       "eslint-plugin-mocha",
       "eslint-plugin-promise",
       "gulp",
-      "babel-runtime"
+      "babel-runtime",
+      "xpath"
     ]
   }
 }
