@@ -78,7 +78,7 @@
     "appium-gulp-plugins": "^2.2.0",
     "appium-test-support": "^1.0.0",
     "babel-eslint": "^7.1.1",
-    "chai": "^4.1.2",
+    "chai": "^3.5.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^3.10.2",
     "eslint-config-appium": "^2.1.0",
@@ -99,6 +99,7 @@
     "ignore": [
       "babel-eslint",
       "babel-preset-env",
+      "chai",
       "eslint",
       "eslint-plugin-babel",
       "eslint-plugin-import",
