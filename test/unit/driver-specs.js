@@ -142,9 +142,15 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
     };
 
     it('should call idevicedate', async function () {
-      let date = new Date().toString();
+      let date = 'Tue Jun 12 11:13:31 CEST 2018';
       let driver = setup(mocks, {date});
-      (await driver.getDeviceTime()).should.equal(date);
+      (await driver.getDeviceTime()).startsWith('2018-06-12T').should.be.true;
+    });
+
+    it('should call idevicedate with format', async function () {
+      let date = 'Tue Jun 12 11:13:31 CEST 2018';
+      let driver = setup(mocks, {date});
+      (await driver.getDeviceTime('YYYY-MM-DD')).should.equal('2018-06-12');
     });
 
     it('should return output of idevicedate if unparseable', async function () {
@@ -161,20 +167,15 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
       await driver.getDeviceTime()
         .should.eventually.be.rejectedWith('Could not capture device date and time');
     });
-
-    it('should throw an error when idevicedate fails', async function () {
-      let driver = setup(mocks);
-      await driver.getDeviceTime()
-        .should.eventually.be.rejectedWith("Could not capture device date and time");
-    });
   });
 
   describe('simulator', function () {
     it('should return system date', async function () {
       mocks.teen_process.expects('exec')
-        .never();
+        .once().withExactArgs('date', ['+%Y-%m-%dT%H:%M:%S%z'])
+        .returns({stdout: '2018-06-12T12:11:59+0200'});
       let driver = new IosDriver();
-      (await driver.getDeviceTime()).should.be.an instanceof(String);
+      (await driver.getDeviceTime()).startsWith('2018-06-12T').should.be.true;
     });
   });
 }));
