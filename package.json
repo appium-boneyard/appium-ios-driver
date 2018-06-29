@@ -56,7 +56,7 @@
     "uuid-js": "^0.7.5",
     "xmldom": "^0.1.22",
     "xpath": "^0.0.24",
-    "yargs": "^11.0.0"
+    "yargs": "^12.0.1"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
