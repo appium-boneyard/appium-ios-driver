@@ -15,14 +15,15 @@ chai.use(chaiAsPromised);
 
 const LAUNCH_HANDLER_TIMEOUT = 10000;
 const TEMP_DIR = path.resolve(__dirname, 'tmp');
+const ASSETS_DIR = path.resolve(__dirname, '..', '..', '..', '..', '..', 'test', 'assets');
 
 describe('instruments tests', function () {
   this.timeout(90000);
 
   async function newInstrument (opts) {
     _.extend(opts, {
-      app: path.resolve(__dirname, '..', '..', '..', 'assets', 'TestApp.app'),
-      bootstrap: path.resolve(__dirname, '..', 'assets', 'bootstrap.js'),
+      app: path.resolve(ASSETS_DIR, 'TestApp.app'),
+      bootstrap: path.resolve(ASSETS_DIR, 'base-bootstrap.js'),
       simulatorSdkAndDevice: 'iPhone 6 (9.3)'
     });
     return await Instruments.quickInstruments(opts);
