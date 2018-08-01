@@ -253,12 +253,16 @@ describe('safari - webview ', function () {
   });
 
   describe('safariIgnoreFraudWarning', function () {
+    this.retries(3);
+
     describe('true', function () {
-      let specialCaps = Object.assign({}, desired);
+      const specialCaps = Object.assign({}, desired);
       specialCaps.safariIgnoreFraudWarning = true;
 
       const driver = setup(this, specialCaps).driver;
-      before(async function () { return await loadWebView(specialCaps, driver); });
+      beforeEach(async function () {
+        await loadWebView(specialCaps, driver);
+      });
 
       // iOS8 currently does not disable the phishing warning for foo:bar@ type
       // addresses, even when running the sim manually
@@ -273,11 +277,13 @@ describe('safari - webview ', function () {
     });
 
     describe('false', function () {
-      let specialCaps = Object.assign({}, desired);
+      const specialCaps = Object.assign({}, desired);
       specialCaps.safariIgnoreFraudWarning = false;
 
       const driver = setup(this, specialCaps).driver;
-      before(async function () { return await loadWebView(specialCaps, driver); });
+      beforeEach(async function () {
+        await loadWebView(specialCaps, driver);
+      });
 
       // iOS8 currently does not disable the phishing warning for foo:bar@ type
       // addresses, even when running the sim manually
