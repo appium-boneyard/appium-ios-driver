@@ -7,7 +7,7 @@ import { withMocks } from 'appium-test-support';
 import * as teen_process from 'teen_process';
 import { fs } from 'appium-support';
 import xcode from 'appium-xcode';
-import {BaseDriver} from "appium-base-driver";
+
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -47,18 +47,13 @@ describe('driver', function () {
     let driver;
     before(async function () {
       driver = new IosDriver();
-      // await driver.createSession({});
     });
     describe('command', function () {
       it('should exist by default', async function () {
         driver.newCommandTimeoutMs.should.equal(60000);
       });
       it('should be settable through `timeouts`', async function () {
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'command', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.newCommandTimeoutMs.should.equal(20);
-      });
-      it('should not be settable through `timeouts` for W3C', async function () {
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, command: 3000}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        await driver.timeouts('command', 20);
         driver.newCommandTimeoutMs.should.equal(20);
       });
     });
@@ -67,50 +62,49 @@ describe('driver', function () {
         driver.implicitWaitMs.should.equal(0);
       });
       it('should be settable through `timeouts`', async function () {
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'implicit', ms: 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        await driver.timeouts('implicit', 20);
         driver.implicitWaitMs.should.equal(20);
       });
       it('should be settable through `timeouts` for W3C', async function () {
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
+        await driver.timeouts(undefined, undefined, undefined, undefined, 30);
         driver.implicitWaitMs.should.equal(30);
       });
     });
     describe('page load', function () {
       it('should be settable through `timeouts`', async function () {
-        let to = driver.pageLoadMs;
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'page load', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.pageLoadMs.should.equal(to + 20);
+        let to = driver.pageLoadMs + 20;
+        await driver.timeouts('page load', to);
+        driver.pageLoadMs.should.equal(to);
       });
       it('should be settable through `timeouts` for W3C', async function () {
-        let to = driver.pageLoadMs;
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, pageLoad: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.pageLoadMs.should.equal(to + 30);
+        let to = driver.pageLoadMs + 30;
+        await driver.timeouts(undefined, undefined, undefined, to);
+        driver.pageLoadMs.should.equal(to);
       });
     });
     describe('script', function () {
       it('should be settable through `timeouts`', async function () {
-        let to = driver.asyncWaitMs;
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.MJSONWP, type: 'script', ms: to + 20}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.asyncWaitMs.should.equal(to + 20);
+        let to = driver.asyncWaitMs + 20;
+        await driver.timeouts('script', to);
+        driver.asyncWaitMs.should.equal(to);
       });
       it('should be settable through `timeouts` for W3C', async function () {
-        let to = driver.asyncWaitMs;
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, script: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.asyncWaitMs.should.equal(to + 30);
+        let to = driver.asyncWaitMs + 30;
+        await driver.timeouts(undefined, undefined, to);
+        driver.asyncWaitMs.should.equal(to);
       });
       it('should be settable through asyncScriptTimeout', async function () {
-        let to = driver.asyncWaitMs;
-        await driver.asyncScriptTimeout(to + 20);
-        driver.asyncWaitMs.should.equal(to + 20);
+        let to = driver.asyncWaitMs + 20;
+        await driver.asyncScriptTimeout(to);
+        driver.asyncWaitMs.should.equal(to);
       });
     });
     describe('script, page load and implicit', function () {
       it('should be settable through `timeouts` for W3C', async function () {
-        let to = driver.asyncWaitMs;
-        await driver.timeouts({protocol: BaseDriver.DRIVER_PROTOCOL.W3C, implicit: 20, pageLoad: to + 20, script: to + 30}, "1dcfe021-8fc8-49bd-8dac-e986d3091b97");
-        driver.implicitWaitMs.should.equal(20);
-        driver.pageLoadMs.should.equal(to + 20);
-        driver.asyncWaitMs.should.equal(to + 30);
+        await driver.timeouts(undefined, undefined, 10, 20, 30);
+        driver.implicitWaitMs.should.equal(30);
+        driver.pageLoadMs.should.equal(20);
+        driver.asyncWaitMs.should.equal(10);
       });
     });
   });
