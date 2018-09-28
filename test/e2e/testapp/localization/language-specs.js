@@ -2,7 +2,7 @@ import setup from "../../setup-base";
 import desired from '../desired';
 import _ from 'lodash';
 import env from '../../helpers/env';
-import { fs } from  'appium-support';
+import { fs } from 'appium-support';
 import path from 'path';
 
 describe('localization - language @skip-ios8 @skip-real-device', function () {

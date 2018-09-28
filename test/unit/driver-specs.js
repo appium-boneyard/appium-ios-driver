@@ -20,7 +20,7 @@ describe('driver', function () {
 
   describe('unsupported infrastructure', withMocks({xcode}, (mocks) => {
     let driver;
-    before(async function () {
+    before(function () {
       driver = new IosDriver();
     });
     afterEach(function () {
@@ -45,11 +45,11 @@ describe('driver', function () {
 
   describe('timeouts', function () {
     let driver;
-    before(async function () {
+    before(function () {
       driver = new IosDriver();
     });
     describe('command', function () {
-      it('should exist by default', async function () {
+      it('should exist by default', function () {
         driver.newCommandTimeoutMs.should.equal(60000);
       });
       it('should be settable through `timeouts`', async function () {
@@ -58,7 +58,7 @@ describe('driver', function () {
       });
     });
     describe('implicit', function () {
-      it('should not exist by default', async function () {
+      it('should not exist by default', function () {
         driver.implicitWaitMs.should.equal(0);
       });
       it('should be settable through `timeouts`', async function () {

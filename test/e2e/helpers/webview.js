@@ -1,6 +1,6 @@
 import env from './env';
 import B from 'bluebird';
-import uuidGenerator from 'node-uuid';
+import uuidv1 from 'uuid/v1';
 
 
 const BROWSERS = ['safari'];
@@ -19,7 +19,7 @@ async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined
 
 async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
   let app = typeof desired === 'object' ? desired.app || desired.browserName : desired;
-  let uuid = uuidGenerator.v1();
+  let uuid = uuidv1();
 
   if (typeof urlToLoad === 'undefined') {
     urlToLoad = `${env.GUINEA_TEST_END_POINT}?${uuid}`;

@@ -9,7 +9,7 @@ let expect = chai.expect;
 
 describe('content size', function () {
   let driver;
-  beforeEach(async function () {
+  beforeEach(function () {
     driver = new IosDriver();
     driver.uiAutoClient = new uiauto.UIAutoClient();
   });
@@ -22,9 +22,23 @@ describe('content size', function () {
   });
 
   it('should return correct size for UIATableView', async function () {
-    sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{origin:{x: 0, y: 0}, size:{width:320, height:1000}}, {origin:{x: 0, y: 1000}, size:{width:320, height:1000}}]);
+    sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{
+      origin: {
+        x: 0, y: 0
+      },
+      size: {
+        width: 320, height: 1000
+      }
+    }, {
+      origin: {
+        x: 0, y: 1000
+      },
+      size: {
+        width: 320, height: 1000
+      }
+    }]);
     sinon.stub(driver, 'getName').returns('UIATableView');
-    sinon.stub(driver, 'getSize').returns({width: 320, height:548});
+    sinon.stub(driver, 'getSize').returns({width: 320, height: 548});
     sinon.stub(driver, 'getLocationInView').returns({x: 0, y: 20});
     let contentSize = JSON.parse(await driver.getElementContentSize('0'));
     contentSize.left.should.equal(0);
@@ -35,14 +49,14 @@ describe('content size', function () {
   });
 
   it('should return correct size for UIACollectionView', async function () {
-    sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{origin:{x: 0, y: 44}, size:{width:100, height:500}},
-      {origin:{x: 110, y: 44}, size:{width:100, height:500}},
-      {origin:{x: 220, y: 44}, size:{width:100, height:500}},
-      {origin:{x: 0, y: 554}, size:{width:100, height:500}},
-      {origin:{x: 110, y: 554}, size:{width:100, height:500}},
-      {origin:{x: 220, y: 554}, size:{width:100, height:500}}]);
+    sinon.stub(driver.uiAutoClient, 'sendCommand').returns([{origin: {x: 0, y: 44}, size: {width: 100, height: 500}},
+      {origin: {x: 110, y: 44}, size: {width: 100, height: 500}},
+      {origin: {x: 220, y: 44}, size: {width: 100, height: 500}},
+      {origin: {x: 0, y: 554}, size: {width: 100, height: 500}},
+      {origin: {x: 110, y: 554}, size: {width: 100, height: 500}},
+      {origin: {x: 220, y: 554}, size: {width: 100, height: 500}}]);
     sinon.stub(driver, 'getName').returns('UIACollectionView');
-    sinon.stub(driver, 'getSize').returns({width: 320, height:524});
+    sinon.stub(driver, 'getSize').returns({width: 320, height: 524});
     sinon.stub(driver, 'getLocationInView').returns({x: 0, y: 44});
     let contentSize = JSON.parse(await driver.getElementContentSize('0'));
     contentSize.left.should.equal(0);

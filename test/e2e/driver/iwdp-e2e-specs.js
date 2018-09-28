@@ -14,7 +14,7 @@ let iwdpInstance;
 describe('ios webkit debug proxy class', function () {
   this.timeout(20000);
 
-  beforeEach(async function () {
+  beforeEach(function () {
     iwdpInstance = new IWDP();
   });
 

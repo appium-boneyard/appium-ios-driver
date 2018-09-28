@@ -22,7 +22,7 @@ describe('utils', withMocks({tp, fs, xcode, instrumentsUtils}, function (mocks) 
       mocks.tp
         .expects('exec')
         .once()
-        .returns(B.resolve({stdout: '/a/b/c/d\n', stderr:'' }));
+        .returns(B.resolve({stdout: '/a/b/c/d\n', stderr: ''}));
       (await instrumentsUtils.getInstrumentsPath()).should.equal('/a/b/c/d');
     });
     it('should throw an error if cannnot find Instruments', async function () {
@@ -156,11 +156,11 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         mocks.tp
           .expects('exec')
           .once()
-          .returns(B.resolve({stdout: '/a/b/c/d\n', stderr:'' }));
+          .returns(B.resolve({stdout: '/a/b/c/d\n', stderr: ''}));
         mocks.tp
           .expects('exec')
           .once()
-          .returns(B.resolve({stdout: xcodeVersions[version].instrumentsOutput, stderr:'' }));
+          .returns(B.resolve({stdout: xcodeVersions[version].instrumentsOutput, stderr: ''}));
         (await instrumentsUtils.getAvailableDevices()).should.deep.equal(xcodeVersions[version].devices);
       })
     );
@@ -169,7 +169,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       mocks.tp
         .expects('exec')
         .once()
-        .returns(B.resolve({stdout: '/a/b/c/d\n', stderr:'' }));
+        .returns(B.resolve({stdout: '/a/b/c/d\n', stderr: ''}));
       mocks.tp
         .expects('exec')
         .once()
@@ -182,7 +182,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       mocks.tp
         .expects('exec')
         .once()
-        .returns(B.resolve({stdout: '', stderr:'' }));
+        .returns(B.resolve({stdout: '', stderr: ''}));
       await instrumentsUtils.killAllInstruments();
     });
   });
@@ -193,7 +193,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
       mocks.fs
         .expects('rimraf')
         .once()
-        .returns(B.resolve({stdout: '', stderr:'' }));
+        .returns(B.resolve({stdout: '', stderr: ''}));
       await instrumentsUtils.cleanAllTraces();
     });
   });
@@ -246,7 +246,7 @@ iPad Air (8.2 Simulator) [F26279E7-8BAF-4D7B-ABFE-08D1AC364DCF]`,
         .expects('exec')
         .once()
         .withArgs('xcrun')
-        .returns(B.resolve({stdout: '', stderr:'' }));
+        .returns(B.resolve({stdout: '', stderr: ''}));
       await instrumentsUtils.quickLaunch();
     });
   });

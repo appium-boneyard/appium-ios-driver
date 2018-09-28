@@ -25,8 +25,9 @@ describe('uicatalog - find -', function () {
     });
 
     it('should find a single element using elementByAccessibilityId', async function () {
-      let axId = (env.IOS8 || env.IOS9) ? 'AAPLImageViewController' :
-                                          'Image View, AAPLImageViewController';
+      let axId = (env.IOS8 || env.IOS9)
+        ? 'AAPLImageViewController'
+        : 'Image View, AAPLImageViewController';
       let el = await driver.findElement('accessibility id', axId);
       el.should.exist;
     });

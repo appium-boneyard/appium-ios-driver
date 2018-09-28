@@ -1,7 +1,0 @@
-node_modules
-*.log
-test
-build/test
-*.plist
-coverage
-instruments-iwd/*/TestApp*

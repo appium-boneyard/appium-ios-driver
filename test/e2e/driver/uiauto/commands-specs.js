@@ -111,17 +111,9 @@ describe('uiauto - commands', function () {
 
   });
 
-  describe('command with big result', () => {
-    let ctx;
-    before(async () => {
-      ctx = await instrumentsInstanceInit();
-    });
-    after(async () => {
-      await killAll(ctx);
-    });
-
+  describe('command with big result', function () {
     // UIAuto code
-    let configureUIAuto = () => {
+    let configureUIAuto = function () {
       $.extend($, {
         oneMamaLongString: function (n, mapping) {
           var i;
@@ -156,11 +148,16 @@ describe('uiauto - commands', function () {
       });
     };
 
-    before(async () => {
+    let ctx;
+    before(async function () {
+      ctx = await instrumentsInstanceInit();
       await ctx.execFunc(configureUIAuto);
     });
+    after(async function () {
+      await killAll(ctx);
+    });
 
-    let testN = async (n) => {
+    let testN = async function (n) {
       let s = await ctx.sendCommand(`$.oneMamaLongString(${n})`);
       s.should.have.length(n);
       _.times(n, function (i) {
@@ -168,7 +165,7 @@ describe('uiauto - commands', function () {
       });
     };
 
-    it('should work a small string', () => {
+    it('should work a small string', function () {
       return testN(1000);
     });
 

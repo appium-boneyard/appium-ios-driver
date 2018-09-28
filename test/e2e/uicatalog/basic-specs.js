@@ -56,7 +56,7 @@ describe('uicatalog - basic', function () {
       it('should confirm element is not selected returns false', async function () {
         try {
           await driver.execute("mobile: scroll", {direction: 'down'});
-        } catch (ign)  {
+        } catch (ign) {
           // Instruments is broken in 8.1, 8.2, 8.3
           // can't scroll if already scrolled all the way down
         }

@@ -141,7 +141,7 @@ env.IOS92 = env.DEVICE.match(/ios92/i);
 env.IOS93 = env.DEVICE.match(/ios93/i);
 
 // better timeout settings for 71
-env.LAUNCH_TIMEOUT =  process.env.LAUNCH_TIMEOUT ? JSON.parse(process.env.LAUNCH_TIMEOUT) :
+env.LAUNCH_TIMEOUT = process.env.LAUNCH_TIMEOUT ? JSON.parse(process.env.LAUNCH_TIMEOUT) :
   ((env.IOS71 || env.IOS8 || env.IOS9) ? {"global": 60000, "afterSimLaunch": 10000} : 60000);
 
 env.CAPS.launchTimeout = env.LAUNCH_TIMEOUT;

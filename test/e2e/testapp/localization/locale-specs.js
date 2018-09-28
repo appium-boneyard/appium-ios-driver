@@ -2,7 +2,7 @@ import setup from "../../setup-base";
 import desired from '../desired';
 import _ from 'lodash';
 import env from '../../helpers/env';
-import { fs } from  'appium-support';
+import { fs } from 'appium-support';
 import path from 'path';
 
 describe('localization - locale @skip-real-device', function () {
@@ -21,8 +21,8 @@ describe('localization - locale @skip-real-device', function () {
     it('should be english @skip-ios8', async function () {
       // ios8 doesn't do default locale; it will be whatever was last in
       // the sim
-      let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
-      res.should.become('en_US');
+      let res = await driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
+      res.should.include('en_US');
     });
   });
 
@@ -32,8 +32,8 @@ describe('localization - locale @skip-real-device', function () {
     let driver = session.driver;
 
     it('should be fr', async function () {
-      let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
-      res.should.become('fr');
+      let res = await driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
+      res.should.include('fr');
     });
   });
 
@@ -43,8 +43,8 @@ describe('localization - locale @skip-real-device', function () {
     let driver = session.driver;
 
     it('should be en', async function () {
-      let res = driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
-      res.should.become('en_US');
+      let res = await driver.execute('$.mainApp().preferencesValueForKey("AppleLocale");');
+      res.should.include('en_US');
     });
   });
 

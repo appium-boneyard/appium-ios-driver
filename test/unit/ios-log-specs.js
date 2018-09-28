@@ -151,12 +151,12 @@ describe('system logs', function () {
         let log, logForSameDevice, logForOtherDevice;
         let whichStub;
 
-        before (async function () {
+        before (function () {
           whichStub = sinon.stub(fs, 'which').returns(true);
           IOSLog.cachedIDeviceSysLogs = {};
         });
 
-        after (async function () {
+        after (function () {
           whichStub.restore();
         });
 
@@ -178,12 +178,12 @@ describe('system logs', function () {
           await logForOtherDevice.stopCapture();
         });
 
-        it('should use same subprocess for same device', async function () {
+        it('should use same subprocess for same device', function () {
           logForSameDevice.proc.should.equal(log.proc);
           logForOtherDevice.proc.should.not.equal(log.proc);
         });
 
-        it('should cache idevicesyslog subprocesses per device', async function () {
+        it('should cache idevicesyslog subprocesses per device', function () {
           IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(log.proc);
           IOSLog.cachedIDeviceSysLogs[log.subprocessId].proc.should.equal(logForSameDevice.proc);
           IOSLog.cachedIDeviceSysLogs[log.subprocessId].count.should.equal(2);

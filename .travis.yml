@@ -12,7 +12,7 @@ env:
 language: node_js
 os: osx
 osx_image: xcode7.3
-node_js: "6"
+node_js: "8"
 before_install:
   # Instruments fix:
   # https://github.com/travis-ci/travis-ci/issues/4218
