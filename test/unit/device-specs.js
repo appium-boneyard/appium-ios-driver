@@ -10,7 +10,7 @@ const NONPLUS_HEIGHT = 568;
 
 describe('device pixel ratio', function () {
   let driver;
-  beforeEach(async function () {
+  beforeEach(function () {
     driver = new IosDriver();
   });
 
@@ -43,7 +43,7 @@ describe('viewport rect', function () {
     let driver = new IosDriver();
     sinon.stub(driver, 'getDevicePixelRatio').returns(3.0);
     sinon.stub(driver, 'getStatusBarHeight').returns(24);
-    sinon.stub(driver, 'getWindowSize').returns({width: 320, height:568});
+    sinon.stub(driver, 'getWindowSize').returns({width: 320, height: 568});
     let viewportRect = await driver.getViewportRect();
     viewportRect.left.should.equal(0);
     viewportRect.top.should.equal(24 * 3);

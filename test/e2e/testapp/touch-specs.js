@@ -40,9 +40,9 @@ describe('testapp - touch actions', function () {
       let map = await driver.findElement('xpath', '//UIAMapView');
       let gestures = [
         {action: 'press', options: {element: map.ELEMENT}},
-        {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y:100}},
+        {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 100}},
         {action: 'wait', options: {ms: 5000}},
-        {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y:0}},
+        {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 0}},
         {action: 'release'}
       ];
       await driver.performTouch(gestures);
@@ -54,12 +54,16 @@ describe('testapp - touch actions', function () {
       await goToMap();
       let map = await driver.findElement('xpath', '//UIAMapView');
       let actions = [
-        [{action: 'press', options: {element: map.ELEMENT}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 0}},
-         {action: 'release'}],
-        [{action: 'press', options: {element: map.ELEMENT}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 100}},
-         {action: 'release'}],
+        [
+          {action: 'press', options: {element: map.ELEMENT}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 0}},
+          {action: 'release'}
+        ],
+        [
+          {action: 'press', options: {element: map.ELEMENT}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 100}},
+          {action: 'release'}
+        ],
       ];
       await driver.performMultiAction(actions);
       await B.delay(1000);
@@ -69,16 +73,20 @@ describe('testapp - touch actions', function () {
       await goToMap();
       let map = await driver.findElement('xpath', '//UIAMapView');
       let actions = [
-        [{action: 'press', options: {element: map.ELEMENT}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 25, y: 25}},
-         {action: 'wait', options: {ms: 3000}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 100}},
-         {action: 'release'}],
-        [{action: 'press', options: {element: map.ELEMENT}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 0}},
-         {action: 'wait', options: {ms: 3000}},
-         {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 0}},
-         {action: 'release'}],
+        [
+          {action: 'press', options: {element: map.ELEMENT}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 25, y: 25}},
+          {action: 'wait', options: {ms: 3000}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 100}},
+          {action: 'release'}
+        ],
+        [
+          {action: 'press', options: {element: map.ELEMENT}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 100, y: 0}},
+          {action: 'wait', options: {ms: 3000}},
+          {action: 'moveTo', options: {element: map.ELEMENT, x: 0, y: 0}},
+          {action: 'release'}
+        ],
       ];
       await driver.performMultiAction(actions);
       await B.delay(1000);

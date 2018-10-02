@@ -45,8 +45,8 @@ describe('testapp - keyboard', function () {
     let driver = session.driver;
 
     describe("stability @skip-ci", function () {
-      let runs = 10
-        , text = 'Delhi is New @@@ BREAKFAST-FOOD-0001';
+      let runs = 10;
+      let text = 'Delhi is New @@@ BREAKFAST-FOOD-0001';
 
       let test = function () {
         it("should send keys to a text field", async function () {

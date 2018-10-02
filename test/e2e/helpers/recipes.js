@@ -51,5 +51,7 @@ async function okIfAlert (driver) {
   }
 }
 
-export { clickBack, clickButton, elOrNull, throwMatchableError, filterDisplayed,
-         filterVisibleUiaSelector, okIfAlert };
+export {
+  clickBack, clickButton, elOrNull, throwMatchableError, filterDisplayed,
+  filterVisibleUiaSelector, okIfAlert,
+};

@@ -90,17 +90,17 @@ describe('instruments tests', function () {
       }
     });
 
-    //test(" (2)", {
-      //launchTimeout: {global: 60000, afterSimLaunch: 10000},
-      //tmpDir: altTmpDir
-    //}, {
-      //afterCreate: function (instruments) { instruments.tmpDir.should.equal(altTmpDir); },
-      //afterLaunch: async function () {
-        //(await fs.exists(altTmpDir)).should.be.ok;
-        //// tmp dir is deleted at startup so trace file is not incremented
-        //(await fs.exists(path.resolve(altTmpDir, 'instrumentscli0.trace'))).should.be.ok;
-      //}
-    //});
+    // test(" (2)", {
+    //   launchTimeout: {global: 60000, afterSimLaunch: 10000},
+    //   tmpDir: altTmpDir
+    // }, {
+    //   afterCreate: function (instruments) { instruments.tmpDir.should.equal(altTmpDir); },
+    //   afterLaunch: async function () {
+    //     (await fs.exists(altTmpDir)).should.be.ok;
+    //     // tmp dir is deleted at startup so trace file is not incremented
+    //     (await fs.exists(path.resolve(altTmpDir, 'instrumentscli0.trace'))).should.be.ok;
+    //   }
+    // });
   });
 
   describe.skip("using different trace dir", function () {

@@ -9,7 +9,7 @@ import { desiredCapConstraints, desiredCapValidation } from './lib/desired-caps'
 import { commands, iosCommands } from './lib/commands/index';
 import * as settings from './lib/settings';
 import * as device from './lib/device';
-import utils from './lib/utils';
+import * as utils from './lib/utils';
 import { IWDP } from './lib/iwdp';
 import * as uiauto from './lib/uiauto/uiauto';
 import { Instruments, instrumentsUtils } from './lib/instruments/index';
@@ -22,17 +22,18 @@ const DEFAULT_PORT = 4723;
 async function main () {
   let port = yargs.argv.port || DEFAULT_PORT;
   let host = yargs.argv.host || DEFAULT_HOST;
-  return startServer(port, host);
+  return await startServer(port, host);
 }
 
 if (require.main === module) {
   asyncify(main);
 }
 
-export { IosDriver, desiredCapConstraints, desiredCapValidation, commands,
-         iosCommands, settings, device, defaultServerCaps, utils, IWDP, uiauto,
-         Instruments, instrumentsUtils, startHttpsServer, NATIVE_WIN,
-         WEBVIEW_WIN };
+export {
+  IosDriver, desiredCapConstraints, desiredCapValidation, commands, iosCommands,
+  settings, device, defaultServerCaps, utils, IWDP, uiauto, Instruments,
+  instrumentsUtils, startHttpsServer, NATIVE_WIN, WEBVIEW_WIN,
+};
 
 export default IosDriver;
 

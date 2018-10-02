@@ -13,7 +13,7 @@ chai.use(chaiAsPromised);
 
 describe('streams', function () {
   async function runThroughStream (stream, text) {
-    return new B(function (resolve) {
+    return await new B(function (resolve) {
       stream.on('data', (data) => {
         resolve(data);
       });

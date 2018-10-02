@@ -50,7 +50,7 @@ describe('testapp - location - 2 @skip-ci', function () {
 describe('testapp - location - 3 @skip-ci', function () {
 
   it('should not work without bundleId', async function () {
-    let session = new Session(_.defaults({locationServicesAuthorized: true},  desired),
+    let session = new Session(_.defaults({locationServicesAuthorized: true}, desired),
       {'no-retry': true});
     await B.resolve(session.setUp())
       .should.be.rejectedWith(/must set the bundleId/);

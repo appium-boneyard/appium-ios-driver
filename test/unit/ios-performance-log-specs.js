@@ -20,7 +20,7 @@ describe('performance logs', function () {
   let startTimelineStub;
   let stopTimelineStub;
   beforeEach(function () {
-    startTimelineStub = sinon.stub(remote, 'startTimeline').callsFake(async function (cb) { // eslint-disable-line promise/prefer-await-to-callbacks
+    startTimelineStub = sinon.stub(remote, 'startTimeline').callsFake(function (cb) { // eslint-disable-line promise/prefer-await-to-callbacks
       onTimelineEventCb = cb;
     });
     stopTimelineStub = sinon.stub(remote, 'stopTimeline');

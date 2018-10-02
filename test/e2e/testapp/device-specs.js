@@ -12,7 +12,7 @@ describe('testapp - device @skip-real-device', function () {
 
   describe('invalid deviceName', function () {
     it('should fail gracefully with an invalid deviceName', async function () {
-      let session = new Session(_.defaults({deviceName: "iFailure 3.5-inch"},  desired),
+      let session = new Session(_.defaults({deviceName: "iFailure 3.5-inch"}, desired),
         {'no-retry': true});
 
       await B.resolve(session.setUp())
@@ -27,13 +27,13 @@ describe('testapp - device @skip-real-device', function () {
     });
 
     it('should work with a generic iPhone deviceName', async function () {
-      session = new Session(_.defaults({deviceName: "iPhone Simulator"},  desired),
+      session = new Session(_.defaults({deviceName: "iPhone Simulator"}, desired),
         {'no-retry': true});
       await session.setUp();
     });
 
     it('should work with a generic iPad deviceName', async function () {
-      session = new Session(_.defaults({deviceName: "iPad Simulator"},  desired),
+      session = new Session(_.defaults({deviceName: "iPad Simulator"}, desired),
         {'no-retry': true});
       await session.setUp();
     });
@@ -44,7 +44,7 @@ describe('testapp - device @skip-real-device', function () {
   describe("real device", function () {
     it("shouldn't try to validate against sims", async function () {
       let session = new Session(
-        _.defaults({deviceName: "BadSimulator", udid: "12341234123412341234"},  desired),
+        _.defaults({deviceName: "BadSimulator", udid: "12341234123412341234"}, desired),
         {'no-retry': true}
       );
       await B.resolve(session.setUp())

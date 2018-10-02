@@ -8,17 +8,17 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('prepareIosOpts', function () {
-  it('should use instruments without delay by default', async function () {
+  it('should use instruments without delay by default', function () {
     let opts = {};
     utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.true;
   });
-  it('should use instruments without delay if explicitly not using native instruments', async function () {
+  it('should use instruments without delay if explicitly not using native instruments', function () {
     let opts = {nativeInstrumentsLib: false};
     utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.true;
   });
-  it('should not use instruments without delay if using native intruments', async function () {
+  it('should not use instruments without delay if using native intruments', function () {
     let opts = {nativeInstrumentsLib: true};
     utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.false;

@@ -1,5 +1,5 @@
 import { IosDriver } from '../..';
-import utils from '../../lib/utils';
+import * as utils from '../../lib/utils';
 import chai from 'chai';
 import sinon from 'sinon';
 import { withMocks } from 'appium-test-support';

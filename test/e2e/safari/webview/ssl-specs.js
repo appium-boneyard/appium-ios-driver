@@ -16,7 +16,7 @@ describe('When accessing an HTTPS encrypted site in Safari', function () {
   before(async function () {
     // Create an HTTPS server with a random pem certificate
     let privateKey = await pem.createPrivateKeyAsync();
-    let keys = await pem.createCertificateAsync({days:1, selfSigned: true, serviceKey: privateKey.key});
+    let keys = await pem.createCertificateAsync({days: 1, selfSigned: true, serviceKey: privateKey.key});
     let pemCertificate = keys.certificate;
 
     sslServer = https.createServer({key: keys.serviceKey, cert: pemCertificate}, function (req, res) {

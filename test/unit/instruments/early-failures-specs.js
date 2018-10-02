@@ -35,7 +35,7 @@ describe('Early failures', withSandbox({}, (S) => {
 
   it('should error on getAutomationTraceTemplatePath failure', async function () {
     S.sandbox.stub(xcode, 'getVersion').returns(getXcodeVersion());
-    S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').callsFake(async function () {
+    S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').callsFake(async function () { // eslint-disable-line require-await
       throw new Error('ouch!');
     });
 
@@ -51,7 +51,7 @@ describe('Early failures', withSandbox({}, (S) => {
     S.sandbox.stub(xcode, 'getAutomationTraceTemplatePath').returns('/path/to/trace/template');
 
     let instruments = new Instruments({});
-    S.sandbox.stub(instrumentsUtils, 'getInstrumentsPath').callsFake(async function () {
+    S.sandbox.stub(instrumentsUtils, 'getInstrumentsPath').callsFake(async function () { // eslint-disable-line require-await
       throw new Error('ouch!');
     });
     let onExitSpy = sinon.spy();

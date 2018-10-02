@@ -42,7 +42,7 @@ describe('uicatalog - touch', function () {
       let el1 = await driver.findElement('xpath', '//UIAStaticText[contains(@label, \'Steppers\')]');
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Increment');
-      let gestures = [{action: 'tap', options: {x:10, y:10, count: 7, element: el2.ELEMENT}}];
+      let gestures = [{action: 'tap', options: {x: 10, y: 10, count: 7, element: el2.ELEMENT}}];
       await driver.performTouch(gestures);
       let els = await driver.findElements('accessibility id', '7');
       els.should.have.length(2);
@@ -53,7 +53,7 @@ describe('uicatalog - touch', function () {
       await driver.click(el1);
       let el2 = await driver.findElement('accessibility id', 'Increment');
       let loc = await driver.getLocation(el2);
-      let gestures = [{action: 'tap', options: {x:loc.x, y:loc.y, count: 3}}];
+      let gestures = [{action: 'tap', options: {x: loc.x, y: loc.y, count: 3}}];
       await driver.performTouch(gestures);
       let els = await driver.findElements('accessibility id', '3');
       els.should.have.length(2);

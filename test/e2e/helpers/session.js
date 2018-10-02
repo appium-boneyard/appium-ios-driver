@@ -11,7 +11,7 @@ const MOCHA_TIMEOUT = 60 * 1000 * (process.env.TRAVIS ? 20 : 4);
 const MOCHA_SAFARI_TIMEOUT = MOCHA_TIMEOUT * 2;
 
 class Session {
-  constructor (desired={}, opts={}) {
+  constructor (desired = {}, opts = {}) {
     this.desired = desired;
     this.opts = opts;
     this.initialized = false;

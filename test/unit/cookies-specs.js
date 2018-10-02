@@ -40,7 +40,7 @@ describe ('cookies.js', function () {
   });
 
   it('should handle quoted cookie with internal quotes', function () {
-    let value = cookies.getValue('k', 'k="v\"t\""; expires=Thu, 01 Jan 2070 3:4:7 GMT; path=/lib');
+    let value = cookies.getValue('k', 'k="v"t""; expires=Thu, 01 Jan 2070 3:4:7 GMT; path=/lib');
     value.should.equal('v"t"');
   });
 
