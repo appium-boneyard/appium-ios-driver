@@ -3,18 +3,7 @@
 
 import yargs from 'yargs';
 import { asyncify } from 'asyncbox';
-import { startServer, startHttpsServer } from './lib/server';
-import { IosDriver, defaultServerCaps } from './lib/driver';
-import { desiredCapConstraints, desiredCapValidation } from './lib/desired-caps';
-import { commands, iosCommands } from './lib/commands/index';
-import * as settings from './lib/settings';
-import * as device from './lib/device';
-import * as utils from './lib/utils';
-import { IWDP } from './lib/iwdp';
-import * as uiauto from './lib/uiauto/uiauto';
-import { Instruments, instrumentsUtils } from './lib/instruments/index';
-import { NATIVE_WIN, WEBVIEW_WIN } from './lib/commands/context';
-
+import * as server from './lib/server';
 
 const DEFAULT_HOST = "localhost";
 const DEFAULT_PORT = 4723;
@@ -22,12 +11,32 @@ const DEFAULT_PORT = 4723;
 async function main () {
   let port = yargs.argv.port || DEFAULT_PORT;
   let host = yargs.argv.host || DEFAULT_HOST;
-  return await startServer(port, host);
+  return await server.startServer(port, host);
 }
 
 if (require.main === module) {
   asyncify(main);
 }
+
+
+import * as driver from './lib/driver';
+import * as caps from './lib/desired-caps';
+import * as commandIndex from './lib/commands/index';
+import * as settings from './lib/settings';
+import * as device from './lib/device';
+import * as utils from './lib/utils';
+import * as iwdp from './lib/iwdp';
+import * as uiauto from './lib/uiauto/uiauto';
+import * as instruments from './lib/instruments/index';
+import * as context from './lib/commands/context';
+
+const startHttpsServer = server.startHttpsServer;
+const { IosDriver, defaultServerCaps } = driver;
+const { desiredCapConstraints, desiredCapValidation } = caps;
+const { commands, iosCommands } = commandIndex;
+const { IWDP } = iwdp;
+const { Instruments, instrumentsUtils } = instruments;
+const { NATIVE_WIN, WEBVIEW_WIN } = context;
 
 export {
   IosDriver, desiredCapConstraints, desiredCapValidation, commands, iosCommands,
@@ -39,9 +48,13 @@ export default IosDriver;
 
 
 // ios log access
-import IOSLog from './lib/device-log/ios-log';
-import IOSCrashLog from './lib/device-log/ios-crash-log';
-import IOSPerformanceLog from './lib/device-log/ios-performance-log';
+import Log from './lib/device-log/ios-log';
+import CrashLog from './lib/device-log/ios-crash-log';
+import PerformanceLog from './lib/device-log/ios-performance-log';
+
+const IOSLog = Log;
+const IOSCrashLog = CrashLog;
+const IOSPerformanceLog = PerformanceLog;
 
 export { IOSLog, IOSCrashLog, IOSPerformanceLog };
 
