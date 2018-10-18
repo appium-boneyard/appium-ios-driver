@@ -60,7 +60,7 @@ describe('instruments tests', function () {
   });
 
   describe('smart timeout', function () {
-    test('', {launchTimeout: {global: 60000, afterSimLaunch: 10000}});
+    test('', {launchTimeout: {global: 60000, afterSimLaunch: 50000}});
   });
 
   describe.skip("using different tmp dir", function () {
