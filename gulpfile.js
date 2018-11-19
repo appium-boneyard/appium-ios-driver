@@ -10,7 +10,7 @@ boilerplate({
     files: ['${testDir}/**/*-specs.js', '!${testDir}/e2e/**']
   },
   coverage: {
-    files: ['./test/**/*-specs.js', '!./test/e2e/**', '!./test/assets'],
+    files: ['./build/test/**/*-specs.js', '!./build/test/e2e/**', '!./build/test/assets'],
     verbose: true
   },
   e2eTest: {
