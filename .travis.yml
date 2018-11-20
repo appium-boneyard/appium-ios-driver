@@ -1,4 +1,3 @@
-sudo: required
 env:
   global:
     - MOCHA_INIT_TIMEOUT=600000
