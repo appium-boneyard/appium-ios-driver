@@ -22,7 +22,7 @@ describe('Web', function () {
         const args = [{
           [elType]: 5000
         }];
-        driver.convertElementsForAtoms(args).should.eql([{ELEMENT: 123, [util.W3C_WEB_ELEMENT_IDENTIFIER]: 123}]);
+        driver.convertElementsForAtoms(args).should.eql([{ELEMENT: 123}]);
       }
     });
   });
