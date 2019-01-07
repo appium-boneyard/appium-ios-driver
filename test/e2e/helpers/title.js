@@ -1,5 +1,5 @@
 function getTitle (context) {
-  let title = "";
+  let title = '';
   while (context) {
     if (context.title) {
       if (title) {

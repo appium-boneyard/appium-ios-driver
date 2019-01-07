@@ -1,5 +1,5 @@
 import env from '../helpers/env';
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 import _ from 'lodash';
@@ -36,7 +36,7 @@ describe('uicatalog - find -', function () {
       let el1 = await driver.findElement('xpath', "//UIATableCell[contains(@name, 'Buttons')]");
       el1.should.exist;
       let el2 = await driver.findElementFromElement('class name', 'UIAStaticText', el1);
-      (await driver.getAttribute('name', el2)).should.contain("Buttons");
+      (await driver.getAttribute('name', el2)).should.contain('Buttons');
     });
 
     it('should not find an element not within itself', async function () {
@@ -81,7 +81,7 @@ describe('uicatalog - find -', function () {
         el1Name.should.not.equal(el2Name);
 
         // el1 is gone, so it doesn't have a name anymore
-        (await driver.getAttribute('name', el1)).should.equal("");
+        (await driver.getAttribute('name', el1)).should.equal('');
       });
     });
 
@@ -134,7 +134,7 @@ describe('uicatalog - find -', function () {
     describe('duplicate text field', function () {
       beforeEach(async function () {
         try {
-          await driver.execute("mobile: scroll", {direction: 'down'});
+          await driver.execute('mobile: scroll', {direction: 'down'});
         } catch (ign) {}
       });
 
@@ -170,7 +170,7 @@ describe('uicatalog - find -', function () {
 
     it('should find an element by name beneath another element', async function () {
       let axIdExt = env.IOS8 || env.IOS9 ? '' : ', AAPLActionSheetViewController';
-      let el = await driver.findElement('accessibility id', "UICatalog");
+      let el = await driver.findElement('accessibility id', 'UICatalog');
       await driver.click(el);
       let el2 = await driver.findElement('accessibility id', `Action Sheets${axIdExt}`);
       el2.should.exist;
@@ -237,7 +237,7 @@ describe('uicatalog - find -', function () {
       });
 
       it('should find element by name', async function () {
-        let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
+        let axIdExt = env.IOS8 || env.IOS9 ? '' : ', AAPLButtonViewController';
         let el1 = await driver.findElement(byUIA, '.elements()[1]');
         let el2 = await driver.findElementFromElement(byUIA, `.elements()["Buttons${axIdExt}"]`, el1);
         el2.should.exist;
@@ -255,7 +255,7 @@ describe('uicatalog - find -', function () {
         } catch (ign) {}
         // and make sure we are at the top of the page
         try {
-          await driver.execute("mobile: scroll", {direction: 'up'});
+          await driver.execute('mobile: scroll', {direction: 'up'});
         } catch (ign) {}
       });
       beforeEach(async function () {
@@ -273,65 +273,65 @@ describe('uicatalog - find -', function () {
         await driver.implicitWait(5000);
 
         let begin = Date.now();
-        await driver.findElement('xpath', "//something_not_there")
+        await driver.findElement('xpath', '//something_not_there')
           .should.eventually.be.rejected;
         let end = Date.now();
         (end - begin).should.be.above(5000);
       });
 
       it('should return the last button', async function () {
-        let el = await driver.findElement('xpath', "//UIAButton[last()]");
-        (await driver.getText(el)).should.equal("Button"); // this is the name of the last button
+        let el = await driver.findElement('xpath', '//UIAButton[last()]');
+        (await driver.getText(el)).should.equal('Button'); // this is the name of the last button
       });
 
       it('should return a single element', async function () {
-        let el = await driver.findElement('xpath', "//UIAButton");
-        (await driver.getText(el)).should.equal("UICatalog");
+        let el = await driver.findElement('xpath', '//UIAButton');
+        (await driver.getText(el)).should.equal('UICatalog');
       });
 
       it('should return multiple elements', async function () {
-        let els = await driver.findElements('xpath', "//UIAButton");
+        let els = await driver.findElements('xpath', '//UIAButton');
         els.should.have.length.above(5);
       });
 
       it('should filter by name', async function () {
         let el = await driver.findElement('xpath', "//UIAButton[@name='X Button']");
-        (await driver.getText(el)).should.equal("X Button");
+        (await driver.getText(el)).should.equal('X Button');
       });
 
       it('should know how to restrict root-level elements', async function () {
-        await B.resolve(driver.findElement('xpath', "/UIAButton"))
+        await B.resolve(driver.findElement('xpath', '/UIAButton'))
           .catch(throwMatchableError)
           .should.be.rejectedWith(/jsonwpCode: 7/);
       });
 
       it('should search an extended path by child', async function () {
-        let el = await driver.findElement('xpath', "//UIANavigationBar/UIAStaticText");
+        let el = await driver.findElement('xpath', '//UIANavigationBar/UIAStaticText');
         (await driver.getText(el)).should.equal('Buttons');
       });
 
       it('should search an extended path by descendant', async function () {
-        let els = await driver.findElements('xpath', "//UIATableCell//UIAButton");
+        let els = await driver.findElements('xpath', '//UIATableCell//UIAButton');
         let texts = await B.all(_.map(els, (el) => { return driver.getText(el); }));
-        texts.should.not.include("UICatalog");
-        texts.should.include("X Button");
+        texts.should.not.include('UICatalog');
+        texts.should.include('X Button');
       });
 
       it('should filter by indices', async function () {
         await driver.implicitWait(10000);
-        let el = await driver.findElement('xpath', "//UIATableCell[4]/UIAButton[1]");
+        let el = await driver.findElement('xpath', '//UIATableCell[4]/UIAButton[1]');
         (await driver.getAttribute('name', el)).should.equal('X Button');
       });
 
       it('should filter by partial text', async function () {
         let el = await driver.findElement('xpath', "//UIATableCell//UIAButton[contains(@name, 'X ')]");
-        (await driver.getText(el)).should.equal("X Button");
+        (await driver.getText(el)).should.equal('X Button');
       });
 
       it('should find an element within itself', async function () {
         let e1 = await driver.findElement('xpath', "//UIATableCell[@name='X Button']");
-        let e2 = await driver.findElementFromElement('xpath', "//UIAButton[1]", e1);
-        (await driver.getText(e2)).should.equal("X Button");
+        let e2 = await driver.findElementFromElement('xpath', '//UIAButton[1]', e1);
+        (await driver.getText(e2)).should.equal('X Button');
       });
     });
 
@@ -380,13 +380,13 @@ describe('uicatalog - find -', function () {
 
       describe('finding specific path', function () {
         for (let n = 0; n < runs; n++) {
-          describe(`test ${n + 1}`, test("//UIAApplication[1]/UIAWindow/UIATableView/UIATableCell", 17));
+          describe(`test ${n + 1}`, test('//UIAApplication[1]/UIAWindow/UIATableView/UIATableCell', 17));
         }
       });
 
       describe('finding //*', function () {
         for (let n = 0; n < runs; n++) {
-          describe(`test ${n + 1}`, test("//*", 52));
+          describe(`test ${n + 1}`, test('//*', 52));
         }
       });
     });

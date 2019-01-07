@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import _ from 'lodash';
 import env from '../helpers/env';
@@ -17,7 +17,7 @@ describe('testapp - keyboard', function () {
       let session = setup(this, _.defaults({sendKeyStrategy: strategy}, desired));
       let driver = session.driver;
 
-      it("should send keys to a text field", async function () {
+      it('should send keys to a text field', async function () {
         let env = await driver.execute('env');
         if (strategy) {
           env.sendKeyStrategy.should.equal(strategy);
@@ -40,16 +40,16 @@ describe('testapp - keyboard', function () {
 
   _.each([undefined, 'oneByOne', 'grouped', 'setValue'], test);
 
-  describe("typing", function () {
+  describe('typing', function () {
     let session = setup(this, desired);
     let driver = session.driver;
 
-    describe("stability @skip-ci", function () {
+    describe('stability @skip-ci', function () {
       let runs = 10;
       let text = 'Delhi is New @@@ BREAKFAST-FOOD-0001';
 
       let test = function () {
-        it("should send keys to a text field", async function () {
+        it('should send keys to a text field', async function () {
           let el = await driver.findElement('class name', 'UIATextField');
           await driver.clear(el);
           driver.setValue(text, el);
@@ -63,7 +63,7 @@ describe('testapp - keyboard', function () {
     });
 
     it('should send accented text', async function () {
-      let testText = unorm.nfd("é Œ ù ḍ");
+      let testText = unorm.nfd('é Œ ù ḍ');
       let els = await driver.findElements('class name', 'UIATextField');
       let el = els[1];
       await driver.clear(el);

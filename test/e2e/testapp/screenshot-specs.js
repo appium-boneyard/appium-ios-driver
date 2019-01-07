@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import B from 'bluebird';
 import desired from './desired';
 
@@ -17,7 +17,7 @@ describe('testapp - screenshots', function () {
       screenshot1.should.exist;
 
       try {
-        await driver.setOrientation("LANDSCAPE");
+        await driver.setOrientation('LANDSCAPE');
       } catch (e) {
         // A useless error does often exist here, let's ignore it
       }

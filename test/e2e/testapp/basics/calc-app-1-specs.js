@@ -1,4 +1,4 @@
-import setup from "../../setup-base";
+import setup from '../../setup-base';
 import desired from '../desired';
 import { filterVisibleUiaSelector } from '../../helpers/recipes';
 
@@ -25,11 +25,11 @@ describe('testapp - basics - calc app 1', function () {
     for (let el of els) {
       let val = Math.round(Math.random() * 10);
       values.push(val);
-      if (type === "elem") {
+      if (type === 'elem') {
         await driver.setValue(val, el);
-      } else if (type === "elem-setvalue") {
+      } else if (type === 'elem-setvalue') {
         await driver.setValueImmediate(val, el);
-      } else if (type === "driver") {
+      } else if (type === 'driver') {
         await driver.click(el);
         await driver.keys(val);
       }
@@ -49,18 +49,18 @@ describe('testapp - basics - calc app 1', function () {
   });
 
   it('should fill two fields with numbers', async function () {
-    await populate("elem");
+    await populate('elem');
     await computeAndCheck();
   });
 
   // using sendKeysToActiveElement
   it('should fill two fields with numbers - sendKeys', async function () {
-    await populate("driver");
+    await populate('driver');
     await computeAndCheck();
   });
 
   it('should fill two fields with numbers - setValue', async function () {
-    await populate("elem-setvalue");
+    await populate('elem-setvalue');
     await computeAndCheck();
   });
 
@@ -85,8 +85,8 @@ describe('testapp - basics - calc app 1', function () {
     await driver.postAcceptAlert();
     await driver.click(button);
     let text = await driver.getAlertText();
-    text.should.include("Cool title");
-    text.should.include("this alert is so cool.");
+    text.should.include('Cool title');
+    text.should.include('this alert is so cool.');
     await driver.postDismissAlert();
   });
 
@@ -109,14 +109,14 @@ describe('testapp - basics - calc app 1', function () {
 
   it('should get tag names of elements', async function () {
     let el = await driver.findElement('class name', 'UIAButton');
-    (await driver.getName(el)).should.equal("UIAButton");
+    (await driver.getName(el)).should.equal('UIAButton');
     el = await driver.findElement('class name', 'UIAStaticText');
     (await driver.getName(el)).should.equal('UIAStaticText');
   });
 
   it('should be able to get text of a button', async function () {
     let el = await driver.findElement('class name', 'UIAButton');
-    (await driver.getText(el)).should.equal("Compute Sum");
+    (await driver.getText(el)).should.equal('Compute Sum');
   });
 
 });

@@ -12,7 +12,7 @@ env.PLATFORM_VERSION = process.env.PLATFORM_VERSION;
 
 env.VERBOSE = process.env.VERBOSE;
 if (env.VERBOSE) {
-  console.log("process.env.LAUNCH_TIMEOUT -->", process.env.LAUNCH_TIMEOUT); //eslint-disable-line no-console
+  console.log('process.env.LAUNCH_TIMEOUT -->', process.env.LAUNCH_TIMEOUT); //eslint-disable-line no-console
 }
 env.LAUNCH_TIMEOUT = JSON.parse(process.env.LAUNCH_TIMEOUT || 60000);
 env.MOCHA_INIT_TIMEOUT = parseInt(process.env.MOCHA_INIT_TIMEOUT || 300000, 10);
@@ -50,7 +50,7 @@ function iphoneOrIpadSimulator (device, version) {
     case '9.3':
       return isIpad ? 'iPad 2' : 'iPhone 6';
     default:
-      throw new Error("invalid version");
+      throw new Error('invalid version');
   }
 }
 
@@ -63,64 +63,64 @@ switch (env.DEVICE) {
   case 'ios6':
   case 'ios6_iphone':
   case 'ios6_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "6.1");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '6.1');
     break;
   case 'ios7':
   case 'ios7_iphone':
   case 'ios7_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "7.0");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '7.0');
     break;
   case 'ios71':
   case 'ios71_iphone':
   case 'ios71_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "7.1");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '7.1');
     break;
   case 'ios8':
   case 'ios80':
   case 'ios8_iphone':
   case 'ios8_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.0");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '8.0');
     break;
   case 'ios81':
   case 'ios81_iphone':
   case 'ios81_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.1");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '8.1');
     break;
   case 'ios82':
   case 'ios82_iphone':
   case 'ios82_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.2");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '8.2');
     break;
   case 'ios83':
   case 'ios83_iphone':
   case 'ios83_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.3");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '8.3');
     break;
   case 'ios84':
   case 'ios84_iphone':
   case 'ios84_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "8.4");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '8.4');
     break;
   case 'ios9':
   case 'ios9_iphone':
   case 'ios9_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.0");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '9.0');
     break;
   case 'ios91':
   case 'ios91_iphone':
   case 'ios91_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.1");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '9.1');
     break;
   case 'ios': // default. move as versions go up
   case 'ios92':
   case 'ios92_iphone':
   case 'ios92_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.2");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '9.2');
     break;
   case 'ios93':
   case 'ios93_iphone':
   case 'ios93_ipad':
-    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, "9.3");
+    env.CAPS.deviceName = iphoneOrIpadSimulator(env.DEVICE, '9.3');
     break;
   default:
     throw new Error('Unknown device!!!');
@@ -142,14 +142,14 @@ env.IOS93 = env.DEVICE.match(/ios93/i);
 
 // better timeout settings for 71
 env.LAUNCH_TIMEOUT = process.env.LAUNCH_TIMEOUT ? JSON.parse(process.env.LAUNCH_TIMEOUT) :
-  ((env.IOS71 || env.IOS8 || env.IOS9) ? {"global": 60000, "afterSimLaunch": 10000} : 60000);
+  ((env.IOS71 || env.IOS8 || env.IOS9) ? {'global': 60000, 'afterSimLaunch': 10000} : 60000);
 
 env.CAPS.launchTimeout = env.LAUNCH_TIMEOUT;
 
-env.CAPS.platformName = "iOS";
+env.CAPS.platformName = 'iOS';
 
 if (env.REAL_DEVICE) {
-  env.CAPS.udid = "auto";
+  env.CAPS.udid = 'auto';
 }
 
 if (process.env.UDID) {
@@ -159,29 +159,29 @@ if (process.env.UDID) {
 if (env.PLATFORM_VERSION) {
   env.CAPS.platformVersion = env.PLATFORM_VERSION;
 } else if (env.IOS6) {
-  env.CAPS.platformVersion = "6.1";
+  env.CAPS.platformVersion = '6.1';
 } else if (env.IOS71) {
-  env.CAPS.platformVersion = "7.1";
+  env.CAPS.platformVersion = '7.1';
 } else if (env.IOS7) {
-  env.CAPS.platformVersion = "7.0";
+  env.CAPS.platformVersion = '7.0';
 } else if (env.IOS81) {
-  env.CAPS.platformVersion = "8.1";
+  env.CAPS.platformVersion = '8.1';
 } else if (env.IOS82) {
-  env.CAPS.platformVersion = "8.2";
+  env.CAPS.platformVersion = '8.2';
 } else if (env.IOS83) {
-  env.CAPS.platformVersion = "8.3";
+  env.CAPS.platformVersion = '8.3';
 } else if (env.IOS84) {
-  env.CAPS.platformVersion = "8.4";
+  env.CAPS.platformVersion = '8.4';
 } else if (env.IOS8) {
-  env.CAPS.platformVersion = "8.0";
+  env.CAPS.platformVersion = '8.0';
 } else if (env.IOS91) {
-  env.CAPS.platformVersion = "9.1";
+  env.CAPS.platformVersion = '9.1';
 } else if (env.IOS92) {
-  env.CAPS.platformVersion = "9.2";
+  env.CAPS.platformVersion = '9.2';
 } else if (env.IOS93) {
-  env.CAPS.platformVersion = "9.3";
+  env.CAPS.platformVersion = '9.3';
 } else if (env.IOS9) {
-  env.CAPS.platformVersion = "9.0";
+  env.CAPS.platformVersion = '9.0';
 }
 
 // max retry

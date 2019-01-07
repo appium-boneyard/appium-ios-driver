@@ -48,7 +48,7 @@ describe('safari - webview ', function () {
       beforeEach(async function () { return await loadWebView(desired, driver); });
 
       it('should return a valid title on web view', async function () {
-        (await driver.title()).should.include("I am a page title");
+        (await driver.title()).should.include('I am a page title');
       });
     });
 
@@ -271,7 +271,7 @@ describe('safari - webview ', function () {
       it('should not display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async function () {
         await driver.setUrl(env.PHISHING_END_POINT + 'guinea-pig2.html');
         await spinWait(async () => {
-          (await driver.getTitle()).should.contain("I am another page title");
+          (await driver.getTitle()).should.contain('I am another page title');
         });
       });
     });
@@ -292,7 +292,7 @@ describe('safari - webview ', function () {
       it('should display a phishing warning with safariIgnoreFraudWarning @skip-ios8', async function () {
         await driver.setUrl(env.PHISHING_END_POINT + 'guinea-pig2.html');
         await spinWait(async () => {
-          (await driver.getTitle()).toLowerCase().should.contain("phishing");
+          (await driver.getTitle()).toLowerCase().should.contain('phishing');
         });
       });
     });

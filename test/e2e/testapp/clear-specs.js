@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 
 describe('testapp - clear', function () {
@@ -7,10 +7,10 @@ describe('testapp - clear', function () {
 
   it('should clear the text field', async function () {
     let el = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("some-value", el);
-    (await driver.getText(el)).should.equal("some-value");
+    await driver.setValue('some-value', el);
+    (await driver.getText(el)).should.equal('some-value');
     await driver.clear(el);
-    (await driver.getText(el)).should.equal("");
+    (await driver.getText(el)).should.equal('');
   });
 
   // Tap outside hide keyboard strategy can only be tested in UICatalog
@@ -20,44 +20,44 @@ describe('testapp - clear', function () {
 
   it('should hide keyboard using "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("1", el1);
+    await driver.setValue('1', el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
     (await driver.elementDisplayed(el2)).should.not.be.ok;
-    await driver.hideKeyboard(undefined, "Done", driver.sessionId);
+    await driver.hideKeyboard(undefined, 'Done', driver.sessionId);
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
   it('should hide keyboard using "pressKey" strategy with "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("1", el1);
+    await driver.setValue('1', el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
     (await driver.elementDisplayed(el2)).should.not.be.ok;
-    await driver.hideKeyboard('pressKey', "Done", driver.sessionId);
+    await driver.hideKeyboard('pressKey', 'Done', driver.sessionId);
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
   it('should hide keyboard using "pressKey" strategy with "Done" keyName', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("1", el1);
+    await driver.setValue('1', el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
     (await driver.elementDisplayed(el2)).should.not.be.ok;
-    await driver.hideKeyboard('pressKey', undefined, undefined, "Done", driver.sessionId);
+    await driver.hideKeyboard('pressKey', undefined, undefined, 'Done', driver.sessionId);
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
   it('should hide keyboard using "press" strategy with "Done" key', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("1", el1);
+    await driver.setValue('1', el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
     (await driver.elementDisplayed(el2)).should.not.be.ok;
-    await driver.hideKeyboard('press', "Done", driver.sessionId);
+    await driver.hideKeyboard('press', 'Done', driver.sessionId);
     (await driver.elementDisplayed(el2)).should.be.ok;
   });
 
   // swipedown just doesn't work with testapp
   it.skip('should hide keyboard using "swipeDown" strategy', async function () {
     let el1 = await driver.findElement('class name', 'UIATextField');
-    await driver.setValue("1", el1);
+    await driver.setValue('1', el1);
     let el2 = await driver.findElement('class name', 'UIASwitch');
     (await driver.elementDisplayed(el2)).should.not.be.ok;
     await driver.hideKeyboard('swipeDown', driver.sessionId);

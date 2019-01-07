@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 
 describe('testapp - get attribute', function () {
@@ -7,6 +7,6 @@ describe('testapp - get attribute', function () {
 
   it('should get element attribute', async function () {
     let el = await driver.findElement('class name', 'UIAButton');
-    (await driver.getAttribute('name', el)).should.equal("ComputeSumButton");
+    (await driver.getAttribute('name', el)).should.equal('ComputeSumButton');
   });
 });

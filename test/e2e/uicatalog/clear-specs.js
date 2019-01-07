@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 
@@ -10,7 +10,7 @@ describe('uicatalog - clear', function () {
 
     beforeEach(async function () {
       try {
-        await driver.execute("mobile: scroll", {direction: 'down'});
+        await driver.execute('mobile: scroll', {direction: 'down'});
       } catch (ign) {}
     });
     afterEach(async function () {
@@ -23,7 +23,7 @@ describe('uicatalog - clear', function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');
-      let el2 = await driver.findElement('xpath', "//UIATextField");
+      let el2 = await driver.findElement('xpath', '//UIATextField');
       await driver.click(el2);
       await driver.findElement('accessibility id', 'Go');
       await driver.hideKeyboard();
@@ -35,7 +35,7 @@ describe('uicatalog - clear', function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');
-      let el2 = await driver.findElement('xpath', "//UIATextField");
+      let el2 = await driver.findElement('xpath', '//UIATextField');
       await driver.click(el2);
       await driver.findElements('accessibility id', 'Go');
       await driver.hideKeyboard('tapOutside');
@@ -47,7 +47,7 @@ describe('uicatalog - clear', function () {
       let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@name, 'Web View')]");
       await driver.click(el1);
       await driver.findElement('xpath', '//UIANavigationBar[@name="Web View"]');
-      let el2 = await driver.findElement('xpath', "//UIATextField");
+      let el2 = await driver.findElement('xpath', '//UIATextField');
       await driver.click(el2);
       await driver.findElements('accessibility id', 'Go');
       await driver.hideKeyboard('tapOut');

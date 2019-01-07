@@ -1,5 +1,5 @@
 import env from '../helpers/env';
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import _ from 'lodash';
 
@@ -34,7 +34,7 @@ describe('uicatalog - basic', function () {
       it('should confirm element is not visible', async function () {
         let el1 = await driver.findElement('xpath', `//UIAStaticText[contains(${textTag}, 'Buttons')]`);
         await driver.click(el1);
-        let el2 = await driver.findElement('xpath', "//UIANavigationBar/UIAImage");
+        let el2 = await driver.findElement('xpath', '//UIANavigationBar/UIAImage');
         (await driver.elementDisplayed(el2)).should.not.be.ok;
       });
 
@@ -46,7 +46,7 @@ describe('uicatalog - basic', function () {
       });
 
       it('should confirm element is selected', async function () {
-        await driver.execute("mobile: scroll", {direction: 'down'});
+        await driver.execute('mobile: scroll', {direction: 'down'});
         let el1 = await driver.findElement('xpath', "//UIAStaticText[contains(@label, 'Switches')]");
         await driver.click(el1);
         let el2 = await driver.findElement('class name', 'UIASwitch');
@@ -55,7 +55,7 @@ describe('uicatalog - basic', function () {
 
       it('should confirm element is not selected returns false', async function () {
         try {
-          await driver.execute("mobile: scroll", {direction: 'down'});
+          await driver.execute('mobile: scroll', {direction: 'down'});
         } catch (ign) {
           // Instruments is broken in 8.1, 8.2, 8.3
           // can't scroll if already scrolled all the way down

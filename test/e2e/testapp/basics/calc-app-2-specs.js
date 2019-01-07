@@ -1,4 +1,4 @@
-import setup from "../../setup-base";
+import setup from '../../setup-base';
 import desired from '../desired';
 import B from 'bluebird';
 import { throwMatchableError } from '../../helpers/recipes';
@@ -51,21 +51,21 @@ describe('testapp - basics - calc app 2', function () {
       .should.be.rejectedWith(/jsonwpCode: 7/);
     let logs = await driver.getLog();
     logs.length.should.be.above(0);
-    logs[0].message.should.not.include("\n");
-    logs[0].level.should.equal("ALL");
+    logs[0].message.should.not.include('\n');
+    logs[0].level.should.equal('ALL');
     logs[0].timestamp.should.exist;
   });
 
   it('should be able to get crashlog logs @skip-ci', async function () {
-    let dir = path.resolve(process.env.HOME, "Library", "Logs", "DiagnosticReports");
+    let dir = path.resolve(process.env.HOME, 'Library', 'Logs', 'DiagnosticReports');
     let msg = 'boom';
     let logs = await driver.getLog('crashlog');
     await fs.writeFile(`${dir}/myApp_${Date.parse(new Date())}_rocksauce.crash`, msg);
     logs = await driver.getLog('crashlog');
     logs.length.should.equal(1);
-    _.last(logs).message.should.not.include("\n");
+    _.last(logs).message.should.not.include('\n');
     _.last(logs).message.should.equal(msg);
-    _.last(logs).level.should.equal("ALL");
+    _.last(logs).level.should.equal('ALL');
     _.last(logs).timestamp.should.exist;
     logs = await driver.getLog('crashlog');
     logs.length.should.equal(0);
