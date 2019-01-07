@@ -1,4 +1,4 @@
-import setup from "../../setup-base";
+import setup from '../../setup-base';
 import desired from '../desired';
 import _ from 'lodash';
 import env from '../../helpers/env';

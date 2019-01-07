@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import env from '../helpers/env';
 import setup from '../setup-base';

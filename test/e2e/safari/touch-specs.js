@@ -11,7 +11,7 @@ describe.skip('touch', function () {
   this.timeout(MOCHA_SAFARI_TIMEOUT);
 
   const driver = setup(this, {
-    browserName: "safari"
+    browserName: 'safari'
   }).driver;
 
   it('should flick element', async function () {

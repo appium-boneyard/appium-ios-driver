@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 
@@ -9,7 +9,7 @@ describe('uicatalog - reset', function () {
     let driver = session.driver;
     let rawDriver = session.rawDriver;
 
-    it("should be able to find elements after a soft reset", async function () {
+    it('should be able to find elements after a soft reset', async function () {
       rawDriver.ready.should.be.ok;
       let els = await driver.findElements('class name', 'UIATableView');
       els.should.have.length(1);

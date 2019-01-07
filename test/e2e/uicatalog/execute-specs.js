@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 import { throwMatchableError } from '../helpers/recipes';
@@ -8,12 +8,12 @@ describe('uicatalog - execute', function () {
   let driver = session.driver;
 
   it('should do UIAutomation commands if not in web frame', async function () {
-    let res = await driver.execute("UIATarget.localTarget().frontMostApp().bundleID()");
-    res.should.include(".UICatalog");
+    let res = await driver.execute('UIATarget.localTarget().frontMostApp().bundleID()');
+    res.should.include('.UICatalog');
   });
 
   it('should not fail if UIAutomation command blows up', async function () {
-    await B.resolve(driver.execute("UIATarget.foobarblah()"))
+    await B.resolve(driver.execute('UIATarget.foobarblah()'))
       .catch(throwMatchableError).should.be.rejectedWith(/jsonwpCode: 17/);
   });
 

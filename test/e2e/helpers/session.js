@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 import env from './env';
-import B from "bluebird";
-import _ from "lodash";
+import B from 'bluebird';
+import _ from 'lodash';
 import { IosDriver } from '../../..';
 import { ALL_COMMANDS } from 'appium-base-driver';
 import log from '../../../lib/logger';
@@ -35,8 +35,8 @@ class Session {
     let caps = _.clone(this.desired);
     _.defaults(caps, env.CAPS);
 
-    log.debug("caps -->", caps);
-    log.debug("opts -->", this.opts);
+    log.debug('caps -->', caps);
+    log.debug('opts -->', this.opts);
 
     let init = async (remainingAttempts) => {
       log.debug(`remainingAttempts --> ${remainingAttempts}`);

@@ -63,7 +63,7 @@ describe('instruments tests', function () {
     test('', {launchTimeout: {global: 60000, afterSimLaunch: 50000}});
   });
 
-  describe.skip("using different tmp dir", function () {
+  describe.skip('using different tmp dir', function () {
     let altTmpDir = path.resolve(TEMP_DIR, 'abcd');
 
     before(async function () {
@@ -79,7 +79,7 @@ describe('instruments tests', function () {
       await fs.rimraf(TEMP_DIR);
     });
 
-    test(" (1)", {
+    test(' (1)', {
       launchTimeout: {global: 60000, afterSimLaunch: 10000},
       tmpDir: altTmpDir
     }, {
@@ -103,7 +103,7 @@ describe('instruments tests', function () {
     // });
   });
 
-  describe.skip("using different trace dir", function () {
+  describe.skip('using different trace dir', function () {
     let altTraceDir = path.resolve(TEMP_DIR, 'abcd');
 
     before(async function () {
@@ -119,7 +119,7 @@ describe('instruments tests', function () {
       await fs.rimraf(TEMP_DIR);
     });
 
-    test(" (1)", {
+    test(' (1)', {
       launchTimeout: {global: 60000, afterSimLaunch: 10000},
       traceDir: altTraceDir
     }, {
@@ -133,7 +133,7 @@ describe('instruments tests', function () {
       }
     });
 
-    test(" (2)", {
+    test(' (2)', {
       launchTimeout: {global: 60000, afterSimLaunch: 10000},
       traceDir: altTraceDir
     }, {
@@ -148,7 +148,7 @@ describe('instruments tests', function () {
     });
   });
 
-  describe("shutdown without startup", function () {
+  describe('shutdown without startup', function () {
     it('should launch', async function () {
       await killAllSimulators();
       let instruments = await newInstrument({launchTimeout: 60000});

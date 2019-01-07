@@ -95,12 +95,12 @@ describe('instruments', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => 
           instruments.instrumentsPath,
           // sinon.match.string,
           [
-            "-t", "/a/b/c/d/tracetemplate",
-            "-D", "/tmp/appium-instruments/instrumentscli0.trace", undefined,
-            "-e", "firstoption", "firstoptionsarg",
-            "-e", "secondoption", "second option arg",
-            "-e", "UIASCRIPT", undefined,
-            "-e", "UIARESULTSPATH", "/tmp/appium-instruments"
+            '-t', '/a/b/c/d/tracetemplate',
+            '-D', '/tmp/appium-instruments/instrumentscli0.trace', undefined,
+            '-e', 'firstoption', 'firstoptionsarg',
+            '-e', 'secondoption', 'second option arg',
+            '-e', 'UIASCRIPT', undefined,
+            '-e', 'UIARESULTSPATH', '/tmp/appium-instruments'
           ],
         )
         .returns({});
@@ -118,11 +118,11 @@ describe('instruments', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => 
         .withArgs(
           instruments.instrumentsPath,
           [
-            "-t", "/a/b/c/d/tracetemplate",
-            "-D", "/tmp/appium-instruments/instrumentscli0.trace", undefined,
-            "some random process arguments",
-            "-e", "UIASCRIPT", undefined,
-            "-e", "UIARESULTSPATH", "/tmp/appium-instruments"
+            '-t', '/a/b/c/d/tracetemplate',
+            '-D', '/tmp/appium-instruments/instrumentscli0.trace', undefined,
+            'some random process arguments',
+            '-e', 'UIASCRIPT', undefined,
+            '-e', 'UIARESULTSPATH', '/tmp/appium-instruments'
           ],
         )
         .returns({});
@@ -140,12 +140,12 @@ describe('instruments', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => 
         .withArgs(
           instruments.instrumentsPath,
           [
-            "-t", "/a/b/c/d/tracetemplate",
-            "-D", "/tmp/appium-instruments/instrumentscli0.trace", undefined,
-            "-e", "firstoption", "firstoptionsarg",
-            "-e", "secondoption", "second option arg",
-            "-e", "UIASCRIPT", undefined,
-            "-e", "UIARESULTSPATH", "/tmp/appium-instruments"
+            '-t', '/a/b/c/d/tracetemplate',
+            '-D', '/tmp/appium-instruments/instrumentscli0.trace', undefined,
+            '-e', 'firstoption', 'firstoptionsarg',
+            '-e', 'secondoption', 'second option arg',
+            '-e', 'UIASCRIPT', undefined,
+            '-e', 'UIARESULTSPATH', '/tmp/appium-instruments'
           ],
         )
         .returns({});
@@ -156,21 +156,21 @@ describe('instruments', withMocks({fs, tp, xcode, instrumentsUtils}, (mocks) => 
       await instruments.spawnInstruments();
     });
     it('should add language and locale arguments when appropriate', async function () {
-      let instruments = getInstruments({locale: "de_DE", language: "de"});
+      let instruments = getInstruments({locale: 'de_DE', language: 'de'});
       instruments.processArguments = 'some random process arguments';
       mocks.fs.expects('exists').once().returns(B.resolve(false));
       mocks.tp.expects('spawn').once()
         .withArgs(
           instruments.instrumentsPath,
           [
-            "-t", "/a/b/c/d/tracetemplate",
-            "-D", "/tmp/appium-instruments/instrumentscli0.trace", undefined,
-            "some random process arguments",
-            "-e", "UIASCRIPT", undefined,
-            "-e", "UIARESULTSPATH", "/tmp/appium-instruments",
-            "-AppleLanguages (de)",
-            "-NSLanguages (de)",
-            "-AppleLocale de_DE"
+            '-t', '/a/b/c/d/tracetemplate',
+            '-D', '/tmp/appium-instruments/instrumentscli0.trace', undefined,
+            'some random process arguments',
+            '-e', 'UIASCRIPT', undefined,
+            '-e', 'UIARESULTSPATH', '/tmp/appium-instruments',
+            '-AppleLanguages (de)',
+            '-NSLanguages (de)',
+            '-AppleLocale de_DE'
           ],
         )
         .returns({});

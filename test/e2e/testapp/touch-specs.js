@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 import { okIfAlert } from '../helpers/recipes';
@@ -105,7 +105,7 @@ describe('testapp - swipe actions', function () {
         centerPos = { x: 0, y: 0 };
 
     let getNumericValue = function (pctVal) {
-      pctVal = pctVal.replace("%", "");
+      pctVal = pctVal.replace('%', '');
       pctVal = parseInt(pctVal, 10);
       return pctVal;
     };
@@ -122,7 +122,7 @@ describe('testapp - swipe actions', function () {
     };
 
     before(async function () {
-      slider = await driver.findElement('class name', "UIASlider");
+      slider = await driver.findElement('class name', 'UIASlider');
       loc = await driver.getLocation(slider);
       let size = await driver.getSize(slider);
       leftPos.x = loc.x - 5;
@@ -169,7 +169,7 @@ describe('testapp - swipe actions', function () {
         {action: 'release'}
       ];
       await driver.performTouch(gestures);
-      (await getSliderValue()).should.equal("0%");
+      (await getSliderValue()).should.equal('0%');
     });
 
     it('should work with: {element, x, y}, moveTo {destEl, x, y} @skip-ci', async function () {
@@ -185,7 +185,7 @@ describe('testapp - swipe actions', function () {
 
     // TODO: Crashes in ci env, investigate
     // TODO: For some reason it does not swipe to 100% in ci env, investigate
-    it("should work with press {x, y}, moveTo {destEl} @skip-ci", async function () {
+    it('should work with press {x, y}, moveTo {destEl} @skip-ci', async function () {
       let origValue = await getSliderValue();
       let gestures = [
         {action: 'press', options: {x: centerPos.x, y: centerPos.y}},

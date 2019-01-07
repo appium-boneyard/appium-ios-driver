@@ -1,4 +1,4 @@
-import setup from "../setup-base";
+import setup from '../setup-base';
 import { Session } from '../helpers/session';
 import desired from './desired';
 import B from 'bluebird';

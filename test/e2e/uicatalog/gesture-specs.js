@@ -1,5 +1,5 @@
 import env from '../helpers/env';
-import setup from "../setup-base";
+import setup from '../setup-base';
 import desired from './desired';
 import B from 'bluebird';
 import _ from 'lodash';
@@ -19,7 +19,7 @@ describe('uicatalog - touch', function () {
         await driver.back();
       } catch (ign) {}
 
-      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
     });
 
     afterEach(async function () {
@@ -70,15 +70,15 @@ describe('uicatalog - touch', function () {
     });
 
     describe('with element', function () {
-      it("slider value should change", async function () {
+      it('slider value should change', async function () {
         let els = await driver.findElements('class name', 'UIATableCell');
         await driver.click(els[10]);
-        let slider = await driver.findElement('class name', "UIASlider");
-        let valueBefore = await driver.getAttribute("value", slider);
+        let slider = await driver.findElement('class name', 'UIASlider');
+        let valueBefore = await driver.getAttribute('value', slider);
         await driver.flick(slider, undefined, undefined, -0.5, 0, 1);
-        let valueAfter = await driver.getAttribute("value", slider);
-        valueBefore.should.not.equal("0%");
-        valueAfter.should.equal("0%");
+        let valueAfter = await driver.getAttribute('value', slider);
+        valueBefore.should.not.equal('0%');
+        valueAfter.should.equal('0%');
       });
     });
   });
@@ -90,19 +90,19 @@ describe('uicatalog - touch', function () {
       } catch (ign) {}
 
       // we want to begin at the top, so try to scroll up there
-      await driver.execute("mobile: scroll", {direction: 'up'});
+      await driver.execute('mobile: scroll', {direction: 'up'});
     });
 
     it('should scroll down and up', async function () {
       let el = await driver.findElement('class name', 'UIATableCell');
       let loc1 = await driver.getLocationInView(el);
 
-      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
       let loc2 = await driver.getLocationInView(el);
       loc2.x.should.equal(loc1.x);
       loc2.y.should.not.equal(loc1.y);
 
-      await driver.execute("mobile: scroll", {direction: 'up'});
+      await driver.execute('mobile: scroll', {direction: 'up'});
       let loc3 = await driver.getLocationInView(el);
       loc3.x.should.equal(loc2.x);
       loc3.y.should.not.equal(loc2.y);
@@ -113,23 +113,23 @@ describe('uicatalog - touch', function () {
       let el = await driver.findElement('class name', 'UIATableCell');
       let loc1 = await driver.getLocationInView(el);
 
-      await driver.execute("mobile: scroll", {element: tableView, direction: 'down'});
+      await driver.execute('mobile: scroll', {element: tableView, direction: 'down'});
       let loc2 = await driver.getLocationInView(el);
       loc2.x.should.equal(loc1.x);
       loc2.y.should.not.equal(loc1.y);
 
-      await driver.execute("mobile: scroll", {element: tableView, direction: 'up'});
+      await driver.execute('mobile: scroll', {element: tableView, direction: 'up'});
       let loc3 = await driver.getLocationInView(el);
       loc3.x.should.equal(loc2.x);
       loc3.y.should.not.equal(loc2.y);
     });
 
     it('should be able to be called multiple times', async function () {
-      await driver.execute("mobile: scroll", {direction: 'down'});
-      await driver.execute("mobile: scroll", {direction: 'down'});
-      await driver.execute("mobile: scroll", {direction: 'down'});
-      await driver.execute("mobile: scroll", {direction: 'down'});
-      await driver.execute("mobile: scroll", {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
+      await driver.execute('mobile: scroll', {direction: 'down'});
     });
   });
 
@@ -146,12 +146,12 @@ describe('uicatalog - touch', function () {
       } catch (ign) {}
       try {
         // we want to begin at the top, so try to scroll up there
-        await driver.execute("mobile: scroll", {direction: 'up'});
+        await driver.execute('mobile: scroll', {direction: 'up'});
       } catch (ign) {}
     });
 
     it('should be able to click on arbitrary x-y elements', async function () {
-      let axIdExt = env.IOS8 || env.IOS9 ? "" : ", AAPLButtonViewController";
+      let axIdExt = env.IOS8 || env.IOS9 ? '' : ', AAPLButtonViewController';
       let el1 = await driver.findElement('accessibility id', `Buttons${axIdExt}`);
       await driver.moveTo(el1, 10, 10);
       await driver.clickCurrent();
