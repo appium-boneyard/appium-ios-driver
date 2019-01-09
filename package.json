@@ -22,7 +22,8 @@
   ],
   "main": "./build/index.js",
   "bin": {
-    "xcode-iwd": "./bin/xcode-iwd.sh"
+    "xcode-iwd": "./bin/xcode-iwd.sh",
+    "authorize-ios": "./build/bin/authorize-ios.js"
   },
   "directories": {
     "lib": "lib"

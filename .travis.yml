@@ -1,13 +1,14 @@
 env:
   global:
     - MOCHA_INIT_TIMEOUT=600000
+    - RECURSIVE=--recursive
   matrix:
   # Run tests in parellel
-    - DEVICE=ios93 TEST=unit COVERALLS=1
-    - DEVICE=ios93 TEST=e2e/driver RECURSIVE=1 IWDP=1
-    - DEVICE=ios93 TEST=e2e/testapp RECURSIVE=1
-    - DEVICE=ios93 TEST=e2e/uicatalog RECURSIVE=1
-    - DEVICE=ios93 TEST=e2e/safari RECURSIVE=1
+    - DEVICE=ios93 TEST=unit RECURSIVE= COVERALLS=1
+    - DEVICE=ios93 TEST=e2e/driver IWDP=1
+    - DEVICE=ios93 TEST=e2e/testapp
+    - DEVICE=ios93 TEST=e2e/uicatalog
+    - DEVICE=ios93 TEST=e2e/safari
 language: node_js
 os: osx
 osx_image: xcode7.3
@@ -24,10 +25,6 @@ before_script:
   - npm install
 script:
   - npm run lint
-  - if [ -n "$RECURSIVE" ]; then
-      npm run mocha -- --recursive build/test/$TEST -g @skip-ci -i --exit;
-    else
-      npm run mocha -- build/test/$TEST -g @skip-ci -i --exit;
-    fi
+  - npm run mocha -- $RECURSIVE build/test/$TEST -g @skip-ci -i --exit;
 after_success:
   - if [ -n "$COVERALLS" ]; then npm run coverage; fi
