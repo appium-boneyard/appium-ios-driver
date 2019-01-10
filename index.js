@@ -62,3 +62,8 @@ export { IOSLog, IOSCrashLog, IOSPerformanceLog };
 import * as appUtils from './lib/app-utils';
 
 export { appUtils };
+
+// iOS authorize
+import { authorize } from './bin/authorize-ios';
+
+export { authorize };

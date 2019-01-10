@@ -27,6 +27,48 @@ Appium iOS Driver supports iOS versions 8+
 npm install appium-ios-driver
 ```
 
+## Authorization for automation support
+
+On some systems Instruments is not authorized to automate iOS devices. This package
+comes with a little utility that pre-authorizes Instruments to run UIAutomation
+scripts.
+
+Running the authorization script will bring up an alert that prompts the user
+to input their `sudo` password. There is no way around this.
+
+### Command line usage
+
+If this package has been installed globally (either as part of an Appium
+installation, with `npm install -g appium`, or individually, with
+`npm install -g appium-ios-driver`), a _global_ command line utility will be
+installed, so you simply need to invoke it:
+
+```
+$ authorize-ios
+```
+
+### Programmatic usage
+
+To invoke programmatically (in, for instance, a test runner) is as simple as
+importing and invoking the `authorize` function, which returns a
+[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises):
+
+```
+npm install -S appium-ios-driver
+```
+
+```js
+import { authorize } from 'appium-ios-driver';
+
+authorize()
+  .then(function () {
+    console.log('iOS authorized!');
+  })
+  .catch(function (err) {
+    console.error(`Error authorizing: ${err.message}`);
+  });
+```
+
 ## Usage
 Import iOS Driver, set [desired capabilities](http://appium.io/slate/en/1.5/?javascript#appium-server-capabilities) and create a session:
 
