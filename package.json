@@ -32,6 +32,7 @@
     "index.js",
     "bin",
     "build/index.js",
+    "build/bin",
     "build/lib",
     "uiauto",
     "osa",
