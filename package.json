@@ -42,7 +42,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "appium-base-driver": "^3.0.0",
-    "appium-ios-simulator": "^3.0.0",
+    "appium-ios-simulator": "^3.9.0",
     "appium-remote-debugger": "^3.20.0",
     "appium-support": "^2.25.0",
     "appium-xcode": "^3.1.0",
@@ -53,7 +53,7 @@
     "lodash": "^4.13.1",
     "moment": "^2.22.2",
     "node-idevice": "^0.1.6",
-    "node-simctl": "^3.11.5",
+    "node-simctl": "^4.0.0",
     "pem": "^1.8.3",
     "portfinder": "^1.0.13",
     "request": "^2.79.0",
