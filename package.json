@@ -65,7 +65,7 @@
     "uuid-js": "^0.7.5",
     "xmldom": "^0.1.22",
     "xpath": "^0.0.24",
-    "yargs": "^12.0.1"
+    "yargs": "^13.1.0"
   },
   "scripts": {
     "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
