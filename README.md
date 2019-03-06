@@ -15,7 +15,7 @@ on simulators and real devices, using Apples' [UI Automation framework](uiauto.m
 Appium iOS Driver is part of the [Appium](https://github.com/appium/appium)
 mobile test automation tool.
 
-To automation iOS devices with a version of iOS greater than 9.3, see [appium-xcuitest-driver](https://github.com/appium/appium-xcuitest-driver).
+To automate iOS devices with a version of iOS greater than 9.3, see [appium-xcuitest-driver](https://github.com/appium/appium-xcuitest-driver).
 
 *Note*: Issue tracking for this repo has been disabled. Please use the [main Appium issue tracker](https://github.com/appium/appium/issues) instead.
 
