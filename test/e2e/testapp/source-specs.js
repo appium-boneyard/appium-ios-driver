@@ -1,6 +1,6 @@
 import setup from '../setup-base';
 import desired from './desired';
-import { DOMParser as XMLDom } from 'xmldom';
+import { DOMParser as XMLDom } from 'xmldom-reborn';
 import xpath from 'xpath';
 
 describe('testapp - source', function () {
