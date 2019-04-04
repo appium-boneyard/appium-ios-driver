@@ -53,7 +53,7 @@
     "lodash": "^4.13.1",
     "moment": "^2.22.2",
     "node-idevice": "^0.1.6",
-    "node-simctl": "^4.0.0",
+    "node-simctl": "^5.0.0",
     "pem": "^1.8.3",
     "portfinder": "^1.0.13",
     "request": "^2.79.0",
