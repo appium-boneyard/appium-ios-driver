@@ -25,5 +25,12 @@ describe('Web', function () {
         driver.convertElementsForAtoms(args).should.eql([{ELEMENT: 123}]);
       }
     });
+    it('should parse nested arrays', function () {
+      driver.webElementIds = [123];
+      const args = [[{
+        ELEMENT: 5000
+      }]];
+      driver.convertElementsForAtoms(args).should.eql([[{ELEMENT: 123}]]);
+    });
   });
 });
