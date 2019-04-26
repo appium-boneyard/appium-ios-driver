@@ -2,6 +2,12 @@ import { IosDriver } from '../..';
 import sinon from 'sinon';
 import path from 'path';
 import { tempDir, fs, zip } from 'appium-support';
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+
+
+chai.should();
+chai.use(chaiAsPromised);
 
 describe('File Movement', function () {
   let driver = new IosDriver();
