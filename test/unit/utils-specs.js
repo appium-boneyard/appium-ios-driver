@@ -16,19 +16,19 @@ describe('prepareIosOpts', withMocks({xcode}, (mocks) => {
   afterEach(function () {
     mocks.verify();
   });
-  it('should use instruments without delay by default', function () {
+  it('should use instruments without delay by default', async function () {
     const opts = {};
-    utils.prepareIosOpts(opts);
+    await utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.true;
   });
-  it('should use instruments without delay if explicitly not using native instruments', function () {
+  it('should use instruments without delay if explicitly not using native instruments', async function () {
     const opts = {nativeInstrumentsLib: false};
-    utils.prepareIosOpts(opts);
+    await utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.true;
   });
-  it('should not use instruments without delay if using native intruments', function () {
+  it('should not use instruments without delay if using native intruments', async function () {
     const opts = {nativeInstrumentsLib: true};
-    utils.prepareIosOpts(opts);
+    await utils.prepareIosOpts(opts);
     opts.withoutDelay.should.be.false;
   });
 }));
