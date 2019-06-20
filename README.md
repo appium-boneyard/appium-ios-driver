@@ -204,6 +204,13 @@ console.log(await driver.getOrientation()); // -> 'LANDSCAPE'
 | `webFlickElement`                 |
 | `xySpeedFlick`                    |
 
+## Insecure Features
+
+These can be enabled when running this driver through Appium, via the `--allow-insecure` or `--relaxed-security` flags.
+
+|Feature Name|Description|
+|------------|-----------|
+|get_server_logs|Allows retrieving of Appium server logs via the Webdriver log interface|
 
 ## Watch code for changes, re-transpile and run unit tests:
 
