@@ -101,6 +101,7 @@
   },
   "greenkeeper": {
     "ignore": [
+      "appium-remote-debugger",
       "chai",
       "xpath"
     ]
