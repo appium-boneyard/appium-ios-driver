@@ -136,9 +136,9 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
     };
 
     it('should call idevicedate', async function () {
-      let date = 'Tue Jun 12 11:13:31 CEST 2018';
+      let date = 'Tue Jun 12 11:13:31 UTC 2018';
       let driver = setup(mocks, {date});
-      (await driver.getDeviceTime()).startsWith('2018-06-12T').should.be.true;
+      (await driver.getDeviceTime()).should.eql('2018-06-12T11:13:31+00:00');
     });
 
     it('should call idevicedate with format', async function () {
@@ -169,7 +169,7 @@ describe('getDeviceTime', withMocks({fs, teen_process}, (mocks) => {
         .once().withExactArgs('date', ['+%Y-%m-%dT%H:%M:%S%z'])
         .returns({stdout: '2018-06-12T12:11:59+0200'});
       let driver = new IosDriver();
-      (await driver.getDeviceTime()).startsWith('2018-06-12T').should.be.true;
+      (await driver.getDeviceTime()).should.eql('2018-06-12T12:11:59+02:00');
     });
   });
 }));
