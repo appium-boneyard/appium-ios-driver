@@ -12,8 +12,11 @@ let server;
 
 async function startServer (session) {
   // start the server before start the session, so startup can use it if necessary
-  let router = routeConfiguringFunction(session.rawDriver);
-  server = await baseServer(router, env.APPIUM_PORT, 'localhost');
+  server = await baseServer({
+    routeConfiguringFunction: routeConfiguringFunction(session.rawDriver),
+    port: env.APPIUM_PORT,
+    hostname: 'localhost',
+  });
   log.info(`IosDriver server listening on http://localhost:${env.APPIUM_PORT}`);
 }
 
