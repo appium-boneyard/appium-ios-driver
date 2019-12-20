@@ -64,7 +64,7 @@
     "teen_process": "^1.6.0",
     "through": "^2.3.8",
     "uuid-js": "^0.7.5",
-    "xmldom": "^0.1.22",
+    "xmldom": "^0.2.0",
     "xpath": "^0.0.24",
     "yargs": "^15.0.1"
   },
