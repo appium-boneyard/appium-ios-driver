@@ -104,6 +104,7 @@
     "ignore": [
       "appium-remote-debugger",
       "chai",
+      "node-simctl",
       "xpath"
     ]
   }
