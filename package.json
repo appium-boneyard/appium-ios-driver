@@ -99,13 +99,5 @@
     "sinon": "^9.0.0",
     "unorm": "^1.4.1",
     "uuid": "^7.0.0"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "appium-remote-debugger",
-      "chai",
-      "node-simctl",
-      "xpath"
-    ]
   }
 }
