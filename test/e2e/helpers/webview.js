@@ -1,6 +1,6 @@
 import env from './env';
 import B from 'bluebird';
-import uuidv1 from 'uuid/v1';
+import { util } from 'appium-support';
 
 
 const BROWSERS = ['safari'];
@@ -10,7 +10,7 @@ async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined
     throw new Error(`Title never became '${expTitle}'. Last known title was '${_curTitle}'`);
   }
 
-  let pageTitle = await browser.title();
+  const pageTitle = await browser.title();
   if (pageTitle.indexOf(expTitle) < 0) {
     await B.delay(500);
     return await spinTitle(expTitle, browser, timeout - 1, pageTitle);
@@ -18,8 +18,8 @@ async function spinTitle (expTitle, browser, timeout = 90, _curTitle = undefined
 }
 
 async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
-  let app = typeof desired === 'object' ? desired.app || desired.browserName : desired;
-  let uuid = uuidv1();
+  const app = typeof desired === 'object' ? desired.app || desired.browserName : desired;
+  const uuid = util.uuidV1();
 
   if (typeof urlToLoad === 'undefined') {
     urlToLoad = `${env.GUINEA_TEST_END_POINT}?${uuid}`;
@@ -33,7 +33,7 @@ async function loadWebView (desired, browser, urlToLoad, titleToSpin) {
     return await spinTitle(titleToSpin, browser);
   }
 
-  let ctxs = await browser.contexts();
+  const ctxs = await browser.contexts();
   ctxs.length.should.be.above(0);
   await browser.context(ctxs[1]);
 
