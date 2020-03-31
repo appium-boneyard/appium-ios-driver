@@ -311,8 +311,8 @@ describe('uicatalog - find -', function () {
       });
 
       it('should search an extended path by descendant', async function () {
-        let els = await driver.findElements('xpath', '//UIATableCell//UIAButton');
-        let texts = await B.all(_.map(els, (el) => { return driver.getText(el); }));
+        const els = await driver.findElements('xpath', '//UIATableCell//UIAButton');
+        const texts = await B.all(_.map(els, (el) => driver.getText(el)));
         texts.should.not.include('UICatalog');
         texts.should.include('X Button');
       });
