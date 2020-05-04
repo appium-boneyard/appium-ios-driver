@@ -3,7 +3,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import IWDP from '../../../lib/iwdp';
 import { SubProcess } from 'teen_process';
-import request from 'request-promise';
+import axios from 'axios';
 import B from 'bluebird';
 
 
@@ -27,7 +27,7 @@ describe('ios webkit debug proxy class', function () {
   });
 
   it('should reject calls to http://localhost:27753; if this test fails, IWDP is already being run on port 27753', async function () {
-    await request(iwdpInstance.endpoint).should.be.rejected;
+    await axios({url: iwdpInstance.endpoint}).should.be.rejected;
   });
 
   it('should detect that IWDP is supported on this machine', async function () {
@@ -36,22 +36,31 @@ describe('ios webkit debug proxy class', function () {
 
   it('should start IWDP and be able to access the main page', async function () {
     await iwdpInstance.start();
-    await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
+    (await axios({
+      url: iwdpInstance.endpoint,
+      responseType: 'text',
+    })).data.should.have.string('<html');
   });
 
   it('should not keep running after stop is called', async function () {
     await iwdpInstance.start();
     await iwdpInstance.stop();
-    await request(iwdpInstance.endpoint).should.be.rejected;
+    await axios({url: iwdpInstance.endpoint}).should.be.rejected;
   });
 
   it('should still start IWDP server if one is started on a different port', async function () {
     let process = new SubProcess('ios_webkit_debug_proxy', ['--config', 'null:56789']);
     process.start();
     await B.delay(500);
-    await request('http://localhost:56789/').should.eventually.have.string('<html');
+    (await axios({
+      url: 'http://localhost:56789/',
+      responseType: 'text',
+    })).data.should.have.string('<html');
     await iwdpInstance.start();
-    await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
+    (await axios({
+      url: iwdpInstance.endpoint,
+      responseType: 'text',
+    })).data.should.have.string('<html');
     await process.stop();
   });
 
@@ -61,7 +70,10 @@ describe('ios webkit debug proxy class', function () {
     await new B((resolve) => {
       iwdpInstance.once('start', resolve);
     });
-    await request(iwdpInstance.endpoint).should.eventually.have.string('<html');
+    (await axios({
+      url: iwdpInstance.endpoint,
+      responseType: 'text',
+    })).data.should.have.string('<html');
   });
 
   it('should fail after reaching max retries', async function () {
