@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: appium-remote-debugger
+    versions:
+    - ">= 0"
+  - dependency-name: chai
+    versions:
+    - ">= 0"
+  - dependency-name: xpath
+    versions:
+    - ">= 0"
