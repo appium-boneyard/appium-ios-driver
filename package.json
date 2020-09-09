@@ -63,7 +63,7 @@
     "through": "^2.3.8",
     "xmldom": "^0.3.0",
     "xpath": "^0.0.24",
-    "yargs": "^15.0.1"
+    "yargs": "^16.0.0"
   },
   "scripts": {
     "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
