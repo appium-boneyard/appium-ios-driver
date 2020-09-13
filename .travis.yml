@@ -4,7 +4,7 @@ env:
     - RECURSIVE=--recursive
   matrix:
   # Run tests in parellel
-    - DEVICE=ios93 TEST=unit RECURSIVE= COVERALLS=1
+    - DEVICE=ios93 TEST=unit RECURSIVE=
     - DEVICE=ios93 TEST=e2e/driver IWDP=1
     - DEVICE=ios93 TEST=e2e/testapp
     - DEVICE=ios93 TEST=e2e/uicatalog
@@ -26,5 +26,3 @@ before_script:
 script:
   - npm run lint
   - npm run mocha -- $RECURSIVE build/test/$TEST -g @skip-ci -i --exit;
-after_success:
-  - if [ -n "$COVERALLS" ]; then npm run coverage; fi
