@@ -61,7 +61,7 @@
     "source-map-support": "^0.x",
     "teen_process": "^1.6.0",
     "through": "^2.3.8",
-    "xmldom": "^0.x",
+    "@xmldom/xmldom": "^0.x",
     "xpath": "^0.x"
   },
   "scripts": {
