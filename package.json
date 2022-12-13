@@ -43,7 +43,7 @@
     "@babel/runtime": "^7.0.0",
     "appium-base-driver": "^7.0.0",
     "appium-support": "^2.41.0",
-    "appium-ios-simulator": "^3.24.0",
+    "appium-ios-simulator": "^4.2.1",
     "appium-remote-debugger": "^5.7.0",
     "appium-xcode": "^3.1.0",
     "asyncbox": "^2.3.1",
